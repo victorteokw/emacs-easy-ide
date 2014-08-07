@@ -1,10 +1,6 @@
 ;; Disable tool bar
 (if (functionp 'tool-bar-mode) (tool-bar-mode 0))
 
-;; 
-
-
-
 (add-hook 'emacs-startup-hook 'show-initial-screen)
 (defun show-initial-screen ()
   "show the initial screen for the easy omni ide"
@@ -54,4 +50,4 @@
       (insert "\n")
       (switch-to-buffer ruby-buffer))))
 
-(provide 'init-splash.el)
+(provide 'init-splash)
