@@ -12,7 +12,7 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 
 (require 'init-basic)
-
+(require 'init-splash)
 
 (provide 'init)
 ;;; init.el ends here
