@@ -65,7 +65,6 @@ re-downloaded in order to locate PACKAGE."
   "Move to the previous window."
   (interactive)
   (other-window -1))
-
-
+(global-set-key "\C-xp" 'other-window-backward)
 (provide 'init-basic)
 ;;; init-basic.el ends here
