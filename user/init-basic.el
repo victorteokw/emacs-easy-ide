@@ -61,5 +61,11 @@ re-downloaded in order to locate PACKAGE."
 
 
 
+(defun other-window-backward ()
+  "Move to the previous window."
+  (interactive)
+  (other-window -1))
+
+
 (provide 'init-basic)
 ;;; init-basic.el ends here
