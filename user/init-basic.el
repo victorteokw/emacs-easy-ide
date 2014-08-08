@@ -61,10 +61,11 @@ re-downloaded in order to locate PACKAGE."
 
 
 
-(defun other-window-backward ()
-  "Move to the previous window."
-  (interactive)
-  (other-window -1))
+(defun other-window-backward (n)
+  "Move to the Nth previous window."
+  (interactive "p")
+  (other-window (- n)))
 (global-set-key "\C-xp" 'other-window-backward)
+
 (provide 'init-basic)
 ;;; init-basic.el ends here
