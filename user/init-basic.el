@@ -63,8 +63,8 @@ re-downloaded in order to locate PACKAGE."
 
 (defun other-window-backward (&optional n)
   "Move to the Nth previous window."
-  (interactive "p")
-  (other-window (if n (- n) -1)))
+  (interactive "P")
+  (other-window (- (prefix-numeric-value n))))
 (global-set-key "\C-xp" 'other-window-backward)
 
 (provide 'init-basic)
