@@ -61,7 +61,5 @@ re-downloaded in order to locate PACKAGE."
 
 
 
-(global-set-key "\M-?" help)
-
 (provide 'init-basic)
 ;;; init-basic.el ends here
