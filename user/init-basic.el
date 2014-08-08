@@ -1,6 +1,6 @@
 
 ;;; This file is copied from https://github.com/purcell/emacs.d for setup utilities
-
+;;; Code:
 (defmacro after-load (feature &rest body)
   "After FEATURE is loaded, evaluate BODY."
   (declare (indent defun))
