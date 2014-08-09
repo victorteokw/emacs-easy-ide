@@ -80,6 +80,21 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key "\C-q" 'scroll-n-lines-behind)
 (global-set-key "\C-z" 'scroll-n-lines-ahead)
 (global-set-key "\C-x\C-q" 'quoted-insert)
+(defun scroll-other-window-n-lines-ahead (&optional n)
+  "Scroll other window N lines ahead"
+  (interactive "P")
+  (scroll-other-window (prefix-numeric-value n)))
+(defun scroll-other-window-n-lines-behind (&optional n)
+  "Scroll other window N lines behind"
+  (interactive "P")
+  (scroll-other-window-down (prefix-numeric-value n)))
+(global-set-key "\C-\M-z" 'scroll-other-window-n-lines-ahead)
+
+(defun point-to-top ()
+  "Put point on top line of window."
+  (interactive)
+  (move-to-window-line 0))
+;(global-set-key "\C-," 'point-to-top)
 
 (provide 'init-basic)
 ;;; init-basic.el ends here
