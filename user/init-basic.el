@@ -96,11 +96,12 @@ re-downloaded in order to locate PACKAGE."
   (move-to-window-line 0))
 ;(global-set-key "\C-," 'point-to-top)
 
-(defun read-only-if-symlink ()
-  (if (file-symlink-p buffer-file-name)
-      (progn
-        (setq buffer-read-only t)
-        (message "File is a symlink"))))
-(add-hook 'find-file-hook 'read-only-if-symlink)
+(add-hook 'find-file-hook
+          '(lambda ()
+             (if (file-symlink-p buffer-file-name)
+                 (progn
+                   (setq buffer-read-only t)
+                   (message "File is a symlink")))))
+
 (provide 'init-basic)
 ;;; init-basic.el ends here
