@@ -6,7 +6,7 @@
 
 (add-hook 'emacs-startup-hook 'show-initial-screen)
 (defun show-initial-screen ()
-  "show the initial screen for the easy omni ide"
+  "show the initial screen for the easy ide"
   (let ((ide-buffer (get-buffer-create "IDE-Start-Up")))
     (with-current-buffer ide-buffer
       (insert "Select An IDE")
@@ -35,7 +35,7 @@
       (switch-to-buffer ide-buffer))))
 
 (defun show-ruby-initial-screen ()
-  "show the ruby initial screen for the easy omni ide"
+  "show the ruby initial screen for the easy ide"
   (let ((ruby-buffer (get-buffer-create "Welcome to Ruby IDE")))
     (with-current-buffer ruby-buffer
       (insert-button "Create a project" 'action (lambda (x) (find-file user-init-file)))
@@ -50,6 +50,8 @@
       (insert-button "Old project" 'action (lambda (x) (find-file user-init-file)))
       (insert "\n")
       (insert-button "Open Another project" 'action (lambda (x) (find-file user-init-file)))
+      (insert "\n")
+      (insert-button "Run the shell" 'action (lambda (x) (find-file user-init-file)))
       (insert "\n")
       (switch-to-buffer ruby-buffer))))
 

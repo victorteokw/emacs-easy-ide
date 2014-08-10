@@ -102,6 +102,28 @@ re-downloaded in order to locate PACKAGE."
                  (progn
                    (setq buffer-read-only t)
                    (message "File is a symlink")))))
-
+(defun visit-target-instead ()
+  "Replace this buffer with a buffer visiting the link target."
+  (interactive)
+  (if buffer-file-name
+      (let ((target (file-symlink-p buffer-file-name)))
+        (if target
+            (find-alternate-file target)
+          (error "Not visiting a symlink")))
+    (error "Not visiting a file")))
+(defun clobber-symlink ()
+  "Replace symlink with a copy of the file."
+  (interactive)
+  (if buffer-file-name
+      (let ((target (file-symlink-p buffer-file-name)))
+        (if target
+            (if (yes-or-no-p (format "Replace %s with %s? "
+                                     buffer-file-name
+                                     target))
+                (progn
+                  (delete-file buffer-file-name)
+                  (write-file buffer-file-name)))
+          (error "Not visiting a symlink")))
+    (error "Not visiting a file")))
 (provide 'init-basic)
 ;;; init-basic.el ends here
