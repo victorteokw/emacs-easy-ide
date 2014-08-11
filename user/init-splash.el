@@ -3,7 +3,7 @@
 
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
-
+;;
 (add-hook 'emacs-startup-hook 'show-initial-screen)
 (defun show-initial-screen ()
   "show the initial screen for the easy ide"
