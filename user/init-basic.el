@@ -125,5 +125,12 @@ re-downloaded in order to locate PACKAGE."
                   (write-file buffer-file-name)))
           (error "Not visiting a symlink")))
     (error "Not visiting a file")))
+
+(defadvice switch-to-buffer (before existing-buffer activate compile)
+  "When interactive, switch to existing buffers only, unless given a prefix argument."
+  (interactive (list (read-buffer "Switch to buffer: "
+                                  (other-buffer)
+                                  (null current-prefix-arg)))))
+
 (provide 'init-basic)
 ;;; init-basic.el ends here
