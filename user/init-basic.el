@@ -145,6 +145,8 @@ re-downloaded in order to locate PACKAGE."
 (defun unscroll ()
   "Revert to 'unscroll-point' and 'unscroll-window-start'."
   (interactive)
+  (if (not unscroll-point)
+      (error "Cannot unscroll yet"))
   (goto-char unscroll-point)
   (set-window-start nil unscroll-window-start)
   (set-window-hscroll nil unscroll-hscroll))
