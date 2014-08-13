@@ -132,5 +132,15 @@ re-downloaded in order to locate PACKAGE."
                                   (other-buffer)
                                   (null current-prefix-arg)))))
 
+(defvar unscroll-to nil "Text position for next call to unscroll.")
+(defadvice scroll-up (before remember-for-unscroll activate compile)
+  "Remember where we started from, for 'unscroll'."
+  (if (not (eq last-command 'scroll-up))
+      (setq unscroll-to (point))))
+(defun unscroll ()
+  "Jump to location specified by 'unscroll-to'."
+  (interactive)
+  (goto-char unscroll-to))
+
 (provide 'init-basic)
 ;;; init-basic.el ends here
