@@ -134,18 +134,20 @@ re-downloaded in order to locate PACKAGE."
 
 (defvar unscroll-point nil "Cursor position for next call to 'unscroll'.")
 (defvar unscroll-window-start nil "Window start for next call to 'unscroll'.")
+(defvar unscroll-hscroll nil "Hscroll for next call to 'unscroll'.")
 (defadvice scroll-up (before remember-for-unscroll activate compile)
   "Remember where we started from, for 'unscroll'."
   (if (not (eq last-command 'scroll-up))
-      (progn
-        (setq unscroll-to (point))
-        (setq unscroll-window-start (window-start)))))
+      (setq unscroll-to (point)
+            unscroll-window-start (window-start)
+            unscroll-hscroll (window-hscroll))))
 
 (defun unscroll ()
   "Revert to 'unscroll-point' and 'unscroll-window-start'."
   (interactive)
   (goto-char unscroll-point)
-  (set-window-start nil unscroll-window-start))
+  (set-window-start nil unscroll-window-start)
+  (set-window-hscroll nil unscroll-hscroll))
 
 (provide 'init-basic)
 ;;; init-basic.el ends here
