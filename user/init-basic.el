@@ -132,15 +132,20 @@ re-downloaded in order to locate PACKAGE."
                                   (other-buffer)
                                   (null current-prefix-arg)))))
 
-(defvar unscroll-to nil "Text position for next call to unscroll.")
+(defvar unscroll-point nil "Cursor position for next call to 'unscroll'.")
+(defvar unscroll-window-start nil "Window start for next call to 'unscroll'.")
 (defadvice scroll-up (before remember-for-unscroll activate compile)
   "Remember where we started from, for 'unscroll'."
   (if (not (eq last-command 'scroll-up))
-      (setq unscroll-to (point))))
+      (progn
+        (setq unscroll-to (point))
+        (setq unscroll-window-start (window-start)))))
+
 (defun unscroll ()
-  "Jump to location specified by 'unscroll-to'."
+  "Revert to 'unscroll-point' and 'unscroll-window-start'."
   (interactive)
-  (goto-char unscroll-to))
+  (goto-char unscroll-point)
+  (set-window-start nil unscroll-window-start))
 
 (provide 'init-basic)
 ;;; init-basic.el ends here
