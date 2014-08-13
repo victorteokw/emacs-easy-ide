@@ -135,20 +135,28 @@ re-downloaded in order to locate PACKAGE."
 (defvar unscroll-point nil "Cursor position for next call to 'unscroll'.")
 (defvar unscroll-window-start nil "Window start for next call to 'unscroll'.")
 (defvar unscroll-hscroll nil "Hscroll for next call to 'unscroll'.")
-(defadvice scroll-up (before remember-for-unscroll activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (if (not (or (eq last-command 'scroll-down)
-               (eq last-command 'scroll-up)))
-      (setq unscroll-to (point)
-            unscroll-window-start (window-start)
-            unscroll-hscroll (window-hscroll))))
-(defadvice scroll-down (before remember-for-unscroll activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (if (not (or (eq last-command 'scroll-down)
-               (eq last-command 'scroll-up)))
+(defun unscroll-maybe-remember ()
+  (if (not (or (eq last-command 'scroll-up)
+               (eq last-command 'scroll-down)
+               (eq last-command 'scroll-left)
+               (eq last-command 'scroll-right)))
       (setq unscroll-point (point)
             unscroll-window-start (window-start)
             unscroll-hscroll (window-hscroll))))
+
+(defadvice scroll-up (before remember-for-unscroll activate compile)
+  "Remember where we started from, for 'unscroll'."
+  (unscroll-maybe-remember))
+(defadvice scroll-down (before remember-for-unscroll activate compile)
+  "Remember where we started from, for 'unscroll'."
+  (unscroll-maybe-remember))
+(defadvice scroll-left (before remember-for-unscroll activate compile)
+  "Remember where we started from, for 'unscroll'."
+  (unscroll-maybe-remember))
+(defadvice scroll-right (before remember-for-unscroll activate compile)
+  "Remember where we started from, for 'unscroll'."
+  (unscroll-maybe-remember))
+
 (defun unscroll ()
   "Revert to 'unscroll-point' and 'unscroll-window-start'."
   (interactive)
