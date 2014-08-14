@@ -132,8 +132,8 @@ re-downloaded in order to locate PACKAGE."
                                   (other-buffer)
                                   (null current-prefix-arg)))))
 
-(defvar unscroll-point nil "Cursor position for next call to 'unscroll'.")
-(defvar unscroll-window-start nil "Window start for next call to 'unscroll'.")
+(defvar unscroll-point (make-marker) "Cursor position for next call to 'unscroll'.")
+(defvar unscroll-window-start (make-marker) "Window start for next call to 'unscroll'.")
 (defvar unscroll-hscroll nil "Hscroll for next call to 'unscroll'.")
 (put 'scroll-up 'unscrollable t)
 (put 'scroll-down 'unscrollable t)
@@ -141,9 +141,10 @@ re-downloaded in order to locate PACKAGE."
 (put 'scroll-right 'unscrollable t)
 (defun unscroll-maybe-remember ()
   (if (not (get last-command 'unscrollable))
-      (setq unscroll-point (point)
-            unscroll-window-start (window-start)
-            unscroll-hscroll (window-hscroll))))
+      (progn
+        (set-marker unscroll-point (point))
+        (set-marker unscroll-window-start (window-start))
+        (setq unscroll-hscroll (window-hscroll)))))
 
 (defadvice scroll-up (before remember-for-unscroll activate compile)
   "Remember where we started from, for 'unscroll'."
