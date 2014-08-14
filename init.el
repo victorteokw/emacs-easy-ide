@@ -12,6 +12,7 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 
 (require 'init-basic)
+(require 'init-my-tutorial)
 (require 'init-splash)
 
 (provide 'init)

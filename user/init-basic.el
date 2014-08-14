@@ -170,11 +170,3 @@ re-downloaded in order to locate PACKAGE."
 
 (provide 'init-basic)
 ;;; init-basic.el ends here
-
-
-
-
-
-
-
-
