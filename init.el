@@ -18,9 +18,15 @@
 
 (add-to-list 'load-path (expand-file-name "boot" user-emacs-directory))
 
+(defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
 
-(require 'init-basic)
+(require 'init-compat) ;; Compatibility
+(require 'init-util)   ;; Utility Functions
+(require 'init-elpa)   ;; Package Manager
+
+
+(require 'init-basic) ;; to be deleted
 (require 'init-my-tutorial)
 (require 'init-splash)
 (require 'init-scroll)
