@@ -23,6 +23,7 @@
 (require 'init-basic)
 (require 'init-my-tutorial)
 (require 'init-splash)
+(require 'init-scroll)
 
 (provide 'init)
 

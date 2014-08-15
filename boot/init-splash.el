@@ -17,6 +17,7 @@
 
 
 (add-hook 'emacs-startup-hook 'show-initial-screen)
+
 (defun show-initial-screen ()
   "Show the initial screen for the easy ide."
   (let ((ide-buffer (get-buffer-create "*IDE Start Up*")))
@@ -41,7 +42,7 @@
       (insert (substitute-command-keys "\t   \\[info]\n"))
 
       (insert-button "Ruby IDE"
-                     'action (lambda (_button) (message "Ruby IDE"))
+                     'action (lambda (_button) (show-ruby-initial-screen))
                      'follow-link t)
       (insert (substitute-command-keys "\t   \\[info]\t"))
 
@@ -86,12 +87,11 @@
       (switch-to-buffer ide-buffer))))
 
 (defun show-ruby-initial-screen ()
-  "show the ruby initial screen for the easy ide"
-  (let ((ruby-buffer (get-buffer-create "Welcome to Ruby IDE")))
+  "Show the ruby initial screen for the easy ide."
+  (let ((ruby-buffer (get-buffer-create "*Ruby IDE*")))
     (with-current-buffer ruby-buffer
-      (insert-button "Create a project" 'action (lambda (x) (find-file user-init-file)))
-      (insert "\n")
-      (insert "Visit a last opened project\n")
+      (insert "Ruby IDE\n")
+      (insert "\nVisit a last opened project:\n")
       (insert-button "Old project" 'action (lambda (x) (find-file user-init-file)))
       (insert "\n")
       (insert-button "Old project" 'action (lambda (x) (find-file user-init-file)))
@@ -99,11 +99,22 @@
       (insert-button "Old project" 'action (lambda (x) (find-file user-init-file)))
       (insert "\n")
       (insert-button "Old project" 'action (lambda (x) (find-file user-init-file)))
+      (insert "\n")
       (insert "\n")
       (insert-button "Open Another project" 'action (lambda (x) (find-file user-init-file)))
       (insert "\n")
-      (insert-button "Run the shell" 'action (lambda (x) (find-file user-init-file)))
+      (insert-button "Run Ruby Shell" 'action (lambda (x) (find-file user-init-file)))
       (insert "\n")
+      (insert "\n")
+      (insert "Or you can:\n")
+      (insert-button "Create a project"
+                     'action (lambda (_button) (message "Create a project")))
+      (insert "\n")
+      (insert-button "Create a Rails project"
+                     'action (lambda (_button) (message "Create a Rails project"))
+                     'follow-link t)
+      (insert "\n")
+
       (switch-to-buffer ruby-buffer))))
 
 (provide 'init-splash)
