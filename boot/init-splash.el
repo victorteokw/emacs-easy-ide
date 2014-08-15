@@ -10,40 +10,79 @@
 ;;; Code:
 
 ;; Disable tool bar
-
 (if (functionp 'tool-bar-mode) (tool-bar-mode 0))
 
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
-;;
+
+
 (add-hook 'emacs-startup-hook 'show-initial-screen)
 (defun show-initial-screen ()
-  "show the initial screen for the easy ide"
-  (let ((ide-buffer (get-buffer-create "IDE-Start-Up")))
+  "Show the initial screen for the easy ide."
+  (let ((ide-buffer (get-buffer-create "*IDE Start Up*")))
     (with-current-buffer ide-buffer
-      (insert "Select An IDE")
-      (insert "\n")
-      (insert-button "C IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert "\n")
-      (insert-button "C++ IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert "\n")
-      (insert-button "Objective-C IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert "\n")
-      (insert-button "Ruby IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert " Only Ruby IDE is being implementing")
-      (insert "\n")
-      (insert-button "Python IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert "\n")
-      (insert-button "PHP IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert "\n")
-      (insert-button "Go IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert "\n")
-      (insert-button "Javascript IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert "\n")
-      (insert-button "Swift IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert "\n")
-      (insert-button "Shell-script IDE" 'action (lambda (x) (show-ruby-initial-screen)))
-      (insert "\n")
+      (setq buffer-read-only nil)
+      (erase-buffer)
+      (setq default-directory command-line-default-directory)
+      (set (make-local-variable 'tab-width) 18)
+
+      (insert "Welcome to Easy IDE, happy hacking!\n")
+
+      (insert "\nSelect an IDE\n\n")
+
+      (insert-button "C IDE"
+                     'action (lambda (_button) (message "C IDE"))
+                     'follow-link t)
+      (insert (substitute-command-keys "\t   \\[info-emacs-manual]\t"))
+
+      (insert-button "C++ IDE"
+                     'action (lambda (_button) (message "C++ IDE"))
+                     'follow-link t)
+      (insert (substitute-command-keys "\t   \\[info]\n"))
+
+      (insert-button "Ruby IDE"
+                     'action (lambda (_button) (message "Ruby IDE"))
+                     'follow-link t)
+      (insert (substitute-command-keys "\t   \\[info]\t"))
+
+      (insert-button "Python IDE"
+                     'action (lambda (_button) (message "Python IDE"))
+                     'follow-link t)
+      (insert (substitute-command-keys "\t   \\[info]\n"))
+
+      (insert-button "Javascript IDE"
+		     'action (lambda (_button) (message "Python IDE"))
+		     'follow-link t)
+      (insert (substitute-command-keys "\t   \\[info]\t"))
+
+      (insert-button "PHP IDE"
+		     'action (lambda (_button) (message "PHP IDE"))
+		     'follow-link t)
+      (insert (substitute-command-keys "\t   \\[info-emacs-manual]\n"))
+
+      (insert-button "Swift and Objective-C IDE"
+		     'action (lambda (_button) (message "Swift and Objective-C IDE"))
+		     'follow-link t)
+      (insert (substitute-command-keys "\t   \\[info-emacs-manual]\n"))
+
+      (insert-button "Lisp IDE"
+		     'action (lambda (_button) (message "Lisp IDE"))
+		     'follow-link t)
+      (insert (substitute-command-keys "\t   \\[info-emacs-manual]\n"))
+
+      ;; Help for this easy ide
+      (insert (format "\nHelp:\t   %s\n"
+                      (let ((where (where-is-internal 'help-command nil t)))
+                        (cond
+                         ((equal where [?\C-h])
+                          "C-h (Hold down CTRL and press h)")
+                         (where (key-description where))
+                         (t "M-x help")))))
+
+      (insert "\nCurrently, only Ruby IDE is implemented.\n")
+
+      (setq buffer-read-only t)
+
       (switch-to-buffer ide-buffer))))
 
 (defun show-ruby-initial-screen ()
