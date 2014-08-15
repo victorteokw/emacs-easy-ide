@@ -1,4 +1,16 @@
+;;; init-splash.el --- loading startup screen -*- lexical-binding: t -*-
+
+;; Maintainer: Zhang Kai Yu
+;; Keywords: ide
+
+;;; Commentary:
+
+;;; This config load the startup screen for easy ide
+
+;;; Code:
+
 ;; Disable tool bar
+
 (if (functionp 'tool-bar-mode) (tool-bar-mode 0))
 
 ;; Disable splash screen
@@ -56,3 +68,5 @@
       (switch-to-buffer ruby-buffer))))
 
 (provide 'init-splash)
+
+;;; init-splash.el ends here

@@ -1,13 +1,22 @@
-;;; This config is designed to be an easy IDE.
+;;; init.el --- bootstrap file  -*- lexical-binding: t -*-
 
-;;: This config is currently only support emacs 23.
+;; Maintainer: Zhang Kai Yu
+;; Keywords: ide
+
+;;; Commentary:
+
+;;; This config is designed to be an easy IDE.
+;;; This file bootstraps the configuration, which is divided into a number of
+;;; other files
+;;: This config is currently only support Emacs 24.
+
 ;;; Code:
 
-(let ((min_ver 24))
-  (unless (>= emacs-major-version min_ver)
-    (error "This config requires v%s or higher" min_ver)))
+(let ((minver 24))
+  (unless (>= emacs-major-version minver)
+    (error "This config requires v%s or higher" minver)))
 
-(add-to-list 'load-path (expand-file-name "user" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "boot" user-emacs-directory))
 
 (defconst *is-a-mac* (eq system-type 'darwin))
 
@@ -16,4 +25,5 @@
 (require 'init-splash)
 
 (provide 'init)
+
 ;;; init.el ends here
