@@ -30,6 +30,7 @@
 (require 'init-my-tutorial)
 (require 'init-splash)
 (require 'init-scroll)
+(require-package 'wgrep)
 
 (provide 'init)
 
