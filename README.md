@@ -7,7 +7,9 @@ I am still learning elisp programming to customize emacs.
   
 Now this repo is just my own tutorial.
 
-| Keys | Description |
+
+| Keys | Description  |
+|:--------------------:|:---------------------------:|
 | Up arrow | scroll up one line |
 | Down arrow | scroll down one line |
 | Left arrow | scroll left one line |
