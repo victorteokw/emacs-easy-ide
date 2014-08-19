@@ -9,4 +9,6 @@
   (insert (format-time-string "%l:%M %p" (current-time))))
 
 
+
 (provide 'init-my-tutorial)
+;;; init-my-tutorial.el ends here
