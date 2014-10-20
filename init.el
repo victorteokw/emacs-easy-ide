@@ -1,36 +1,33 @@
-;;; init.el --- bootstrap file  -*- lexical-binding: t -*-
+;;; init.el
 
-;; Maintainer: Zhang Kai Yu
-;; Keywords: ide
-
-;;; Commentary:
-
-;;; This config is designed to be an easy IDE.
 ;;; This file bootstraps the configuration, which is divided into a number of
 ;;; other files
 ;;: This config is currently only support Emacs 24.
 
 ;;; Code:
 
-(let ((minver 24))
-  (unless (>= emacs-major-version minver)
-    (error "This config requires v%s or higher" minver)))
+;; Load setup file
+(require 'setup)
 
-(add-to-list 'load-path (expand-file-name "boot" user-emacs-directory))
+;; Load my own core extension to "standard library"
+(require 'core-extension)
 
-(defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
-(defconst *is-a-mac* (eq system-type 'darwin))
+;; Load user interface
+(require 'user-interface)
 
-(require 'init-compat) ;; Compatibility
-(require 'init-util)   ;; Utility Functions
-(require 'init-elpa)   ;; Package Manager
+;;(require 'project-additional)
+;;(require 'buffer-additional) delete-this-buffer delete-this-file etc.
+;;(require-set 'basic-editing-additional)
+;;(require-language 'ruby)
+;;(require-set 'python)
 
+;; Load user preferences
+;;(require 'custom-preferences)
 
-(require 'init-basic) ;; to be deleted
-(require 'init-my-tutorial)
-(require 'init-splash)
-(require 'init-scroll)
-(require-package 'wgrep)
+;;(require 'init-util)   ;; to be deleted
+;;(require 'init-basic) ;; to be deleted
+;;(require 'init-splash) ;; to be deleted
+;;(require 'init-scroll) ;; to be deleted
 
 (provide 'init)
 
