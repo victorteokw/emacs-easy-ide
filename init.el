@@ -6,6 +6,8 @@
 
 ;;; Code:
 
+(add-to-list 'load-path user-emacs-directory)
+
 ;; Load setup file
 (require 'setup)
 

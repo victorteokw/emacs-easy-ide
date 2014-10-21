@@ -42,3 +42,5 @@ Visit target '%s' instead?" target-file))
   "Go to emacs init file."
   (interactive)
   (find-file user-init-file))
+
+(provide 'buffer-additional)

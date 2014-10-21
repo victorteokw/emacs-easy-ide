@@ -4,4 +4,4 @@
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
 
-(provide 'user-interfacel)
+(provide 'user-interface)

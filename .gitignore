@@ -1,2 +1,7 @@
 # Compiled
 *.elc
+/.emacs.desktop
+/elpa
+/.bookmarks.el
+/eshell
+ac-comphist.dat
