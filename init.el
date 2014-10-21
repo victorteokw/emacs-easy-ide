@@ -1,7 +1,7 @@
 ;;; init.el
 
 ;;; This file bootstraps the configuration, which is divided into a number of
-;;; other files
+;;; other files.
 ;;: This config is currently only support Emacs 24.
 
 ;;; Code:
@@ -17,16 +17,13 @@
 
 ;;(require 'project-additional)
 (require 'buffer-additional)
+
 ;;(require-set 'basic-editing-additional)
 ;;(require-language 'ruby)
 ;;(require-set 'python)
 
 ;; Load user preferences
-;;(require 'custom-preferences)
-
-;;(require 'init-basic) ;; to be deleted
-;;(require 'init-splash) ;; to be deleted
-;;(require 'init-scroll) ;; to be deleted
+(require 'custom-preferences)
 
 (provide 'init)
 
