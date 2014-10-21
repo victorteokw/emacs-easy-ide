@@ -16,7 +16,7 @@
 (require 'user-interface)
 
 ;;(require 'project-additional)
-;;(require 'buffer-additional) delete-this-buffer delete-this-file etc.
+(require 'buffer-additional)
 ;;(require-set 'basic-editing-additional)
 ;;(require-language 'ruby)
 ;;(require-set 'python)
@@ -24,7 +24,6 @@
 ;; Load user preferences
 ;;(require 'custom-preferences)
 
-;;(require 'init-util)   ;; to be deleted
 ;;(require 'init-basic) ;; to be deleted
 ;;(require 'init-splash) ;; to be deleted
 ;;(require 'init-scroll) ;; to be deleted

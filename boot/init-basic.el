@@ -1,32 +1,5 @@
 ;; This file is to be deleted
 
-(defun scroll-other-window-n-lines-ahead (&optional n)
-  "Scroll other window N lines ahead"
-  (interactive "P")
-  (scroll-other-window (prefix-numeric-value n)))
-(global-set-key "\C-\M-z" 'scroll-other-window-n-lines-ahead)
-
-(defun point-to-top ()
-  "Put point on top line of window."
-  (interactive)
-  (move-to-window-line 0))
-;(global-set-key "\C-," 'point-to-top)
-
-(add-hook 'find-file-hook
-          '(lambda ()
-             (if (file-symlink-p buffer-file-name)
-                 (progn
-                   (setq buffer-read-only t)
-                   (message "File is a symlink")))))
-(defun visit-target-instead ()
-  "Replace this buffer with a buffer visiting the link target."
-  (interactive)
-  (if buffer-file-name
-      (let ((target (file-symlink-p buffer-file-name)))
-        (if target
-            (find-alternate-file target)
-          (error "Not visiting a symlink")))
-    (error "Not visiting a file")))
 (defun clobber-symlink ()
   "Replace symlink with a copy of the file."
   (interactive)
@@ -41,12 +14,6 @@
                   (write-file buffer-file-name)))
           (error "Not visiting a symlink")))
     (error "Not visiting a file")))
-
-(defadvice switch-to-buffer (before existing-buffer activate compile)
-  "When interactive, switch to existing buffers only, unless given a prefix argument."
-  (interactive (list (read-buffer "Switch to buffer: "
-                                  (other-buffer)
-                                  (null current-prefix-arg)))))
 
 (defvar unscroll-point (make-marker) "Cursor position for next call to 'unscroll'.")
 (defvar unscroll-window-start (make-marker) "Window start for next call to 'unscroll'.")
