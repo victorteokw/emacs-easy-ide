@@ -18,6 +18,9 @@
 ;;(require 'project-additional)
 (require 'buffer-additional)
 
+;; Require lisp so that I can develop this config with this config
+(require-set 'lisp)
+
 ;;(require-set 'basic-editing-additional)
 ;;(require-language 'ruby)
 ;;(require-set 'python)
