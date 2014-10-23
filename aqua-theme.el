@@ -14,6 +14,7 @@
     ("aqua-variable" . "#5fafff")
     ("aqua-type" . "#000000")
     ("aqua-warning" . "#ff0000")
+    ("aqua-region" . "#A3CDFE")
     )
   "List of aqua colors. Each element has the form (NAME . HEX).")
 
@@ -51,6 +52,7 @@ Also bind `class' to ((class color) (min-colors 89))."
                                   :background ,aqua-bg
                                   :box (:line-width -1 :style released-button)))))
    `(highlight ((t (:background ,aqua-bg))))
+   `(region ((t (:background, aqua-region))))
    `(success ((t (:foreground ,aqua-fg :weight bold))))
    `(warning ((t (:foreground ,aqua-fg :weight bold))))
 ;;;;; font lock

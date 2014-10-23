@@ -7,6 +7,10 @@
 ;; Disable beep
 (setq visible-bell t)
 
+;; Show line numbers and column numbers
+(line-number-mode 1)
+(column-number-mode 1)
+
 ;; Require the theme
 (require 'aqua-theme)
 
