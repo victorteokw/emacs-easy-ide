@@ -5,3 +5,5 @@
 /.bookmarks.el
 /eshell
 ac-comphist.dat
+.smex-items
+*~

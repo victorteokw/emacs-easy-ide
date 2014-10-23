@@ -43,4 +43,10 @@ Visit target '%s' instead?" target-file))
   (interactive)
   (find-file user-init-file))
 
+;; A handier way to kill all buffers.
+(defun kill-all-buffers ()
+  "Kill all buffers."
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
 (provide 'buffer-additional)
