@@ -1,15 +1,16 @@
 ;;; main.el
 
 (require-package 'cl-lib)
+
 (require-package 'auto-complete)
 (require 'auto-complete-config)
 (setq-default ac-expand-on-auto-complete t)
 ;;(setq-default ac-auto-start t)
-(setq-default ac-dwim t) ; To get pop-ups with docs even if a word is uniquely completed
-;;(setq completion-cycle-threshold 0)
-(ac-config-default)
-
-;; 'elisp-slime-nav' is used for jump between elisp files.
+(setq-default ac-dwim t) 
+(setq completion-cycle-threshold 0)
+;;(ac-config-default)
+;;(global-auto-complete-mode nil)
+;;'elisp-slime-nav' is used for jump between elisp files.
 (require-package 'elisp-slime-nav)
 
 ;; 'lively' is for evaluate elisp code inline
@@ -39,7 +40,8 @@
 ;; Copied from purcell's config
 
 ;; Use C-c C-z to toggle between elisp files and an ielm session
-;; I might generalise this to ruby etc., or even just adopt the repl-toggle package.
+;; I might generalise this to ruby etc.,
+;; or even just adopt the repl-toggle package.
 
 (defmacro after-load (feature &rest body)
   "After FEATURE is loaded, evaluate BODY."
@@ -221,10 +223,12 @@
   (add-hook 'after-save-hook #'check-parens nil t))
 
 (defun sanityinc/emacs-lisp-setup ()
+  ;;(auto-complete-mode t)
   "Enable features useful when working with elisp."
   (elisp-slime-nav-mode t)
   (set-up-hippie-expand-for-elisp)
-  (ac-emacs-lisp-mode-setup))
+  (ac-emacs-lisp-mode-setup)
+  (auto-complete-mode))
 
 (defconst sanityinc/elispy-modes
   '(emacs-lisp-mode ielm-mode)

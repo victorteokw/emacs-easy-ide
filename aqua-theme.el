@@ -15,6 +15,9 @@
     ("aqua-type" . "#000000")
     ("aqua-warning" . "#ff0000")
     ("aqua-region" . "#A3CDFE")
+    ("aqua-select-bg-y" . "#1C57AB")
+    ("aqua-select-bg-n" . "#EEEEEE")
+    ("aqua-bar-bg" . "#999999")
     )
   "List of aqua colors. Each element has the form (NAME . HEX).")
 
@@ -73,6 +76,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-warning-face ((t (:foreground ,aqua-warning :weight normal))))
 
    `(c-annotation-face ((t (:inherit font-lock-constant-face))))
+   ;; auto complete
+   `(ac-candidate-face ((t (:background, aqua-select-bg-n :foreground ,aqua-fg))))
+   `(ac-selection-face ((t (:background, aqua-select-bg-y :foreground ,aqua-bg))))
+   `(popup-tip-face ((t (:background, aqua-region :foreground ,aqua-fg))))
+   `(popup-scroll-bar-foreground-face ((t (:background ,aqua-bar-bg))))
+   `(popup-scroll-bar-background-face ((t (:background ,aqua-select-bg-n))))
    ))
 
 (provide-theme 'aqua)
