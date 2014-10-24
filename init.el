@@ -31,6 +31,9 @@
 ;; Require simulating xcode
 (require-set 'xcode)
 
+;; Require html
+(require-set 'html)
+
 ;;(require-set 'basic-editing-additional)
 ;;(require-language 'ruby)
 ;;(require-set 'python)
