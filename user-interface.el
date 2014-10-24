@@ -14,4 +14,8 @@
 ;; Require the theme
 (require 'aqua-theme)
 
+;; Do not backup files
+(setq make-backup-files nil)
+
+
 (provide 'user-interface)

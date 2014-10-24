@@ -6,6 +6,7 @@
 
 ;;; Code:
 
+;; Prepare to load setup file
 (add-to-list 'load-path user-emacs-directory)
 
 ;; Load setup file
@@ -21,9 +22,14 @@
 (require 'buffer-additional)
 (require 'editing-additional)
 
+;; Require better emacs basic functionality
 (require-set 'ido)
+
 ;; Require lisp so that I can develop this config with this config
 (require-set 'lisp)
+
+;; Require simulating xcode
+(require-set 'xcode)
 
 ;;(require-set 'basic-editing-additional)
 ;;(require-language 'ruby)

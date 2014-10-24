@@ -8,6 +8,7 @@
 ;;(setq-default ac-auto-start t)
 (setq-default ac-dwim t) 
 (setq completion-cycle-threshold 0)
+
 ;;(ac-config-default)
 ;;(global-auto-complete-mode nil)
 ;;'elisp-slime-nav' is used for jump between elisp files.
