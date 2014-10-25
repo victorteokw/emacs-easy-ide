@@ -1,4 +1,14 @@
+(defvar html-root-element-list
+  (list
+   "html" "!DOCTYPE html"))
 
+(defvar html-first-child-element-list
+  (list
+   "head" "body"))
+
+(defvar html-unique-element-list
+  (list
+   "html" "head" "body" "title"))
 
 (defvar html-block-level-element-list
   (list
@@ -45,17 +55,74 @@
   ())
 
 (defun ac-source-html-tag-candidates ()
+  (message "ac-source-candidates triggered")
+  (let ((doctype-declared nil) (html-declared nil)
+  	(head-declared nil) (body-declared nil)
+  	(html-doctype-level nil) (head-body-level nil)
+  	(inside-head-1-level nil) (inside-body-1-level nil))
+    ;; inside head or not
+    (message "before test")
+    ;; (and (save-excursion (re-search-backward "<head" nil t))
+    ;; 	 (save-excursion (re-search-forward "</head>" nil t))
+    ;; 	 (setq inside-head-1-level t))
+    ;; (message "finish head test")
+    ;; ;; inside body or not
+    ;; (and (save-excursion (search-backward-regexp "<body" nil t))
+    ;; 	 (save-excursion (search-forward-regexp "</body>" nil t))
+    ;; 	 (setq inside-body-1-level t))
+    ;; (message "finish body test")
+    ;; ;; inside html or not
+    ;; (or inside-head-1-level inside-body-1-level
+    ;; 	(and (save-excursion (search-backward-regexp "<html" nil t))
+    ;; 	     (save-excursion (search-forward-regexp "</html>" nil t))
+    ;; 	     (setq head-body-level t)))
+    ;; (message "finish html test")
+    ;; ;; must be top level
+    ;; (or head-body-level
+    ;; 	(setq html-doctype-level t))
+    ;; (message "finish set top level")
+    ;; ;; if top level check if doctype and html declared
+    ;; (if html-doctype-level
+    ;; 	(progn
+    ;; 	  (and (save-excursion (goto-char (point-min))
+    ;; 			      (search-forward-regexp "<!DOCTYPE" nil t))
+    ;; 	       (setq doctype-declared t))
+    ;; 	  (and (save-excursion (goto-char (point-min))
+    ;; 			       (search-forward-regexp "<html" nil t))
+    ;; 	       (setq html-declared t))))
+    ;; ;; if head or body level
+    ;; (if head-body-level
+    ;; 	(progn
+    ;; 	  (and (save-excursion (goto-char (point-min))
+    ;; 			       (search-forward-regexp "<head" nil t))
+    ;; 	       (setq head-declared t))
+    ;; 	  (and (save-excursion (goto-char (point-min))
+    ;; 			       (search-forward-regexp "<body" nil t))
+    ;; 	       (setq body-declared t))))
+    ;; (message "next cond")
+    ;; ;; (or inside-head-1-level (message "Not inside head level"))
+    ;; ;; (or inside-body-1-level (message "Not inside body level"))
+    ;; ;; (or head-body-level (message "Not Head body level"))
+    ;; ;; (or html-doctype-level (message "Not html doctype level"))
+    ;; (cond (html-doctype-level (html-root-element-list))
+    ;; 	  (head-body-level (html-first-child-element-list))
+    ;; 	  (inside-head-1-level (html-all-element-list))
+  	  ;; (inside-body-1-level (html-all-element-list)))
+  html-all-element-list))
 
-  html-all-element-list)
+(defun ac-source-html-tag-documentation (symbol)
+  "Currently not documented."
+)
 
 (defun ac-source-html-attribute-candidates ()
   (list "id" "class" "href" "src" "ref" "link" "title")
   )
 
 (defvar ac-source-html-tag
-  '((candidates . (ac-source-html-tag-candidates))
+  '((candidates . ac-source-html-tag-candidates)
     (prefix . "<\\(.*\\)")
-    (symbol . "t")))
+    (symbol . "t")
+    (document . ac-source-html-tag-documentation)))
 
 (defvar ac-source-html-attribute
   '((candidates . (ac-source-html-attribute-candidates))
@@ -67,16 +134,24 @@
     (prefix . "\\w+[ ]+\\(.*\\)")
     (symbol . "a")))
 
-(defun setup-html ()
-  "Setup html."
+(defun setup-html-environment ()
+  "Setup html development environment."
   (require-package 'auto-complete)
   (setq ac-sources '(ac-source-html-attribute))
   (add-to-list 'ac-sources 'ac-source-html-tag)
   (add-to-list 'ac-sources 'ac-source-html-attribute-2)
   (auto-complete-mode t)
-
+  (setq-default ac-auto-start t)
+  (setq-default ac-dwim t)
   )
 
-(add-hook 'html-mode-hook 'setup-html)
+(defun setup-css-environment ()
+  "Setup css development environment."
+  (require-package 'auto-complete)
+  ;; TODO: set css compatible ac sources
+  )
+
+(add-hook 'html-mode-hook 'setup-html-environment)
+
 
 (provide 'init-html)
