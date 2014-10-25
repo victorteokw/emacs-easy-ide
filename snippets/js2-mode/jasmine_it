@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: jasmine_it
+# key: it
+# --
+it("${1:contains spec with an expectation}", function() {
+$0
+});

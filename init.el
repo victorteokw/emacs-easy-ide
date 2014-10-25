@@ -34,9 +34,11 @@
 ;; Require html
 (require-set 'html)
 
+;; Require ruby
+(require-set 'ruby)
+
 ;;(require-set 'basic-editing-additional)
-;;(require-language 'ruby)
-;;(require-set 'python)
+;;(require-language 'python)
 
 ;; Load user preferences
 (require 'custom-preferences)

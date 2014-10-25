@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: active_support_test_class
+# key: test_class
+# binding: C-c C-t
+# --
+class ${1:TestClass} < ActiveSupport::TestCase
+$0
+end

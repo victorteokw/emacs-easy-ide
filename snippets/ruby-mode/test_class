@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: test_class
+# key: test_class
+# binding: C-c C-t
+# --
+require 'minitest/autorun'
+
+class ${1:TestClass} < Minitest::Test
+$0
+end

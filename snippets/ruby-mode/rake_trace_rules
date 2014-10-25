@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: rake_trace_rules
+# key: rtr
+# binding: C-c C-o
+# --
+Rake.application.options.trace_rules = true
