@@ -1,0 +1,1 @@
+The HTML root element (<html>) represents the root of an HTML document. All other elements must be descendants of this element.

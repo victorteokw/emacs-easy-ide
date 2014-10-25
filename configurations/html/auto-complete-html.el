@@ -113,8 +113,16 @@
 ))
 
 (defun ac-source-html-tag-documentation (symbol)
-  "Currently not documented."
-)
+  (let* ((where-to-find
+	 (expand-file-name "html-stuff/html-tag-short-docs"
+			   user-emacs-directory))
+	 (doc-file (expand-file-name symbol where-to-find)))
+    (if (file-exists-p doc-file)
+	(progn
+	  (with-temp-buffer
+	    (insert-file-contents doc-file)
+	    (buffer-string)))
+      "Currently not documented.")))
 
 (defun ac-source-html-attribute-candidates ()
   (list "id" "class" "href" "src" "ref" "link" "title")

@@ -1,0 +1,1 @@
+The HTML <nobr> element prevents a text from breaking into a new line automagically, so it is displayed on one long line and scrolling might be necessary. This tag is not standard HTML and should not be used.

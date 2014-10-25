@@ -1,0 +1,1 @@
+The HTML <track> element is used as a child of the media elements—<audio> and <video>. It lets you specify timed text tracks (or time-based data), for example to automaticaly handle subtitles.

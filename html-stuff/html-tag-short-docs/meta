@@ -1,0 +1,1 @@
+The HTML <meta> Element represents any metadata information that cannot be represented by one of the other meta-related elements (<base>, <link>, <script>, <style> or <title>). According to the attributes set, the kind of metadata can be one of the following:
