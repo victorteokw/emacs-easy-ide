@@ -38,6 +38,12 @@
    "track" "tt" "u" "ul" "var" "video" "wbr" "xmp"
    ))
 
+(defvar html-user-defined-class-list
+  ())
+
+(defvar html-user-defined-id-list
+  ())
+
 (defun ac-source-html-tag-candidates ()
 
   html-all-element-list)
