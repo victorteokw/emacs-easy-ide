@@ -1,17 +1,10 @@
-not-emacs-easy-ide
+emacs-easy-ide is in development
 ==============
 
-Vision: An Easy config for emacs as IDE
-  
-I am still learning elisp programming to customize emacs.
-  
-Now this repo is just my own tutorial.
+This repo has most intelligent html tag auto complete feature and documentation.
 
+But I am clumsy. This emacs configuration is still developing.
 
-| Keys | Description  |
-|:--------------------:|:---------------------------:|
-| Up arrow | scroll up one line |
-| Down arrow | scroll down one line |
-| Left arrow | scroll left one line |
-| Right arrow | scroll right one line |
-| C-x p | jump to previous window |
+Feel free to make it better.
+
+Now this repo is ~~just~~ not at all my own tutorial.
