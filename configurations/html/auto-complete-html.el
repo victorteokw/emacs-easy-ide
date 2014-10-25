@@ -162,6 +162,6 @@
   )
 
 (add-hook 'html-mode-hook 'setup-html-environment)
+(add-hook 'web-mode-hook 'setup-html-environment)
 
-
-(provide 'init-html)
+(provide 'auto-complete-html)
