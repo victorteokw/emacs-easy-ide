@@ -13,4 +13,8 @@
 (global-set-key (kbd "C-M-z") 'er/contract-region)
 (setq expand-region-contract-fast-key (kbd "Z"))
 
+;; Dash at point
+(require-package 'dash-at-point)
+(global-set-key (kbd "C-h D") 'dash-at-point)
+
 (provide 'editing-additional)
