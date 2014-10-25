@@ -1,20 +1,20 @@
-(require-package 'auto-complete)
 
-(defvar html-block-level-elements
+
+(defvar html-block-level-element-list
   (list
    "address" "article" "aside" "audio" "blockquote" "canvas" "dd" "div" "dl"
    "fieldset" "figcaption" "figure" "footer" "form" "h1" "h2" "h3" "h4" "h5"
    "h6" "header" "hgroup" "hr" "noscript" "ol" "output" "p" "pre" "section"
    "table" "tfoot" "ul" "video"))
 
-(defvar html-inline-elements
+(defvar html-inline-element-list
   (list
    "b" "big" "i" "small" "tt"
    "abbr" "acronym" "cite" "code" "dfn" "em" "kbd" "strong" "samp" "var"
    "a" "bdo" "br" "img" "map" "object" "q" "script" "span" "sub" "sup"
    "button" "input" "label" "select" "textarea"))
 
-(defvar ac-source-html-tag-candidates
+(defvar html-all-element-list
   (list
    "a" "abbr" "acronym" "address" "applet" "area" "article" "aside" "audio"
    "b" "base" "basefont" "bdi" "bdo"
@@ -38,14 +38,35 @@
    "track" "tt" "u" "ul" "var" "video" "wbr" "xmp"
    ))
 
+(defun ac-source-html-tag-candidates ()
+
+  html-all-element-list)
+
+(defun ac-source-html-attribute-candidates ()
+  (list "id" "class" "href" "src" "ref" "link" "title")
+  )
+
 (defvar ac-source-html-tag
-  '((candidates . ac-source-html-tag-candidates)
+  '((candidates . (ac-source-html-tag-candidates))
     (prefix . "<\\(.*\\)")
     (symbol . "t")))
 
+(defvar ac-source-html-attribute
+  '((candidates . (ac-source-html-attribute-candidates))
+    (prefix . "[\\w\"]+[ ]+\\(.*\\)")
+    (symbool . "a")))
+
+(defvar ac-source-html-attribute-2
+  '((candidates . (ac-source-html-attribute-candidates))
+    (prefix . "\\w+[ ]+\\(.*\\)")
+    (symbol . "a")))
+
 (defun setup-html ()
   "Setup html."
-  (setq ac-sources '(ac-source-html-tag))
+  (require-package 'auto-complete)
+  (setq ac-sources '(ac-source-html-attribute))
+  (add-to-list 'ac-sources 'ac-source-html-tag)
+  (add-to-list 'ac-sources 'ac-source-html-attribute-2)
   (auto-complete-mode t)
 
   )
