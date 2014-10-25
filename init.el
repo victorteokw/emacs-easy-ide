@@ -22,6 +22,7 @@
 (require 'buffer-additional)
 (require 'editing-additional)
 
+(require 'language-additional)
 ;; Require better emacs basic functionality
 (require-set 'ido)
 

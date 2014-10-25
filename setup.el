@@ -10,7 +10,19 @@
   "The directory is under `user-emacs-directory' and is the directory that
 contains all the programming language support configuration files.")
 
+(defconst old-packages-directory
+  (expand-file-name "old-packages" user-emacs-directory)
+  "This directory contains old and obsolete packages. But they are powerful.")
 
+(defun require-old-package (package)
+  (let* ((package-string (symbol-name package))
+	 (package-dir (expand-file-name package-string
+					old-packages-directory)))
+    
+    (if (file-directory-p package-dir)
+	(add-to-list 'load-path package-dir)
+      (message "Cannot load old package '%s'" package))
+    (require package)))
 
 ;; Configure the package system
 (require 'package)
