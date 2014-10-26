@@ -1,3 +1,13 @@
+;;; editing-additional.el
+
+;; electric indent
+(electric-indent-mode 1)
+
+;; electric pair
+(electric-pair-mode 1)
+
+;; (global-linum-mode 1)
+;; whitespace mode for 80 column rule
 (require 'whitespace)
 (setq whitespace-line-column 80)
 (setq whitespace-style '(face lines-tail))
