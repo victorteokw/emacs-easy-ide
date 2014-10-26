@@ -2,6 +2,10 @@
 
 ;; electric indent
 (electric-indent-mode 1)
+(require-package 'aggressive-indent)
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+
+;;(global-aggressive-indent-mode)
 
 ;; electric pair
 (electric-pair-mode 1)
