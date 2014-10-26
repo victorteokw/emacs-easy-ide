@@ -66,13 +66,11 @@
     (and (save-excursion (re-search-backward "<head" nil t))
     	 (save-excursion (re-search-forward "</head>" nil t))
     	 (setq inside-head-1-level t))
-
     
     ;; inside body or not
     (and (save-excursion (search-backward-regexp "<body" nil t))
     	 (save-excursion (search-forward-regexp "</body>" nil t))
     	 (setq inside-body-1-level t))
-
     
     ;; inside html or not
     (or inside-head-1-level inside-body-1-level
@@ -80,11 +78,9 @@
     	     (save-excursion (search-forward-regexp "</html>" nil t))
     	     (setq head-body-level t)))
 
-    
     ;; must be top level
     (or inside-head-1-level inside-body-1-level head-body-level
     	(setq html-doctype-level t))
-
     
     ;; if top level check if doctype and html declared
     (if html-doctype-level
@@ -134,10 +130,15 @@
 		     (point-min) (point-max)))
 		  "\n" t)))
 
-(defun ac-source-html-attribute-candidates ()
+(defun achtml/current-html-tag ()
+  "Return current html tag user is typing on."
   (let* ((tag-search (save-excursion
 		       (re-search-backward "<\\(\\w+\\)[ ]+" nil t)))
-	 (tag-string (match-string 1))
+	 (tag-string (match-string 1)))
+    tag-string))
+
+(defun ac-source-html-attribute-candidates ()
+  (let* ((tag-string (achtml/current-html-tag))
 	 (global-attributes-file
 	  (expand-file-name "html-stuff/html-attributes-list/global"
 			    user-emacs-directory))
@@ -157,28 +158,46 @@
 	(setq list-to-return
 	      (append list-to-return
 		      (achtml/load-list-from-file this-attributes-file))))
+    list-to-return))
 
-    list-to-return
-    )
+(defun ac-source-html-attribute-documentation (symbol)
+  (let* ((where-to-find
+  	  (expand-file-name "html-stuff/html-attributes-short-docs"
+  			    user-emacs-directory))
+  	 (tag-string (achtml/current-html-tag))
+  	 (tag-doc-file-name (format "%s-%s" tag-string symbol))
+  	 (global-doc-file-name (format "%s-%s" "global" symbol))
+  	 (tag-doc-file (expand-file-name tag-doc-file-name where-to-find))
+  	 (global-doc-file
+  	  (expand-file-name global-doc-file-name where-to-find)))
+    (if (file-exists-p global-doc-file)
+  	(progn
+  	  (with-temp-buffer
+  	    (insert-file-contents global-doc-file)
+  	    (buffer-string)))
+      "Currently not documented."))
   )
-
-
 
 (defvar ac-source-html-tag
   '((candidates . ac-source-html-tag-candidates)
     (prefix . "<\\(.*\\)")
     (symbol . "t")
-    (document . ac-source-html-tag-documentation)))
+    (document . ac-source-html-tag-documentation)
+    ))
 
 (defvar ac-source-html-attribute
   '((candidates . (ac-source-html-attribute-candidates))
     (prefix . "<\\w+[ ]+\\(.*\\)")
-    (symbool . "a")))
+    (symbool . "a")
+    (document . ac-source-html-attribute-documentation)
+    ))
 
 (defvar ac-source-html-attribute-2
   '((candidates . (ac-source-html-attribute-candidates))
     (prefix . "[\\w+\"]+[ ]+\\(.*\\)")
-    (symbol . "b")))
+    (symbol . "b")
+    (document . ac-source-html-attribute-documentation)
+    ))
 
 (defun setup-html-environment ()
   "Setup html development environment."
