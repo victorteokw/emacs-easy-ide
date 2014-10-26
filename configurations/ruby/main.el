@@ -28,10 +28,6 @@
 ;; yaml
 (require-package 'yaml-mode)
 
-;; ruby editing features
-(require-package 'ruby-end)
-(require-package 'yasnippet)
-
 (eval-after-load "ruby-mode"
   '(lambda ()
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
@@ -41,14 +37,6 @@
 		 (unless (derived-mode-p 'prog-mode)
 		   (run-hooks 'prog-mode-hook))))))
 
-
-;; End of line and return
-(defun ruby-end-of-line-and-return ()
-  "Move to the end of line and return."
-  (interactive)
-  (end-of-line)
-  (ruby-end-return))
-
 (add-hook 'ruby-mode-hook (lambda ()
                             (ruby-end-mode t)
 			    (require 'yasnippet)
@@ -57,7 +45,5 @@
 			     'ruby-end-return
 			     'ruby-end-of-line-and-return ruby-end-mode-map)
                             ))
-
-(setq ruby-end-insert-newline nil)
 
 (provide 'init-ruby-mode)
