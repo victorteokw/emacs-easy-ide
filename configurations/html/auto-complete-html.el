@@ -66,25 +66,25 @@
     (and (save-excursion (re-search-backward "<head" nil t))
     	 (save-excursion (re-search-forward "</head>" nil t))
     	 (setq inside-head-1-level t))
-    (message "finish head test")
+
     
     ;; inside body or not
     (and (save-excursion (search-backward-regexp "<body" nil t))
     	 (save-excursion (search-forward-regexp "</body>" nil t))
     	 (setq inside-body-1-level t))
-    (message "finish body test")
+
     
     ;; inside html or not
     (or inside-head-1-level inside-body-1-level
     	(and (save-excursion (search-backward-regexp "<html" nil t))
     	     (save-excursion (search-forward-regexp "</html>" nil t))
     	     (setq head-body-level t)))
-    (message "finish html test")
+
     
     ;; must be top level
     (or inside-head-1-level inside-body-1-level head-body-level
     	(setq html-doctype-level t))
-    (message "finish set top level")
+
     
     ;; if top level check if doctype and html declared
     (if html-doctype-level
@@ -125,9 +125,44 @@
 	    (buffer-string)))
       "Currently not documented.")))
 
+(defun achtml/load-list-from-file (filepath)
+  "Return a list separated by \\n from FILEPATH."
+  (with-current-buffer (find-file-noselect filepath)
+    (split-string (save-restriction
+		    (widen)
+		    (buffer-substring-no-properties
+		     (point-min) (point-max)))
+		  "\n" t)))
+
 (defun ac-source-html-attribute-candidates ()
-  (list "id" "class" "href" "src" "ref" "link" "title")
+  (let* ((tag-search (save-excursion
+		       (re-search-backward "<\\(\\w+\\)[ ]+" nil t)))
+	 (tag-string (match-string 1))
+	 (global-attributes-file
+	  (expand-file-name "html-stuff/html-attributes-list/global"
+			    user-emacs-directory))
+	 (this-attributes-file-name
+	  (format "html-stuff/html-attributes-list/%s" tag-string))
+	 (this-attributes-file
+	  (expand-file-name this-attributes-file-name
+			    user-emacs-directory))
+	 (list-to-return ()))
+
+    (if (file-exists-p global-attributes-file)
+	(setq list-to-return
+	      (append list-to-return
+		      (achtml/load-list-from-file global-attributes-file))))
+
+    (if (file-exists-p this-attributes-file)
+	(setq list-to-return
+	      (append list-to-return
+		      (achtml/load-list-from-file this-attributes-file))))
+
+    list-to-return
+    )
   )
+
+
 
 (defvar ac-source-html-tag
   '((candidates . ac-source-html-tag-candidates)
@@ -137,13 +172,13 @@
 
 (defvar ac-source-html-attribute
   '((candidates . (ac-source-html-attribute-candidates))
-    (prefix . "[\\w\"]+[ ]+\\(.*\\)")
+    (prefix . "<\\w+[ ]+\\(.*\\)")
     (symbool . "a")))
 
 (defvar ac-source-html-attribute-2
   '((candidates . (ac-source-html-attribute-candidates))
-    (prefix . "\\w+[ ]+\\(.*\\)")
-    (symbol . "a")))
+    (prefix . "[\\w+\"]+[ ]+\\(.*\\)")
+    (symbol . "b")))
 
 (defun setup-html-environment ()
   "Setup html development environment."
