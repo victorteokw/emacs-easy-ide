@@ -21,8 +21,8 @@
 ;;(require 'project-additional)
 (require 'buffer-additional)
 (require 'editing-additional)
-
 (require 'language-additional)
+
 ;; Require better emacs basic functionality
 (require-set 'ido)
 
@@ -38,7 +38,9 @@
 ;; Require ruby
 (require-set 'ruby)
 
-;;(require-set 'basic-editing-additional)
+;; Require php
+(require-set 'php)
+
 ;;(require-language 'python)
 
 ;; Load user preferences
