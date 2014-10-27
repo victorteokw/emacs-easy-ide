@@ -21,5 +21,9 @@
 ;; Do not backup files
 (setq make-backup-files nil)
 
+;; Initial scratch message
+(setq initial-scratch-message "#I'm happy to live a ruby life.\n\n")
 
+;; Initial major mode
+(setq initial-major-mode 'ruby-mode)
 (provide 'user-interface)

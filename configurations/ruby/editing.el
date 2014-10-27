@@ -18,4 +18,6 @@
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (whitespace-cleanup-mode t)
+             (yas-reload-all)
+             (add-hook 'before-save-hook 'whitespace-cleanup)
              ))
