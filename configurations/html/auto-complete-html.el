@@ -169,14 +169,18 @@
   	 (global-doc-file-name (format "%s-%s" "global" symbol))
   	 (tag-doc-file (expand-file-name tag-doc-file-name where-to-find))
   	 (global-doc-file
-  	  (expand-file-name global-doc-file-name where-to-find)))
-    (if (file-exists-p global-doc-file)
-  	(progn
-  	  (with-temp-buffer
-  	    (insert-file-contents global-doc-file)
-  	    (buffer-string)))
-      "Currently not documented."))
-  )
+  	  (expand-file-name global-doc-file-name where-to-find))
+         (doc-to-return ""))
+    (if (file-exists-p tag-doc-file)
+        (setq doc-to-return (with-temp-buffer
+                              (insert-file-contents tag-doc-file)
+                              (buffer-string))))
+    (if (string-equal doc-to-return "")
+        (if (file-exists-p global-doc-file)
+            (setq doc-to-return (with-temp-buffer
+                                  (insert-file-contents global-doc-file)
+                                  (buffer-string)))))
+    doc-to-return))
 
 (defvar ac-source-html-tag
   '((candidates . ac-source-html-tag-candidates)
@@ -195,7 +199,7 @@
 (defvar ac-source-html-attribute-2
   '((candidates . (ac-source-html-attribute-candidates))
     (prefix . "[\\w+\"]+[ ]+\\(.*\\)")
-    (symbol . "b")
+    (symbol . "a")
     (document . ac-source-html-attribute-documentation)
     ))
 
