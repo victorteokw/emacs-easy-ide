@@ -1,3 +1,5 @@
+Defines a keyboard shortcut to activate or add focus to the element.
+
 This attribute provides a hint for generating a keyboard shortcut for the current element. This attribute consists of a space-separated list of characters (one single Unicode code point). The browser should use the first one that exists on the computer keyboard layout.
 
 HTML4 Note:

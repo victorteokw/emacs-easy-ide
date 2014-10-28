@@ -1,3 +1,5 @@
+Defines whether the element can be dragged.
+
 This enumerated attribute indicates whether the element can be dragged, using the Drag and Drop API. It can have the following values:
 
 true, which indicates that the element may be dragged.

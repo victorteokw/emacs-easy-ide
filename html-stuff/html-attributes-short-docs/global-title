@@ -1,3 +1,5 @@
+Text to be displayed in a tooltip when hovering over the element.
+
 This attribute contains a text representing advisory information related to the element it belongs to. Such information can typically, but not necessarily, be presented to the user as a tooltip. Here are some typical uses of this attribute:
 
 Link: the title or a description of the linked document

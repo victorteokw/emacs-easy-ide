@@ -1,4 +1,4 @@
-style
+Defines CSS styles which will override styles previously set.
 
 This attribute contains CSS styling declarations to be applied to the element. Note that it is recommended for styles to be defined in a separate file or files. This attribute and the <style> element have mainly the purpose of allowing for quick styling, for example for testing purposes.
 

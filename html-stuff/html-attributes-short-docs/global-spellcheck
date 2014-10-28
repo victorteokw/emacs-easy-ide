@@ -1,3 +1,5 @@
+Indicates whether spell checking is allowed for the element.
+
 This enumerated attribute defines whether the element may be checked for spelling errors. It may have the following values:
 
 true, which indicates that the element should be, if possible, checked for spelling errors;

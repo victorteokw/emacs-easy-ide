@@ -1,3 +1,5 @@
+Prevents rendering of given element, while keeping child elements, e.g. script elements, active.
+
 This Boolean attribute indicates that the element is not yet, or is no longer, relevant. For example, it can be used to hide elements of the page that can't be used until the login process has been completed. The browser won't render such elements.
 
 Usage notes:

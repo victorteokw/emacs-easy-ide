@@ -1,3 +1,5 @@
+Indicates whether the element's content is editable.
+
 This enumerated attribute indicates if the element should be editable by the user. If so, the browser modifies its widget to allow editing. The attribute must take one of the following values:
 
 true or the empty string, which indicates that the element must be editable;
