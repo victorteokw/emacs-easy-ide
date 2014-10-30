@@ -1,2 +1,2 @@
 (require-package 'rinari)
-(rinari-global-mode t)
+(global-rinari-mode 1)
