@@ -11,6 +11,11 @@
   (setq ido-auto-merge-work-directories-length 0)
   (setq ido-use-virtual-buffers t)
 
+  ;; flx-ido
+  (require-package 'flx-ido)
+  (flx-ido-mode t)
+  (setq ido-use-faces nil)
+
   ;; configure ido-ubiquitous
   (require-package 'ido-ubiquitous)
   (ido-ubiquitous-mode t)

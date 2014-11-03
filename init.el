@@ -18,7 +18,7 @@
 ;; Load user interface
 (require 'user-interface)
 
-;;(require 'project-additional)
+(require 'project-additional)
 (require 'buffer-additional)
 (require 'editing-additional)
 (require 'language-additional)
@@ -35,11 +35,17 @@
 ;; Require html
 (require-set 'html)
 
+;; Require javaScript
+(require-set 'javascript)
+
 ;; Require ruby
 (require-set 'ruby)
 
 ;; Require php
 (require-set 'php)
+
+;; Require markdown
+(require-set 'md)
 
 ;;(require-language 'python)
 
