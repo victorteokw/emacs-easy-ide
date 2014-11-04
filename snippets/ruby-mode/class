@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name : class ... end
-# key : cls
+# key : class
 # --
 class ${1:`(let ((fn (capitalize (file-name-nondirectory
                                  (file-name-sans-extension
