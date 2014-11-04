@@ -12,6 +12,9 @@
  show-trailing-whitespace t ;; show trailing whitespace
  )
 
+;; Using meta-backtip to open menu bar
+(global-set-key (kbd "M-`") 'menu-bar-open)
+
 ;; Require my theme
 (require 'aqua-theme)
 
