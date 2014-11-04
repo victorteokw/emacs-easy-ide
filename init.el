@@ -7,7 +7,7 @@
 ;;; Code:
 
 ;; Prepare to load setup file
-(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path (expand-file-name "setup" user-emacs-directory))
 
 ;; Load setup file
 (require 'setup)

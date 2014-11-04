@@ -78,7 +78,7 @@ The FEATURE-SET is a directory under `user-configuration-directory' "
 (add-to-list 'load-path user-configuration-directory)
 
 ;; Set custom file
-(setq custom-file (expand-file-name "custom-preferences.el"
+(setq custom-file (expand-file-name "setup/custo-mpreferences.el"
 				    user-emacs-directory))
 
 (provide 'setup)
