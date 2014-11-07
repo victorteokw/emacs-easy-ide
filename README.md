@@ -36,11 +36,11 @@ It is easy to learn and use.
 
 ## Deletion
 
-### Programming Language
+## Programming Language
 
-#### Ruby
+### Ruby
 
-##### Test
+#### Test
 
 | TDD prefix | Description  |
 |:--------------------:|:---------------------------:|
