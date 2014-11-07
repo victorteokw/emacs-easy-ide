@@ -7,9 +7,10 @@ But I am clumsy. This emacs configuration is still developing.
 
 Feel free to make it better.
 
+### Basic Movement
+
 This config is loyal to emacs's default keys.
 
-### Basic Movement
 | key | function |
 |:-----:|:---------------:|
 | C-f | forward-char |
@@ -17,7 +18,11 @@ This config is loyal to emacs's default keys.
 | C-n | next-line |
 | C-p | previous-line |
 
-### Ruby TDD
+### Programming Language
+
+#### Ruby
+
+##### Ruby TDD
 
 | TDD prefix | Description  |
 |:--------------------:|:---------------------------:|
