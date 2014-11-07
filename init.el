@@ -23,6 +23,8 @@
 (require 'editing-additional)
 (require 'language-additional)
 
+(require-set 'version-control)
+
 ;; Require better emacs basic functionality
 (require-set 'ido)
 
