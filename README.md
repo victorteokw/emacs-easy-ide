@@ -1,4 +1,4 @@
-emacs-easy-ide is in development
+emacs-easy-ide
 ==============
 
 This repo has most intelligent html tag auto complete feature and documentation.
