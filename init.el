@@ -31,6 +31,9 @@
 ;; Require lisp so that I can develop this config with this config
 (require-set 'lisp)
 
+;; Require browser
+(require-set 'browser)
+
 ;; Require simulating xcode
 (require-set 'xcode)
 
