@@ -14,15 +14,15 @@ contains all the programming language support configuration files.")
   (expand-file-name "old-packages" user-emacs-directory)
   "This directory contains old and obsolete packages. But they are powerful.")
 
-(defun require-old-package (package)
+(defun require-old-package (package &optional do-not-require)
   (let* ((package-string (symbol-name package))
 	 (package-dir (expand-file-name package-string
 					old-packages-directory)))
-    
+
     (if (file-directory-p package-dir)
 	(add-to-list 'load-path package-dir)
       (message "Cannot load old package '%s'" package))
-    (require package)))
+    (unless do-not-require (require package))))
 
 ;; Configure the package system
 (require 'package)
