@@ -11,7 +11,7 @@ Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks"
 	"Open iOS Simulator."
 	(interactive)
 	(shell-command "open -a \"iOS Simulator\"" nil nil))
-      
+
       (defun xcode ()
 	"Open Xcode."
 	(interactive)
@@ -71,7 +71,7 @@ EOF
   ;; Yasnippet
   (require-package 'yasnippet)
   (yas-global-mode 1)
-  
+
   ;; Auto-complete
   (require-package 'auto-complete)
   (require 'auto-complete-config)

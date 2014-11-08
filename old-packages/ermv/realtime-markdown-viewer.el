@@ -114,6 +114,9 @@ webapp も stop する。"
     (rtmv:webapp-launch port)
     (sleep-for 3)
     (rtmv:init-websocket port)
+    (sleep-for 1)
+    (shell-command "open http://0.0.0.0:5021" nil nil)
+
     (when (fboundp 'make-local-hook) ;; for Emacs 23.x or lower
       (make-local-hook 'kill-buffer-hook)
       (make-local-hook 'after-change-functions))
