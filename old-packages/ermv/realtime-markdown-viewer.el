@@ -105,6 +105,34 @@
     (kill-process rtmv:webapp-process)
     (setq rtmv:webapp-process nil)))
 
+(defun rtmv:move-terminal-and-safari ()
+  "move terminal window to top left corner."
+  (shell-command "
+osascript <<-EOF
+tell application \"Safari\"
+open location \"http://0.0.0.0:5021\"
+set the bounds of the front window to {580, 22, 1418, 820}
+end tell
+tell application \"Terminal\"
+set position of window 1 to {0, 22}
+set number of rows of first window to 24
+set number of columns of first window to 80
+end tell
+EOF
+" nil nil)
+  )
+
+(defun rtmv:close-safari-tab ()
+  "close Safari tab whose url is http://0.0.0.0:5021"
+  (shell-command "
+osascript <<-EOF
+set closeURLs to {\"http://0.0.0.0:5021\"}
+repeat with theURL in closeURLs
+tell application \"Safari\" to close (every tab of every window whose URL contains (contents of theURL))
+end repeat
+EOF
+"))
+
 (defun rtmv:init ()
   "rtmv に関連する状態(websocket,hook)をカレントバッファにセットする。
 もし全てのバッファで websocket が閉じられているのであれば
@@ -115,17 +143,18 @@ webapp も stop する。"
     (sleep-for 3)
     (rtmv:init-websocket port)
     (sleep-for 1)
-    (shell-command "open http://0.0.0.0:5021" nil nil)
-
+    (rtmv:move-terminal-and-safari)
     (when (fboundp 'make-local-hook) ;; for Emacs 23.x or lower
       (make-local-hook 'kill-buffer-hook)
       (make-local-hook 'after-change-functions))
     (add-hook 'kill-buffer-hook 'rtmv:finalize nil t)
-    (add-hook 'after-change-functions 'rtmv:send-to-server nil t)))
+    (add-hook 'after-change-functions 'rtmv:send-to-server nil t)
+    ))
 
 (defun rtmv:finalize ()
   "rtmv に関連する状態(websocket,hook)をカレントバッファから削除する。
 もし全てのバッファで websocket が閉じられているのであればwebapp も stop する。"
+  (rtmv:close-safari-tab)
   (websocket-close rtmv:websocket)
   (remove-hook 'kill-buffer-hook 'rtmv:finalize t)
   (remove-hook 'after-change-functions 'rtmv:send-to-server t)
