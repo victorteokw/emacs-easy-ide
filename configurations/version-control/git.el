@@ -1,4 +1,5 @@
 (require-package 'magit)
+(global-set-key (kbd "M-/") 'magit-status)
 
 (defun import-and-merge-git-config ()
   "Merge current logged in unix user's '.gitconfig' to current emacs version."
