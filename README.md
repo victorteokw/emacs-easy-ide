@@ -116,3 +116,10 @@ The selection equivalent in emacs is called "mark". Setting the mark alters the 
 | C-c r | rspec prefix |
 | C-c t | minitest prefix |
 
+# Escape Emacs
+| key | function | default | defined |
+|:-----:|:---------------:|:---------:|:------:|
+| C-x C-z | suspend-frame | true[^1] | frame.el |
+| C-x C-c | save-buffers-kill-terminal | true | files.el |
+
+[^1]: By default, 'suspend-frame' is bound to both C-z and C-x C-z. Currently C-z is overrided by another feature.
