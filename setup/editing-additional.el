@@ -48,11 +48,13 @@
 
 ;; Multiple cursor
 (require-package 'multiple-cursors)
-(global-set-key (kbd "C-c c r") 'mc/edit-lines)
+(global-set-key (kbd "C-c c l") 'mc/edit-lines)
 (global-set-key (kbd "C-c c n") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-c c p") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c c a") 'mc/mark-all-like-this)
-
+(global-set-key (kbd "C-c c b") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c c a") 'mc/mark-all-like-this-in-defun)
+(global-set-key (kbd "C-c c r") 'mc/mark-all-in-region)
+(global-set-key (kbd "C-c c g") 'mc/mark-all-dwim)
 ;; kill back to indentation
 (defun kill-back-to-indentation ()
   "Kill from point back to the first non-whitespace character on the line."

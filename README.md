@@ -105,6 +105,20 @@ The selection equivalent in emacs is called "mark". Setting the mark alters the 
 
 ## Insertion
 
+### Multiple Cursors
+
+All these command is required from package [multiple-cursors](https://github.com/magnars/multiple-cursors.el). All these command are configured in _setup/editing-additional.el_.
+
+| key | function | description |
+|:-----:|:---------------:|:------------------------:|
+| C-c c l | mc/edit-lines | add cursors to each line of region. |
+| C-c c n | mc/mark-next-like-this | add cursor to next appear that matches current region. |
+| C-c c p | mc/mark-previous-like-this | add cursor to previous appear that matches current region. |
+| C-c c b | mc/mark-all-like-this | Marks all parts of the buffer that matches the current region. |
+| C-c c a | mc/mark-all-like-this-in-defun | Marks all parts of the current defun that matches the current region. |
+| C-c c r | mc/mark-all-in-region | Prompts for a string to match in the region, adding cursors to all of them. |
+| C-c c g | mc/mark-all-dwim | Tries to be smart about marking everything you want. Can be pressed multiple times. |
+
 ## Deletion
 
 # Reading Features
