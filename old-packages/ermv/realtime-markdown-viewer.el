@@ -115,7 +115,7 @@ set the bounds of the front window to {580, 22, 1418, 820}
 end tell
 tell application \"Terminal\"
 set position of window 1 to {0, 22}
-set number of rows of first window to 24
+set number of rows of first window to 48
 set number of columns of first window to 80
 end tell
 EOF
