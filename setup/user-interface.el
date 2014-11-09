@@ -10,6 +10,7 @@
  line-number-mode t ;; Show line numbers
  column-number-mode t ;; and column numbers
  show-trailing-whitespace t ;; show trailing whitespace
+ transient-mark-mode nil ;; use C-@ C-@ to highlight selection
  )
 
 ;; Using meta-backtip to open menu bar
