@@ -35,6 +35,15 @@ It is easy to learn and use.
 |:-----:|:---------------:|:---------:|:------:|
 | M-r | move-to-window-line-top-bottom | true | window.el |
 
+### Buffer level movement
+| key | function | default | defined |
+|:-----:|:---------------:|:---------:|:------:|
+| M-< | beginning-of-buffer | true | simple.el |
+| M-> | end-of-buffer | true | simple.el |
+| M-g c | goto-char | true | C source code |
+| M-g g | goto-line | true | simple.el |
+
+
 ## Selection
 
 ## Insertion
