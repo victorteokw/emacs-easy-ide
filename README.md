@@ -129,6 +129,18 @@ All these command is required from package [multiple-cursors](https://github.com
 
 ## Ruby
 
+### irb
+
+| key | description | function |
+|:---:|:-----------:|:--------:|
+| C-c C-s | start irb | inf-ruby |
+| C-c C-z | switch between irb and code | ruby-switch-to-inf |
+| C-c C-b | send a block of code to irb | ruby-send-block |
+| C-c C-r | send code in region to irb | ruby-send-region |
+| C-c C-l | make irb load a file | ruby-load-file |
+| C-c C-x | send current definition to irb | ruby-send-defition |
+| C-x C-e | send last sexp to irb | ruby-send-last-sexp |
+
 ### Test
 
 | TDD prefix | Description  |
