@@ -12,3 +12,5 @@ ac-comphist.dat
 /projectile-bookmarks.eld
 /.emacs.desktop.lock
 /url
+
+/.mc-lists.el

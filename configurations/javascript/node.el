@@ -1,0 +1,1 @@
+(require-package 'nodejs-repl)

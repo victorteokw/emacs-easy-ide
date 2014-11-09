@@ -2,11 +2,15 @@
 
 (require-package 'cl-lib)
 
+;; Indent
+(require-package 'aggressive-indent)
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+
 (require-package 'auto-complete)
 (require 'auto-complete-config)
 (setq-default ac-expand-on-auto-complete t)
 ;;(setq-default ac-auto-start t)
-(setq-default ac-dwim t) 
+(setq-default ac-dwim t)
 (setq completion-cycle-threshold 0)
 
 ;;(ac-config-default)

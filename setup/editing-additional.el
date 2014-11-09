@@ -2,17 +2,16 @@
 
 ;; electric indent
 (electric-indent-mode 1)
-(require-package 'aggressive-indent)
-(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-
-;;(global-aggressive-indent-mode)
 
 ;; electric pair
 (electric-pair-mode 1)
 
 ;; show paren mode
 (show-paren-mode 1)
+
+;; show line number
 ;; (global-linum-mode 1)
+
 ;; whitespace mode for 80 column rule
 (require 'whitespace)
 (setq whitespace-line-column 80)
@@ -45,6 +44,14 @@
   (add-hook hook 'highlight-symbol-nav-mode))
 (eval-after-load 'highlight-symbol
   '(diminish 'highlight-symbol-mode))
+
+
+;; Multiple cursor
+(require-package 'multiple-cursors)
+(global-set-key (kbd "C-c c r") 'mc/edit-lines)
+(global-set-key (kbd "C-c c n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c c p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c c a") 'mc/mark-all-like-this)
 
 ;; kill back to indentation
 (defun kill-back-to-indentation ()
