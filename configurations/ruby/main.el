@@ -37,4 +37,7 @@
 			     'ruby-end-of-line-and-return ruby-end-mode-map)
                             ))
 
+;; Flycheck
+(require-package 'flycheck)
+(add-hook 'ruby-mode-hook 'flycheck-mode)
 (provide 'init-ruby-mode)
