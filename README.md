@@ -68,7 +68,29 @@ Any mode may override the default movement key bindings.
 | M-g c | goto-char | true | C source code |
 | M-g g | goto-line | true | simple.el |
 
+### Move with mark
+
+| key | function or description | default | defined |
+|:-----:|:---------------:|:---------:|:------:|
+| C-@ with prefix argument | jump to the mark | true | simple.el |
+| C-x C-@ | pop-global-mark | true | simple.el |
+| C-x C-x | exchange-point-and-mark | true | simple.el |
+
 ## Selection
+
+The selection equivalent in emacs is called "mark". Setting the mark alters the region, which is the text between point and mark. Selection in emacs is all about "mark" and "region".
+
+### Basic Selection
+
+| key | function | default | defined |
+|:-----:|:---------------:|:---------:|:------:|
+| C-@ | set-mark-command | true | simple.el |
+
+### Convinience Mark
+
+| key | function | default | defined |
+|:-----:|:---------------:|:---------:|:------:|
+| C-x h | mark-whole-buffer | true | simple.el |
 
 ## Insertion
 
