@@ -10,11 +10,13 @@ I'm adding documentation to it whenever I'm free.
 Feel free to try it and make it better.
 
 This config is loyal to emacs's default keys.
+
 It is easy to learn and use.
 
 ## Movement
 
-This is the base movement for every mode. Any mode may override the default movement key bindings.
+This is the base movement for every mode.
+Any mode may override the default movement key bindings.
 
 ### Basic movement
 
@@ -43,6 +45,8 @@ This is the base movement for every mode. Any mode may override the default move
 | C-M-u | backward-up-list | true | lisp.el |
 | C-M-n | forward-list | true | lisp.el |
 | C-M-p | backward-list | true | lisp.el |
+| C-M-a | beginning-of-defun | true | lisp.el |
+| C-M-e | end-of-defun | true | lisp.el |
 
 
 ### Window level movement
