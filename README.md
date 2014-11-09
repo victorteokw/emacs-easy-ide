@@ -1,19 +1,24 @@
-emacs-easy-ide
-==============
+This emacs config is used to be my own tutorial. It becomes more reasonable and robust day by day. I'm adding documentation to it whenever I'm free. Feel free to try it and make it better.
 
-This emacs config is used to be my own tutorial.
+This config is loyal to emacs's default keys. It is easy to learn and use.
 
-It becomes more reasonable and robust day by day.
+**Features include:**
+* Editing text and code
+  * Tons of convinience commands
+  * Syntax highlighting
+  * Auto complete
+  * Snippet
+  * Per language support
+* Reading text and code
+  * Code folding
+  * Code outline
+* Project management
+  * Visit a project
+  * open file in project
+  * jumping between files
 
-I'm adding documentation to it whenever I'm free.
-
-Feel free to try it and make it better.
-
-This config is loyal to emacs's default keys.
-
-It is easy to learn and use.
-
-# Editing Features
+Editing Features
+================
 
 ## Movement
 
