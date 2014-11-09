@@ -20,4 +20,13 @@
              (whitespace-cleanup-mode t)
              (yas-reload-all)
              (add-hook 'before-save-hook 'whitespace-cleanup)
+             (require 'diminish)
+             (diminish 'ruby-end-mode)
+             (diminish 'robe-mode)
+             (diminish 'auto-complete-mode)
+             (diminish 'whitespace-mode)
+             (diminish 'yas-minor-mode)
+             (diminish 'whitespace-cleanup-mode)
+             (diminish 'flycheck-mode)
+             (diminish 'eldoc-mode) ;; Fix this fucking thing.
              ))

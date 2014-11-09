@@ -222,6 +222,8 @@
   "Enable features useful in any Lisp mode."
   (rainbow-delimiters-mode t)
   (enable-paredit-mode)
+  (require-package 'eldoc-eval)
+  (eldoc-mode -1)
   (turn-on-eldoc-mode)
   (redshank-mode)
   (add-hook 'after-save-hook #'check-parens nil t))
@@ -252,8 +254,6 @@
   (add-hook hook 'sanityinc/emacs-lisp-setup))
 
 
-(require-package 'eldoc-eval)
-(require 'eldoc-eval)
 
 (add-to-list 'auto-mode-alist '("\\.emacs-project\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("archive-contents\\'" . emacs-lisp-mode))

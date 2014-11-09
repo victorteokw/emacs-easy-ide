@@ -1,6 +1,7 @@
 (require-package 'rinari)
 (global-rinari-mode 1)
-
+(require-package 'projectile-rails)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
 (define-key ruby-mode-map (kbd "C-c f c") 'rinari-find-controller)
 (define-key ruby-mode-map (kbd "C-c f m") 'rinari-find-model)
 (define-key ruby-mode-map (kbd "C-c f v") 'rinari-find-view)
