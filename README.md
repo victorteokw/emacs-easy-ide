@@ -13,6 +13,8 @@ This config is loyal to emacs's default keys.
 
 It is easy to learn and use.
 
+# Editing Features
+
 ## Movement
 
 This is the base movement for every mode.
@@ -48,8 +50,8 @@ Any mode may override the default movement key bindings.
 | C-M-a | beginning-of-defun | true | lisp.el |
 | C-M-e | end-of-defun | true | lisp.el |
 
-
 ### Window level movement
+
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
 | C-l | recenter-top-bottom | true | window.el |
@@ -58,6 +60,7 @@ Any mode may override the default movement key bindings.
 | M-v | scroll-down-command | true | window.el |
 
 ### Buffer level movement
+
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
 | M-< | beginning-of-buffer | true | simple.el |
@@ -71,11 +74,15 @@ Any mode may override the default movement key bindings.
 
 ## Deletion
 
-## Programming Language
+# Reading Features
 
-### Ruby
+# Project Management Features
 
-#### Test
+# Programming Language Support
+
+## Ruby
+
+### Test
 
 | TDD prefix | Description  |
 |:--------------------:|:---------------------------:|
