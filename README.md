@@ -16,6 +16,7 @@ This config is loyal to emacs's default keys. It is easy to learn and use.
   * Visit a project
   * open file in project
   * jumping between files
+  * git client
 
 Editing Features
 ================
@@ -124,6 +125,13 @@ All these command is required from package [multiple-cursors](https://github.com
 # Reading Features
 
 # Project Management Features
+
+## Version control with magit
+
+| key | description | function |
+|:---:|:-----------:|:--------:|
+| M-/ | start git client | magit-status |
+
 
 # Programming Language Support
 
