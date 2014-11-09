@@ -1,2 +1,17 @@
 (require-package 'rinari)
 (global-rinari-mode 1)
+
+(define-key ruby-mode-map (kbd "C-c f c") 'rinari-find-controller)
+(define-key ruby-mode-map (kbd "C-c f m") 'rinari-find-model)
+(define-key ruby-mode-map (kbd "C-c f v") 'rinari-find-view)
+(define-key ruby-mode-map (kbd "C-c f r") 'rinari-find-rspec)
+(define-key ruby-mode-map (kbd "C-c f t") 'rinari-find-test)
+(define-key ruby-mode-map (kbd "C-c f f") 'rinari-find-fixture)
+(define-key ruby-mode-map (kbd "C-c f r") 'rinari-find-routes)
+(define-key ruby-mode-map (kbd "C-c f a") 'rinari-find-application)
+(define-key ruby-mode-map (kbd "C-c f e") 'rinari-find-environment)
+(define-key ruby-mode-map (kbd "C-c f h") 'rinari-find-helper)
+(define-key ruby-mode-map (kbd "C-c f c") 'rinari-find-stylesheet)
+(define-key ruby-mode-map (kbd "C-c f j") 'rinari-find-javascript)
+(define-key ruby-mode-map (kbd "C-c f n") 'rinari-find-configuration)
+
