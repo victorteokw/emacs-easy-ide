@@ -31,6 +31,13 @@
 (global-set-key (kbd "C-M-z") 'er/contract-region)
 (setq expand-region-contract-fast-key (kbd "Z"))
 
+;; move text
+(require-package 'move-text)
+(global-set-key (kbd "M-<up>") 'move-text-up)
+(global-set-key (kbd "M-<down>") 'move-text-down)
+(global-set-key (kbd "ESC <up>") 'move-text-up)
+(global-set-key (kbd "ESC <down>") 'move-text-down)
+
 ;; Highlight symbol
 (require-package 'highlight-symbol)
 (dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))

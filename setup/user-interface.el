@@ -17,17 +17,18 @@
 (global-set-key (kbd "M-`") 'menu-bar-open)
 
 ;; Require my theme
-(require 'aqua-theme)
+;;(require 'aqua-theme)
 
 ;; Require more themes
 (require-package 'color-theme-sanityinc-solarized)
-
+(load-theme 'sanityinc-solarized-light t)
 ;; Do not backup files
 (setq make-backup-files nil)
 
 ;; Initial scratch message
-(setq initial-scratch-message "#I'm happy to live a ruby life.\n\n")
+(setq initial-scratch-message ";;Have Fun!\n\n")
 
 ;; Initial major mode
-(setq initial-major-mode 'ruby-mode)
+;;(setq initial-major-mode 'ruby-mode)
+
 (provide 'user-interface)
