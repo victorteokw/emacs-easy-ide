@@ -91,6 +91,12 @@ The selection equivalent in emacs is called "mark". Setting the mark alters the 
 |:-----:|:---------------:|:---------:|:------:|
 | C-@ | set-mark-command | true | simple.el |
 
+### Advanced Selection
+| key | function | default | required | package |
+|:-----:|:---------------:|:---------:|:------:|:----:|
+| C-z | er/expand-region | false | setup/editing-additional.el | expand-region |
+
+
 ### Convinience Mark
 
 | key | function | default | defined |
