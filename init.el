@@ -22,7 +22,6 @@
 (require 'buffer-additional)
 (require 'editing-additional)
 (require 'language-additional)
-
 (require-set 'version-control)
 
 ;; Require better emacs basic functionality

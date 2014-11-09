@@ -1,3 +1,5 @@
+(require-package 'magit)
+
 (defun import-and-merge-git-config ()
   "Merge current logged in unix user's '.gitconfig' to current emacs version."
   (interactive)
