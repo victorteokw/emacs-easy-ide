@@ -9,10 +9,12 @@ I'm adding documentation to it whenever I'm free.
 
 Feel free to try it and make it better.
 
-## Movement
-
 This config is loyal to emacs's default keys.
 It is easy to learn and use.
+
+## Movement
+
+This is the base movement for every mode. Any mode may override the default movement key bindings.
 
 ### Basic movement
 
@@ -29,11 +31,27 @@ It is easy to learn and use.
 |:-----:|:---------------:|:---------:|:------:|
 | C-a | move-beginning-of-line | true | simple.el |
 | C-e | move-end-of-line | true | simple.el |
+| M-m | back-to-indentation | true | simple.el |
+
+### Block level movement
+
+| key | function | default | defined |
+|:-----:|:---------------:|:---------:|:------:|
+| C-M-f | forward-sexp | true | lisp.el |
+| C-M-b | backward-sexp | true | lisp.el |
+| C-M-d | down-list | true | lisp.el |
+| C-M-u | backward-up-list | true | lisp.el |
+| C-M-n | forward-list | true | lisp.el |
+| C-M-p | backward-list | true | lisp.el |
+
 
 ### Window level movement
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
+| C-l | recenter-top-bottom | true | window.el |
 | M-r | move-to-window-line-top-bottom | true | window.el |
+| C-v | scroll-up-command | true | window.el |
+| M-v | scroll-down-command | true | window.el |
 
 ### Buffer level movement
 | key | function | default | defined |
@@ -42,7 +60,6 @@ It is easy to learn and use.
 | M-> | end-of-buffer | true | simple.el |
 | M-g c | goto-char | true | C source code |
 | M-g g | goto-line | true | simple.el |
-
 
 ## Selection
 
