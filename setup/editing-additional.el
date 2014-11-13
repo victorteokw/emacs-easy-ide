@@ -12,6 +12,8 @@
 ;; use helm to outline current source code
 (require-package 'helm)
 (require 'helm-config)
+(global-set-key (kbd "M-n") 'back-to-indentation)
+(global-set-key (kbd "M-m") 'helm-imenu)
 
 ;; show line number
 ;; (global-linum-mode 1)
