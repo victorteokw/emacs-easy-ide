@@ -1,6 +1,4 @@
 (require-package 'js2-mode)
-(require-package 'helm)
-(require 'helm-config)
 
 (defun auto-complete-javascript ()
   (require-package 'auto-complete)

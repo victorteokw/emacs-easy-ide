@@ -9,6 +9,10 @@
 ;; show paren mode
 (show-paren-mode 1)
 
+;; use helm to outline current source code
+(require-package 'helm)
+(require 'helm-config)
+
 ;; show line number
 ;; (global-linum-mode 1)
 
