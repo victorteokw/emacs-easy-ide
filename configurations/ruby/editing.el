@@ -134,6 +134,11 @@
   ;; Will this go into kill ring?
   )
 
+(defun ruby-tools-to-regexp ()
+  "Turn a string or a symbol into Regexp."
+  (interactive)
+  (ruby-tools-to-string "/")
+  )
 (defvar ruby-tools-mode-keymap-prefix (kbd "C-c")
   "`ruby-tools-mode' keymap prefix.")
 
@@ -144,6 +149,7 @@
     (define-key map (kbd "'") 'ruby-tools-to-single-quote-string)
     (define-key map (kbd "#") 'ruby-tools-interpolate)
     (define-key map (kbd ";") 'ruby-tools-clear-string)
+    (define-key map (kbd "/") 'ruby-tools-to-regexp)
     map
     )
   "Key map after `ruby-tools-mode-keymap-prefix'.")
