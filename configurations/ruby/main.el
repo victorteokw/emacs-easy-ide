@@ -12,10 +12,6 @@
 ;; Ruby compilation
 (require-package 'ruby-compilation)
 
-;; ri
-(require-package 'yari)
-(defalias 'ri 'yari)
-
 ;; yaml
 (require-package 'yaml-mode)
 
