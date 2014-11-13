@@ -82,23 +82,6 @@ EOF
   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
   (add-hook 'auto-complete-mode-hook 'ac-common-setup)
 
-  ;; #pragma mark -
-  (require-package 'anything)
-  (require 'anything)
-  (require 'anything-config)
-
-  (defvar anything-c-source-objc-headline
-    '((name . "Objective-C Headline")
-      (headline  "^[-+@]\\|^#pragma mark")))
-
-  (defun objc-headline ()
-    (interactive)
-    ;; Set to 500 so it is displayed even if all methods are not narrowed down.
-    (let ((anything-candidate-number-limit 500))
-      (anything-other-buffer '(anything-c-source-objc-headline)
-			     "*ObjC Headline*")))
-
-  (global-set-key "\C-xp" 'objc-headline)
   (add-to-list 'ac-modes 'objc-mode)
   )
 
