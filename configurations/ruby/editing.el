@@ -134,7 +134,7 @@
   ;; Will this go into kill ring?
   )
 
-(defvar ruby-tools-mode-keymap-prefix (kbd "C-c e")
+(defvar ruby-tools-mode-keymap-prefix (kbd "C-c")
   "`ruby-tools-mode' keymap prefix.")
 
 (defvar ruby-tools-mode-command-map
