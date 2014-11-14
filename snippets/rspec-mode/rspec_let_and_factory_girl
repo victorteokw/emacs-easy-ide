@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: rspec_let_and_factory_girl
+# key: letf
+# --
+let(:$1) { FactoryGirl.create(:$1) }$0
