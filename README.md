@@ -30,10 +30,10 @@ Any mode may override the default movement key bindings.
 
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
-| C-f | forward-char | Yes | C source code |
-| C-b | backward-char | Yes | C source code |
-| C-n | next-line | Yes | simple.el |
-| C-p | previous-line | Yes | simple.el |
+| <kbd>C-f</kbd> | forward-char | Yes | C source code |
+| <kbd>C-b</kbd> | backward-char | Yes | C source code |
+| <kbd>C-n</kbd> | next-line | Yes | simple.el |
+| <kbd>C-p</kbd> | previous-line | Yes | simple.el |
 
 ### Line level movement
 
