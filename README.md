@@ -39,48 +39,48 @@ Any mode may override the default movement key bindings.
 
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
-| C-a | move-beginning-of-line | Yes | simple.el |
-| C-e | move-end-of-line | Yes | simple.el |
-| M-n | back-to-indentation | No | simple.el |
+| <kbd>C-a</kbd> | move-beginning-of-line | Yes | simple.el |
+| <kbd>C-e</kbd> | move-end-of-line | Yes | simple.el |
+| <kbd>M-n</kbd> | back-to-indentation | No | simple.el |
 
 ### Block level movement
 
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
-| C-M-f | forward-sexp | Yes | lisp.el |
-| C-M-b | backward-sexp | Yes | lisp.el |
-| C-M-d | down-list | Yes | lisp.el |
-| C-M-u | backward-up-list | Yes | lisp.el |
-| C-M-n | forward-list | Yes | lisp.el |
-| C-M-p | backward-list | Yes | lisp.el |
-| C-M-a | beginning-of-defun | Yes | lisp.el |
-| C-M-e | end-of-defun | Yes | lisp.el |
+| <kbd>C-M-f</kbd> | forward-sexp | Yes | lisp.el |
+| <kbd>C-M-b</kbd> | backward-sexp | Yes | lisp.el |
+| <kbd>C-M-d</kbd> | down-list | Yes | lisp.el |
+| <kbd>C-M-u</kbd> | backward-up-list | Yes | lisp.el |
+| <kbd>C-M-n</kbd> | forward-list | Yes | lisp.el |
+| <kbd>C-M-p</kbd> | backward-list | Yes | lisp.el |
+| <kbd>C-M-a</kbd> | beginning-of-defun | Yes | lisp.el |
+| <kbd>C-M-e</kbd> | end-of-defun | Yes | lisp.el |
 
 ### Window level movement
 
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
-| C-l | recenter-top-bottom | Yes | window.el |
-| M-r | move-to-window-line-top-bottom | Yes | window.el |
-| C-v | scroll-up-command | Yes | window.el |
-| M-v | scroll-down-command | Yes | window.el |
+| <kbd>C-l</kbd> | recenter-top-bottom | Yes | window.el |
+| <kbd>M-r</kbd> | move-to-window-line-top-bottom | Yes | window.el |
+| <kbd>C-v</kbd> | scroll-up-command | Yes | window.el |
+| <kbd>M-v</kbd> | scroll-down-command | Yes | window.el |
 
 ### Buffer level movement
 
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
-| M-< | beginning-of-buffer | Yes | simple.el |
-| M-> | end-of-buffer | Yes | simple.el |
-| M-g c | goto-char | Yes | C source code |
-| M-g g | goto-line | Yes | simple.el |
+| <kbd>M-<</kbd> | beginning-of-buffer | Yes | simple.el |
+| <kbd>M-></kbd> | end-of-buffer | Yes | simple.el |
+| <kbd>M-g c</kbd> | goto-char | Yes | C source code |
+| <kbd>M-g g</kbd> | goto-line | Yes | simple.el |
 
 ### Move with mark
 
 | key | function or description | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
-| C-@ with prefix argument | jump to the mark | Yes | simple.el |
-| C-x C-@ | pop-global-mark | Yes | simple.el |
-| C-x C-x | exchange-point-and-mark | Yes | simple.el |
+| <kbd>C-@ with prefix argument</kbd> | jump to the mark | Yes | simple.el |
+| <kbd>C-x C-@</kbd> | pop-global-mark | Yes | simple.el |
+| <kbd>C-x C-x</kbd> | exchange-point-and-mark | Yes | simple.el |
 
 ## Selection
 
@@ -90,19 +90,19 @@ The selection equivalent in emacs is called "mark". Setting the mark alters the 
 
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
-| C-@ | set-mark-command | Yes | simple.el |
+| <kbd> C-@ </kbd> | set-mark-command | Yes | simple.el |
 
 ### Advanced Selection
 | key | function | default | required | package |
 |:-----:|:---------------:|:---------:|:------:|:----:|
-| C-z | er/expand-region | No | setup/editing-additional.el | expand-region |
+| <kbd>C-z</kbd> | er/expand-region | No | setup/editing-additional.el | expand-region |
 
 
 ### Convinience Mark
 
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
-| C-x h | mark-whole-buffer | Yes | simple.el |
+| <kbd>C-x h<kbd> | mark-whole-buffer | Yes | simple.el |
 
 ## Insertion
 
@@ -112,13 +112,13 @@ All these command is required from package [multiple-cursors](https://github.com
 
 | key | function | description |
 |:-----:|:---------------:|:------------------------:|
-| C-c c l | mc/edit-lines | add cursors to each line of region. |
-| C-c c n | mc/mark-next-like-this | add cursor to next appear that matches current region. |
-| C-c c p | mc/mark-previous-like-this | add cursor to previous appear that matches current region. |
-| C-c c b | mc/mark-all-like-this | Marks all parts of the buffer that matches the current region. |
-| C-c c a | mc/mark-all-like-this-in-defun | Marks all parts of the current defun that matches the current region. |
-| C-c c r | mc/mark-all-in-region | Prompts for a string to match in the region, adding cursors to all of them. |
-| C-c c g | mc/mark-all-dwim | Tries to be smart about marking everything you want. Can be pressed multiple times. |
+| <kbd>C-c c l</kbd> | mc/edit-lines | add cursors to each line of region. |
+| <kbd>C-c c n</kbd> | mc/mark-next-like-this | add cursor to next appear that matches current region. |
+| <kbd>C-c c p</kbd> | mc/mark-previous-like-this | add cursor to previous appear that matches current region. |
+| <kbd>C-c c b</kbd> | mc/mark-all-like-this | Marks all parts of the buffer that matches the current region. |
+| <kbd>C-c c a</kbd> | mc/mark-all-like-this-in-defun | Marks all parts of the current defun that matches the current region. |
+| <kbd>C-c c r</kbd> | mc/mark-all-in-region | Prompts for a string to match in the region, adding cursors to all of them. |
+| <kbd>C-c c g</kbd> | mc/mark-all-dwim | Tries to be smart about marking everything you want. Can be pressed multiple times. |
 
 ## Deletion
 
@@ -130,7 +130,7 @@ All these command is required from package [multiple-cursors](https://github.com
 
 | key | description | function |
 |:---:|:-----------:|:--------:|
-| M-/ | start git client | magit-status |
+| <kbd>M-/</kbd> | start git client | magit-status |
 
 
 # Programming Language Support
@@ -141,25 +141,25 @@ All these command is required from package [multiple-cursors](https://github.com
 
 | key | description | function |
 |:---:|:-----------:|:--------:|
-| C-c C-s | start irb | inf-ruby |
-| C-c C-z | switch between irb and code | ruby-switch-to-inf |
-| C-c C-b | send a block of code to irb | ruby-send-block |
-| C-c C-r | send code in region to irb | ruby-send-region |
-| C-c C-l | make irb load a file | ruby-load-file |
-| C-c C-x | send current definition to irb | ruby-send-defition |
-| C-x C-e | send last sexp to irb | ruby-send-last-sexp |
+| <kbd>C-c C-s</kbd> | start irb | inf-ruby |
+| <kbd>C-c C-z</kbd> | switch between irb and code | ruby-switch-to-inf |
+| <kbd>C-c C-b</kbd> | send a block of code to irb | ruby-send-block |
+| <kbd>C-c C-r</kbd> | send code in region to irb | ruby-send-region |
+| <kbd>C-c C-l</kbd> | make irb load a file | ruby-load-file |
+| <kbd>C-c C-x</kbd> | send current definition to irb | ruby-send-defition |
+| <kbd>C-x C-e</kbd> | send last sexp to irb | ruby-send-last-sexp |
 
 ### Test
 
 | TDD prefix | Description  |
 |:--------------------:|:---------------------------:|
-| C-c r | rspec prefix |
-| C-c t | minitest prefix |
+| <kbd>C-c r</kbd> | rspec prefix |
+| <kbd>C-c t</kbd> | minitest prefix |
 
 # Escape Emacs
 | key | function | default | defined |
 |:-----:|:---------------:|:---------:|:------:|
-| C-x C-z | suspend-frame | Yes[^1] | frame.el |
-| C-x C-c | save-buffers-kill-terminal | Yes | files.el |
+| <kbd>C-x C-z</kbd> | suspend-frame | Yes[^1] | frame.el |
+| <kbd>C-x C-c</kbd> | save-buffers-kill-terminal | Yes | files.el |
 
 [^1]: By default, 'suspend-frame' is bound to both C-z and C-x C-z. Currently C-z is overrided by another feature.
