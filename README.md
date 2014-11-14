@@ -41,7 +41,7 @@ Any mode may override the default movement key bindings.
 |:-----:|:---------------:|:---------:|:------:|
 | C-a | move-beginning-of-line | Yes | simple.el |
 | C-e | move-end-of-line | Yes | simple.el |
-| M-m | back-to-indentation | Yes | simple.el |
+| M-n | back-to-indentation | No | simple.el |
 
 ### Block level movement
 
