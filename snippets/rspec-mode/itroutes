@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: itroutes
+# key: itroutes
+# --
+it "routes to ${1:action}" do
+${2:http_method}("${3:url}").should route_to(
+controller: "${4:controller_name}",
+action: "$1",
+format: "${5:format}",
+${6:id: "${7:id}"
+})
+end

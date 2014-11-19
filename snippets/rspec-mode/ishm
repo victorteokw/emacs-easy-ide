@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ishm
+# key: ishm
+# --
+it { should have_many(:$1) }$0

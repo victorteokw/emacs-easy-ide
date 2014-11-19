@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: isho
+# key: isho
+# --
+it { should have_one(:$1) }$0

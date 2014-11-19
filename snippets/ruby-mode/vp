@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: vp
+# key: vp
+# --
+validates :$1, presence: ${2:true}$0

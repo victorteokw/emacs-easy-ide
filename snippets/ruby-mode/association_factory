@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: association_factory
+# key: asf
+# --
+association :$1, factory: :$2$0

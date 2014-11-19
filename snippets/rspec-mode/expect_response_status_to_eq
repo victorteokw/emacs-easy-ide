@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expect_response_status_to_eq
+# key: erste
+# --
+expect(response.status).to eq($1)$0

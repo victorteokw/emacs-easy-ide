@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: factory_with_traits
+# key: fct
+# --
+factory :$1, traits: [:$2]$0

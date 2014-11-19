@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: fgdef
+# key: fgdef
+# --
+FactoryGirl.define do
+factory :$1 do
+$0
+end
+
+end

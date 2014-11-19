@@ -1,7 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: it...do
-# key: it
+# name: fc
+# key: fc
 # --
-it "${1:should bla bla bla}" do
+factory :$1 do
 $0
 end
