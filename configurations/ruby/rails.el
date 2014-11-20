@@ -169,3 +169,16 @@
            'follow-link
            t)))))
 
+;; This is just a tutorial
+;; Cannot be really used.
+(defun select-inside-quotes ()
+  ;;  (interactive)
+  (let (p1 p2)
+    (skip-chars-backward "^\"")
+    (setq p1 (point))
+    (skip-chars-forward "^\"")
+    (setq p2 (point))
+
+    (goto-char p1)
+    (push-mark p2)
+    (setq mark-active t)))
