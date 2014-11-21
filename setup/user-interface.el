@@ -19,8 +19,8 @@
 ;;(require 'aqua-theme)
 
 ;; Require more themes
-(require-package 'color-theme-sanityinc-solarized)
-(load-theme 'sanityinc-solarized-light t)
+;;(require-package 'color-theme-sanityinc-solarized)
+;;(load-theme 'sanityinc-solarized-light t)
 ;; Do not backup files
 (setq make-backup-files nil)
 
