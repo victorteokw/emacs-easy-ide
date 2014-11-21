@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: with_options_if
+# key: woi
+# --
+with_options if: 'section.header == "$1"' do |item|
+
+end
+$0
