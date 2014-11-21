@@ -14,6 +14,19 @@
   (ruby-end-return))
 
 (setq ruby-end-insert-newline nil)
+;; See http://hbin.me/blog/2012/08/24/emacs-user-tips-for-rails/
+(defun insert-arrow ()
+  (interactive)
+  (delete-horizontal-space t)
+  (insert " => "))
+;;(define-key ruby-mode-map (kbd "C-c .") 'insert-arrow)
+
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (modify-syntax-entry ?$ "w")
+             (modify-syntax-entry ?@ "w")
+             (modify-syntax-entry ?: ".")))
+
 
 
 ;; Ruby tools minor mode

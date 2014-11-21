@@ -6,8 +6,8 @@
 
 (require-package 'helm-projectile)
 
-(require-package 'grizzl)
-(setq projectile-completion-system 'grizzl)
+;;(require-package 'grizzl)
+;;(setq projectile-completion-system 'grizzl)
 
 (require-package 'diminish)
 (diminish 'projectile-mode)
