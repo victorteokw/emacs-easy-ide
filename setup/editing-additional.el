@@ -16,16 +16,14 @@
 (global-set-key (kbd "M-m") 'helm-imenu)
 
 ;; show line number
-;; (global-linum-mode 1)
+(global-linum-mode 1)
 
-;; whitespace mode for 80 column rule
+;; whitespace mode
 (require 'whitespace)
-(setq whitespace-line-column 80)
-(setq whitespace-style '(face lines-tail))
-(add-hook 'prog-mode-hook 'whitespace-mode)
 
 (require-package 'diminish)
 (diminish 'whitespace-mode)
+
 ;; Column Marker
 (require-package 'column-marker)
 (add-hook 'prog-mode-hook (lambda () (interactive) (column-marker-1 79)))
