@@ -179,10 +179,17 @@
 (add-hook 'ruby-mode-hook 'ruby-tools-mode)
 ;; Ruby tools mode ends here.
 
+
+
 (add-hook 'ruby-mode-hook
           '(lambda ()
-             (yas-reload-all)
+             (yas-reload-all) ;; FIXME
              (add-hook 'before-save-hook 'whitespace-cleanup)
+             (setq-local whitespace-style '(empty indentation::space
+                                                  space-befure-tab::space
+                                                  trailing
+                                                  whitespace-style::space))
+             ;; Whitespace showing and cleaning
              (require 'diminish)
              (diminish 'ruby-end-mode)
              (diminish 'robe-mode)
