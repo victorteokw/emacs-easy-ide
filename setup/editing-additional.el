@@ -16,7 +16,10 @@
 (global-set-key (kbd "M-m") 'helm-imenu)
 
 ;; show line number
-(global-linum-mode 1)
+;;(global-linum-mode 1)
+;; actually, only few mode especially prog mode needs linum.
+;; but inside terminal, if width is 80, should not show linum.
+;; It takes space.
 
 ;; whitespace mode
 (require 'whitespace)
