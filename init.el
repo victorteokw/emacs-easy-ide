@@ -33,9 +33,6 @@
 ;; Require browser
 (require-set 'browser)
 
-;; Require simulating xcode
-(require-set 'xcode)
-
 ;; Require html
 (require-set 'html)
 
@@ -52,6 +49,12 @@
 (require-set 'md)
 
 ;;(require-language 'python)
+
+;; Require simulating xcode
+(require-set 'xcode)
+
+;; Require OS X
+(require-set 'osx)
 
 ;; Load user preferences
 (require 'custom-preferences)
