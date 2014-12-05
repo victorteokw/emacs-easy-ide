@@ -5,6 +5,7 @@
   (require-package 'auto-complete)
   (setq ac-sources '(ac-source-html-attribute))
   (add-to-list 'ac-sources 'ac-source-html-tag)
+  (add-to-list 'ac-sources 'ac-source-html-attribute-value)
   (auto-complete-mode t)
   (setq-default ac-auto-start t)
   (setq-default ac-dwim t)
@@ -17,6 +18,7 @@
   (ac-config-default)
   (setq ac-sources '(ac-source-html-attribute))
   (add-to-list 'ac-sources 'ac-source-html-tag)
+  (add-to-list 'ac-sources 'ac-source-html-attribute-value)
 
   (auto-complete-mode t)
   (setq-default ac-auto-start t)
@@ -26,10 +28,12 @@
 	'(("css" . (ac-source-words-in-buffer ac-source-css-property))
 	  ("html" . (ac-source-html-tag
 		     ac-source-html-attribute
+                     ac-source-html-attribute-value
                      ))
 	  ("php" . (ac-source-words-in-buffer
 		    ac-source-words-in-same-mode-buffers
 		    ac-source-dictionary))))
+  (setq web-mode-enable-auto-quoting nil)
   )
 
 (defun setup-css-environment ()
