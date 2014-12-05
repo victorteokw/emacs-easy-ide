@@ -1,6 +1,5 @@
 (defun setup-ruby-auto-complete ()
   "Set up ruby development auto complete."
-  (require-package 'auto-complete)
   (add-to-list 'ac-modes 'ruby-mode)
   (ac-config-default)
   (add-to-list 'ac-sources 'ac-source-yasnippet)

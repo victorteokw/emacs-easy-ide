@@ -49,4 +49,4 @@ Visit target '%s' instead?" target-file))
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 
-(provide 'buffer-additional)
+(provide 'buffer)

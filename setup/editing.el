@@ -10,8 +10,6 @@
 (show-paren-mode 1)
 
 ;; use helm to outline current source code
-(require-package 'helm)
-(require 'helm-config)
 (global-set-key (kbd "M-n") 'back-to-indentation)
 (global-set-key (kbd "M-m") 'helm-imenu)
 
@@ -76,4 +74,4 @@
 (require-package 'dash-at-point)
 (global-set-key (kbd "C-h D") 'dash-at-point)
 
-(provide 'editing-additional)
+(provide 'editing)

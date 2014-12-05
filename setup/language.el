@@ -1,4 +1,3 @@
-
 ;; Chinese support
 (require-old-package 'eim)
 
@@ -9,9 +8,9 @@
 (setq eim-punc-translate-p nil)         ; use English punctuation
 
 (register-input-method
-  "eim-py" "euc-cn" 'eim-use-package
-   "pinyin" "EIM Chinese Pinyin Input Method" "py.txt"
-    'my-eim-py-activate-function)
+ "eim-py" "euc-cn" 'eim-use-package
+ "pinyin" "EIM Chinese Pinyin Input Method" "py.txt"
+ 'my-eim-py-activate-function)
 
 (setq default-input-method "eim-py")
 
@@ -23,4 +22,4 @@
 		(define-key eim-mode-map "[" 'eim-previous-page)
 		(define-key eim-mode-map "]" 'eim-next-page)))))
 
-(provide 'language-additional)
+(provide 'language)

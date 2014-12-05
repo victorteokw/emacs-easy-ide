@@ -1,34 +1,19 @@
 ;; Disable tool bar
 (if (functionp 'tool-bar-mode) (tool-bar-mode 0))
 
-;; Disable splash screen
-(setq inhibit-splash-screen t)
-
-(setq-default
- visible-bell t ;; do not beep
- indent-tabs-mode nil ;; use whitespace to indent
- line-number-mode t ;; Show line numbers
- column-number-mode t ;; and column numbers
- show-trailing-whitespace t ;; show trailing whitespace
- )
-
 ;; Using meta-backtip to open menu bar
 (global-set-key (kbd "M-`") 'menu-bar-open)
 
-;; Require my theme
-;;(require 'aqua-theme)
-
-;; Require more themes
-;;(require-package 'color-theme-sanityinc-solarized)
-;;(load-theme 'sanityinc-solarized-light t)
-;; Do not backup files
-(setq make-backup-files nil)
-
-;; Initial scratch message
-(setq initial-scratch-message ";;Have Fun!\n\n")
-
-;; Initial major mode
-;;(setq initial-major-mode 'ruby-mode)
+(setq-default
+ inhibit-splash-screen t ;; disable splash screen
+ visible-bell t ;; do not beep
+ indent-tabs-mode nil ;; use whitespace to indent
+ line-number-mode t ;; show line numbers
+ column-number-mode t ;; and column numbers
+ make-backup-files nil ;; do not backup files
+ initial-scratch-message ";;Life is fun."
+ ;; initial-major-mode 'ruby-mode
+ )
 
 ;; auto complete for shell
 (add-hook 'shell-mode-hook 'setup-shell-ac)
