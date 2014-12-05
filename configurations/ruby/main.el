@@ -20,18 +20,14 @@
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
      (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command)
      (add-hook 'ruby-mode-hook
-	       (lambda ()
-		 (unless (derived-mode-p 'prog-mode)
-		   (run-hooks 'prog-mode-hook))))))
+               (lambda ()
+                 (unless (derived-mode-p 'prog-mode)
+                   (run-hooks 'prog-mode-hook))))))
 
 (add-hook 'ruby-mode-hook (lambda ()
                             (ruby-end-mode t)
-			    (require 'yasnippet)
-                            (yas-minor-mode-on)
-                            (substitute-key-definition
-			     'ruby-end-return
-			     'ruby-end-of-line-and-return ruby-end-mode-map)
-                            ))
+                            (require 'yasnippet)
+                            (yas-minor-mode-on)))
 
 ;; Flycheck
 (require-package 'flycheck)

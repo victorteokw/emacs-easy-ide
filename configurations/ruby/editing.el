@@ -1,16 +1,5 @@
 ;; ruby editing features
 
-;; auto insert end
-(require-package 'ruby-end)
-
-;; End of line and return
-(defun ruby-end-of-line-and-return ()
-  "Move to the end of line and return."
-  (interactive)
-  (end-of-line)
-  (ruby-end-return))
-
-(setq ruby-end-insert-newline nil)
 ;; See http://hbin.me/blog/2012/08/24/emacs-user-tips-for-rails/
 (defun insert-arrow ()
   (interactive)
@@ -23,7 +12,6 @@
              (modify-syntax-entry ?$ "w")
              (modify-syntax-entry ?@ "w")
              (modify-syntax-entry ?: ".")))
-
 
 
 ;; Ruby tools minor mode
@@ -198,4 +186,7 @@
              (diminish 'yas-minor-mode)
              (diminish 'flycheck-mode)
              (diminish 'eldoc-mode) ;; Fix this fucking thing.
+             ;; Do not deep indent
+             (setq ruby-deep-indent-paren nil)
+
              ))
