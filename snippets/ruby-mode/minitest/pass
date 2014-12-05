@@ -1,5 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: pass
-# key: pass
-# --
-pass(${1:msg = nil})$0

@@ -1,5 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: refute_includes
-# key: refute_includes
-# --
-refute_includes(${1:collection}, ${2:obj}, ${3:msg = nil})$0
