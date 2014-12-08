@@ -56,7 +56,8 @@
   (require-package 'diminish))
 
 (defun setup-auto-complete ()
-  (require-package 'auto-complete))
+  (require-package 'auto-complete)
+  (setq ac-ignore-case nil))
 
 (defun setup-yasnippet ()
   (require-package 'yasnippet))
