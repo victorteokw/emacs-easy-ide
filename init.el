@@ -21,8 +21,8 @@
 ;; (require-set 'version-control) TODO: Remove this
 
 (require-set 'lisp)
-(require-set 'html)
 (require-set 'javascript)
+(require-set 'html)
 (require-set 'ruby)
 (require-set 'php)
 (require-set 'markdown)

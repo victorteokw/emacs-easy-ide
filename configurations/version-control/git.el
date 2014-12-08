@@ -39,3 +39,17 @@ Really do this?")
         ;; copy file
         (with-current-buffer (find-file-noselect git-config-file-emacs)
           (write-file git-config-file-user t)))))
+
+;; auto complete for shell
+(add-hook 'shell-mode-hook 'setup-shell-ac)
+(defun setup-shell-ac ()
+  (require-package 'readline-complete)
+  (require-package 'auto-complete)
+  (add-to-list 'ac-modes 'shell-mode)
+  (setq explicit-shell-file-name "bash")
+  (setq explicit-bash-args '("-c" "export EMACS=; stty echo; bash"))
+  (setq comint-process-echoes t)
+  (ac-config-default)
+
+  (require 'readline-complete)
+  (ac-rlc-setup-sources))

@@ -14,7 +14,8 @@
 (defun setup-html-environment-for-web-mode ()
   "Setup html development environment for web mode."
   (add-to-list 'ac-modes 'web-mode)
-  ;;(setup-html-environment)
+  (require 'tern-auto-complete)
+  (setup-html-environment)
   (ac-config-default)
   (setq ac-sources '(ac-source-html-attribute))
   (add-to-list 'ac-sources 'ac-source-html-tag)
@@ -27,6 +28,7 @@
   (setq web-mode-ac-sources-alist
 	'(("css" . (ac-source-words-in-buffer ac-source-css-property))
 	  ("html" . (ac-source-html-tag
+                     ac-source-tern-completion
 		     ac-source-html-attribute
                      ac-source-html-attribute-value
                      ))
