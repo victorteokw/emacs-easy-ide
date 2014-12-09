@@ -1,19 +1,16 @@
 ;; Basic ruby setup
 (require-package 'ruby-mode)
+
 (require-package 'ruby-hash-syntax)
 
 (auto-major-mode 'ruby-mode
                  "\\.rxml\\'" "Kirkfile\\'"
-                 "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'"
-                 )
+                 "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'")
 
 (setq ruby-use-encoding-map nil)
 
 ;; Ruby compilation
 (require-package 'ruby-compilation)
-
-;; yaml
-(require-package 'yaml-mode)
 
 (eval-after-load "ruby-mode"
   '(lambda ()
@@ -25,11 +22,10 @@
                    (run-hooks 'prog-mode-hook))))))
 
 (add-hook 'ruby-mode-hook (lambda ()
-                            (ruby-end-mode t)
                             (require 'yasnippet)
                             (yas-minor-mode-on)))
 
 ;; Flycheck
-(require-package 'flycheck)
+;;(require-package 'flycheck)
 ;;(add-hook 'ruby-mode-hook 'flycheck-mode)
 (provide 'init-ruby-mode)

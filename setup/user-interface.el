@@ -18,6 +18,6 @@
 (and (display-graphic-p)
      (require-package 'solarized-theme)
      (load-theme 'solarized-dark t)
-     (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
+     (setenv "PATH" (concat  "/usr/local/bin:" (getenv "PATH"))))
 
 (provide 'user-interface)
