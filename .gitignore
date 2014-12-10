@@ -13,5 +13,7 @@ ac-comphist.dat
 /.emacs.desktop.lock
 /url
 
+/.ac-html
+
 /.mc-lists.el
 /.cask
