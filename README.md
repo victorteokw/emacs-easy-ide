@@ -18,6 +18,18 @@ This config is loyal to emacs's default keys. It is easy to learn and use.
   * jumping between files
   * git client
 
+Engines
+=======
+
+This config includes many useful emacs package that does or doesn't come with emacs.
+* ido, flx-ido, ido-ubiquitous, smex: better interface with find-file and M-x commands.
+* projectile: project management.
+* helm: better interface with search.
+* auto-coplete: auto complete engine.
+* yasnippet: snippet engine.
+* magit: git client.
+* anzu: better interface with search and replace.
+
 Editing Features
 ================
 
