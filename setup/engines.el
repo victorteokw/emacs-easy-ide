@@ -66,10 +66,17 @@
   (require-package 'magit)
   (global-set-key (kbd "M-/") 'magit-status))
 
+(defun setup-anzu ()
+  (require-package 'anzu)
+  (global-anzu-mode t)
+  ;;  (diminish 'anzu)
+  (global-set-key (kbd "M-%") 'anzu-query-replace-regexp)
+  (global-set-key (kbd "C-M-%") 'anzu-query-replace))
+
 (mapc (lambda (f) (add-hook 'after-init-hook f))
       (list 'setup-ido 'setup-projectile 'setup-helm 'setup-helm-projectile
             'setup-diminish 'setup-auto-complete 'setup-yasnippet
-            'setup-magit))
+            'setup-magit 'setup-anzu))
 
 ;; Provide it
 (provide 'engines)

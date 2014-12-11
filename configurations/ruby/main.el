@@ -22,7 +22,6 @@
                    (run-hooks 'prog-mode-hook))))))
 
 (add-hook 'ruby-mode-hook (lambda ()
-                            (require 'yasnippet)
                             (yas-minor-mode-on)))
 
 ;; Flycheck

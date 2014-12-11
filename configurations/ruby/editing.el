@@ -171,7 +171,6 @@
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
-             (yas-reload-all) ;; FIXME
              (add-hook 'before-save-hook 'whitespace-cleanup)
              (setq-local whitespace-style '(empty indentation::space
                                                   space-befure-tab::space
@@ -179,7 +178,6 @@
                                                   whitespace-style::space))
              ;; Whitespace showing and cleaning
              (require 'diminish)
-             (diminish 'ruby-end-mode)
              (diminish 'robe-mode)
              (diminish 'auto-complete-mode)
              (diminish 'whitespace-mode)
