@@ -12,6 +12,7 @@
  column-number-mode t ;; and column numbers
  make-backup-files nil ;; do not backup files
  initial-scratch-message ""
+ tab-width 2
  ;; initial-major-mode 'ruby-mode
  )
 

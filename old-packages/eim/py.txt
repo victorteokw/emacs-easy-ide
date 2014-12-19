@@ -20746,6 +20746,7 @@ sh-sh-j-y-y 杀手级应用
 sh-sh-m-z 少数民族
 sh-sh-q 使生气
 sh-sh-q-sh 实事求是
+sh-sh-r-sh 上善若水
 sh-sh-sh 事实上 使受伤
 sh-sh-t 闪烁体 使湿透
 sh-sh-w 使失望
@@ -21010,7 +21011,7 @@ shan-yao 山腰 闪耀
 shan-yin 山阴
 shan-yu 善于
 shan-zi 扇子 擅自
-shang 伤 上 尚 商 赏 晌 蠰 觞 熵 殇 謪 裳 墒 绱 垧
+shang 上 伤 尚 商 赏 晌 蠰 觞 熵 殇 謪 裳 墒 绱 垧
 shang-ba 伤疤
 shang-ban 上班 上半
 shang-ban-nian 上半年
@@ -21081,6 +21082,7 @@ shang-rao 上饶
 shang-rao-di-qu 上饶地区
 shang-ren 商人 上任
 shang-shan 上衫
+shang-shan-ruo-shui 上善若水
 shang-shen 上身
 shang-sheng 上升
 shang-shi 伤势 赏识 上市
