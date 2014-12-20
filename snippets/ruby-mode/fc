@@ -1,7 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: fc
-# key: fc
-# --
-factory :$1 do
-$0
-end
