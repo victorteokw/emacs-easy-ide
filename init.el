@@ -31,6 +31,8 @@
 (require-set 'xcode)
 (require-set 'osx)
 
+(require-set 'apache)
+
 ;; Load user preferences
 (require 'custom-preferences)
 

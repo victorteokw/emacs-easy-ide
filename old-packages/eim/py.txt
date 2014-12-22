@@ -14786,7 +14786,7 @@ l-m-y-z 罗曼语族
 l-m-z 流氓罪
 l-m-z-m 罗马字母
 l-m-zh-y 浪漫主义
-l-n 理念 来年 烂泥 老年 雷诺 罹难 历年 连年 辽宁 列宁 林奈 流脑 留念 龙南 龙年 滦南 洛南 洛宁
+l-n 靓女 理念 来年 烂泥 老年 雷诺 罹难 历年 连年 辽宁 列宁 林奈 流脑 留念 龙南 龙年 滦南 洛南 洛宁
 l-n-ch-d 老年痴呆
 l-n-ch-d-zh 老年痴呆症
 l-n-d-q 陇南地区
@@ -15458,7 +15458,7 @@ lian-zheng 廉政
 lian-zhuang-xi-bao-xue-zheng 镰状细胞血症
 lian-zi 莲子 链子
 lian-zi-fu-hao 连字符号
-liang 两 量 良 梁 凉 亮 辆 俩 谅 粱 裲 魉 踉 晾 椋 粮 輬 喨 啢 莨 墚 靓
+liang 靓 两 量 良 梁 凉 亮 辆 俩 谅 粱 裲 魉 踉 晾 椋 粮 輬 喨 啢 莨 墚
 liang-an 两岸
 liang-an-dui-hua 两岸对话
 liang-bai 两百
@@ -15487,6 +15487,7 @@ liang-jie 谅解
 liang-kou-zi 两口子
 liang-kuai 凉快
 liang-li 两粒 璃粒 量力
+liang-nv 靓女
 liang-pang 两旁
 liang-ping 梁平
 liang-qi 两栖
