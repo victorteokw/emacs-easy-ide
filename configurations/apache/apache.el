@@ -12,3 +12,11 @@
                        (find-file "/etc/apache2/httpd.conf"))
   (apache--with-system 'gnu/linux
                        (find-file "/etc/httpd/conf/httpd.conf")))
+
+;; See http://httpd.apache.org/docs/2.4/configuring.html
+(defun test-apache-config-file ()
+  "Test apache config file."
+  (interactive)
+  (shell-command "apachectl configtest") ;; or apachectl -k
+  (switch-to-buffer "*Shell Command Output*"))
+
