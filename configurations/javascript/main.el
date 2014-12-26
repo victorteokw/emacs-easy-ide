@@ -1,5 +1,7 @@
 (require-package 'js2-mode)
 
+
+
 (defun auto-complete-javascript ()
   (require-package 'auto-complete)
   (require-package 'ac-js2)
@@ -13,12 +15,17 @@
   ;;  (ac-js2-mode)
   )
 
-(add-hook 'js2-mode-hook '(lambda ()
-                            (js2-imenu-extras-mode)
-                            (auto-complete-javascript)
-                            (tern-mode)))
+(add-hook 'js2-mode-hook
+          '(lambda ()
+             (make-local-variable 'js-indent-level)
+             (make-local-variable 'tab-width)
+             (setq tab-width 2)
+             (setq js-indent-level 2)
+             (js2-imenu-extras-mode)
+             (auto-complete-javascript)
+             (tern-mode)))
+
 (auto-major-mode 'js2-mode "\\.js\\'")
-(require-package 'json-mode)
 
 (eval-after-load 'tern
   '(progn

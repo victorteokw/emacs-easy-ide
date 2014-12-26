@@ -39,7 +39,8 @@
 (defun setup-projectile ()
   (require-package 'projectile)
   (projectile-global-mode)
-  (diminish 'projectile-mode))
+  (diminish 'projectile-mode)
+  (require-package 'project-explorer))
 
 (defun setup-helm ()
   (require-package 'helm)
