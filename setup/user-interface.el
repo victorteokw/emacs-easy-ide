@@ -2,7 +2,7 @@
 ;;(if (functionp 'tool-bar-mode) (tool-bar-mode 0))
 
 ;; Using meta-backtip to open menu bar
-(global-set-key (kbd "M-`") 'menu-bar-open)
+(define-key global-map (kbd "M-`") 'menu-bar-open)
 
 (setq-default
  inhibit-splash-screen t ;; disable splash screen

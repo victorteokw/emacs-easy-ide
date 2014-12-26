@@ -74,10 +74,21 @@
   (global-set-key (kbd "M-%") 'anzu-query-replace-regexp)
   (global-set-key (kbd "C-M-%") 'anzu-query-replace))
 
+(defun setup-ace-jump ()
+  (require-package 'ace-jump-mode)
+  (eval-after-load "ace-jump-mode"
+    '(ace-jump-mode-enable-mark-sync))
+  (global-unset-key (kbd "M-h"))
+  (define-key global-map (kbd "M-h c") 'ace-jump-char-mode)
+  (define-key global-map (kbd "M-h l") 'ace-jump-line-mode)
+  (define-key global-map (kbd "M-h w") 'ace-jump-word-mode)
+  (define-key global-map (kbd "M-h p") 'ace-jump-mode-pop-mark)
+  (define-key global-map (kbd "M-p") 'mark-paragraph))
+
 (mapc (lambda (f) (add-hook 'after-init-hook f))
       (list 'setup-ido 'setup-projectile 'setup-helm 'setup-helm-projectile
             'setup-diminish 'setup-auto-complete 'setup-yasnippet
-            'setup-magit 'setup-anzu))
+            'setup-magit 'setup-anzu 'setup-ace-jump))
 
 ;; Provide it
 (provide 'engines)

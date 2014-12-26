@@ -29,6 +29,7 @@ This config includes many useful emacs package that does or doesn't come with em
 * yasnippet: snippet engine.
 * magit: git client.
 * anzu: better interface with search and replace.
+* ace-jump-mode: very fast movement.
 
 Editing Features
 ================
@@ -54,6 +55,14 @@ Any mode may override the default movement key bindings.
 | <kbd>C-a</kbd> | move-beginning-of-line | Yes | simple.el |
 | <kbd>C-e</kbd> | move-end-of-line | Yes | simple.el |
 | <kbd>M-n</kbd> | back-to-indentation | No | simple.el |
+
+### Flexible movement
+| key | function | default | defined|
+|:-----:|:---------------:|:---------:|:------:|
+| <kbd>M-H c</kbd> | ace-jump-char-mode | No | ace-jump-mode.el |
+| <kbd>M-H w</kbd> | ace-jump-word-mode | No | ace-jump-mode.el |
+| <kbd>M-H l</kbd> | ace-jump-line-mode | No | ace-jump-mode.el |
+| <kbd>M-H p</kbd> | ace-jump-mode-pop-mark | No | ace-jump-mode.el |
 
 ### Block level movement
 
