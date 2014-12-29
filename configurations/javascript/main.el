@@ -26,6 +26,7 @@
              (setq js-indent-level 2)
              (js2-imenu-extras-mode)
              (auto-complete-javascript)
+             (add-hook 'before-save-hook 'whitespace-cleanup)
              ))
 
 (add-hook 'js2-mode-hook
