@@ -27,4 +27,15 @@
 ;; Flycheck
 ;;(require-package 'flycheck)
 ;;(add-hook 'ruby-mode-hook 'flycheck-mode)
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (require 'diminish)
+(diminish 'robe-mode)
+(diminish 'auto-complete-mode)
+(diminish 'whitespace-mode)
+(diminish 'yas-minor-mode)
+;;(diminish 'flycheck-mode)
+(diminish 'eldoc-mode) ;; Fix this fucking thing.
+))
+
 (provide 'init-ruby-mode)

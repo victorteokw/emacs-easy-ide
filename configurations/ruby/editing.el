@@ -176,13 +176,7 @@
                                                   trailing
                                                   whitespace-style::space))
              ;; Whitespace showing and cleaning
-             (require 'diminish)
-             (diminish 'robe-mode)
-             (diminish 'auto-complete-mode)
-             (diminish 'whitespace-mode)
-             (diminish 'yas-minor-mode)
-             (diminish 'flycheck-mode)
-             (diminish 'eldoc-mode) ;; Fix this fucking thing.
+
              ;; Do not deep indent
              (setq ruby-deep-indent-paren nil)
 
