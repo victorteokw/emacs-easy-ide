@@ -213,9 +213,8 @@
 ;; ----------------------------------------------------------------------------
 (require-package 'rainbow-delimiters)
 (require-package 'redshank)
-;; (after-load 'redshank
-;;   (diminish 'redshank-mode)
-;;   )
+(after-load 'redshank
+  (diminish 'redshank-mode))
 
 
 (defun sanityinc/lisp-setup ()
@@ -310,20 +309,20 @@
 
 
 
-;; (when (eval-when-compile (>= emacs-major-version 24))
-;;   ;; rainbow-mode needs color.el, bundled with Emacs >= 24.
-;;   (require-package 'rainbow-mode)
+(when (eval-when-compile (>= emacs-major-version 24))
+  ;; rainbow-mode needs color.el, bundled with Emacs >= 24.
+  (require-package 'rainbow-mode)
 
-;;   (defun sanityinc/enable-rainbow-mode-if-theme ()
-;;     (when (string-match "\\(color-theme-\\|-theme\\.el\\)" (buffer-name))
-;;       (rainbow-mode 1)))
+  (defun sanityinc/enable-rainbow-mode-if-theme ()
+    (when (string-match "\\(color-theme-\\|-theme\\.el\\)" (buffer-name))
+      (rainbow-mode 1)))
 
-;;   (add-hook 'emacs-lisp-mode-hook 'sanityinc/enable-rainbow-mode-if-theme))
+  (add-hook 'emacs-lisp-mode-hook 'sanityinc/enable-rainbow-mode-if-theme))
 
 
 
 (require-package 'highlight-quoted)
-;;(add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode)
+(add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode)
 
 (provide 'init-lisp)
 
