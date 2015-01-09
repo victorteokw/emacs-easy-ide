@@ -20,10 +20,7 @@
 
 (add-hook 'js2-mode-hook
           '(lambda ()
-             (make-local-variable 'js-indent-level)
-             (make-local-variable 'tab-width)
-             (setq tab-width 2)
-             (setq js-indent-level 2)
+             (setq js2-basic-offset 2)
              (js2-imenu-extras-mode)
              (auto-complete-javascript)
              (add-hook 'before-save-hook 'whitespace-cleanup)
