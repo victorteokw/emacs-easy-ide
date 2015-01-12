@@ -322,6 +322,7 @@
 
 
 (require-package 'highlight-quoted)
+(require 'highlight-quoted)
 (add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode)
 
 (provide 'init-lisp)

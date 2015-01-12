@@ -7,4 +7,5 @@
 (add-to-list 'auto-mode-alist '("\\.html.erb\\'" . web-mode))
 (setq web-mode-enable-auto-pairing t)
 (setq web-mode-enable-auto-closing t)
+
 (provide 'init-html)
