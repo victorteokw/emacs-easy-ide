@@ -15,6 +15,7 @@
 (require 'language)
 (require 'buffer)
 (require 'editing)
+(require 'private)
 
 ;; Load user interface
 (require 'user-interface)
@@ -35,6 +36,9 @@
 
 ;; Load user preferences
 (require 'custom-preferences)
+
+;; Load private configurations
+(require-private)
 
 (provide 'init)
 ;;; init.el ends here

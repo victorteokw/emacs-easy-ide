@@ -65,15 +65,14 @@ The FEATURE-SET is a directory under `user-configuration-directory' "
      "Feature directory '%s' is neither a directory nor exist.")))
 
 (defun load-directory (dir-name &optional error-string)
-  "Load all files from a directory"
+  "Load all files from a directory."
   (or (file-directory-p dir-name)
       (error (or error-string "'%s' is neither a directory nor exist.")
              dir-name))
   (dolist (file (directory-files dir-name t "^[^.]"))
     (if (file-directory-p file)
         (load-directory file)
-      (load-file file)
-      (message "File loaded: %s" file))))
+      (load-file file))))
 
 (add-to-list 'load-path user-configuration-directory)
 
