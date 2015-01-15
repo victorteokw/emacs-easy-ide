@@ -25,6 +25,7 @@
 ;; Usage:
 ;;
 ;; Put every private configuration into ~/.emacs.d/private
+;; and make git ignoring the private dir.
 ;; (require-private)
 ;; This function requires all your private configuration files.
 ;; (find-private-configuration-file)
