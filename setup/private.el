@@ -22,7 +22,21 @@
 
 ;;; Commentary:
 
-;; No commentary. TODO: 
+;; Usage:
+;;
+;; Put every private configuration into ~/.emacs.d/private
+;; (require-private)
+;; This function requires all your private configuration files.
+;; (find-private-configuration-file)
+;; This function creates or visits a private configuration file.
+;; (backup-private)
+;; This function backups all your private configuration files.
+;; So it's safe to put any private project related configuraiton on the
+;; public git repo.
+;; (recover-private)
+;; This function recovers all your private configuration files.
+;; (clear-private-backup)
+;; This function removes all your private configuration backup files.
 
 ;;; Code:
 
@@ -224,6 +238,13 @@ If the private folder does not exist, create by default."
         (make-directory user-private-config-directory)
       (error "You may delete %s by hand in order 
 to use private package features." user-private-config-directory))))
+
+(defun find-private-configuration-file ()
+  "Visit or create private configuration file."
+  (interactive)
+  (if (not (file-exists-p user-private-config-directory))
+      (make-directory user-private-config-directory))
+  (ido-find-file-in-dir user-private-config-directory))
 
 (defun clear-private-backup (sure remove-or-trash)
   "Delete all private backup files."
