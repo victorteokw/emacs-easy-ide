@@ -16,9 +16,10 @@
  ;; initial-major-mode 'ruby-mode
  )
 
-(and (display-graphic-p)
-     (require-package 'solarized-theme)
-     (load-theme 'solarized-dark t)
-     (setenv "PATH" (concat  "/usr/local/bin:" (getenv "PATH"))))
+(if (display-graphic-p)
+    (progn
+      (require-package 'solarized-theme)
+      (load-theme 'solarized-dark t)
+      (setenv "PATH" (concat  "/usr/local/bin:" (getenv "PATH")))))
 
 (provide 'user-interface)
