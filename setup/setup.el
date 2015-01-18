@@ -80,6 +80,12 @@ The FEATURE-SET is a directory under `user-configuration-directory' "
 (setq custom-file (expand-file-name "setup/custom-preferences.el"
 				    user-emacs-directory))
 
+(defun find-user-config-file ()
+  "Visit user emacs configuration file."
+  (interactive)
+  (projectile-find-file-in-directory "~/.emacs.d/"))
+(global-set-key (kbd "C-x F") 'find-user-config-file)
+
 ;; Handier way to add modes to auto-mode-alist.
 (defun auto-major-mode (mode &rest patterns)
   "Add entries to `auto-mode-alist' to use `MODE'
