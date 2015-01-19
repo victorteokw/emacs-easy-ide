@@ -86,6 +86,26 @@ The FEATURE-SET is a directory under `user-configuration-directory' "
   (projectile-find-file-in-directory "~/.emacs.d/"))
 (global-set-key (kbd "C-x F") 'find-user-config-file)
 
+(defun find-package (package-name)
+  "Visit downloaded package."
+  (interactive
+   (list (ido-completing-read
+          "Package name: "
+          (mapcar (lambda (cell) (symbol-name (car cell))) package-alist)
+          nil t)))
+  (let* ((package-dir
+          (package-desc-dir
+           (nth 0 (cdr (assoc (intern package-name) package-alist)))))
+         (package-files
+          (directory-files package-dir nil ".el$"))
+         (file-to-visit
+          (ido-completing-read
+           "File name: "
+           package-files nil t)))
+    (find-file (expand-file-name file-to-visit package-dir))))
+
+
+
 ;; Handier way to add modes to auto-mode-alist.
 (defun auto-major-mode (mode &rest patterns)
   "Add entries to `auto-mode-alist' to use `MODE'
