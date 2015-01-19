@@ -97,11 +97,18 @@ The FEATURE-SET is a directory under `user-configuration-directory' "
           (package-desc-dir
            (nth 0 (cdr (assoc (intern package-name) package-alist)))))
          (package-files
-          (directory-files package-dir nil ".el$"))
+          (delete nil (mapcar (lambda (file-name)
+                                (if (or (string-suffix-p "-pkg.el" file-name)
+                                        (string-suffix-p "-autoloads.el" file-name)) nil
+                                  file-name)
+                                ) (directory-files package-dir nil ".el$"))))
          (file-to-visit
-          (ido-completing-read
-           "File name: "
-           package-files nil t)))
+          (if (equal 1 (length package-files))
+              (nth 0 package-files)
+            (ido-completing-read
+             "File name: "
+             package-files nil t))))
+    package-files
     (find-file (expand-file-name file-to-visit package-dir))))
 
 
