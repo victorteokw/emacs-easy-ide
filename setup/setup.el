@@ -110,8 +110,7 @@ The FEATURE-SET is a directory under `user-configuration-directory' "
              package-files nil t))))
     package-files
     (find-file (expand-file-name file-to-visit package-dir))))
-
-
+(global-set-key (kbd "C-x P") 'find-package)
 
 ;; Handier way to add modes to auto-mode-alist.
 (defun auto-major-mode (mode &rest patterns)
