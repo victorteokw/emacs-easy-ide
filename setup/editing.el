@@ -53,6 +53,8 @@
 
 ;; Multiple cursor
 (require-package 'multiple-cursors)
+(global-set-key (kbd "M-@") 'mc--mark-symbol-at-point)
+(global-set-key (kbd "C-M-@") 'mc/mark-all-like-this-in-defun)
 (global-set-key (kbd "C-c c l") 'mc/edit-lines)
 (global-set-key (kbd "C-c c n") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-c c p") 'mc/mark-previous-like-this)

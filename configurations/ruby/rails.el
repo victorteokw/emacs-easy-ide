@@ -89,11 +89,15 @@ uby on Rails")
                  rails-guide-versions-list
                  :buffer "*Rails Version Select*"
                  :name "Rails Version"
-                 :default "default")
+                 :default "default"
+                 :must-match t)
                 (helm-comp-read
                  "Select a page: "
                  (mapcar 'cdr rails-guide-pages-alist)
-                 )))
+                 :buffer "*Rails Guide Select*"
+                 :name "*Rails Guide*"
+                 :default "Index Page"
+                 :must-match t)))
 
   (let ((url "http://guides.rubyonrails.org"))
     (or (and (string= version "default") (string= page "Index Page") t)
