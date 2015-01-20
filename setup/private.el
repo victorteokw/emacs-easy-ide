@@ -41,17 +41,19 @@
 
 ;;; Code:
 
+(require 'aes)
+
 (defconst user-private-config-directory
   (expand-file-name "private" user-emacs-directory)
-  "This directory is under `user-emacs-directory' and is the directory that 
-contains all users' private configuration files. These normally include 
-corporation project configuration, corporation code, personal project code 
+  "This directory is under `user-emacs-directory' and is the directory that
+contains all users' private configuration files. These normally include
+corporation project configuration, corporation code, personal project code
 etc.")
 
 (defconst user-private-backup-directory
   (expand-file-name "private-backup" user-emacs-directory)
-  "This directory is under `user-emacs-directory' and is the directory that 
-contains all users' private backup files. These files are encrypted with user 
+  "This directory is under `user-emacs-directory' and is the directory that
+contains all users' private backup files. These files are encrypted with user
 specified password. These are used to recover user's private files on another
 computer.")
 
@@ -237,7 +239,7 @@ If the private folder does not exist, create by default."
       (rq--load-directory user-private-config-directory)
     (if (not (file-exists-p user-private-config-directory))
         (make-directory user-private-config-directory)
-      (error "You may delete %s by hand in order 
+      (error "You may delete %s by hand in order
 to use private package features." user-private-config-directory))))
 
 (defun find-private-configuration-file ()
