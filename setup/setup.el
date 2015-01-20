@@ -99,7 +99,8 @@ The FEATURE-SET is a directory under `user-configuration-directory' "
          (package-files
           (delete nil (mapcar (lambda (file-name)
                                 (if (or (string-suffix-p "-pkg.el" file-name)
-                                        (string-suffix-p "-autoloads.el" file-name)) nil
+                                        (string-suffix-p "-autoloads.el"
+                                                         file-name)) nil
                                   file-name)
                                 ) (directory-files package-dir nil ".el$"))))
          (file-to-visit
@@ -111,6 +112,18 @@ The FEATURE-SET is a directory under `user-configuration-directory' "
     package-files
     (find-file (expand-file-name file-to-visit package-dir))))
 (global-set-key (kbd "C-x P") 'find-package)
+
+(defun find-dot-file (dot-file-name)
+  "Visit a dot file."
+  (interactive (list (ido-completing-read
+                      "Dot file: "
+                      (delete nil (mapcar (lambda (file-name)
+                                            (if (and (string-prefix-p "." file-name) (not (string-match "^\\.+$" file-name)))
+                                                file-name nil))
+                                          (directory-files "~")))
+                      nil t)))
+  (find-file (format "~/%s" dot-file-name)))
+(global-set-key (kbd "C-x D") 'find-dot-file)
 
 ;; Handier way to add modes to auto-mode-alist.
 (defun auto-major-mode (mode &rest patterns)
