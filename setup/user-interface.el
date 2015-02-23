@@ -19,7 +19,7 @@
 (if (display-graphic-p)
     (progn
       (require-package 'solarized-theme)
-      (load-theme 'solarized-dark t)
+      (load-theme 'solarized-light t)
       (setenv "PATH" (concat  "/usr/local/bin:" (getenv "PATH")))))
 
 (provide 'user-interface)
