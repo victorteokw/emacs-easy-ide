@@ -21,11 +21,6 @@
   "Return value for conf key."
   (cdr (assoc key nginx-configuration-alist)))
 
-(defvar nginx-configuration-alist
-  (nginx-configuration-alist-gen)
-  "The nginx configuration alist.")
-
-
 (defun nginx-configuration-alist-gen ()
   "Turn command 'nginx -V' into alist."
   (let ((ret-val (shell-command-to-string "nginx -V")))
@@ -41,3 +36,7 @@
                 alist)
           (setq pos (match-end 0)))
         alist))))
+
+(defvar nginx-configuration-alist
+  (nginx-configuration-alist-gen)
+  "The nginx configuration alist.")
