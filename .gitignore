@@ -19,3 +19,4 @@ ido.last
 /.mc-lists.el
 /.cask
 /private
+tramp
