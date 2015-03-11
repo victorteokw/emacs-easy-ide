@@ -28,7 +28,6 @@
 
 (defun nginx-configuration-alist-gen ()
   "Turn command 'nginx -V' into alist."
-  (interactive)
   (let ((ret-val (shell-command-to-string "nginx -V")))
     (if (string-match "command not found" ret-val)
         (error "Nginx not found."))
