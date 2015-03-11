@@ -33,6 +33,7 @@
 (require-set 'osx)
 
 (require-set 'apache)
+(require-set 'nginx)
 
 ;; Load user preferences
 (require 'custom-preferences)
