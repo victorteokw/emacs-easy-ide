@@ -26,8 +26,8 @@
 (diminish 'whitespace-mode)
 
 ;; Column Marker
-(require-package 'column-marker)
-(add-hook 'prog-mode-hook (lambda () (interactive) (column-marker-1 79)))
+;; (require-package 'column-marker)
+;; (add-hook 'prog-mode-hook (lambda () (interactive) (column-marker-1 79)))
 
 ;; Expand region
 (require-package 'expand-region)
