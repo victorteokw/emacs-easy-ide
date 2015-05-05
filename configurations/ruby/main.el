@@ -5,7 +5,7 @@
 
 (auto-major-mode 'ruby-mode
                  "\\.rxml\\'" "Kirkfile\\'"
-                 "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'")
+                 "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'" "Beanfile\\'")
 
 (setq ruby-use-encoding-map nil)
 
