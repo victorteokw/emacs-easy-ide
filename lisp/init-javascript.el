@@ -1,7 +1,5 @@
 (require-package 'js2-mode)
 
-
-
 (defun auto-complete-javascript ()
   (require-package 'auto-complete)
   (require-package 'ac-js2)
@@ -42,3 +40,19 @@
 (require-package 'rainbow-delimiters)
 (dolist (hook '(js2-mode-hook js-mode-hook json-mode-hook))
   (add-hook hook 'rainbow-delimiters-mode))
+
+(require-package 'nodejs-repl)
+(require-package 'coffee-mode)
+(add-hook 'coffee-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'whitespace-cleanup)
+            (auto-complete-mode)
+            ))
+;; Jasmine
+(setq-default js2-global-externs
+              '("angular" "inject" "describe" "expect" "it" "beforeEach"
+                "afterEach" "$" "_" "JSON" "jasmine" "spyOn" "module" "breeze"
+                "moment"))
+(require-package 'json-mode)
+
+(provide 'init-javascript)

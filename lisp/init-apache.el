@@ -35,3 +35,5 @@
   (interactive)
   (apache--execute "apachectl -M"))
 
+
+(provide 'init-apache)

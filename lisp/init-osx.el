@@ -61,3 +61,5 @@ end tell
 return
 EOF
 " nil nil)))))
+
+(provide 'init-osx)

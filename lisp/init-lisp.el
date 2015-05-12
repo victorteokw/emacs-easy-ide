@@ -326,4 +326,3 @@
 (add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode)
 
 (provide 'init-lisp)
-

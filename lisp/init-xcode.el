@@ -19,3 +19,5 @@
 
 (add-hook 'c-mode-common-hook 'setup-objc)
 
+
+(provide 'init-xcode)

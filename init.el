@@ -7,39 +7,29 @@
 ;;; Code:
 
 ;; Prepare to load setup file
-(add-to-list 'load-path (expand-file-name "setup" user-emacs-directory))
+(add-to-list 'load-path user-emacs-directory)
 
 ;; Load setup file
 (require 'setup)
-(require 'engines)
-(require 'language)
-(require 'buffer)
-(require 'editing)
-(require 'private)
 
-;; Load user interface
-(require 'user-interface)
-;; (require-set 'version-control) TODO: Remove this
+(require 'init-lisp)
+(require 'init-javascript)
+(require 'init-html)
+(require 'init-ruby)
+(require 'init-php)
+(require 'init-md)
 
-(require-set 'lisp)
-(require-set 'javascript)
-(require-set 'html)
-(require-set 'ruby)
-(require-set 'php)
-(require-set 'markdown)
-;;(require-language 'python)
+(require 'init-xcode)
+(require 'init-osx)
 
-(require-set 'xcode)
-(require-set 'osx)
-
-(require-set 'apache)
-(require-set 'nginx)
+(require 'init-apache)
+(require 'init-nginx)
 
 ;; Load user preferences
-(require 'custom-preferences)
+(require 'custom)
 
 ;; Load private configurations
-(require-private)
+;; (require-private)
 
 (provide 'init)
 ;;; init.el ends here

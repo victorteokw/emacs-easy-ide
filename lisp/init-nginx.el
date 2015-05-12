@@ -40,3 +40,5 @@
 (defvar nginx-configuration-alist
   (nginx-configuration-alist-gen)
   "The nginx configuration alist.")
+
+(provide 'init-nginx)

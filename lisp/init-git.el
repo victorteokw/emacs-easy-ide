@@ -53,3 +53,5 @@ Really do this?")
 
   (require 'readline-complete)
   (ac-rlc-setup-sources))
+
+(provide 'init-git)
