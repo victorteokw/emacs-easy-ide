@@ -1,3 +1,9 @@
+# Notice
+I decide to use [Steve Purcell's emacs config](https://github.com/purcell/emacs.d), so I will not update this repository in sometime. 
+I recommend you to use [this config](https://github.com/purcell/emacs.d). 
+
+## Old README.md for this config
+
 This emacs config is used to be my own tutorial. It becomes more reasonable and robust day by day. I'm adding documentation to it whenever I'm free. Feel free to try it and make it better.
 
 This config is loyal to emacs's default keys. It is easy to learn and use.
