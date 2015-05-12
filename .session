@@ -1,0 +1,19 @@
+;;; Automatically generated on Tue May 12 17:29:41 2015
+;;; Invoked by 1@YeaMacky.local using 24.4.1
+(setq-default kill-ring '(#("require" 0 7 (fontified t)) "(setq magit-last-seen-setup-instructions \"1.4.0\")" ";;----------------------------------------------------------------------------
+;; Allow users to provide an optional \"init-local\" containing personal settings
+;;----------------------------------------------------------------------------
+(when (file-exists-p (expand-file-name \"init-local.el\" user-emacs-directory))
+  (error \"Please move init-local.el to ~/.emacs.d/lisp\"))
+(require 'init-local nil t)
+
+
+"))
+(setq-default session-file-alist '(("~/.emacs.d/init.el" 450 402 1 nil nil 450 (overwrite-mode)) ("~/.emacs.d/org-clock-save.el" 62 nil 1 nil nil 62 (overwrite-mode))))
+(setq-default file-name-history '("/Users/1/.emacs.d/init.el" "~/.emacs.d/org-clock-save.el" "~/.ido.last" "~/.emacs.me/init.el" "~/.emacs.d/lisp/init-elpa.el" "~/.notes" "/usr/local/Cellar/emacs/24.4/share/emacs/24.4/lisp/server.el.gz" "~/.emacs.d/elpa/osx-location-20130907.133/osx-location.el" "~/.emacs.d/elpa/htmlize-20130207.1202/htmlize.el" "~/.emacs.d/elpa/lua-mode-20150303.1303/lua-mode.el" "~/.emacs.d/lisp/init-ledger.el" "~/.emacs.d/lisp/init-misc.el" "~/.emacs.me/conf/init-dired.el" "~/.emacs.d/lisp/init-dired.el" "~/.emacs.me/conf/init-proxies.el" "~/.emacs.d/lisp/init-proxies.el" "~/.emacs.me/conf/init-gui-frames.el" "~/.emacs.d/lisp/init-gui-frames.el" "~/.emacs.d/lisp/init-osx-keys.el" "~/.emacs.me/conf/init-themes.el" "~/.emacs.d/lisp/init-themes.el" "~/.emacs.me/conf/init-xterm.el" "~/.emacs.d/lisp/init-xterm.el" "~/.emacs.me/conf/init-frame-hooks.el" "~/.emacs.d/lisp/init-frame-hooks.el" "~/.emacs.me/setup.el" "~/.emacs.me/conf/init-exec-path.el" "~/.emacs.d/lisp/init-exec-path.el" "~/.emacs.me/conf/init-pkg.el" "~/.emacs.d/lisp/init-site-lisp.el" "~/.emacs.me/conf/init-site-lisp.el" "~/.emacs.me/conf/init-utils.el" "/usr/local/Cellar/emacs/24.4/share/emacs/24.4/lisp/obsolete/bruce.el" "~/.emacs.d/lisp/init-utils.el" "~/.emacs.me/conf/init-benchmarking.el" "~/.emacs.me/conf/init-compat.el" "~/.emacs.d/lisp/init-compat.el" "~/.emacs.d/lisp/init-benchmarking.el" "~/.emacs.me/Cask" "~/.emacs.d/custom.el" "~/Documents/Project/CocoaBean/CocoaBean.podspec" "~/.emacs.d/lisp/init-javascript.el" "~/Documents/Project/CocoaBean/.gitignore" "~/Documents/Project/CocoaBean/Gemfile" "~/.emacs.d/lisp/init-github.el" "~/.emacs.d/lisp/init-ruby-mode.el" "~/.emacs.d/lisp/init-uniquify.el" "~/Desktop/1.html" "~/.emacs.d/lisp/init-sessions.el" "~/.emacs.d/lisp/init-lisp.el" "~/.emacs.d/Cask" "~/.emacs.d/init.el" "~/.emacs.d/elpa/pallet-20150303.1343/pallet-autoloads.el" "~/.emacs.d/.cask/24.4.1/bootstrap/git-20140128.241/git-autoloads.el" "~/.emacs.d/.cask/24.4.1/bootstrap/commander-20140120.1052/commander-autoloads.el" "~/.emacs.d/.cask/24.4.1/bootstrap/s-20140910.334/s-autoloads.el" "~/.emacs.d/elpa/cask-20150503.846/cask-autoloads.el" "~/.emacs.d/elpa/f-20150217.328/f-autoloads.el" "~/.emacs.d/elpa/shut-up-20150423.522/shut-up-autoloads.el" "~/.emacs.d/elpa/package-build-20150318.2207/package-build-autoloads.el" "~/Documents/Project/CocoaBean/Rakefile" "/usr/local/Cellar/emacs/24.4/share/emacs/24.4/lisp/emulation/cua-base.el.gz" "/usr/local/Cellar/emacs/24.4/share/emacs/24.4/lisp/progmodes/prog-mode.el.gz"))
+(setq-default search-ring '("conf" "cus"))
+(setq-default command-history '((find-file "/Users/1/.emacs.d/init.el")))
+(setq-default ido-file-history '("init.el"))
+(setq-default occur-collect-regexp-history '("\\1"))
+(setq-default slime-connect-host-history '("127.0.0.1"))
+(setq-default slime-connect-port-history '("4005"))

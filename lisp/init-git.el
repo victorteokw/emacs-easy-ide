@@ -1,57 +1,93 @@
-(defun import-and-merge-git-config ()
-  "Merge current logged in unix user's '.gitconfig' to current emacs version."
-  (interactive)
-  (let* ((git-config-file-emacs
-          (expand-file-name "gitconfig.txt" user-emacs-directory))
-         (git-config-file-user
-          (substitute-in-file-name "$HOME/.gitconfig")))
+;; TODO: link commits from vc-log to magit-show-commit
+;; TODO: smerge-mode
+(require-package 'magit)
+(require-package 'git-blame)
+(require-package 'git-commit-mode)
+(require-package 'git-rebase-mode)
+(require-package 'gitignore-mode)
+(require-package 'gitconfig-mode)
+(require-package 'git-messenger) ;; Though see also vc-annotate's "n" & "p" bindings
+(require-package 'git-timemachine)
 
-    (unless (file-exists-p git-config-file-user)
-      (error "User .gitconfig not exist."))
+(setq-default
+ magit-save-some-buffers nil
+ magit-process-popup-time 10
+ magit-diff-refine-hunk t
+ magit-completing-read-function 'magit-ido-completing-read)
 
-    (with-current-buffer (find-file-noselect git-config-file-user)
-      (if (file-exists-p git-config-file-emacs)
-          (progn
-            (append-to-file "## Last Import\n" nil git-config-file-emacs)
-            (append-to-file nil nil git-config-file-emacs)
-            )
-        (progn
-          (write-file git-config-file-emacs nil))))))
+;; Hint: customize `magit-repo-dirs' so that you can use C-u M-F12 to
+;; quickly open magit on any one of your projects.
+(global-set-key [(meta f12)] 'magit-status)
 
-(defun git-config ()
-  "Visit git config file in emacs dir."
-  (interactive)
-  (let* ((git-config-file-emacs
-          (expand-file-name "gitconfig.txt" user-emacs-directory)))
-    (find-file git-config-file-emacs)))
+(after-load 'magit
+  (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-goto-parent-section))
 
-(defun setup-git-config ()
-  "Duplicate git config to '~/.gitconfig'."
-  (interactive)
-  (let* ((git-config-file-emacs
-          (expand-file-name "gitconfig.txt" user-emacs-directory))
-         (git-config-file-user
-          (substitute-in-file-name "$HOME/.gitconfig")))
-    (unless (file-exists-p git-config-file-emacs)
-      (error "You are not import git config."))
-    (if (yes-or-no-p "DANGEROUS: this may rewrite your ~/.gitconfig file. \
-Really do this?")
-        ;; copy file
-        (with-current-buffer (find-file-noselect git-config-file-emacs)
-          (write-file git-config-file-user t)))))
+(require-package 'fullframe)
+(after-load 'magit
+  (fullframe magit-status magit-mode-quit-window))
 
-;; auto complete for shell
-(add-hook 'shell-mode-hook 'setup-shell-ac)
-(defun setup-shell-ac ()
-  (require-package 'readline-complete)
-  (require-package 'auto-complete)
-  (add-to-list 'ac-modes 'shell-mode)
-  (setq explicit-shell-file-name "bash")
-  (setq explicit-bash-args '("-c" "export EMACS=; stty echo; bash"))
-  (setq comint-process-echoes t)
-  (ac-config-default)
+(add-hook 'git-commit-mode-hook 'goto-address-mode)
+(after-load 'session
+  (when (boundp 'session-mode-disable-list) ; newer Emacsen
+    (add-to-list 'session-mode-disable-list 'git-commit-mode)))
 
-  (require 'readline-complete)
-  (ac-rlc-setup-sources))
+
+;;; When we start working on git-backed files, use git-wip if available
+
+(after-load 'magit
+  (when (executable-find magit-git-executable)
+    (global-magit-wip-save-mode)
+    (diminish 'magit-wip-save-mode)))
+
+(after-load 'magit
+  (diminish 'magit-auto-revert-mode))
+
+
+(when *is-a-mac*
+  (after-load 'magit
+    (add-hook 'magit-mode-hook (lambda () (local-unset-key [(meta h)])))))
+
+
+
+;; Convenient binding for vc-git-grep
+(global-set-key (kbd "C-x v f") 'vc-git-grep)
+
+
+
+;;; git-svn support
+
+(require-package 'magit-svn)
+(autoload 'magit-svn-enabled "magit-svn")
+(defun sanityinc/maybe-enable-magit-svn-mode ()
+  (when (magit-svn-enabled)
+    (magit-svn-mode)))
+(add-hook 'magit-status-mode-hook #'sanityinc/maybe-enable-magit-svn-mode)
+
+(after-load 'compile
+  (dolist (defn (list '(git-svn-updated "^\t[A-Z]\t\\(.*\\)$" 1 nil nil 0 1)
+                      '(git-svn-needs-update "^\\(.*\\): needs update$" 1 nil nil 2 1)))
+    (add-to-list 'compilation-error-regexp-alist-alist defn)
+    (add-to-list 'compilation-error-regexp-alist (car defn))))
+
+(defvar git-svn--available-commands nil "Cached list of git svn subcommands")
+(defun git-svn--available-commands ()
+  (or git-svn--available-commands
+      (setq git-svn--available-commands
+            (sanityinc/string-all-matches
+             "^  \\([a-z\\-]+\\) +"
+             (shell-command-to-string "git svn help") 1))))
+
+(defun git-svn (dir command)
+  "Run a git svn subcommand in DIR."
+  (interactive (list (read-directory-name "Directory: ")
+                     (completing-read "git-svn command: " (git-svn--available-commands) nil t nil nil (git-svn--available-commands))))
+  (let* ((default-directory (vc-git-root dir))
+         (compilation-buffer-name-function (lambda (major-mode-name) "*git-svn*")))
+    (compile (concat "git svn " command))))
+
+
+(require-package 'git-messenger)
+(global-set-key (kbd "C-x v p") #'git-messenger:popup-message)
+
 
 (provide 'init-git)

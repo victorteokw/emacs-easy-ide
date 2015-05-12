@@ -1,17 +1,3 @@
-;;; setup.el
-
-;;; This file setup the environment this configuration needs
-
-;;; Code:
-
-;; This directory is the parent directory for all the language supports
-(defconst user-configuration-directory
-  (expand-file-name "lisp" user-emacs-directory)
-  "The directory is under `user-emacs-directory' and is the directory that
-contains all the programming language support configuration files.")
-
-(add-to-list 'load-path user-configuration-directory)
-
 (defconst old-packages-directory
   (expand-file-name "old-packages" user-emacs-directory)
   "This directory contains old and obsolete packages. But they are powerful.")
@@ -26,29 +12,6 @@ contains all the programming language support configuration files.")
       (message "Cannot load old package '%s'" package))
     (unless do-not-require (require package))))
 
-;; Configure the package system
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives
-             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
-;; Initialize the package system
-(setq package-enable-at-startup nil)
-(package-initialize)
-
-;; Use this function to lazily require package
-(defun require-package (package &optional min-version no-refresh)
-  "Install given PACKAGE, optionally requiring MIN-VERSION.
-If NO-REFRESH is non-nil, the available package lists will not be
-re-downloaded in order to locate PACKAGE."
-  (if (package-installed-p package min-version)
-      t
-    (if (or (assoc package package-archive-contents) no-refresh)
-        (package-install package)
-      (progn
-        (package-refresh-contents)
-        (require-package package min-version t)))))
 
 (defun load-directory (dir-name &optional error-string)
   "Load all files from a directory."
@@ -65,12 +28,6 @@ re-downloaded in order to locate PACKAGE."
 ;; Set custom file
 (setq custom-file (expand-file-name "custom.el"
                                     user-emacs-directory))
-
-(defun find-user-config-file ()
-  "Visit user emacs configuration file."
-  (interactive)
-  (projectile-find-file-in-directory "~/.emacs.d/"))
-(global-set-key (kbd "C-x F") 'find-user-config-file)
 
 (defun find-package (package-name)
   "Visit downloaded package."
@@ -115,34 +72,6 @@ re-downloaded in order to locate PACKAGE."
   (find-file (format "~/%s" dot-file-name)))
 (global-set-key (kbd "C-x D") 'find-dot-file)
 
-;; Handier way to add modes to auto-mode-alist.
-(defun auto-major-mode (mode &rest patterns)
-  "Add entries to `auto-mode-alist' to use `MODE'
-for all given file `PATTERNS'."
-  (dolist (pattern patterns)
-    (add-to-list 'auto-mode-alist (cons pattern mode))))
-
-;; return all matches from string
-(defun string-all-matches (regex str &optional group)
-  "Find all match for `REGEX' within `STR', returning the full
-match string or group `GROUP'."
-  (let ((result nil) (pos 0) (group (or group 0)))
-    (while (string-match regex str pos)
-      (push (match-string group str) result)
-      (setq pos (match-end group)))
-    result))
-
-;; This variable alias is for compatibility.
-;; Some ruby package may use this.
-(unless (boundp 'last-command-char)
-  (defvaralias 'last-command-char 'last-command-event))
-
-;; Use this constant to determine if this computer is a mac.
-(defconst this-computer-is-mac (eq system-type 'darwin)
-  "Use this constant to determine if this computer is a mac")
-(defvaralias 'this-computer-is-mac 'current-operating-system-is-os-x)
-(defvaralias 'this-computer-is-mac 'operating-system-is-os-x)
-
 ;; Find user init file.
 (defun find-user-init-file ()
   "Go to emacs init file."
@@ -167,32 +96,6 @@ If the file is symlink, prompt user to visit target instead."
 Visit target '%s' instead?" target-file))
             (find-alternate-file target-file))))))
 (add-hook 'find-file-hook 'test-for-symlink)
-
-;; Delete the current file
-(defun delete-this-file-and-kill-this-buffer ()
-  "Delete the current file, and kill the buffer."
-  (interactive)
-  (or (buffer-file-name) (error "No file is currently being edited."))
-  (when (yes-or-no-p (format "Really delete '%s'?"
-                             (file-name-nondirectory buffer-file-name)))
-    (delete-file (buffer-file-name))
-    (kill-this-buffer)))
-
-;; Rename the current file and buffer
-(defun rename-this-file-and-buffer (new-name)
-  "Renames both current buffer and file it's visiting to NEW-NAME."
-  (interactive "sNew name:")
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
-    (unless filename
-      (error "Buffer '%s' is not visiting a file!" name))
-    (if (get-buffer new-name)
-        (message "A buffer named '%s' is already exists!" new-name)
-      (progn
-        (when (file-exists-p filename)
-          (rename-file filename new-name t)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name))))))
 
 
 ;;; editing-additional.el
