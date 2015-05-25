@@ -12,6 +12,7 @@
 (depends-on "base16-theme")
 (depends-on "bash-completion")
 (depends-on "bug-reference-github")
+(depends-on "coffee-mode")
 (depends-on "dash-at-point")
 (depends-on "diff-hl")
 (depends-on "diminish")
