@@ -1,5 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: letfb
-# key: letfb
-# --
-let(:$1) { FactoryGirl.build(:$1) }$0

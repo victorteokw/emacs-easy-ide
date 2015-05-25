@@ -1,9 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: jasmine_describe
-# key: describe
-# --
-describe("${1:A suite}", function() {
-it("${2:contains spec with an expectation}", function() {
-$0
-});
-});

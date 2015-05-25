@@ -1,5 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: isbt
-# key: isbt
-# --
-it { should belong_to(:$1) }$0

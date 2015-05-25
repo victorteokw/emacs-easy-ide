@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: assert_error_blank
-# key: aee
-# --
-assert_equal ["can't be blank"], @item.errors.messages[:$1]
-$0
