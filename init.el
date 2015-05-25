@@ -21,6 +21,9 @@
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
+;; pretty symbol
+(global-prettify-symbols-mode)
+
 ;; project
 (require 'projectile)
 (projectile-global-mode)
@@ -36,6 +39,9 @@
 (require 'git-commit-mode)
 (require 'git-rebase-mode)
 (require 'git-blame)
+(require 'diff-hl)
+(add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
+(add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
 
 ;; github
 (require 'yagist)
@@ -56,6 +62,13 @@
 (require 'smex)
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (global-set-key [remap execute-extended-command] 'smex)
+
+;; guide key
+(require 'guide-key)
+(setq guide-key/guide-key-sequence
+      '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r"))
+(guide-key-mode 1)
+(diminish 'guide-key-mode)
 
 ;; helm
 (require 'helm-config)
@@ -78,7 +91,7 @@
 (define-key global-map (kbd "C-M-;") 'ace-jump-line-mode)
 
 ;; themes
-(require 'base16-eighties-dark-theme)
+(require 'base16-pop-dark-theme)
 
 ;; global line number
 (global-linum-mode)
@@ -93,6 +106,67 @@
         try-expand-dabbrev-all-buffers
         try-expand-dabbrev-from-kill))
 
+;; expand region
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+;; Mark
+(global-set-key (kbd "C-.") 'set-mark-command)
+(global-set-key (kbd "C-x C-.") 'pop-global-mark)
+
+;; kill back to indentation
+(defun kill-back-to-indentation ()
+  "Kill from point back to the first non-whitespace character on the line."
+  (interactive)
+  (let ((prev-pos (point)))
+    (back-to-indentation)
+    (kill-region (point) prev-pos)))
+
+(global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
+
+;; move line up and down
+(require 'move-dup)
+(global-set-key [s-down] 'md/move-lines-down)
+(global-set-key [s-up] 'md/move-lines-up)
+(global-set-key [M-s-down] 'md/duplicate-down)
+(global-set-key [M-s-up] 'md/duplicate-up)
+
+;; whole line or region
+(require 'whole-line-or-region)
+(whole-line-or-region-mode t)
+(diminish 'whole-line-or-region-mode)
+(make-variable-buffer-local 'whole-line-or-region-mode)
+
+;; highlight escape sequences
+(require 'highlight-escape-sequences)
+(hes-mode)
+
+;; ignore and next line
+(defun ignore-this-line-and-move-to-next-line ()
+  "Ignore this line and move to next line."
+  (interactive)
+  (next-line)
+  (move-end-of-line 1))
+(global-set-key [M-s-return] 'ignore-this-line-and-move-to-next-line)
+
+(defun ignore-this-line-and-open-new-line ()
+  "Ignore this line and open new line below."
+  (interactive)
+  (move-end-of-line 1)
+  (newline-and-indent))
+(global-set-key [s-return] 'ignore-this-line-and-open-new-line)
+
+;; multiple cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;; From active region to multiple cursors:
+(global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
+(global-set-key (kbd "C-c c c") 'mc/edit-lines)
+(global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
+(global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
+
 ;; Emacs lisp
 
 ;; emacs loading
@@ -104,8 +178,8 @@
   (add-hook hook 'turn-on-elisp-slime-nav-mode))
 
 ;; litable
-					; (require 'litable)
-					; (add-hook 'emacs-lisp-mode-hook 'litable-mode)
+          ; (require 'litable)
+          ; (add-hook 'emacs-lisp-mode-hook 'litable-mode)
 
 ;; highlight sexp
 (require 'hl-sexp)
@@ -129,9 +203,9 @@
 
 ;; check parens when saving
 (add-hook 'emacs-lisp-mode-hook
-	  (lambda ()
-	    (add-hook 'after-save-hook #'check-parens nil t)
-	    ))
+    (lambda ()
+      (add-hook 'after-save-hook #'check-parens nil t)
+      ))
 
 ;; open Cask file in elisp-mode
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
@@ -145,17 +219,17 @@
 ;; auto complete
 (require 'auto-complete)
 (add-hook 'emacs-lisp-mode-hook
-	  (lambda ()
-	    (setq ac-ignore-case nil)
-	    (setq ac-sources '(ac-source-dictionary
-			       ac-source-features
-			       ac-source-functions
-			       ac-source-symbols
-			       ac-source-variables
-			       ac-source-words-in-same-mode-buffers
-			       ))
-	    (auto-complete-mode t)
-	    ))
+    (lambda ()
+      (setq ac-ignore-case nil)
+      (setq ac-sources '(ac-source-dictionary
+             ac-source-features
+             ac-source-functions
+             ac-source-symbols
+             ac-source-variables
+             ac-source-words-in-same-mode-buffers
+             ))
+      (auto-complete-mode t)
+      ))
 
 
 ;; Ruby
@@ -179,8 +253,8 @@
 (require 'inf-ruby)
 (require 'ac-inf-ruby)
 (add-hook 'inf-ruby-mode-hook (lambda ()
-				(ac-inf-ruby-enable)
-				(auto-complete-mode)))
+        (ac-inf-ruby-enable)
+        (auto-complete-mode)))
 
 ;; ri documentation
 (require 'yari)
@@ -205,9 +279,6 @@
 (eval-after-load 'rspec-mode
   '(rspec-install-snippets))
 
-;; completion
-;; use hippie-expand
-
 ;; yasnippet
 (add-hook 'ruby-mode-hook 'yas-minor-mode-on)
 
@@ -225,7 +296,7 @@
                                                   space-befure-tab::space
                                                   trailing
                                                   whitespace-style::space))
-	     (add-hook 'before-save-hook 'whitespace-cleanup)))
+       (add-hook 'before-save-hook 'whitespace-cleanup)))
 
 ;; do not deep indent
 (setq ruby-deep-indent-paren nil)
@@ -248,16 +319,16 @@
 (require 'ac-html)
 (setq web-mode-ac-sources-alist
       '(("css" . (ac-source-words-in-buffer ac-source-css-property))
-	("html" . (ac-source-html-tag
-		   ac-source-html-attribute
-		   ac-source-html-attribute-value
-		   ))
-	("php" . (ac-source-words-in-buffer
-		  ac-source-words-in-same-mode-buffers
-		  ac-source-dictionary))))
+  ("html" . (ac-source-html-tag
+       ac-source-html-attribute
+       ac-source-html-attribute-value
+       ))
+  ("php" . (ac-source-words-in-buffer
+      ac-source-words-in-same-mode-buffers
+      ac-source-dictionary))))
 (setq web-mode-enable-auto-quoting nil)
 (add-hook 'web-mode-hook
-	  'auto-complete-mode)
+    'auto-complete-mode)
 
 (require 'slim-mode)
 (require 'haml-mode)
@@ -273,5 +344,3 @@
 
 ;; php
 (require 'php-mode)
-
-
