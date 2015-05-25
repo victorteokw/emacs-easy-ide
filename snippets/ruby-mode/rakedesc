@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: rakedesc
+# key: rakedesc
+# --
+desc "$1"
+task :$2 do |t|
+$0
+end

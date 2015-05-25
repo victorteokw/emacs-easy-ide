@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: rakens
+# key: rakens
+# --
+namespace $1 do
+$0
+end

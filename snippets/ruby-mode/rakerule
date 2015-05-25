@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: rakerule
+# key: rakerule
+# --
+rule $1 => $2 do |t|
+$0
+end

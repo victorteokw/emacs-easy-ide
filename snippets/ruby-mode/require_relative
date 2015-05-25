@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: require_relative
+# key: rer
+# --
+require_relative '$1'$0

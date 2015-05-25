@@ -8,18 +8,26 @@
 (define-key global-map (kbd "M-`") 'menu-bar-open)
 
 (setq-default
- ;; inhibit-splash-screen t ;; disable sp;ash screen
+ ;; inhibit-splash-screen t ;; disable splash screen
  visibel-bell t ;; do not beep
  indent-tabs-mode nil ;; use whitespace to indent
  tab-width 2
- initial-scratch-message ";; Life and health, family and oxygen."
+ initial-scratch-message ";; Life and health, family and oxygen.\n\n"
  make-backup-files nil ;; do not backup files
  ;; initial-major-mode 'ruby-mode
+ fill-column 80
+ linum-format "%2d "
  )
+
+;; Nice fringe
+(set-fringe-mode '(10 . 10))
 
 ;; exec path
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
+
+;; default font
+(set-face-attribute 'default nil :height 140)
 
 ;; pretty symbol
 (global-prettify-symbols-mode)
@@ -57,6 +65,8 @@
 (setq ido-ignore-files '(".DS_Store"))
 (setq ido-use-filename-at-point 'guess)
 (ido-mode t)
+(require 'ido-vertical-mode)
+(ido-vertical-mode 1)
 
 ;; smex
 (require 'smex)
@@ -70,9 +80,17 @@
 (guide-key-mode 1)
 (diminish 'guide-key-mode)
 
+;; discover
+(require 'discover)
+(global-discover-mode)
+
 ;; helm
 (require 'helm-config)
 (require 'helm-projectile)
+
+;; undo
+(require 'undo-tree)
+(global-undo-tree-mode)
 
 ;; searching
 (require 'anzu)
@@ -90,8 +108,11 @@
 (define-key global-map (kbd "C-:") 'ace-jump-word-mode)
 (define-key global-map (kbd "C-M-;") 'ace-jump-line-mode)
 
+;; dash
+(global-set-key (kbd "C-h D") 'dash-at-point)
+
 ;; themes
-(require 'base16-pop-dark-theme)
+(require 'base16-ocean-dark-theme)
 
 ;; global line number
 (global-linum-mode)
@@ -122,7 +143,7 @@
     (back-to-indentation)
     (kill-region (point) prev-pos)))
 
-(global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
+(global-set-key (kbd "s-M-<backspace>") 'kill-back-to-indentation)
 
 ;; move line up and down
 (require 'move-dup)
@@ -219,18 +240,23 @@
 ;; auto complete
 (require 'auto-complete)
 (add-hook 'emacs-lisp-mode-hook
-    (lambda ()
-      (setq ac-ignore-case nil)
-      (setq ac-sources '(ac-source-dictionary
-             ac-source-features
-             ac-source-functions
-             ac-source-symbols
-             ac-source-variables
-             ac-source-words-in-same-mode-buffers
-             ))
-      (auto-complete-mode t)
-      ))
+          (lambda ()
+            (setq ac-ignore-case nil)
+            (setq ac-sources '(ac-source-dictionary
+                               ac-source-features
+                               ac-source-functions
+                               ac-source-symbols
+                               ac-source-variables
+                               ac-source-words-in-same-mode-buffers
+                               ))
+            (auto-complete-mode t)
+            ))
 
+;; bash
+
+;; (add-to-list 'ac-modes 'shell-mode)
+;; (require 'readline-complete)
+;; (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
 
 ;; Ruby
 
@@ -289,6 +315,10 @@
              (modify-syntax-entry ?@ "w")
              (modify-syntax-entry ?: ".")))
 
+;; support yard syntax
+(require 'yard-mode)
+(add-hook 'ruby-mode-hook 'yard-mode)
+
 ;; whitespace cleaning
 (add-hook 'ruby-mode-hook
           '(lambda ()
@@ -344,3 +374,17 @@
 
 ;; php
 (require 'php-mode)
+
+;; custom
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(hl-sexp-face ((t (:background "SeaGreen4")))))

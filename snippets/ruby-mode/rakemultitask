@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: rakemultitask
+# key: rakemultitask
+# --
+multitask $1 => $2 do |t|
+$0
+end
