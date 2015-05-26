@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: ruby-shebang
+# group: syntax
 # key: bang
 # --
 #!/usr/bin/env ruby

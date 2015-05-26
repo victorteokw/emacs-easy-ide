@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: def ... end
+# group: control structure
 # key: def
 # --
 def ${1:method}${2:(${3:args})}

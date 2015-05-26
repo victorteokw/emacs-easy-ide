@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: if ... end
+# group: control structure
 # key: if
 # --
 if ${1:condition}

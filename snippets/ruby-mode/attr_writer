@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: attr_writer
+# group: methods
 # key: attrw
 # --
 attr_writer :$0

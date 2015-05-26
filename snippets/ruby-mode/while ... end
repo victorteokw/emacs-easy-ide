@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: while ... end
+# group: control structure
 # key: while
 # --
 while ${condition}

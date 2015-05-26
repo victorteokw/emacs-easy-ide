@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: rakedesc
+# group: rake
 # key: rakedesc
 # --
 desc "$1"

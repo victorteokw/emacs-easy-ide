@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: rakens
+# name: rake namespace
+# group: rake
 # key: rakens
 # --
 namespace $1 do

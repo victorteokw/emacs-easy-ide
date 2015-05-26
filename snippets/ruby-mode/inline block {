@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: inline block {
+# group: syntax
 # key: {
 # --
 {${1:|${2:args}|} $0 }

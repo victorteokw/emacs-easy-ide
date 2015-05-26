@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: until ... end
+# group: control structure
 # key: until
 # --
 until ${condition}

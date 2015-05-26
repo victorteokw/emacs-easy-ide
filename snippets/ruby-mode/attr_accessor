@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: attr_accessor
+# group: methods
 # key: attra
 # --
 attr_accessor :$0

@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: do
+# name: do ... end
+# group: control structure
 # key: do
 # --
 do ${1:|${2:args}|}

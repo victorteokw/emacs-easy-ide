@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: rdoc comment
+# group: documentation
 # key: =rdoc
 # --
 =begin rdoc

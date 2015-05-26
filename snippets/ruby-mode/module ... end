@@ -1,9 +1,9 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: class
-# key: class
-#contributor : hitesh <hitesh.jasani@gmail.com>
+# name: module ... end
+# group: control structure
+# key: module
 # --
-class ${1:`(let ((fn (capitalize (file-name-nondirectory
+module ${1:`(let ((fn (capitalize (file-name-nondirectory
                                  (file-name-sans-extension
          (or (buffer-file-name)
              (buffer-name (current-buffer))))))))

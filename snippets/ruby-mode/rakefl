@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: rakefl
+# group: rake
 # key: rakefl
 # --
 Rake::FileList[$1]$0

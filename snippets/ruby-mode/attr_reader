@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: attr_reader
+# group: methods
 # key: attrr
 # --
 attr_reader :$0

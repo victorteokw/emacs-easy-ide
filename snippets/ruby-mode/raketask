@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: raketask
+# group: rake
 # key: raketask
 # --
 task :$1 do |t|

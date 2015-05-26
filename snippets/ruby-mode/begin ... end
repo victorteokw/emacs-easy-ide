@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: begin ... end
+# group: control structure
 # key: begin
 # --
 begin
