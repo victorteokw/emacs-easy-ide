@@ -67,6 +67,9 @@
 (ido-mode t)
 ;; (require 'ido-vertical-mode)
 ;; (ido-vertical-mode 1)
+;; Make functions such as `C-h f' using ido
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode)
 
 ;; smex
 (require 'smex)
@@ -87,6 +90,19 @@
 ;; helm
 (require 'helm-config)
 (require 'helm-projectile)
+(helm-autoresize-mode)
+(global-set-key [M-f1] 'helm-mini)
+(global-set-key (kbd "s-x") 'helm-M-x)
+(setq helm-M-x-fuzzy-match t)
+(setq helm-recentf-fuzzy-match t)
+(setq helm-buffers-fuzzy-matching t)
+(setq helm-imenu-fuzzy-match t)
+(setq helm-apropos-fuzzy-match t)
+(require 'helm-swoop)
+(global-set-key (kbd "C-z") 'helm-swoop)
+
+(require 'sublimity)
+(require 'sublimity-map)
 
 ;; undo
 (require 'undo-tree)
@@ -133,7 +149,6 @@
   `(save-excursion ,@body)) ;; fixed a bug
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-z") 'er/expand-region)
 
 ;; Mark
 (global-set-key (kbd "C-.") 'set-mark-command)
@@ -222,6 +237,10 @@
 ;; indentation
 (require 'aggressive-indent)
 (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
+
+;; indent guide
+(indent-guide-global-mode)
+(setq indent-guide-recursive t)
 
 ;; short documentation
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
@@ -381,13 +400,43 @@
 ;; php
 (require 'php-mode)
 
+;; c
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            ;; Auto complete main
+            (require 'auto-complete-clang-async)
+            (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
+            (setq ac-sources '(ac-source-clang-async))
+            (ac-clang-launch-completion-process)
+
+            ;; Auto complete c headers
+            (require 'auto-complete-c-headers)
+            (add-to-list 'ac-sources 'ac-source-c-headers)
+            (setq achead:include-directories
+                  (list "/usr/include" "/usr/local/include"
+                        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/include"
+                        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"))
+            (auto-complete-mode)
+            
+            ;; Snippets
+            (yas-minor-mode-on)
+
+            ))
+
+;; packages
+(global-set-key [f9] 'package-install)
+(global-set-key [M-f9] 'package-list-packages)
+
 ;; custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(custom-safe-themes
+   (quote
+    ("26614652a4b3515b4bbbb9828d71e206cc249b67c9142c06239ed3418eff95e2" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(indent-guide-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
