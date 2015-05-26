@@ -421,6 +421,8 @@
             ;; Snippets
             (yas-minor-mode-on)
 
+            ;; Syntax checking
+            (flycheck-mode)
             ))
 
 ;; packages
