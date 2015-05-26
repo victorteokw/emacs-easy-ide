@@ -1,7 +1,5 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: do
-# key: do
+# name: attr_reader
+# key: attrr
 # --
-do ${1:|${2:args}|}
-$0
-end
+attr_reader :$0

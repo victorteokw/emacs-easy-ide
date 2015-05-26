@@ -1,7 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: do
-# key: do
+# name: rdoc comment
+# key: =rdoc
 # --
-do ${1:|${2:args}|}
-$0
-end
+=begin rdoc
+  $0
+=end

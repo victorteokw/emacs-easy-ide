@@ -65,8 +65,8 @@
 (setq ido-ignore-files '(".DS_Store"))
 (setq ido-use-filename-at-point 'guess)
 (ido-mode t)
-(require 'ido-vertical-mode)
-(ido-vertical-mode 1)
+;; (require 'ido-vertical-mode)
+;; (ido-vertical-mode 1)
 
 ;; smex
 (require 'smex)
@@ -128,8 +128,12 @@
         try-expand-dabbrev-from-kill))
 
 ;; expand region
+(defalias 'save-mark-and-excursion 'save-excursion)
+(defmacro save-mark-and-excursion (&rest body)
+  `(save-excursion ,@body)) ;; fixed a bug
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-z") 'er/expand-region)
 
 ;; Mark
 (global-set-key (kbd "C-.") 'set-mark-command)
@@ -236,6 +240,8 @@
 
 ;; snippets
 (require 'yasnippet)
+(setq yas-snippet-dirs (remove 'yas-installed-snippets-dir yas-snippet-dirs))
+(yas-reload-all)
 
 ;; auto complete
 (require 'auto-complete)

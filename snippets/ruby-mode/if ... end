@@ -1,7 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: do
-# key: do
+# name: if ... end
+# key: if
 # --
-do ${1:|${2:args}|}
+if ${1:condition}
 $0
 end

@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: arrow
+# key: a
+# type: command
+# --
+(delete-horizontal-space)
+(insert " => ")

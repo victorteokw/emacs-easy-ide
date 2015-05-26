@@ -1,7 +1,5 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: do
-# key: do
+# name: string interpolation
+# key: s
 # --
-do ${1:|${2:args}|}
-$0
-end
+#{$1}$0

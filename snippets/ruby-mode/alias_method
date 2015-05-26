@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: alias_method new, old
+# key: alias
+# --
+alias_method :${new_name}, :${old_name}
