@@ -222,9 +222,8 @@
           ; (add-hook 'emacs-lisp-mode-hook 'litable-mode)
 
 ;; highlight sexp
-(require 'hl-sexp)
-(add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode)
-(set-variable 'hl-sexp-background-color "#efefef")
+;; (require 'hl-sexp)
+;; (add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode)
 
 ;; rainbow parens
 (require 'rainbow-delimiters)
@@ -237,10 +236,6 @@
 ;; indentation
 (require 'aggressive-indent)
 (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
-
-;; indent guide
-(indent-guide-global-mode)
-(setq indent-guide-recursive t)
 
 ;; short documentation
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
@@ -296,6 +291,7 @@
 (add-to-list 'auto-mode-alist '("\\.irbrc\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.pryrc\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\Podfile\\'" . ruby-mode))
 
 ;; compilation
 (require 'ruby-compilation)
@@ -338,7 +334,13 @@
           '(lambda ()
              (modify-syntax-entry ?$ "w")
              (modify-syntax-entry ?@ "w")
-             (modify-syntax-entry ?: ".")))
+             (modify-syntax-entry ?: ".")
+
+             ;; indent guide
+             (indent-guide-global-mode)
+             ;; (setq indent-guide-recursive t)
+
+             ))
 
 ;; support yard syntax
 (require 'yard-mode)
@@ -382,11 +384,29 @@
       ac-source-words-in-same-mode-buffers
       ac-source-dictionary))))
 (setq web-mode-enable-auto-quoting nil)
-(add-hook 'web-mode-hook
-    'auto-complete-mode)
+(add-hook 'web-mode-hook 'auto-complete-mode)
 
-(require 'slim-mode)
-(require 'haml-mode)
+(add-hook 'slim-mode-hook
+          (lambda ()
+            (require 'ac-slim)
+            (setq ac-sources '(ac-source-slim-attribute))
+            (add-to-list 'ac-sources 'ac-source-slim-tag)
+            (add-to-list 'ac-sources 'ac-source-slim-attribute-value)
+            (auto-complete-mode)
+            ))
+
+(add-hook 'haml-mode-hook
+          (lambda ()
+            (require 'ac-haml)
+            (setq ac-sources '(ac-source-haml-attribute))
+            (add-to-list 'ac-sources 'ac-source-haml-tag)
+            (add-to-list 'ac-sources 'ac-source-haml-attribute-value)
+            (auto-complete-mode)
+            ))
+
+(setq css-indent-offset 2)
+(setq scss-compile-at-save nil)
+
 
 ;; elnode is a super engine
 (require 'elnode)
@@ -395,7 +415,35 @@
 (require 'restclient)
 
 ;; javascript
+(add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js2-mode))
+(setq js2-basic-offset 2)
+(push '("function" . ?ƒ) prettify-symbols-alist)
 (require 'js2-mode)
+(add-hook 'js2-mode-hook
+          (lambda ()
+            (js2-imenu-extras-mode)
+            ;; Clean whitespace
+            (add-hook 'before-save-hook 'whitespace-cleanup)
+
+            ))
+
+;; Jasmine
+(setq-default js2-global-externs
+              '("angular" "inject" "describe" "expect" "it" "beforeEach"
+                "afterEach" "$" "_" "JSON" "jasmine" "spyOn" "module" "breeze"
+                "moment"))
+
+;; rainbow delimiters mode
+(dolist (hook '(js2-mode-hook js-mode-hook json-mode-hook))
+  (add-hook hook 'rainbow-delimiters-mode))
+
+;; coffeeScript
+
+(add-hook 'coffee-mode-hook
+          (lambda ()
+            ;; Clean whitespace
+            (add-hook 'before-save-hook 'whitespace-cleanup)
+            ))
 
 ;; php
 (require 'php-mode)
@@ -417,7 +465,7 @@
                         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/include"
                         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"))
             (auto-complete-mode)
-            
+
             ;; Snippets
             (yas-minor-mode-on)
 
@@ -428,6 +476,14 @@
 ;; packages
 (global-set-key [f9] 'package-install)
 (global-set-key [M-f9] 'package-list-packages)
+
+;; mode line format
+(require 'health (expand-file-name "$HOME/.emacs.d/health.el"))
+(setq default-mode-line-format
+      (list "%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification mode-line-position mode-line-end-spaces
+            '(:eval (health-time-mode-line))))
+
+
 
 ;; custom
 (custom-set-variables
@@ -445,3 +501,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hl-sexp-face ((t (:background "SeaGreen4")))))
+
+(health-go-to-work)
