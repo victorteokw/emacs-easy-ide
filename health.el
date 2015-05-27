@@ -10,6 +10,11 @@
   :group 'health
   :type 'number)
 
+(defcustom health-time-over-sound nil
+  "The sound to play when health coding session is over."
+  :group 'health
+  :type 'string)
+
 (defvar health-start-time nil
   "The counting start of health coding session.")
 
@@ -48,7 +53,9 @@
 (defun health-stop-counting-if-needed ()
   "Stop health counting if needed."
   (if (health-overdue)
-      (health-stop-counting)))
+      (progn
+        (health-stop-counting)
+        (health-play-sound-if-needed))))
 
 (defun health-overdue ()
   "Return true if time overdue."
@@ -57,6 +64,10 @@
 (defun health-stop-counting ()
   "Stop health counting."
   (and health-timer (cancel-timer health-timer)))
+
+(defun health-play-sound-if-needed ()
+  "Play sound."
+  (if health-time-over-sound (play-sound-file health-time-over-sound)))
 
 (defun health-go-to-work ()
   "Start count for 10 seconds to rest."

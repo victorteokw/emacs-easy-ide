@@ -305,6 +305,7 @@
 
 ;; ri documentation
 (require 'yari)
+(global-set-key (kbd "C-h y") 'yari-helm)
 
 ;; yaml
 (require 'yaml-mode)
@@ -441,6 +442,8 @@
 
 (add-hook 'coffee-mode-hook
           (lambda ()
+            ;; use yard mode for highlight documentation
+            (yard-mode)
             ;; Clean whitespace
             (add-hook 'before-save-hook 'whitespace-cleanup)
             ))
@@ -477,14 +480,6 @@
 (global-set-key [f9] 'package-install)
 (global-set-key [M-f9] 'package-list-packages)
 
-;; mode line format
-(require 'health (expand-file-name "$HOME/.emacs.d/health.el"))
-(setq default-mode-line-format
-      (list "%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification mode-line-position mode-line-end-spaces
-            '(:eval (health-time-mode-line))))
-
-
-
 ;; custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -502,4 +497,16 @@
  ;; If there is more than one, they won't work right.
  '(hl-sexp-face ((t (:background "SeaGreen4")))))
 
+;; Health
+
+(require 'health (expand-file-name "health.el" user-emacs-directory))
+(require 'play-sound (expand-file-name "playsound.el" user-emacs-directory))
+;; mode line format
+(setq default-mode-line-format
+      (list "%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification mode-line-position mode-line-end-spaces
+            '(:eval (health-time-mode-line))))
+
+(setq health-session-length 10)
+(setq health-time-over-sound (expand-file-name "sounds/short.wav" user-emacs-directory))
+;; Start health counting
 (health-go-to-work)
