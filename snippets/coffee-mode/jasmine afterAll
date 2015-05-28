@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: afterAll
+# key: afterall
+# group: jasmine
+# --
+afterAll -> $0

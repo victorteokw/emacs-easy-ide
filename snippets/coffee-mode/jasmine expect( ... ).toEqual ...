@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expect( ... ).toEqual ...
+# key: expecttoequal
+# group: jasmine
+# --
+expect($1).toEqual $0

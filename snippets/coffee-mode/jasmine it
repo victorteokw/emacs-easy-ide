@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: it
+# key: it
+# group: jasmine
+# --
+it "$1", ->

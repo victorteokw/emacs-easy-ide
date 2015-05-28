@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expect( ... ).toBe ...
+# key: expecttobe
+# group: jasmine
+# --
+expect($1).toBe $0

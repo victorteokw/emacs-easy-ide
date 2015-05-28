@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expect( ... ).toHaveBeenCalledWith ...
+# key: expecttohavebeencalledwith
+# group: jasmine
+# --
+expect($1).toHaveBeenCalledWith $0

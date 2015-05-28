@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expect( ... ).toBe null
+# key: expecttobenull
+# group: jasmine
+# --
+expect($1).toBe null

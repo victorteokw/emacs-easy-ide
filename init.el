@@ -21,6 +21,7 @@
 
 ;; Nice fringe
 (set-fringe-mode '(10 . 10))
+(add-to-list 'default-frame-alist '(width . 83))
 
 ;; exec path
 (require 'exec-path-from-shell)
@@ -79,7 +80,7 @@
 ;; guide key
 (require 'guide-key)
 (setq guide-key/guide-key-sequence
-      '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r"))
+      '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r"))
 (guide-key-mode 1)
 (diminish 'guide-key-mode)
 
@@ -87,11 +88,16 @@
 (require 'discover)
 (global-discover-mode)
 
+;; global auto revert
+(global-auto-revert-mode)
+(setq global-auto-revert-non-file-buffers t
+      auto-revert-verbose nil)
+
 ;; helm
 (require 'helm-config)
 (require 'helm-projectile)
 (helm-autoresize-mode)
-(global-set-key [M-f1] 'helm-mini)
+(global-set-key (kbd "s-i") 'helm-mini)
 (global-set-key (kbd "s-x") 'helm-M-x)
 (setq helm-M-x-fuzzy-match t)
 (setq helm-recentf-fuzzy-match t)
@@ -206,6 +212,13 @@
 (global-set-key (kbd "C-c c c") 'mc/edit-lines)
 (global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
+
+;; All programming language setup
+
+(add-hook 'prog-mode-hook 'goto-address-prog-mode)
+
+;; All non programming language setup
+(add-hook 'text-mode-hook 'goto-address-mode)
 
 ;; Emacs lisp
 
@@ -440,12 +453,26 @@
 
 ;; coffeeScript
 
+(defun ky/coffee-new-line-at-end-and-indent ()
+  "Move to the end of line and indent like coffee."
+  (interactive)
+  (move-end-of-line 1)
+  (coffee-newline-and-indent))
+
+(require 'coffee-mode)
+(define-key coffee-mode-map [s-return] 'ky/coffee-new-line-at-end-and-indent)
+
 (add-hook 'coffee-mode-hook
           (lambda ()
             ;; use yard mode for highlight documentation
             (yard-mode)
             ;; Clean whitespace
             (add-hook 'before-save-hook 'whitespace-cleanup)
+            ;; use snippets
+            (yas-minor-mode-on)
+            ;; syntax checking
+            (setq flycheck-checker 'coffee)
+            (flycheck-mode)
             ))
 
 ;; php
