@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: args from arguments
+# key: args
+# group: custom
+# --
+args = Array.prototype.slice.call(arguments)$0

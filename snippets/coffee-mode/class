@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: class
+# key: class
+# group: syntax
+# --
+class ${1:`(let ((fn (capitalize (file-name-nondirectory
+                                 (file-name-sans-extension
+         (or (buffer-file-name)
+             (buffer-name (current-buffer))))))))
+             (replace-regexp-in-string "_" "" fn t t))`} ${2:extends ${3:SuperClass}}
+$0

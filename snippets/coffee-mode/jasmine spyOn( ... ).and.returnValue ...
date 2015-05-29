@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: spyOn( ... ).and.returnValue ...
+# key: spyonandreturnvalue
+# group: jasmine
+# --
+spyOn($1, $2).and.returnValue $0

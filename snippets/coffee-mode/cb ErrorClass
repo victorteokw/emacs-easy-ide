@@ -1,0 +1,16 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ErrorClass
+# key: cberror
+# group: cocoabean development
+# --
+class ${1:`(let ((fn (capitalize (file-name-nondirectory
+                                 (file-name-sans-extension
+         (or (buffer-file-name)
+             (buffer-name (current-buffer))))))))
+             (replace-regexp-in-string "_" "" fn t t))`} extends Errror
+
+constructor: (args...) ->
+  super(args...)
+  @name = "$1"
+  @message ||= "${2:message}"
+$0

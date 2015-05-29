@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expect( ... ).not.thThrow
+# key: expectnottothrow
+# type: command
+# group: jasmine
+# --
+(insert "expect( ->")
+(coffee-newline-and-indent)
+(insert ").not.toThrow()")
+(previous-line 1)
+(coffee-newline-and-indent)
