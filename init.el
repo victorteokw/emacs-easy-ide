@@ -19,6 +19,9 @@
  linum-format "%2d "
  )
 
+;; Disable the unpolite sound
+(setq ring-bell-function (lambda () ()))
+
 ;; Nice fringe
 (set-fringe-mode '(10 . 10))
 (add-to-list 'default-frame-alist '(width . 83))
@@ -113,6 +116,11 @@
 ;; undo
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+;; buffer control
+
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "s-b") 'helm-buffers-list)
 
 ;; searching
 (require 'anzu)
@@ -212,6 +220,18 @@
 (global-set-key (kbd "C-c c c") 'mc/edit-lines)
 (global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
+
+;; C-a should go back to indentation and then line beginning
+(defun ky/back-to-indentation-or-beginning-of-line ()
+  (interactive)
+  (let ((p (point)))
+    (back-to-indentation)
+    (if (= p (point))
+        (move-beginning-of-line 1))))
+(global-set-key (kbd "C-a") 'ky/back-to-indentation-or-beginning-of-line)
+
+;; Use M-m for helm-imenu
+(global-set-key (kbd "M-m") 'helm-imenu)
 
 ;; All programming language setup
 
