@@ -43,6 +43,7 @@
 (depends-on "helm-projectile")
 (depends-on "helm-swoop")
 (depends-on "highlight-escape-sequences")
+(depends-on "highlight-symbol")
 (depends-on "hl-sexp")
 (depends-on "ido-ubiquitous")
 (depends-on "ido-vertical-mode")

@@ -122,6 +122,9 @@
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "s-b") 'helm-buffers-list)
 
+;; Calendar
+(require 'calfw)
+
 ;; searching
 (require 'anzu)
 (global-anzu-mode t)
@@ -142,7 +145,7 @@
 (global-set-key (kbd "C-h D") 'dash-at-point)
 
 ;; themes
-(require 'base16-ocean-dark-theme)
+;;(require 'base16-ocean-light-theme)
 
 ;; global line number
 (global-linum-mode)
@@ -210,6 +213,9 @@
   (newline-and-indent))
 (global-set-key [s-return] 'ignore-this-line-and-open-new-line)
 
+;; add new line if no lines
+(setq next-line-add-newlines t)
+
 ;; multiple cursors
 (require 'multiple-cursors)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -232,6 +238,10 @@
 
 ;; Use M-m for helm-imenu
 (global-set-key (kbd "M-m") 'helm-imenu)
+
+;; M-n and M-p to navigate around symbol at point
+(global-set-key (kbd "M-n") 'highlight-symbol-next)
+(global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
 ;; All programming language setup
 
@@ -261,6 +271,11 @@
 ;; rainbow parens
 (require 'rainbow-delimiters)
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+
+;; clear white space
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'whitespace-cleanup)))
 
 ;; editing
 (require 'paredit)
@@ -557,3 +572,4 @@
 (setq health-time-over-sound (expand-file-name "sounds/short.wav" user-emacs-directory))
 ;; Start health counting
 (health-go-to-work)
+(put 'set-goal-column 'disabled nil)
