@@ -250,53 +250,6 @@
 ;; All non programming language setup
 (add-hook 'text-mode-hook 'goto-address-mode)
 
-;; Emacs lisp
-
-;; emacs loading
-(setq load-prefer-newer t)
-
-;; jump
-(require 'elisp-slime-nav)
-(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
-  (add-hook hook 'turn-on-elisp-slime-nav-mode))
-
-;; litable
-          ; (require 'litable)
-          ; (add-hook 'emacs-lisp-mode-hook 'litable-mode)
-
-;; highlight sexp
-;; (require 'hl-sexp)
-;; (add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode)
-
-;; rainbow parens
-(require 'rainbow-delimiters)
-(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-
-;; clear white space
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'whitespace-cleanup)))
-
-;; editing
-(require 'paredit)
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-
-;; indentation
-(require 'aggressive-indent)
-(add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
-
-;; short documentation
-(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-
-;; check parens when saving
-(add-hook 'emacs-lisp-mode-hook
-    (lambda ()
-      (add-hook 'after-save-hook #'check-parens nil t)
-      ))
-
-;; open Cask file in elisp-mode
-(add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
-
 ;; expand macro
 (require 'macrostep)
 
@@ -305,26 +258,51 @@
 (setq yas-snippet-dirs (remove 'yas-installed-snippets-dir yas-snippet-dirs))
 (yas-reload-all)
 
-;; auto complete
-(require 'auto-complete)
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (setq ac-ignore-case nil)
-            (setq ac-sources '(ac-source-dictionary
-                               ac-source-features
-                               ac-source-functions
-                               ac-source-symbols
-                               ac-source-variables
-                               ac-source-words-in-same-mode-buffers
-                               ))
-            (auto-complete-mode t)
-            ))
+;; Emacs lisp
 
-;; bash
+;; .el file loading
+(setq load-prefer-newer t)
 
-;; (add-to-list 'ac-modes 'shell-mode)
-;; (require 'readline-complete)
-;; (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
+;; open Cask file in elisp-mode
+(add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+
+(defun ky/elisp-common-setup ()
+  "Elisp common setup."
+  ;; jump
+  (turn-on-elisp-slime-nav-mode)
+  ;; rainbow parens
+  (rainbow-delimiters-mode)
+  ;; editing
+  (paredit-mode)
+  ;; identation
+  (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
+  ;; highlight sexp
+  ;; (add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode)
+  ;; short documentation
+  (eldoc-mode)
+  ;; auto complete
+  (require 'auto-complete)
+  (setq ac-ignore-case nil)
+  (setq ac-sources '(ac-source-dictionary
+                     ac-source-features
+                     ac-source-functions
+                     ac-source-symbols
+                     ac-source-variables
+                     ac-source-words-in-same-mode-buffers
+                     ))
+  (auto-complete-mode t))
+
+(defun ky/elisp-spec-setup ()
+  "Elisp editing setup."
+  ;; clean whitespace
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+  ;; check parents when saving
+  (add-hook 'after-save-hook #'check-parens nil t))
+
+(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+  (add-hook hook 'ky/elisp-common-setup))
+
+(add-hook 'emacs-lisp-mode-hook 'ky/elisp-spec-setup)
 
 ;; Ruby
 
@@ -542,23 +520,6 @@
 (global-set-key [f9] 'package-install)
 (global-set-key [M-f9] 'package-list-packages)
 
-;; custom
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("26614652a4b3515b4bbbb9828d71e206cc249b67c9142c06239ed3418eff95e2" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
- )
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(hl-sexp-face ((t (:background "SeaGreen4")))))
-
 ;; Health
 
 (require 'health (expand-file-name "health.el" user-emacs-directory))
@@ -573,3 +534,11 @@
 ;; Start health counting
 (health-go-to-work)
 (put 'set-goal-column 'disabled nil)
+
+;; custom file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
+;; org
+(require 'myorg (expand-file-name "org.el" user-emacs-directory))
