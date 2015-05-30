@@ -65,6 +65,7 @@
 (depends-on "projectile-rails")
 (depends-on "rails-new")
 (depends-on "rainbow-delimiters")
+(depends-on "rainbow-mode")
 (depends-on "readline-complete")
 (depends-on "restclient")
 (depends-on "rspec-mode")

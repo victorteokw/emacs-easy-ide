@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expect( ... ).toBeCloseTo ...
+# key: expecttobecloseto
+# group: jasmine
+# --
+expect($1).toBeCloseTo $0

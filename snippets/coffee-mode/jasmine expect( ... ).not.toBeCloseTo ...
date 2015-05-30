@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expect( ... ).not.toBeCloseTo ...
+# key: expectnottobecloseto
+# group: jasmine
+# --
+expect($1).not.toBeCloseTo $0

@@ -73,13 +73,22 @@
   "Start count for 10 seconds to rest."
   (interactive)
   (setq health-start-time (current-time))
-  (setq health-end-time
-        (time-add health-start-time
-                  (seconds-to-time (* 60 health-session-length))))
+  (set-health-end-time-by-minutes health-session-length)
   (setq health-zero-time (seconds-to-time 0))
   (setq health-time-left nil)
   (setq health-timer nil)
   (health-stop-counting-if-needed)
   (health-start-counting))
+
+(defun health-change-time-interval (minutes)
+  "Change the health interval."
+  (interactive "nChange to how long: ")
+  (set-health-end-time-by-minutes minutes))
+
+(defun set-health-end-time-by-minutes (minutes)
+  "Count from `health-start-time', recalculate `health-end-time'."
+  (setq health-end-time
+        (time-add health-start-time
+                  (seconds-to-time (* 60 minutes)))))
 
 (provide 'health)
