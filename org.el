@@ -19,4 +19,10 @@
 ;; default notes file
 (setq org-default-notes-file (expand-file-name "default.org" org-directory))
 
+;; s-@ to org-capture
+(global-set-key (kbd "s-@") 'org-capture)
+
+;; s-! to cycle org files
+(global-set-key (kbd "s-!") 'org-cycle-agenda-files)
+
 (provide 'myorg)
