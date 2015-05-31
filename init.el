@@ -145,7 +145,7 @@
 (global-set-key (kbd "C-h D") 'dash-at-point)
 
 ;; themes
-;;(require 'base16-ocean-light-theme)
+(require 'base16-ocean-dark-theme)
 
 ;; global line number
 (global-linum-mode)

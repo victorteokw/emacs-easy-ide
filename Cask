@@ -26,6 +26,7 @@
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "flycheck")
+(depends-on "gist")
 (depends-on "git-blame")
 (depends-on "git-messenger")
 (depends-on "git-timemachine")
