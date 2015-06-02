@@ -145,7 +145,10 @@
 (global-set-key (kbd "C-h D") 'dash-at-point)
 
 ;; themes
-(require 'base16-ocean-dark-theme)
+;; (require 'base16-ocean-dark-theme)
+;; (require 'try-theme (expand-file-name "try-theme.el" user-emacs-directory))
+;;(require 'autumn-light-theme)
+(require 'solarized-light-theme)
 
 ;; global line number
 (global-linum-mode)
@@ -274,6 +277,7 @@
   (rainbow-delimiters-mode)
   ;; editing
   (paredit-mode)
+  (define-key paredit-mode-map (kbd "M-<left>") 'paredit-wrap-sexp)
   ;; identation
   (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
   ;; highlight sexp
@@ -441,6 +445,9 @@
 ;; restclient
 (require 'restclient)
 
+(if (file-exists-p "/Users/1/Documents/Project/jst-mode/jst-mode.el")
+    (require 'jst-mode "/Users/1/Documents/Project/jst-mode/jst-mode.el"))
+
 ;; javascript
 (add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js2-mode))
 (setq js2-basic-offset 2)
@@ -451,7 +458,9 @@
             (js2-imenu-extras-mode)
             ;; Clean whitespace
             (add-hook 'before-save-hook 'whitespace-cleanup)
-
+            ;; JST mode
+            (if (fboundp 'jst-enable-appropriate-mode)
+                (jst-enable-appropriate-mode))
             ))
 
 ;; Jasmine
@@ -486,6 +495,9 @@
             ;; syntax checking
             (setq flycheck-checker 'coffee)
             (flycheck-mode)
+            ;; JST mode
+            (if (fboundp 'jst-enable-appropriate-mode)
+                (jst-enable-appropriate-mode))
             ))
 
 ;; php
