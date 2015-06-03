@@ -284,6 +284,8 @@
   ;; (add-hook 'emacs-lisp-mode-hook 'hl-sexp-mode)
   ;; short documentation
   (eldoc-mode)
+  ;; show parens
+  (show-paren-mode)
   ;; auto complete
   (require 'auto-complete)
   (setq ac-ignore-case nil)
