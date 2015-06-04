@@ -19,6 +19,10 @@
  linum-format "%2d "
  )
 
+;; Local variable safety
+(setq enable-local-variables nil)
+(setq enable-local-eval nil)
+
 ;; Disable the unpolite sound
 (setq ring-bell-function (lambda () ()))
 
