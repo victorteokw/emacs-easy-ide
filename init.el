@@ -12,7 +12,7 @@
  visibel-bell t ;; do not beep
  indent-tabs-mode nil ;; use whitespace to indent
  tab-width 2
- initial-scratch-message ";; Life and health, family and oxygen.\n\n"
+ initial-scratch-message ";; Family, health, life and Earth.\n\n"
  make-backup-files nil ;; do not backup files
  ;; initial-major-mode 'ruby-mode
  fill-column 80
@@ -149,10 +149,9 @@
 (global-set-key (kbd "C-h D") 'dash-at-point)
 
 ;; themes
-;; (require 'base16-ocean-dark-theme)
+(require 'base16-ocean-dark-theme)
 ;; (require 'try-theme (expand-file-name "try-theme.el" user-emacs-directory))
-;;(require 'autumn-light-theme)
-(require 'solarized-light-theme)
+;; (require 'solarized-light-theme)
 
 ;; global line number
 (global-linum-mode)
