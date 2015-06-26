@@ -149,9 +149,9 @@
 (global-set-key (kbd "C-h D") 'dash-at-point)
 
 ;; themes
-(require 'base16-ocean-dark-theme)
+;; (require 'base16-ocean-dark-theme)
 ;; (require 'try-theme (expand-file-name "try-theme.el" user-emacs-directory))
-;; (require 'solarized-light-theme)
+(require 'solarized-light-theme)
 
 ;; global line number
 (global-linum-mode)
@@ -559,3 +559,4 @@
 
 ;; org
 (require 'myorg (expand-file-name "org.el" user-emacs-directory))
+(put 'narrow-to-region 'disabled nil)
