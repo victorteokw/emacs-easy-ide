@@ -52,8 +52,6 @@
 (require 'gitignore-mode)
 (require 'gitconfig-mode)
 (require 'git-messenger)
-(require 'git-commit-mode)
-(require 'git-rebase-mode)
 (require 'git-blame)
 (require 'diff-hl)
 (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
@@ -101,9 +99,10 @@
       auto-revert-verbose nil)
 
 ;; helm
+(require 'helm)
 (require 'helm-config)
-(require 'helm-projectile)
-(helm-autoresize-mode)
+;; (require 'helm-projectile)
+;; (helm-autoresize-mode)
 (global-set-key (kbd "s-i") 'helm-mini)
 (global-set-key (kbd "s-x") 'helm-M-x)
 (setq helm-M-x-fuzzy-match t)
@@ -149,9 +148,9 @@
 (global-set-key (kbd "C-h D") 'dash-at-point)
 
 ;; themes
-;; (require 'base16-ocean-dark-theme)
+(require 'base16-ocean-dark-theme)
 ;; (require 'try-theme (expand-file-name "try-theme.el" user-emacs-directory))
-(require 'solarized-light-theme)
+;; (require 'solarized-light-theme)
 
 ;; global line number
 (global-linum-mode)
@@ -511,6 +510,7 @@
 ;; c
 (add-hook 'c-mode-common-hook
           (lambda ()
+            (electric-pair-mode)
             ;; Auto complete main
             (require 'auto-complete-clang-async)
             (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
@@ -532,6 +532,8 @@
             ;; Syntax checking
             (flycheck-mode)
             ))
+
+(global-set-key (kbd "s-;") 'comment-dwim)
 
 ;; packages
 (global-set-key [f9] 'package-install)
@@ -560,3 +562,6 @@
 ;; org
 (require 'myorg (expand-file-name "org.el" user-emacs-directory))
 (put 'narrow-to-region 'disabled nil)
+
+;; bash
+(require 'ky-bash (expand-file-name "ky-bash.el" user-emacs-directory))

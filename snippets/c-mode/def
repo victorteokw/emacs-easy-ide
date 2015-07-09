@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: def
+# key: def
+# --
+#define ${1:WHAT} ${2:what}$0

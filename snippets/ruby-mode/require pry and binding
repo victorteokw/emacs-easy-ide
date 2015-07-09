@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: require pry and binding
+# key: pry
+# binding: direct-keybinding
+# group: debugging
+# --
+require 'pry'; binding.pry

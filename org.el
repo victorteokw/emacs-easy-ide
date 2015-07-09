@@ -25,4 +25,10 @@
 ;; s-! to cycle org files
 (global-set-key (kbd "s-!") 'org-cycle-agenda-files)
 
+;; s-% to open agenda menu
+(global-set-key (kbd "s-%") 'org-agenda)
+
+;; mobile org
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+(setq org-mobile-inbox-for-pull (expand-file-name "mobile_inbox.org" org-directory))
 (provide 'myorg)

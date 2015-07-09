@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: typedef struct
+# key: ts
+# --
+typedef struct ${1:name} {
+  $2
+} $1;
+$0

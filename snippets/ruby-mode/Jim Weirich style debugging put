@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Jim Weirich style debugging put
+# key: dbg
+# binding: direct-keybinding
+# group: debugging
+# --
+puts "DBG: $1=#{$1.inspect}"$0
