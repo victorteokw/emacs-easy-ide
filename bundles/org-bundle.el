@@ -1,3 +1,5 @@
+(put 'narrow-to-region 'disabled nil)
+
 ;; default org directory
 (setq org-directory (expand-file-name "orgs" user-emacs-directory))
 
@@ -31,4 +33,4 @@
 ;; mobile org
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 (setq org-mobile-inbox-for-pull (expand-file-name "mobile_inbox.org" org-directory))
-(provide 'myorg)
+(provide 'org-bundle)

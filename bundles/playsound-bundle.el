@@ -1,4 +1,5 @@
-;;; Code:
+;; Some emacs doesn't have the ability to playsound
+;; My emacs is one of them.
 
 (require 'cl-lib)
 (unless (and (fboundp 'play-sound-internal)
@@ -19,5 +20,4 @@
              "afplay" (append
                        (list (expand-file-name file data-directory)))))))
 
-(provide 'play-sound)
-;;; play-sound.el ends here
+(provide 'playsound-bundle)
