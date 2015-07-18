@@ -24,3 +24,10 @@ tramp
 /orgs
 /var
 /.org-id-locations
+
+# Ede projects file
+/ede-projects.el
+# Semanticdb
+/semanticdb/
+# irony I just want to keep it
+# /irony

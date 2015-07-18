@@ -1,8 +1,10 @@
 ;; Using meta-backtip to open menu bar on terminal
 (define-key global-map (kbd "M-`") 'menu-bar-open)
 
+(tool-bar-mode -1)
+
 (setq-default
- ;; inhibit-splash-screen t ;; disable splash screen
+ inhibit-splash-screen t ;; disable splash screen
  visibel-bell t ;; do not beep
  initial-scratch-message ";; Have fun!"
  linum-format "%2d "
@@ -68,7 +70,9 @@
 (require 'calfw)
 
 ;; themes
-(require 'base16-ocean-dark-theme)
+
+;; (require 'base16-mocha-dark-theme)
+;; (require 'base16-ocean-dark-theme)
 ;; (require 'try-theme (expand-file-name "try-theme.el" user-emacs-directory))
 ;; (require 'solarized-light-theme)
 

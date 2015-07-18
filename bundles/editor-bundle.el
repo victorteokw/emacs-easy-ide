@@ -1,8 +1,8 @@
 (setq-default
  indent-tabs-mode nil ;; use whitespace to indent
- tab-width 2
+ tab-width 2          ;; tab width 2
  make-backup-files nil ;; do not backup files
- ;; initial-major-mode 'ruby-mode
+ ;; initial-major-mode 'ruby-mode ;; initial major mode
  fill-column 80
  )
 
@@ -13,7 +13,6 @@
 ;; exec path
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
-
 
 ;; project
 (require 'projectile)
@@ -151,5 +150,8 @@
 
 ;; expand macro
 (require 'macrostep)
+
+;; comment do what i mean
+(global-set-key (kbd "s-;") 'comment-dwim)
 
 (provide 'editor-bundle)

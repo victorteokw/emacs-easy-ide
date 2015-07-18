@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Function prototype
+# key: funp
+# --
+${1:void} ${2:name}(${3:void});
