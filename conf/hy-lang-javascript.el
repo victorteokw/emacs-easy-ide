@@ -25,32 +25,4 @@
 (dolist (hook '(js2-mode-hook js-mode-hook json-mode-hook))
   (add-hook hook 'rainbow-delimiters-mode))
 
-
-;; coffeeScript
-
-(defun ky/coffee-new-line-at-end-and-indent ()
-  "Move to the end of line and indent like coffee."
-  (interactive)
-  (move-end-of-line 1)
-  (coffee-newline-and-indent))
-
-(require 'coffee-mode)
-(define-key coffee-mode-map [s-return] 'ky/coffee-new-line-at-end-and-indent)
-
-(add-hook 'coffee-mode-hook
-          (lambda ()
-            ;; use yard mode for highlight documentation
-            (yard-mode)
-            ;; Clean whitespace
-            (add-hook 'before-save-hook 'whitespace-cleanup)
-            ;; use snippets
-            (yas-minor-mode-on)
-            ;; syntax checking
-            (setq flycheck-checker 'coffee)
-            (flycheck-mode)
-            ;; JST mode
-            (if (fboundp 'jst-enable-appropriate-mode)
-                (jst-enable-appropriate-mode))
-            ))
-
-(provide 'js-bundle)
+(provide 'hy-lang-javascript)

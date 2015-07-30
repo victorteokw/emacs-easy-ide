@@ -154,4 +154,4 @@
 ;; comment do what i mean
 (global-set-key (kbd "s-;") 'comment-dwim)
 
-(provide 'editor-bundle)
+(provide 'hy-core-editor)

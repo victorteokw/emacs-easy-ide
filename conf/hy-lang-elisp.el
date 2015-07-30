@@ -47,4 +47,4 @@
 
 (add-hook 'emacs-lisp-mode-hook 'ky/elisp-spec-setup)
 
-(provide 'elisp-bundle)
+(provide 'hy-lang-elisp)

@@ -1,0 +1,1 @@
+(provide 'hy-lang-less)

@@ -1,13 +1,14 @@
 ;; Using meta-backtip to open menu bar on terminal
 (define-key global-map (kbd "M-`") 'menu-bar-open)
 
+;; Do not show toolbar
 (tool-bar-mode -1)
 
 (setq-default
- inhibit-splash-screen t ;; disable splash screen
- visibel-bell t ;; do not beep
- initial-scratch-message ";; Have fun!"
- linum-format "%2d "
+ inhibit-splash-screen t                ;; disable splash screen
+ visibel-bell t                         ;; do not beep
+ initial-scratch-message "\n"           ;; empty initial message
+ linum-format "%2d "                    ;; line number format at the left column
  )
 
 ;; Disable the beep sound
@@ -17,12 +18,11 @@
 (set-fringe-mode '(10 . 10))
 (add-to-list 'default-frame-alist '(width . 83))
 
-;; Font
+;; Global font
 (set-face-attribute 'default nil :height 140)
 
 ;; Pretty symbol
 (global-prettify-symbols-mode)
-;; (diminish 'global-prettify-symbols-mode)
 
 ;; Ido interface
 (require 'ido)
@@ -71,16 +71,16 @@
 
 ;; themes
 
-;; (require 'base16-mocha-dark-theme)
-;; (require 'base16-ocean-dark-theme)
-;; (require 'try-theme (expand-file-name "try-theme.el" user-emacs-directory))
-;; (require 'solarized-light-theme)
+(require 'base16-ocean-dark-theme)
 
 ;; global line number
 (global-linum-mode)
+;; show column number at the status bar
+(column-number-mode)
 
 ;; packages
 (global-set-key [f9] 'package-install)
 (global-set-key [M-f9] 'package-list-packages)
+(global-set-key [s-f9] 'package-list-packages-no-fetch)
 
-(provide 'ui-bundle)
+(provide 'hy-core-ui)

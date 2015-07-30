@@ -27,29 +27,8 @@
 (require 'yari)
 (global-set-key (kbd "C-h y") 'yari-helm)
 
-;; yaml
-(require 'yaml-mode)
-
-;; rails
-(require 'projectile-rails)
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-(require 'rails-new)
-
-;; mini test
-(require 'minitest)
-(setq minitest-keymap-prefix (kbd "C-c t"))
-(eval-after-load 'minitest
-  '(minitest-install-snippets))
-
-;; rspec
-(require 'rspec-mode)
-(setq rspec-key-command-prefix (kbd "C-c t"))
-(eval-after-load 'rspec-mode
-  '(rspec-install-snippets))
-
 ;; yasnippet
 (add-hook 'ruby-mode-hook 'yas-minor-mode-on)
-
 
 ;; syntax
 (add-hook 'ruby-mode-hook
@@ -68,7 +47,6 @@
 (require 'yard-mode)
 (add-hook 'ruby-mode-hook 'yard-mode)
 
-
 ;; whitespace cleaning
 (add-hook 'ruby-mode-hook
           '(lambda ()
@@ -84,4 +62,4 @@
 ;; guard
 ;; (require 'ruby-guard)
 
-(provide 'ruby-bundle)
+(provide 'hy-lang-ruby)

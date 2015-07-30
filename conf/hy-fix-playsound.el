@@ -20,4 +20,4 @@
              "afplay" (append
                        (list (expand-file-name file data-directory)))))))
 
-(provide 'playsound-bundle)
+(provide 'hy-fix-playsound)

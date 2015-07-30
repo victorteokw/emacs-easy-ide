@@ -33,4 +33,4 @@
 ;; mobile org
 (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 (setq org-mobile-inbox-for-pull (expand-file-name "mobile_inbox.org" org-directory))
-(provide 'org-bundle)
+(provide 'hy-gtd-org)

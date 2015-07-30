@@ -19,4 +19,4 @@
 (require 'github-clone)
 
 
-(provide 'cvs-bundle)
+(provide 'hy-core-cvs)

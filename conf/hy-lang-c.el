@@ -59,4 +59,4 @@ lt.xctoolchain/usr/include")
 ;;                       :file "~/sss.cpp"
 ;;                       :include-path '("/../my_inc"))
 
-(provide 'c-bundle)
+(provide 'hy-lang-c)

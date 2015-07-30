@@ -7,4 +7,4 @@
 (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
 (add-hook 'shell-mode-hook 'auto-complete-mode)
 
-(provide 'shell-bundle)
+(provide 'hy-proc-shell)

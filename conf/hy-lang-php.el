@@ -1,3 +1,3 @@
 ;; php
 (require 'php-mode)
-(provide 'php-bundle)
+(provide 'hy-lang-php)

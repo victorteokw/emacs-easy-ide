@@ -1,3 +1,3 @@
 ;; Link can be clicked
 (add-hook 'prog-mode-hook 'goto-address-prog-mode)
-(provide 'prog-bundle)
+(provide 'hy-lang-prog)
