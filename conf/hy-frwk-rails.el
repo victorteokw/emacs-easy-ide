@@ -17,5 +17,11 @@
 (eval-after-load 'rspec-mode
   '(rspec-install-snippets))
 
+(defun hy-frwk-rails-open-with-rubymine ()
+  "Open current project with rubymine."
+  (interactive)
+  (call-process-shell-command "open" nil nil nil (projectile-project-root) "-b" "com.jetbrains.rubymine"))
+
+(define-key projectile-rails-mode-map (kbd "C-c C-c C-m") 'hy-frwk-rails-open-with-rubymine)
 
 (provide 'hy-frwk-rails)

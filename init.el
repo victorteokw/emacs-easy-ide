@@ -14,6 +14,7 @@
 ;;; Editor core
 
 (require 'hy-core-ui)                   ;; User interface configuration
+(require 'hy-core-splash-page)          ;; Better splash page
 (require 'hy-core-editor)               ;; Editor configuration
 (require 'hy-core-cvs)                  ;; git configuration
 
