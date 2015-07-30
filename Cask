@@ -60,6 +60,7 @@
 (depends-on "js2-mode")
 (depends-on "json-mode")
 (depends-on "jst")
+(depends-on "less-css-mode")
 (depends-on "let-alist")
 (depends-on "litable")
 (depends-on "macrostep")
