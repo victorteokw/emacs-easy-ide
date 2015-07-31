@@ -33,7 +33,11 @@
                      ac-source-variables
                      ac-source-words-in-same-mode-buffers
                      ))
-  (auto-complete-mode t))
+  (auto-complete-mode t)
+
+  ;; yasnippet
+  (yas-minor-mode)
+  )
 
 (defun ky/elisp-spec-setup ()
   "Elisp editing setup."
