@@ -19,9 +19,13 @@
 ;; inferior ruby
 (require 'inf-ruby)
 (require 'ac-inf-ruby)
-(add-hook 'inf-ruby-mode-hook (lambda ()
-                                (ac-inf-ruby-enable)
-                                (auto-complete-mode)))
+(add-hook 'inf-ruby-mode-hook
+          (lambda ()
+            (ac-inf-ruby-enable)
+            (auto-complete-mode)))
+
+;; electric pair
+(add-hook 'ruby-mode-hook 'electric-pair-mode)
 
 ;; ri documentation
 (require 'yari)
