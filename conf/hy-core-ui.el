@@ -63,9 +63,6 @@
 (setq helm-imenu-fuzzy-match t)
 (setq helm-apropos-fuzzy-match t)
 
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "s-b") 'helm-buffers-list)
-
 ;; Calendar
 (require 'calfw)
 

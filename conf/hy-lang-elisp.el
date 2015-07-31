@@ -23,21 +23,21 @@
   (eldoc-mode)
   ;; show parens
   (show-paren-mode)
+  ;; yasnippet
+  (yas-minor-mode)
+
   ;; auto complete
   (require 'auto-complete)
   (setq ac-ignore-case nil)
-  (setq ac-sources '(ac-source-dictionary
+  (setq ac-sources '(ac-source-yasnippet
+                     ac-source-dictionary
                      ac-source-features
                      ac-source-functions
                      ac-source-symbols
                      ac-source-variables
                      ac-source-words-in-same-mode-buffers
                      ))
-  (auto-complete-mode t)
-
-  ;; yasnippet
-  (yas-minor-mode)
-  )
+  (auto-complete-mode t))
 
 (defun ky/elisp-spec-setup ()
   "Elisp editing setup."

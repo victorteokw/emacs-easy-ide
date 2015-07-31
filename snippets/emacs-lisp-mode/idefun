@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: idefun
+# key: idefun
+# --
+(defun ${1:function-name} (${2:args})
+"${3:Not documented yet.}"
+(interactive${4: ${5:"p"}})
+$0
+)

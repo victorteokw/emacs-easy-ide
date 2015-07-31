@@ -154,4 +154,11 @@
 ;; comment do what i mean
 (global-set-key (kbd "s-;") 'comment-dwim)
 
+;; close current file
+(global-set-key (kbd "s-w") 'kill-this-buffer)
+
+;; previous file and next file
+(global-set-key (kbd "s-b") 'previous-buffer)
+(global-set-key (kbd "s-f") 'next-buffer)
+
 (provide 'hy-core-editor)
