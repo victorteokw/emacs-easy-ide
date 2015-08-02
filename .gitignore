@@ -5,6 +5,7 @@
 /eshell
 ac-comphist.dat
 .smex-items
+/custom.el
 *~
 rake.cache
 /snippets/objc-mode/

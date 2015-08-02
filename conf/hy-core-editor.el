@@ -18,6 +18,11 @@
 (require 'projectile)
 (projectile-global-mode)
 
+;; C-s-p to switch project (same with sublime text)
+(global-set-key [C-s-268632080] 'projectile-switch-project)
+;; s-p to switch file in project (same with sublime text)
+(global-set-key (kbd "s-p") 'projectile-find-file)
+
 ;; searching
 (require 'anzu)
 (global-anzu-mode t)
@@ -33,6 +38,8 @@
 (define-key global-map (kbd "C-;") 'ace-jump-char-mode)
 (define-key global-map (kbd "C-:") 'ace-jump-word-mode)
 (define-key global-map (kbd "C-M-;") 'ace-jump-line-mode)
+;; jump after
+(add-hook 'ace-jump-mode-end-hook 'forward-char)
 
 ;; dash
 (global-set-key (kbd "C-h D") 'dash-at-point)

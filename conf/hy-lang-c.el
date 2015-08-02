@@ -16,7 +16,7 @@ lt.xctoolchain/usr/include")
 
   ;; clang-async auto complete
   (require 'auto-complete-clang-async)
-  (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
+  (setq ac-clang-complete-executable "~/.emacs.d/bin/clang-complete")
   (add-to-list 'ac-sources 'ac-source-clang-async)
   (ac-clang-launch-completion-process)
 
