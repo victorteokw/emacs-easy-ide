@@ -6,10 +6,18 @@
 ;; open Cask file in elisp-mode
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 
+(defun hy-lang-elisp-click-to-jump (event)
+  "you know"
+  (interactive "e")
+  (select-window (posn-window (event-start event)))
+  (goto-char (posn-point (event-start event)))
+  (elisp-slime-nav-find-elisp-thing-at-point (elisp-slime-nav--read-symbol-at-point)))
+
 (defun ky/elisp-common-setup ()
   "Elisp common setup."
   ;; jump
   (turn-on-elisp-slime-nav-mode)
+  (define-key elisp-slime-nav-mode-map [s-mouse-1] 'hy-lang-elisp-click-to-jump)
   ;; rainbow parens
   (rainbow-delimiters-mode)
   ;; editing

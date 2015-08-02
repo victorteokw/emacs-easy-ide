@@ -8,7 +8,6 @@
  inhibit-splash-screen t                ;; disable splash screen
  visibel-bell t                         ;; do not beep
  initial-scratch-message "\n"           ;; empty initial message
- linum-format "%2d "                    ;; line number format at the left column
  )
 
 ;; Disable the beep sound
@@ -66,14 +65,39 @@
 ;; Calendar
 (require 'calfw)
 
-;; themes
+;;; themes
 
 (require 'base16-ocean-dark-theme)
 
+;;; Line number
+
+;; disable linum function
+(defun hy-core-ui-linumoff ()
+  (linum-mode -1))
+
+;; format
+(setq-default  linum-format "%2d ")
+
+;; disable in non-programming modes
+(eval-when-compile (require 'linum-off))
+(setq linum-diabled-modes-list '(eshell-mode compilation-mode org-mode help-mode dired-mode doc-view-mode image-mode comint-mode))
+
+;; fix for image mode (linum-off doesn't work here)
+(add-hook 'image-mode-hook 'hy-core-ui-linumoff)
+
 ;; global line number
 (global-linum-mode)
+(add-hook 'linum-mode-hook 'hlinum-activate)
+(eval-when-compile (require 'hlinum))
+(set-face-foreground 'linum-highlight-face "#343d46")
+(set-face-background 'linum-highlight-face "#65737e")
+
 ;; show column number at the status bar
 (column-number-mode)
+
+;;; Highlight current line
+
+(global-hl-line-mode)
 
 ;; packages
 (global-set-key [f9] 'package-install)
