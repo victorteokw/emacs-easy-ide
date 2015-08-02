@@ -51,4 +51,11 @@
 
 (add-hook 'emacs-lisp-mode-hook 'ky/elisp-spec-setup)
 
+;; Flycheck elisp
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (flycheck-mode)
+            (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+            ))
+
 (provide 'hy-lang-elisp)

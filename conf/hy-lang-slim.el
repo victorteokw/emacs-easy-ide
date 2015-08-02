@@ -1,3 +1,5 @@
+(require 'auto-complete)
+
 ;; Completion for slim mode
 (defun hy-lang-slim-setup-auto-completion ()
   "You know what it means."
@@ -9,5 +11,7 @@
   (auto-complete-mode))
 
 (add-hook 'slim-mode-hook 'hy-lang-slim-setup-auto-completion)
+
+(add-hook 'slim-mode-hook 'flycheck-mode)
 
 (provide 'hy-lang-slim)
