@@ -69,8 +69,6 @@
 
 ;; expand region
 (defalias 'save-mark-and-excursion 'save-excursion)
-(defmacro save-mark-and-excursion (&rest body)
-  `(save-excursion ,@body)) ;; fixed a bug
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
@@ -109,7 +107,7 @@
 (defun ignore-this-line-and-move-to-next-line ()
   "Ignore this line and move to next line."
   (interactive)
-  (next-line)
+  (forward-line)
   (move-end-of-line 1))
 (global-set-key [M-s-return] 'ignore-this-line-and-move-to-next-line)
 
@@ -153,7 +151,8 @@
 ;; Snippets
 (require 'yasnippet)
 (setq yas-snippet-dirs (remove 'yas-installed-snippets-dir yas-snippet-dirs))
-(yas-reload-all)
+(yas-global-mode)
+;; (yas-reload-all)
 
 ;; expand macro
 (require 'macrostep)

@@ -1,4 +1,4 @@
-;;; User emacs configuration file
+;;; User emacs configuration boot file
 ;;; This config uses "hy-" as a namespace
 ;;; All the configuration files resides in ~/.emacs.d/conf
 
@@ -9,7 +9,8 @@
 (pallet-mode t)
 
 ;; Setup loading path for configuration files
-(add-to-list 'load-path (expand-file-name "conf" user-emacs-directory))
+(eval-when-compile
+  (add-to-list 'load-path (expand-file-name "conf" user-emacs-directory)))
 
 ;;; Editor core
 
