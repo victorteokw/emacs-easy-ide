@@ -14,6 +14,9 @@
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
+;; when selection is active, typing cause it deleted
+(delete-selection-mode)
+
 ;; project
 (require 'projectile)
 (projectile-global-mode)
@@ -53,9 +56,13 @@
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
 
-;; undo
+;;; Undo and Redo
+
+;; use command+z to undo, command+shift+z to redo
 (require 'undo-tree)
 (global-undo-tree-mode)
+(global-set-key (kbd "s-z") 'undo-tree-undo)
+(global-set-key (kbd "s-Z") 'undo-tree-redo)
 
 ;; global hippie expand
 (global-set-key (kbd "M-/") 'hippie-expand)
