@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: debug io output
+# key: dio
+# --
+IO.write('/Users/1/Desktop/debug.txt', ${1:obj})$0

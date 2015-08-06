@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: @mixin
+# key: mix
+# --
+@mixin ${1:name}($2) {
+$0
+}

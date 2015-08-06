@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: text-transform
+# key: tt
+# group: key
+# --
+text-transform: $1;$0

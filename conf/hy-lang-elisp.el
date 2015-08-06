@@ -17,7 +17,7 @@
   "Elisp common setup."
   ;; jump
   (turn-on-elisp-slime-nav-mode)
-  (define-key elisp-slime-nav-mode-map [s-mouse-1] 'hy-lang-elisp-click-to-jump)
+  (define-key elisp-slime-nav-mode-map [M-mouse-1] 'hy-lang-elisp-click-to-jump)
   ;; rainbow parens
   (rainbow-delimiters-mode)
   ;; editing

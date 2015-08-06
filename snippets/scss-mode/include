@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: include
+# key: i
+# group: mixin
+# --
+@include ${1:mixin}($2);$0

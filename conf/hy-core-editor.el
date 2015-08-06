@@ -17,14 +17,36 @@
 ;; when selection is active, typing cause it deleted
 (delete-selection-mode)
 
-;; project
+;;; Project management
+
 (require 'projectile)
 (projectile-global-mode)
+;; open main dir after go to that project
+(setq projectile-switch-project-action 'projectile-dired)
+
+;; work space management
+(persp-mode)
+(require 'persp-projectile)
 
 ;; C-s-p to switch project (same with sublime text)
-(global-set-key [C-s-268632080] 'projectile-switch-project)
+(global-set-key [C-s-268632080] 'projectile-persp-switch-project)
 ;; s-p to switch file in project (same with sublime text)
 (global-set-key (kbd "s-p") 'projectile-find-file)
+
+(defun hy-core-editor-load-proj-settings ()
+  ""
+  )
+
+(add-hook 'projectile-switch-project-hook 'hy-core-editor-load-proj-settings)
+
+;;; Cursor Moving
+
+(defun hy-core-editor-last-cursor-position ()
+  "Not documented yet."
+  (interactive)
+  (set-mark-command 1))
+
+(global-set-key (kbd "s-u") 'hy-core-editor-last-cursor-position)
 
 ;; searching
 (require 'anzu)
@@ -32,7 +54,8 @@
 (global-set-key (kbd "M-%") 'anzu-query-replace-regexp)
 (global-set-key (kbd "C-M-%") 'anzu-query-replace)
 
-;; jumping
+;;; jumping
+
 (require 'ace-jump-mode)
 (eval-after-load "ace-jump-mode"
   '(ace-jump-mode-enable-mark-sync))
@@ -66,6 +89,7 @@
 
 ;; global hippie expand
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "s-'") 'hippie-expand)
 
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially
@@ -128,11 +152,26 @@
 ;; add new line if no lines
 (setq next-line-add-newlines t)
 
-;; multiple cursors
+;;; Multiple Cursors
+
 (require 'multiple-cursors)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;; Use s-g as prefix key
+(define-prefix-command 'hy-s-g)
+(global-set-key (kbd "s-g") 'hy-s-g)
+
+(global-set-key (kbd "s-d") 'mc/mark-next-like-this)
+(global-set-key (kbd "s-D") 'mc/skip-to-next-like-this)
+(global-set-key (kbd "s-g s-d") 'mc/unmark-next-like-this)
+(global-set-key (kbd "s-e") 'mc/mark-previous-like-this)
+(global-set-key (kbd "s-E") 'mc/skip-to-previous-like-this)
+(global-set-key (kbd "s-l") 'mc/mark-all-dwim)
+(global-set-key (kbd "s-L") 'mc/mark-all-like-this)
+
+(global-set-key (kbd "s-g a") 'mc/mark-all-like-this-in-defun)
+
+(global-set-key [s-mouse-1] 'mc/add-cursor-on-click)
+
 ;; From active region to multiple cursors:
 (global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
 (global-set-key (kbd "C-c c c") 'mc/edit-lines)

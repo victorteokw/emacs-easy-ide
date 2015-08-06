@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: background color
+# key: bgc
+# group: keys
+# --
+background: $1;$0
