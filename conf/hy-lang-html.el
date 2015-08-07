@@ -27,10 +27,10 @@
 (add-hook 'web-mode-hook 'auto-complete-mode)
 
 ;; elnode is a super engine
-(require 'elnode)
+;;(require 'elnode)
 
 ;; restclient
-(require 'restclient)
+;;(require 'restclient)
 
 
 (provide 'hy-lang-html)
