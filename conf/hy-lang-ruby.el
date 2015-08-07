@@ -17,6 +17,8 @@
 ;; compilation
 (require 'ruby-compilation)
 
+(define-key ruby-mode-map (kbd "s-R") 'ruby-compilation-this-buffer)
+
 ;; inferior ruby
 (require 'inf-ruby)
 (require 'ac-inf-ruby)
