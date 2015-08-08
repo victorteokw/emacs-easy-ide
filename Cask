@@ -79,7 +79,6 @@
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "paredit")
-(depends-on "persp-projectile")
 (depends-on "php-mode")
 (depends-on "popup")
 (depends-on "powerline")

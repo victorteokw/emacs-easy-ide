@@ -43,10 +43,6 @@
 
 (projectile-global-mode)
 
-;; work space management
-(persp-mode)
-(require 'persp-projectile)
-
 ;; (add-hook 'projectile-switch-project-hook ')
 
 ;;; Cursor Moving
