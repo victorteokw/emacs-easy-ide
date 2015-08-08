@@ -69,4 +69,8 @@
 ;; guard
 ;; (require 'ruby-guard)
 
+;; rake
+(eval-after-load "rake"
+  '(setq rake-cache-file (f-expand "rake.cache" eide-etc-dir)))
+
 (provide 'hy-lang-ruby)

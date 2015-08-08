@@ -70,4 +70,9 @@
             (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
             ))
 
+;; eshell
+(eval-after-load
+    "eshell"
+  '(setq eshell-directory-name (f-expand "etc/eshell" eide-etc-dir)))
+
 (provide 'hy-lang-elisp)

@@ -175,4 +175,17 @@
 (setq yas-snippet-dirs (remove 'yas-installed-snippets-dir yas-snippet-dirs))
 (yas-global-mode)
 
+;;; pcache
+
+(eval-after-load "pcache"
+  (setq pcache-directory (f-expand "pcache" eide-etc-dir)))
+
+;;; Auto save list
+
+(setq auto-save-list-file-prefix (f-expand "auto-save-list/.saves-" eide-etc-dir))
+
+;;; remove url
+(eval-after-load "url"
+  '(setq url-configuration-directory (f-expand "url" eide-etc-dir)))
+
 (provide 'eide-editor)
