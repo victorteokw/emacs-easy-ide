@@ -150,7 +150,13 @@
 (setq next-line-add-newlines t)
 
 ;;; Multiple Cursors
-;; just see key map
+(eval-after-load "multiple-cursors"
+  '(setq mc/list-file (f-expand ".mc-lists.el" eide-etc-dir)))
+
+;;; Auto complete
+
+(eval-after-load "auto-complete"
+  '(setq ac-comphist-file (f-expand "ac-comphist.dat" eide-etc-dir)))
 
 (defun eide-smart-beginning-of-line ()
   (interactive)

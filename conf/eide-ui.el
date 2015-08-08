@@ -61,6 +61,9 @@
                                   ".c" ".html" ".md" ".py" ".el" ".es6"))
 (setq ido-ignore-files '(".DS_Store" "*.scssc"))
 (setq ido-use-filename-at-point nil) ;; do not guess my taste
+(setq ido-save-directory-list-file
+      (f-expand "ido.hist" eide-etc-dir))
+(setq ido-auto-merge-work-directories-length -1)
 
 ;; Display ido results vertically, rather than horizontally
 (setq ido-decorations
@@ -75,12 +78,14 @@
 (add-hook 'ido-setup-hook 'ido-define-keys)
 
 (ido-mode t)
-(require 'ido-ubiquitous)
 (ido-ubiquitous-mode)
-(require 'smex)
-(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
-(global-set-key [remap execute-extended-command] 'smex)
-(global-set-key (kbd "s-P") 'smex)
+
+
+;; smex
+
+(eval-after-load "smex"
+  '(progn
+     (setq smex-save-file (f-expand ".smex-items" eide-etc-dir))))
 
 ;;; guide key
 

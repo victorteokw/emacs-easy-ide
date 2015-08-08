@@ -11,16 +11,13 @@
 
 (require 'f)
 
-(defconst eide-conf-dir
-  (f-expand "conf/" user-emacs-directory)
-  "Eide configuration directory.")
+(defconst eide-conf-dir (f-expand "conf/" user-emacs-directory)
+  "Eide conf directory.")
 
-(defconst eide-etc-dir
-  (f-expand "etc/" user-emacs-directory)
+(defconst eide-etc-dir (f-expand "etc/" user-emacs-directory)
   "Eide etc directory.")
 
-(eval-when-compile
-  (add-to-list 'load-path eide-conf-dir))
+(eval-when-compile (add-to-list 'load-path eide-conf-dir))
 
 ;;; Editor core
 

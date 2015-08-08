@@ -1,3 +1,12 @@
+;;; Editor basic
+
+;; smex
+(global-set-key [remap execute-extended-command] 'smex)
+(global-set-key (kbd "s-P") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+
+
 ;;; Move cursor
 
 ;; C-a smart move

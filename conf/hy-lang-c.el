@@ -52,6 +52,8 @@ lt.xctoolchain/usr/include")
   (irony-mode)
   )
 
+;;(eval-after-load "irony")
+
 (add-hook 'c-mode-common-hook 'hoiyu/c-mode-setup)
 
 ;; (global-ede-mode 1)
