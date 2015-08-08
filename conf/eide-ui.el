@@ -202,10 +202,15 @@ mouse-3: Toggle minor modes"
       '(" "
         (:propertize
          (:eval
-          (let ((bname (buffer-name)))
+          (let ((bname (buffer-name))
+                (bfname (or (buffer-file-name)
+                            (and (eq major-mode 'dired-mode)
+                                 (dired-current-directory)))))
             (if (string-match-p "^\\*.*\\*$" bname)
                 (propertize " %14b" 'face 'octicons-mode-line)
-              (propertize " %14b" 'face 'octicons-mode-line))
+              (if (f-directory? bfname)
+                  (propertize " %14b" 'face 'octicons-mode-line)
+                (propertize " %14b" 'face 'octicons-mode-line)))
             )) face font-lock-type-face)))
 (put 'eide-mode-line-buffer-name 'risky-local-variable t)
 (make-variable-buffer-local 'eide-mode-line-buffer-name)
