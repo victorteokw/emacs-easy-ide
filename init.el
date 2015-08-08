@@ -40,6 +40,7 @@
 
 (require 'hy-lang-css)                  ;; CSS
 (require 'hy-lang-sass)                 ;; Sass
+(require 'hy-lang-scss)                 ;; SCSS syntax Sass
 (require 'hy-lang-less)                 ;; Less
 
 (require 'hy-lang-yaml)                 ;; yaml

@@ -41,6 +41,14 @@
 
 ;;; Cursor Moving
 
+(defun hy-core-editor-remember-position ()
+  "Not documented yet."
+  (interactive)
+  (set-mark-command nil)
+  (deactivate-mark))
+
+(global-set-key (kbd "s-y") 'hy-core-editor-remember-position)
+
 (defun hy-core-editor-last-cursor-position ()
   "Not documented yet."
   (interactive)
