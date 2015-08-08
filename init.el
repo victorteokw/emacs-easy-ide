@@ -1,5 +1,4 @@
 ;;; User emacs configuration boot file
-;;; This config uses "hy-" as a namespace
 ;;; All the configuration files resides in ~/.emacs.d/conf
 
 ;; Use cask and pallet for package management
@@ -8,17 +7,29 @@
 (require 'pallet)
 (pallet-mode t)
 
-;; Setup loading path for configuration files
+;;; Setup directory structure
+
+(require 'f)
+
+(defconst eide-conf-dir
+  (f-expand "conf/" user-emacs-directory)
+  "Eide configuration directory.")
+
+(defconst eide-etc-dir
+  (f-expand "etc/" user-emacs-directory)
+  "Eide etc directory.")
+
 (eval-when-compile
-  (add-to-list 'load-path (expand-file-name "conf" user-emacs-directory)))
+  (add-to-list 'load-path eide-conf-dir))
 
 ;;; Editor core
 
-(require 'hy-core-ui)                   ;; User interface configuration
-(require 'hy-core-conf)                 ;; For configuration
-(require 'hy-core-editor)               ;; Editor configuration
-(require 'hy-core-enable)               ;; For enable emacs command
-(require 'hy-core-cvs)                  ;; git configuration
+(require 'eide-extension)            ;; eide library
+(require 'eide-ui)                   ;; User interface configuration
+(require 'eide-editor)               ;; Editor configuration
+(require 'eide-enable)               ;; For enable emacs command
+(require 'eide-cvs)                  ;; git configuration
+(require 'eide-key-bindings)         ;; for key bindings
 
 ;;; Programming Language
 

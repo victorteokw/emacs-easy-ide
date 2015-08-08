@@ -19,4 +19,4 @@
 (require 'github-clone)
 
 
-(provide 'hy-core-cvs)
+(provide 'eide-cvs)

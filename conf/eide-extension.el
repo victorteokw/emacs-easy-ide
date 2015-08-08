@@ -1,0 +1,135 @@
+(defun eide-get-filename ()
+  "Not documented yet."
+  (if (eq major-mode 'dired-mode)
+      (dired-get-file-for-visit)
+    buffer-file-name))
+
+(defun eide-open-with (arg)
+  "Open visited file in default external program.
+When in dired mode, open file under the cursor.
+
+With a prefix ARG always prompt for command to use."
+  (interactive "P")
+  (let* ((current-file-name (eide-get-filename))
+         (open (pcase system-type
+                 (`darwin "open")
+                 ((or `gnu `gnu/linux `gnu/kfreebsd) "xdg-open")))
+         (program (if (or arg (not open))
+                      (read-shell-command "Open current file with: ")
+                    open)))
+    (start-process "eide-open-with-process" nil program current-file-name)))
+
+(defun eide-opwn-with-app (app)
+  "Not documented yet."
+  (interactive "sApplication: ")
+  (let* ((cur-file-name (eide-get-filename))
+         (command (pcase system-type
+                    (`darwin "open")
+                    ((or `gnu `gnu/linux `gnu/kfreebsd) "xdg-open")))
+         (arg (pcase system-type
+                (`darwin "-a"))))
+    (start-process "eide-open-with-process"
+                   nil command cur-file-name arg app)))
+
+(defun eide-copy-string (string)
+  "Copy string both emacs internally and externally with clipboard."
+  (with-temp-buffer
+    (insert string)
+    (kill-ring-save (buffer-end -1) (buffer-end 1)))
+  (if window-system
+      (ns-set-pasteboard string)))
+
+(defun eide-copy-filename ()
+  "Not documented yet."
+  (interactive)
+  (eide-copy-string (eide-get-filename)))
+
+(defun eide-copy-filename-and-linum ()
+  "Not documented yet."
+  (interactive)
+  (let ((filename (eide-get-filename))
+        (linumber (line-number-at-pos)))
+    (eide-copy-string (format "%s:%s" filename linumber))))
+
+(defun eide-search-web (query-url prompt)
+  "Open the search url constructed with the QUERY-URL.
+PROMPT sets the `read-string' prompt."
+  (browse-url
+   (concat query-url
+           (url-hexify-string
+            (if mark-active
+                (buffer-substring (region-beginning) (region-end))
+              (read-string prompt))))))
+
+(defmacro eide-install-search-engine (name url prompt)
+  "Given some information regarding a search engine,
+install the interactive command to search through them."
+  `(defun ,(intern (format "eide-search-%s" name)) ()
+     ,(format "Search %s with a query or region if any." name)
+     (interactive)
+     (eide-search-web ,url ,prompt)))
+
+(eide-install-search-engine "google" "http://www.google.com/search?q="
+                            "Google: ")
+
+(eide-install-search-engine "youtube"
+                            "http://www.youtube.com/results?search_query="
+                            "Youtube: ")
+
+(eide-install-search-engine "github" "https://github.com/search?q="
+                            "Github: ")
+
+(eide-install-search-engine "duckduckgo" "https://duckduckgo.com/?t=lm&q="
+                            "DuckDuckGo: ")
+
+(eide-install-search-engine "bing" "https://www.bing.com/?q="
+                            "Bing: ")
+
+(eide-install-search-engine "baidu"
+                            "https://www.baidu.com/baidu?tn=baidu&word="
+                            "Baidu: ")
+
+(defun eide-rename-buffer-and-file ()
+  "Rename current buffer and if the buffer is visiting a file, rename it too."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (rename-buffer (read-from-minibuffer "New name: " (buffer-name)))
+      (let ((new-name (read-file-name "New name: " filename)))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name t t)))))))
+
+(defun eide-delete-file-and-buffer ()
+  "Kill the current buffer and delete the file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (when filename
+      (if (vc-backend filename)
+          (vc-delete-file filename)
+        (when (yes-or-no-p (format "Are you sure you want to delete %s"
+                                   filename))
+          (delete-file filename)
+          (message "Deleted file %s" filename)
+          (kill-buffer))))))
+
+(defun eide-swap-windows ()
+  "If you have 2 windows, it swaps them."
+  (interactive)
+  (if (/= (count-windows) 2)
+      (message "You need exactly 2 windows to do this.")
+    (let* ((w1 (car (window-list)))
+           (w2 (cadr (window-list)))
+           (b1 (window-buffer w1))
+           (b2 (window-buffer w2))
+           (s1 (window-start w1))
+           (s2 (window-start w2)))
+      (set-window-buffer w1 b2)
+      (set-window-buffer w2 b1)
+      (set-window-start w1 s2)
+      (set-window-start w2 s1)))
+  (other-window 1))
+
+(provide 'eide-extension)

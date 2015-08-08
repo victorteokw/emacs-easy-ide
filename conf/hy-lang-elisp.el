@@ -6,6 +6,10 @@
 ;; open Cask file in elisp-mode
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 
+;; expand macro
+
+;; (require 'macrostep)
+
 (defun hy-lang-elisp-click-to-jump (event)
   "you know"
   (interactive "e")

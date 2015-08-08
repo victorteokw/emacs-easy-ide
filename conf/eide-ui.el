@@ -4,7 +4,8 @@
 
 ;;; Do not show toolbar
 
-(tool-bar-mode -1)
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
 
 ;;; Do not show scroll bar
 
@@ -12,14 +13,22 @@
 
 ;;; Do not show startup screen
 
-(setq-default
- inhibit-splash-screen t                ;; disable splash screen
- initial-scratch-message "\n"           ;; empty initial message
- )
+(setq-default inhibit-splash-screen t)
 
-;; Disable the beep sound
+;;; Initial scratch message
 
-(setq-default visible-bell t) ;; do not beep
+(setq-default initial-scratch-message "\n")
+
+;;; Nice scrolling
+
+;; copied from prelude, don't know why it works
+;; (setq scroll-margin 0
+;;       scroll-conservatively 100000
+;;       scroll-preserve-screen-position 1)
+
+;;; Disable the beep sound
+
+(setq-default visible-bell t)
 (setq ring-bell-function (lambda () ()))
 
 ;;; Fringe
@@ -29,11 +38,7 @@
 
 ;;; Global default font
 
-(set-face-attribute 'default nil :height 130)
-
-;;; Pretty symbol
-
-(global-prettify-symbols-mode)
+;; (set-face-attribute 'default nil :height 110)
 
 ;;; y-or-n-p
 
@@ -48,12 +53,13 @@
 
 (setq scroll-preserve-screen-position 'always)
 
-;; Ido interface
+;;; Ido interface
+
 (require 'ido)
 (setq ido-enable-flex-matching t)
 (setq ido-file-extensions-order '(".rb" ".coffee" ".js" ".erb"
                                   ".c" ".html" ".md" ".py" ".el" ".es6"))
-(setq ido-ignore-files '(".DS_Store"))
+(setq ido-ignore-files '(".DS_Store" "*.scssc"))
 (setq ido-use-filename-at-point nil) ;; do not guess my taste
 
 ;; Display ido results vertically, rather than horizontally
@@ -74,10 +80,7 @@
 (require 'smex)
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (global-set-key [remap execute-extended-command] 'smex)
-
 (global-set-key (kbd "s-P") 'smex)
-
-
 
 ;;; guide key
 
@@ -86,7 +89,6 @@
       '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"
         "C-x C-r"))
 (guide-key-mode 1)
-(diminish 'guide-key-mode)
 
 ;;; discover
 
@@ -105,7 +107,6 @@
 (setq helm-buffers-fuzzy-matching t)
 (setq helm-imenu-fuzzy-match t)
 (setq helm-apropos-fuzzy-match t)
-
 
 ;; Calendar
 
@@ -149,9 +150,27 @@
 
 ;; (global-hl-line-mode)
 
-;; packages
+;;; Access packages
+
 (global-set-key [f9] 'package-install)
 (global-set-key [M-f9] 'package-list-packages)
 (global-set-key [s-f9] 'package-list-packages-no-fetch)
 
-(provide 'hy-core-ui)
+;;; Configuration
+
+(defun eide-cycle-confs ()
+  "Visit user init file"
+  (interactive)
+  (let ((current-file-name (buffer-file-name (current-buffer))))
+    (cond ((string= current-file-name user-init-file)
+           (dired eide-conf-dir))
+          (t (find-file user-init-file)))))
+(global-set-key [C-f11] 'eide-cycle-confs)
+
+(defun eide-visit-conf-readme ()
+  "Go to user readme file."
+  (interactive)
+  (find-file (f-expand "README.org" user-emacs-directory)))
+(global-set-key [M-f11] 'eide-visit-conf-readme)
+
+(provide 'eide-ui)
