@@ -36,6 +36,7 @@
 (eval-after-load "projectile"
   '(progn
      (setq projectile-cache-file (f-expand  "projectile.cache" eide-etc-dir))
+     (setq projectile-known-projects-file (f-expand "projectile-bookmarks.eld" eide-etc-dir))
      ;; open main dir after go to that project
      (setq projectile-switch-project-action 'projectile-dired)
      ))

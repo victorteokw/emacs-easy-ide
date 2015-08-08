@@ -1,15 +1,15 @@
 *.elc
 /.emacs.desktop
 /elpa
-/.bookmarks.el
-/eshell
-ac-comphist.dat
-.smex-items
+/etc/.bookmarks.el
+/etc/eshell
+/etc/ac-comphist.dat
+/etc/.smex-items
 /custom.el
 *~
 rake.cache
-/snippets/objc-mode/
-/bookmarks
+/snippets/
+/etc/bookmarks
 /games
 /projectile-bookmarks.eld
 /.emacs.desktop.lock
@@ -17,18 +17,19 @@ rake.cache
 recentf
 /.ac-html
 ido.last
-/.mc-lists.el
+/etc/ido.hist
+/etc/projectile-bookmarks.eld
+/etc/.mc-lists.el
 /.cask
 /private
 tramp
 /sounds
-/orgs
+/org
 /var
-/.org-id-locations
-
+/etc/.org-id-locations
 # Ede projects file
-/ede-projects.el
+/etc/ede-projects.el
 # Semanticdb
-/semanticdb/
+/etc/semanticdb/
 # irony I just want to keep it
 # /irony

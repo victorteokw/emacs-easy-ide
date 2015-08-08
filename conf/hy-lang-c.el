@@ -54,7 +54,17 @@ lt.xctoolchain/usr/include")
 
 ;;(eval-after-load "irony")
 
+(eval-after-load "ede"
+  '(setq ede-project-placeholder-cache-file
+         (f-expand "ede-projects.el" eide-etc-dir)))
+
+(eval-after-load "semantic"
+  '(setq semanticdb-default-save-directory
+         (f-expand ".semanticdb" eide-etc-dir)))
+
 (add-hook 'c-mode-common-hook 'hoiyu/c-mode-setup)
+
+
 
 ;; (global-ede-mode 1)
 ;; (ede-cpp-root-project "my project"
