@@ -142,4 +142,23 @@
 
 (global-set-key (kbd "C-z q b") 'eide-search-bing)
 
+;;; Open with external app
+
+(global-set-key (kbd "C-z o s") 'eide-open-with-sublime-text)
+(global-set-key (kbd "C-z o t") 'eide-open-with-textmate)
+(global-set-key (kbd "C-z o a") 'eide-open-with-atom)
+
+
+;;; Org GTD
+
+;; s-@ to org-capture
+(global-set-key (kbd "C-z [") 'org-capture)
+
+;; s-! to cycle org files
+(global-set-key (kbd "C-z ]") 'org-cycle-agenda-files)
+
+;; s-% to open agenda menu
+(global-set-key (kbd "C-z \\") 'org-agenda)
+
+
 (provide 'eide-key-bindings)

@@ -34,4 +34,12 @@
   (insert "  "))
 (define-key slim-mode-map [C-tab] 'hy-lang-slim-indent-right)
 
+(defun eide-slim-indent-guide ()
+  "Not documented yet."
+  (require 'indent-guide)
+  (setq indent-guide-recursive t)
+  (indent-guide-mode))
+
+(add-hook 'slim-mode-hook 'eide-slim-indent-guide)
+
 (provide 'hy-lang-slim)

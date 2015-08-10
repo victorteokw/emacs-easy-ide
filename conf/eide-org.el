@@ -3,7 +3,7 @@
      (setq org-id-locations-file (f-expand ".org-id-locations" eide-etc-dir))
 
      ;; default org directory
-     (setq org-directory (expand-file-name "orgs" user-emacs-directory))
+     (setq org-directory (expand-file-name "org" user-emacs-directory))
 
      ;; archive directory
      (setq org-archive-location (expand-file-name "archives" org-directory))
@@ -30,13 +30,5 @@
            (expand-file-name "mobile_inbox.org" org-directory))
      ))
 
-;; s-@ to org-capture
-(global-set-key (kbd "s-@") 'org-capture)
-
-;; s-! to cycle org files
-(global-set-key (kbd "s-!") 'org-cycle-agenda-files)
-
-;; s-% to open agenda menu
-(global-set-key (kbd "s-%") 'org-agenda)
 
 (provide 'eide-org)

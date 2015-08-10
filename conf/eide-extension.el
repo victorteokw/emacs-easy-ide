@@ -19,7 +19,7 @@ With a prefix ARG always prompt for command to use."
                     open)))
     (start-process "eide-open-with-process" nil program current-file-name)))
 
-(defun eide-opwn-with-app (app)
+(defun eide-open-with-app (app)
   "Not documented yet."
   (interactive "sApplication: ")
   (let* ((cur-file-name (eide-get-filename))
@@ -30,6 +30,17 @@ With a prefix ARG always prompt for command to use."
                 (`darwin "-a"))))
     (start-process "eide-open-with-process"
                    nil command cur-file-name arg app)))
+
+(defmacro eide-install-external-opener (name disp)
+  "Not documented."
+  `(defun ,(intern (format "eide-open-with-%s" name)) ()
+     ,(format "Open file with %s" disp)
+     (interactive)
+     (eide-open-with-app ,disp)))
+
+(eide-install-external-opener "sublime-text" "Sublime Text")
+(eide-install-external-opener "textmate" "Textmate")
+(eide-install-external-opener "atom" "Atom")
 
 (defun eide-copy-string (string)
   "Copy string both emacs internally and externally with clipboard."

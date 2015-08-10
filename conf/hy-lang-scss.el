@@ -77,6 +77,7 @@
         (setq at-eol (equal (point) (line-end-position)))
         (setq last-char (char-before (line-end-position)))
         (if (and at-eol
+                 (not (string-match-p "[{}][:space:]*$" line-content))
                  (not (string-match-p "^[[:space:]{}]*$" line-content))
                  (not (string= ";" (format "%c" last-char))))
             (insert ";")
