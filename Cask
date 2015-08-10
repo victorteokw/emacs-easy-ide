@@ -44,6 +44,7 @@
 (depends-on "guide-key")
 (depends-on "haml-mode")
 (depends-on "helm")
+(depends-on "helm-core")
 (depends-on "helm-dash")
 (depends-on "helm-projectile")
 (depends-on "helm-swoop")

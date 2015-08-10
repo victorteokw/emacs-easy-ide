@@ -132,4 +132,13 @@ install the interactive command to search through them."
       (set-window-start w2 s1)))
   (other-window 1))
 
+(defun eide-recursive-add-to-load-path (parent-dir)
+  "Add all level PARENT-DIR sibdirs to the `load-path'."
+  (dolist (f (directory-files parent-dir))
+    (let ((name (expand-file-name f parent-dir)))
+      (when (and (file-directory-p name)
+                 (not (string-prefix-p "." f)))
+        (add-to-list 'load-path name)
+        (eide-recursive-add-to-load-path name)))))
+
 (provide 'eide-extension)

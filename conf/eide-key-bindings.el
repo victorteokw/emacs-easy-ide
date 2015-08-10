@@ -1,5 +1,16 @@
 ;;; Editor basic
 
+
+;;; Prefix keys
+
+;; Use C-z as prefix key
+(define-prefix-command 'eide-c-z)
+(global-set-key (kbd "C-z") 'eide-c-z)
+
+;; Use s-g as prefix key
+(define-prefix-command 'eide-s-g)
+(global-set-key (kbd "s-g") 'eide-s-g)
+
 ;; smex
 (global-set-key [remap execute-extended-command] 'smex)
 (global-set-key (kbd "s-P") 'smex)
@@ -35,6 +46,10 @@
 
 (global-set-key (kbd "s-y") 'eide-push-mark)
 (global-set-key (kbd "s-u") 'eide-pop-mark)
+
+;; bookmark
+(global-set-key (kbd "s-T") 'bookmark-set)
+(global-set-key (kbd "s-t") 'bookmark-jump)
 
 ;; Multiple cursors
 
@@ -80,10 +95,23 @@
 (global-set-key (kbd "s-b") 'previous-buffer)
 (global-set-key (kbd "s-f") 'next-buffer)
 
+;;; Window and frame
+
+(defun eide-other-window-backward (count &optional all-frames)
+  "Not documented yet."
+  (interactive "p")
+  (other-window (- count) all-frames))
+
+(global-set-key (kbd "s-1") 'other-window)
+(global-set-key (kbd "s-!") 'eide-other-window-backward)
+(global-set-key (kbd "s-2") 'split-window-right)
+(global-set-key (kbd "s-3") 'split-window-below)
+(global-set-key (kbd "s-W") 'delete-window)
+
 ;;; Project
 
 ;; C-s-p to switch project (same with sublime text)
-(global-set-key [C-s-268632080] 'projectile-persp-switch-project)
+(global-set-key [C-s-268632080] 'projectile-switch-project)
 
 ;; s-p to switch file in project (same with sublime text)
 (global-set-key (kbd "s-p") 'projectile-find-file)
@@ -93,8 +121,8 @@
 ;; C-h D to dash
 (global-set-key (kbd "C-h D") 'dash-at-point)
 
-;;; C-z to swoop
-(global-set-key (kbd "C-z") 'helm-swoop)
+;;; C-z z to swoop
+(global-set-key (kbd "C-z z") 'helm-swoop)
 
 ;;; Undo and Redo
 
@@ -109,5 +137,9 @@
 ;;; expand-region
 
 (global-set-key (kbd "C-=") 'er/expand-region)
+
+;;; Search web
+
+(global-set-key (kbd "C-z q b") 'eide-search-bing)
 
 (provide 'eide-key-bindings)
