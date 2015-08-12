@@ -139,6 +139,11 @@
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+
+;;; Recent files
+
+(define-key recentf-mode-map (kbd "s-O") 'recentf-ido-find-file)
+
 ;;; Search web
 
 (global-set-key (kbd "C-z q b") 'eide-search-bing)

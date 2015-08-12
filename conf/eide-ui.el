@@ -38,7 +38,7 @@
 
 ;;; Global default font
 
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 150)
 
 ;;; y-or-n-p
 
@@ -120,7 +120,7 @@
 ;;; themes
 
 (if window-system
-    (require 'base16-3024-dark-theme)
+    ()
   (load-theme 'wombat t))
 
 ;;; Line number
