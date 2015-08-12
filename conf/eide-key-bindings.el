@@ -107,6 +107,7 @@
 (global-set-key (kbd "s-2") 'split-window-right)
 (global-set-key (kbd "s-3") 'split-window-below)
 (global-set-key (kbd "s-W") 'delete-window)
+(global-set-key (kbd "s-@") 'delete-other-windows)
 
 ;;; Project
 

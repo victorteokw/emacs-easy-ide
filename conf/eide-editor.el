@@ -39,9 +39,11 @@
      (setq projectile-known-projects-file (f-expand "projectile-bookmarks.eld" eide-etc-dir))
      ;; open main dir after go to that project
      (setq projectile-switch-project-action 'projectile-dired)
+     (projectile-load-known-projects)
      ))
 
 (projectile-global-mode)
+
 
 ;; (add-hook 'projectile-switch-project-hook ')
 
