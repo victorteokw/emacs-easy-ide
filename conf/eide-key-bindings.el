@@ -150,6 +150,7 @@
 
 ;;; Open with external app
 
+(global-set-key (kbd "C-z o f") 'eide-open-with-finder)
 (global-set-key (kbd "C-z o s") 'eide-open-with-sublime-text)
 (global-set-key (kbd "C-z o t") 'eide-open-with-textmate)
 (global-set-key (kbd "C-z o a") 'eide-open-with-atom)

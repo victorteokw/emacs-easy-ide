@@ -41,6 +41,7 @@ With a prefix ARG always prompt for command to use."
 (eide-install-external-opener "sublime-text" "Sublime Text")
 (eide-install-external-opener "textmate" "Textmate")
 (eide-install-external-opener "atom" "Atom")
+(eide-install-external-opener "finder" "Finder")
 
 (defun eide-copy-string (string)
   "Copy string both emacs internally and externally with clipboard."
