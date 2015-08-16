@@ -17,7 +17,7 @@
 (defconst eide-etc-dir (f-expand "etc/" user-emacs-directory)
   "Eide etc directory.")
 
-(eval-when-compile (add-to-list 'load-path eide-conf-dir))
+(add-to-list 'load-path eide-conf-dir)
 
 ;;; Editor core
 
@@ -33,7 +33,7 @@
 (require 'eide-prog)                 ;; All programming languages
 (require 'eide-text)                 ;; All text languages
 
-(require 'hy-lang-elisp)                ;; elisp
+(require 'eide-elisp)                ;; elisp
 (require 'hy-lang-c)                    ;; C, C++, Objective-C
 (require 'hy-lang-ruby)                 ;; ruby
 (require 'eide-php)                  ;; PHP

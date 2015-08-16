@@ -75,4 +75,4 @@
     "eshell"
   '(setq eshell-directory-name (f-expand "etc/eshell" eide-etc-dir)))
 
-(provide 'hy-lang-elisp)
+(provide 'eide-elisp)
