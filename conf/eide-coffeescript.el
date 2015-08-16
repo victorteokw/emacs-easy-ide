@@ -28,5 +28,4 @@
             (if (fboundp 'jst-enable-appropriate-mode)
                 (jst-enable-appropriate-mode))
             ))
-
-(provide 'hy-lang-coffee)
+(provide 'eide-coffeescript)

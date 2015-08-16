@@ -30,16 +30,17 @@
 
 ;;; Programming Language
 
-(require 'hy-lang-prog)                 ;; All programming languages
-(require 'hy-lang-text)                 ;; All text languages
+(require 'eide-prog)                 ;; All programming languages
+(require 'eide-text)                 ;; All text languages
 
 (require 'hy-lang-elisp)                ;; elisp
 (require 'hy-lang-c)                    ;; C, C++, Objective-C
 (require 'hy-lang-ruby)                 ;; ruby
-(require 'hy-lang-php)                  ;; PHP
+(require 'eide-php)                  ;; PHP
 
-(require 'hy-lang-javascript)           ;; javaScript
-(require 'hy-lang-coffee)               ;; coffeeScript
+(require 'eide-javascript)           ;; javaScript
+(require 'eide-typescript)           ;; typeScript
+(require 'eide-coffeescript)         ;; coffeeScript
 
 (require 'hy-lang-html)                 ;; HTML
 (require 'hy-lang-slim)                 ;; slim
@@ -51,8 +52,8 @@
 (require 'hy-lang-scss)                 ;; SCSS syntax Sass
 (require 'hy-lang-less)                 ;; Less
 
-(require 'hy-lang-yaml)                 ;; yaml
-(require 'hy-lang-json)                 ;; JSON
+(require 'eide-yaml)                 ;; yaml
+(require 'eide-json)                 ;; JSON
 
 ;;; Applicaiton Framework
 
@@ -80,3 +81,4 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
+(put 'dired-find-alternate-file 'disabled nil)

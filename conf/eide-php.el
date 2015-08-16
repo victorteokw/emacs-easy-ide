@@ -1,0 +1,3 @@
+;; php
+
+(provide 'eide-php)

@@ -101,6 +101,7 @@
 (depends-on "sound-wav")
 (depends-on "sr-speedbar")
 (depends-on "sublime-themes")
+(depends-on "typescript-mode")
 (depends-on "undo-tree")
 (depends-on "web-completion-data")
 (depends-on "web-mode")
