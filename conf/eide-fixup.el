@@ -19,5 +19,4 @@
       (apply #'start-process "OS X sound file playing." nil
              "afplay" (append
                        (list (expand-file-name file data-directory)))))))
-
-(provide 'hy-fix-playsound)
+(provide 'eide-fixup)

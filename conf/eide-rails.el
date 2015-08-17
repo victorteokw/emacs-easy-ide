@@ -21,5 +21,4 @@
   "Open current project with rubymine."
   (interactive)
   (call-process-shell-command "open" nil nil nil (projectile-project-root) "-b" "com.jetbrains.rubymine"))
-
-(provide 'hy-frwk-rails)
+(provide 'eide-rails)

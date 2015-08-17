@@ -5,5 +5,4 @@
 ;;; rainbow
 
 (add-hook 'css-mode-hook 'rainbow-mode)
-
-(provide 'hy-lang-css)
+(provide 'eide-css)

@@ -70,5 +70,4 @@ lt.xctoolchain/usr/include")
 ;; (ede-cpp-root-project "my project"
 ;;                       :file "~/sss.cpp"
 ;;                       :include-path '("/../my_inc"))
-
-(provide 'hy-lang-c)
+(provide 'eide-c)

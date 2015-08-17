@@ -33,4 +33,4 @@
 ;;(require 'restclient)
 
 
-(provide 'hy-lang-html)
+(provide 'eide-html)

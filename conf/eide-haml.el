@@ -12,4 +12,4 @@
 ;; Check haml syntax
 (add-hook 'haml-mode-hook 'flycheck-mode)
 
-(provide 'hy-lang-haml)
+(provide 'eide-haml)

@@ -42,4 +42,4 @@
 
 (add-hook 'slim-mode-hook 'eide-slim-indent-guide)
 
-(provide 'hy-lang-slim)
+(provide 'eide-slim)

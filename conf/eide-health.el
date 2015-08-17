@@ -13,5 +13,4 @@
 
 ;; ;; Start health counting
 ;; (health-go-to-work)
-
-(provide 'hy-life-health)
+(provide 'eide-health)

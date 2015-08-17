@@ -5,5 +5,4 @@
 ;;; Rainbow
 
 (add-hook 'sass-mode-hook 'rainbow-mode)
-
-(provide 'hy-lang-sass)
+(provide 'eide-sass)

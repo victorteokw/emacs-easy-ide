@@ -94,5 +94,4 @@
             (require 'auto-complete)
             (setq ac-sources '(ac-source-css-property))
             (auto-complete-mode)))
-
-(provide 'hy-lang-scss)
+(provide 'eide-scss)
