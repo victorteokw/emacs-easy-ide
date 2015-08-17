@@ -209,4 +209,11 @@
 (eval-after-load "url"
   '(setq url-configuration-directory (f-expand "url" eide-etc-dir)))
 
+;;; Desktop save and restore
+(add-hook 'after-init-hook 'desktop-read)
+(add-hook 'kill-emacs-hook
+          (lambda ()
+            (desktop-save user-emacs-directory)
+            ))
+
 (provide 'eide-editor)
