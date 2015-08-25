@@ -120,7 +120,7 @@
 ;;; themes
 
 (if window-system
-    (require 'solarized-dark-theme)
+    (require 'solarized-light-theme)
   (load-theme 'wombat t))
 
 ;;; Line number

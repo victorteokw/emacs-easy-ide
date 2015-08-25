@@ -7,7 +7,7 @@
   (auto-complete-mode))
 
 ;; Auto complete
-(add-hook 'haml-mode-hook 'hy-lang-haml-setup-auto-completion)
+;;(add-hook 'haml-mode-hook 'hy-lang-haml-setup-auto-completion)
 
 ;; Check haml syntax
 (add-hook 'haml-mode-hook 'flycheck-mode)

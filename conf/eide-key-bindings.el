@@ -102,12 +102,13 @@
   (interactive "p")
   (other-window (- count) all-frames))
 
-(global-set-key (kbd "s-1") 'other-window)
+(global-set-key (kbd "s-`") 'other-window)
+(global-set-key (kbd "s-~") 'other-frame)
+(global-set-key (kbd "s-1") 'delete-other-windows)
 (global-set-key (kbd "s-!") 'eide-other-window-backward)
 (global-set-key (kbd "s-2") 'split-window-right)
 (global-set-key (kbd "s-3") 'split-window-below)
 (global-set-key (kbd "s-W") 'delete-window)
-(global-set-key (kbd "s-@") 'delete-other-windows)
 
 ;;; Project
 

@@ -4,7 +4,6 @@
 (source org)
 
 (depends-on "ac-c-headers")
-(depends-on "ac-html")
 (depends-on "ac-inf-ruby")
 (depends-on "ace-jump-mode")
 (depends-on "aggressive-indent")
@@ -26,6 +25,7 @@
 (depends-on "discover")
 (depends-on "elisp-slime-nav")
 (depends-on "elnode")
+(depends-on "emmet-mode")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "f")
@@ -103,7 +103,6 @@
 (depends-on "sublime-themes")
 (depends-on "typescript-mode")
 (depends-on "undo-tree")
-(depends-on "web-completion-data")
 (depends-on "web-mode")
 (depends-on "whole-line-or-region")
 (depends-on "with-editor")

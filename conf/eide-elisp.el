@@ -40,6 +40,7 @@
 
   ;; auto complete
   (require 'auto-complete)
+  (require 'auto-complete-config)
   (setq ac-ignore-case nil)
   (setq ac-sources '(ac-source-yasnippet
                      ac-source-dictionary
