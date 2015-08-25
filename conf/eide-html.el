@@ -6,9 +6,11 @@
               web-mode-sql-indent-offset 2)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-
-(setq web-mode-enable-auto-pairing t)
-(setq web-mode-enable-auto-closing t)
+(eval-after-load "web-mode"
+  '(progn
+     (setq web-mode-enable-auto-pairing t)
+     (setq web-mode-enable-auto-closing t)
+     (setq web-mode-enable-auto-quoting nil)))
 
 ;; completion for web mode
 
@@ -22,10 +24,10 @@
 ;;                   ac-source-words-in-same-mode-buffers
 ;;                   ac-source-dictionary))))
 
-(setq web-mode-enable-auto-quoting nil)
 
 (add-hook 'web-mode-hook 'auto-complete-mode)
 (add-hook 'web-mode-hook 'emmet-mode)
+
 ;; elnode is a super engine
 ;;(require 'elnode)
 

@@ -1,4 +1,5 @@
 *.elc
+/etc/*
 /.emacs.desktop
 /elpa
 /etc/.bookmarks.el
