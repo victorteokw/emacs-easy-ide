@@ -120,6 +120,9 @@
 (add-hook 'js2-mode-hook 'eide-js2-prettify-symbols-setup)
 
 ;; Code folding
-(add-hook 'js2-mode-hook 'hs-minor-mode)
+
+(add-hook 'js2-mode-hook 'origami-mode)
+
+(add-to-list 'origami-parser-alist '(js2-mode . origami-c-style-parser))
 
 (provide 'eide-javascript)

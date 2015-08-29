@@ -2,6 +2,25 @@
 
 (require 'coffee-mode)
 
+;; highlight in documentation
+
+(add-hook 'coffee-mode-hook 'yard-mode)
+
+;; syntax checking
+
+(add-hook 'coffee-mode-hook 'flycheck-mode)
+
+;; JST
+
+(if (fboundp 'jst-enable-appropriate-mode)
+    (add-hook 'coffee-mode-hook 'jst-enable-appropriate-mode))
+
+;; clear whitespace
+
+(add-hook 'coffee-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'whitespace-cleanup)))
+
 (defun ky/coffee-new-line-at-end-and-indent ()
   "Move to the end of line and indent like coffee."
   (interactive)
@@ -10,22 +29,10 @@
 
 (define-key coffee-mode-map [s-return] 'ky/coffee-new-line-at-end-and-indent)
 
-(require 'coffee-mode)
+;; Code folding
 
+(add-hook 'coffee-mode-hook 'origami-mode)
 
-(add-hook 'coffee-mode-hook
-          (lambda ()
-            ;; use yard mode for highlight documentation
-            (yard-mode)
-            ;; Clean whitespace
-            (add-hook 'before-save-hook 'whitespace-cleanup)
-            ;; use snippets
-            (yas-minor-mode-on)
-            ;; syntax checking
-            (setq flycheck-checker 'coffee)
-            (flycheck-mode)
-            ;; JST mode
-            (if (fboundp 'jst-enable-appropriate-mode)
-                (jst-enable-appropriate-mode))
-            ))
+(add-to-list 'origami-parser-alist '(coffee-mode . origami-indent-parser))
+
 (provide 'eide-coffeescript)

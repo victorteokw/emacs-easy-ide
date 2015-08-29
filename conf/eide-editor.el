@@ -32,7 +32,7 @@
 (global-prettify-symbols-mode)
 
 ;;; Project management
-
+(setq-default projectile-keymap-prefix (kbd "C-z p"))
 (eval-after-load "projectile"
   '(progn
      (setq projectile-cache-file (f-expand  "projectile.cache" eide-etc-dir))
@@ -101,6 +101,24 @@
            try-expand-dabbrev
            try-expand-dabbrev-all-buffers
            try-expand-dabbrev-from-kill)))
+
+;;; Cold folding
+
+(require 'origami)
+(require 'hs-minor-mode)
+
+;;; Key bindings
+
+(define-key hs-minor-mode-map (kbd "s-g f") 'hs-hide-block)
+(define-key hs-minor-mode-map (kbd "s-g F") 'hs-hide-all)
+(define-key hs-minor-mode-map (kbd "s-g s") 'hs-show-block)
+(define-key hs-minor-mode-map (kbd "s-g S") 'hs-show-all)
+
+(define-key origami-mode-map (kbd "s-g f") 'origami-close-node)
+(define-key origami-mode-map (kbd "s-g F") 'origami-close-all-nodes)
+(define-key origami-mode-map (kbd "s-g s") 'origami-open-node)
+(define-key origami-mode-map (kbd "s-g S") 'origami-open-all-nodes)
+
 
 ;;; Expand region
 

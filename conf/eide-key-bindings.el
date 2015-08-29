@@ -1,5 +1,4 @@
-;;; Editor basic
-
+;;;; Editor basic
 
 ;;; Prefix keys
 
@@ -11,18 +10,28 @@
 (define-prefix-command 'eide-s-g)
 (global-set-key (kbd "s-g") 'eide-s-g)
 
-;; smex
+;; Use s-k as prefix key for window manipulation
+(define-prefix-command 'eide-s-k)
+(global-set-key (kbd "s-k") 'eide-s-k)
+
+;;; smex (Command Palette)
+
+;; M-x to open command palette (emacs way)
 (global-set-key [remap execute-extended-command] 'smex)
+;; S-p to open command palette (sublime text way)
 (global-set-key (kbd "s-P") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-
-
 ;;; Move cursor
 
-;; C-a smart move
-(global-set-key (kbd "C-a") 'eide-smart-beginning-of-line)
+;; Basic move
 
+;; C-b, C-f, C-n, C-p same asarrows
+;; C-a smart move to beginning of line
+(global-set-key (kbd "C-a") 'eide-smart-beginning-of-line)
+;; C-e move to end of line
+
+;; Symbol move
 ;; M-n and M-p to navigate to another appearence of current symbol
 (global-set-key (kbd "M-n") 'highlight-symbol-next)
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
@@ -35,27 +44,19 @@
 ;; s-backspace just kill to indentation
 (global-set-key (kbd "s-<backspace>") 'eide-kill-back-to-indentation)
 
-;; Ace jump
-(global-unset-key (kbd "C-;"))
-(global-unset-key (kbd "M-;"))
-(define-key global-map (kbd "C-;") 'ace-jump-char-mode)
-(define-key global-map (kbd "C-:") 'ace-jump-word-mode)
-(define-key global-map (kbd "C-M-;") 'ace-jump-line-mode)
-
-;; mark
+;; mark move
 
 (global-set-key (kbd "s-y") 'eide-push-mark)
 (global-set-key (kbd "s-u") 'eide-pop-mark)
 
-;; bookmark
-(global-set-key (kbd "s-T") 'bookmark-set)
-(global-set-key (kbd "s-t") 'bookmark-jump)
+;; Ace jump move
 
-;; Multiple cursors
+(global-unset-key (kbd "C-;"))
+(define-key global-map (kbd "C-;") 'ace-jump-char-mode)
+(define-key global-map (kbd "C-:") 'ace-jump-word-mode)
+(define-key global-map (kbd "C-M-;") 'ace-jump-line-mode)
 
-;; Use s-g as prefix key
-(define-prefix-command 'eide-s-g)
-(global-set-key (kbd "s-g") 'eide-s-g)
+;;; Multiple cursors
 
 (global-set-key (kbd "s-d") 'mc/mark-next-like-this)
 (global-set-key (kbd "s-D") 'mc/skip-to-next-like-this)
@@ -76,15 +77,32 @@
 (global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
 
-;;; Searching
+;;; Search and replace
 
-(global-set-key (kbd "M-%") 'anzu-query-replace-regexp)
-(global-set-key (kbd "C-M-%") 'anzu-query-replace)
+;; C-s and C-r : isearch-forward and isearch-backward
+;; C-M-s and C-M-r : isearch-forward-regexp and isearch-backward-regexp
+(global-set-key (kbd "M-%") 'anzu-query-replace)
+(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+
+(global-set-key (kbd "s-f") 'isearch-forward)
+(global-set-key (kbd "s-F") 'isearch-forward-regexp)
+(global-set-key (kbd "s-g s-f") 'projectile-grep)
+(global-set-key (kbd "s-r") 'anzu-query-replace)
+(global-set-key (kbd "s-R") 'anzu-query-replace-regexp)
+(global-set-key (kbd "s-g s-r") 'projectile-replace)
 
 ;;; Code comment
 
+;; M-; comment
 ;; s-; comment do what i mean
 (global-set-key (kbd "s-;") 'comment-dwim)
+
+;;; Code folding
+
+;; s-g f to fold
+;; s-g s to show
+;; s-g F to fold all
+;; s-g S to show all
 
 ;;; Editor file operation
 
@@ -92,31 +110,73 @@
 (global-set-key (kbd "s-w") 'kill-this-buffer)
 
 ;; previous file and next file
-(global-set-key (kbd "s-b") 'previous-buffer)
-(global-set-key (kbd "s-f") 'next-buffer)
+;; (global-set-key (kbd "s-b") 'previous-buffer)
+;; (global-set-key (kbd "s-f") 'next-buffer)
 
 ;;; Window and frame
 
-(defun eide-other-window-backward (count &optional all-frames)
-  "Not documented yet."
-  (interactive "p")
-  (other-window (- count) all-frames))
+;; Need an package
 
-(global-set-key (kbd "s-`") 'other-window)
-(global-set-key (kbd "s-~") 'other-frame)
-(global-set-key (kbd "s-1") 'delete-other-windows)
-(global-set-key (kbd "s-!") 'eide-other-window-backward)
-(global-set-key (kbd "s-2") 'split-window-right)
-(global-set-key (kbd "s-3") 'split-window-below)
-(global-set-key (kbd "s-W") 'delete-window)
+;;; Find file
+
+;; bookmark
+(global-set-key (kbd "s-T") 'bookmark-set)
+(global-set-key (kbd "s-t") 'bookmark-jump)
+(global-set-key (kbd "s-g t") 'bookmark-bmenu-list)
 
 ;;; Project
 
-;; C-s-p to switch project (same with sublime text)
+;; most with projectile
+
+;; C-z p p to switch project (emacs way)
+;; C-s-p   to switch project (sublime text way)
 (global-set-key [C-s-268632080] 'projectile-switch-project)
 
-;; s-p to switch file in project (same with sublime text)
+;; C-z p f to switch file in project (emacs way)
+;; s-p     to switch file in project (sublime text way)
 (global-set-key (kbd "s-p") 'projectile-find-file)
+;; C-z p 4 f  switch file in project new window
+
+;; C-z p g   to switch file at point in project
+;; C-z p 4 g to switch file at point in project new window
+
+;; C-z p d   to switch dir in project
+;; C-z p 4 d to switch dir in project new window
+;; C-z p D   to open root dir
+
+;; C-z p b   to switch to opened file in project
+;; C-z p 4 b to switch to opened file in project
+
+;; C-z p a   to switch file with same name diff ext
+;; C-z p 4 a to swtich file with same name diff ext
+
+;; C-z p T   to display a list of test files
+
+;; C-z p o   runs multi-occur on all project buffers currently open
+
+;; C-z p k   kill all this project buffer
+
+;; C-z p e   show list of recently visited project files
+
+;; C-z p C-h show projectile help
+
+;; Project query and replace see Search and replace above
+
+;;; CVS
+
+;; C-z g g or M-f12 to view git status
+(global-set-key (kbd "C-z g g") 'magit-status)
+(global-set-key [(meta f12)] 'magit-status)
+;; C-z g b to blame
+(global-set-key (kbd "C-z g b") 'magit-blame-popup)
+;; C-z g b to browse the file on github
+(global-set-key (kbd "C-z g C-g") 'github-browse-file)
+;; C-z g l to browse the file on github with blame
+(global-set-key (kbd "C-z g C-b") 'github-browse-file-blame)
+;; C-z g c to clone repo from github
+(global-set-key (kbd "C-z g c") 'github-clone)
+;; yagist not bind anything yet
+;; gist not bind anything yet
 
 ;;; Help
 
@@ -138,8 +198,7 @@
 
 ;;; expand-region
 
-(global-set-key (kbd "C-=") 'er/expand-region)
-
+(global-set-key (kbd "s-L") 'er/expand-region)
 
 ;;; Recent files
 
@@ -148,6 +207,7 @@
 ;;; Search web
 
 (global-set-key (kbd "C-z q b") 'eide-search-bing)
+(global-set-key (kbd "C-z q g") 'eide-search-google)
 
 ;;; Open with external app
 
@@ -168,5 +228,15 @@
 ;; s-% to open agenda menu
 (global-set-key (kbd "C-z \\") 'org-agenda)
 
+;;; Go to key binding file
+
+(defconst eide-key-bindings-file (or load-file-name
+                                     (buffer-file-name (current-buffer))))
+
+(defun eide-goto-key-bindings-file ()
+  (interactive)
+  (find-file eide-key-bindings-file))
+
+(global-set-key (kbd "C-z k") 'eide-goto-key-bindings-file)
 
 (provide 'eide-key-bindings)

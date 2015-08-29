@@ -2,18 +2,28 @@
 (require 'slim-mode)
 
 ;; Completion for slim mode
-;; (defun hy-lang-slim-setup-auto-completion ()
-;;   "You know what it means."
-;;   (require 'ac-slim)
-;;   (setq ac-sources '())
-;;   (add-to-list 'ac-sources 'ac-source-slim-tag)
-;;   (add-to-list 'ac-sources 'ac-source-slim-attribute)
-;;   (add-to-list 'ac-sources 'ac-source-slim-attribute-value)
-;;   (auto-complete-mode))
+(defun eide-slim-setup-auto-completion ()
+  "You know what it means."
+  (require 'ac-slim)
+  (require 'ac-html-default-data-provider)
 
-;; (add-hook 'slim-mode-hook 'hy-lang-slim-setup-auto-completion)
+  (ac-html-enable-data-provider 'ac-html-default-data-provider)
+  (ac-slim-setup)
 
-(add-hook 'slim-mode-hook 'flycheck-mode)
+  (setq ac-sources '())
+  (add-to-list 'ac-sources 'ac-source-slim-tag)
+  (add-to-list 'ac-sources 'ac-source-slim-attr)
+  (add-to-list 'ac-sources 'ac-source-slim-attrv)
+
+  (auto-complete-mode))
+
+(add-hook 'slim-mode-hook 'eide-slim-setup-auto-completion)
+
+;; Code folding
+
+(add-hook 'slim-mode-hook 'origami-mode)
+
+(add-to-list 'origami-parser-alist '(slim-mode . origami-indent-parser))
 
 (defun hy-lang-slim-new-line ()
   "Slim new line."
@@ -34,12 +44,13 @@
   (insert "  "))
 (define-key slim-mode-map [C-tab] 'hy-lang-slim-indent-right)
 
-(defun eide-slim-indent-guide ()
-  "Not documented yet."
-  (require 'indent-guide)
-  (setq indent-guide-recursive t)
-  (indent-guide-mode))
+;; (defun eide-slim-indent-guide ()
+;;   "Not documented yet."
+;;   (require 'indent-guide)
+;;   (setq indent-guide-recursive t)
+;;   (indent-guide-mode))
 
-(add-hook 'slim-mode-hook 'eide-slim-indent-guide)
+;; (add-hook 'slim-mode-hook 'eide-slim-indent-guide)
+
 
 (provide 'eide-slim)

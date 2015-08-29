@@ -14,6 +14,12 @@
 
 (add-hook 'scss-mode-hook 'electric-pair-mode)
 
+;;; Code folding
+
+(add-hook 'scss-mode-hook 'origami-mode)
+
+(add-to-list 'origami-parser-alist '(scss-mode . origami-c-style-parser))
+
 ;; Inset colon pair
 (defun hy-lang-sass-insert-colon-pair ()
   "Insert colon pair"
@@ -94,4 +100,5 @@
             (require 'auto-complete)
             (setq ac-sources '(ac-source-css-property))
             (auto-complete-mode)))
+
 (provide 'eide-scss)
