@@ -105,7 +105,7 @@
 ;;; Cold folding
 
 (require 'origami)
-(require 'hs-minor-mode)
+(require 'hideshow)
 
 ;;; Key bindings
 
