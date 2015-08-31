@@ -144,6 +144,11 @@
 (whole-line-or-region-mode t)
 (make-variable-buffer-local 'whole-line-or-region-mode)
 
+;; Paste and indent
+
+(defadvice whole-line-or-region-yank (after paste-and-indent activate)
+  (call-interactively 'indent-region))
+
 ;;; Highlight escape sequences
 
 (hes-mode)

@@ -108,6 +108,7 @@
 
 ;; close current file
 (global-set-key (kbd "s-w") 'kill-this-buffer)
+(global-set-key (kbd "s-M-∑") 'eide-kill-last-buffer)
 
 ;; previous file and next file
 ;; (global-set-key (kbd "s-b") 'previous-buffer)

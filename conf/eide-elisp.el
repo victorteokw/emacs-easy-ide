@@ -10,6 +10,10 @@
 
 ;; (require 'macrostep)
 
+;; Code folding
+
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+
 (defun hy-lang-elisp-click-to-jump (event)
   "you know"
   (interactive "e")

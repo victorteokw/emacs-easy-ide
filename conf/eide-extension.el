@@ -153,4 +153,9 @@ install the interactive command to search through them."
         (add-to-list 'load-path name)
         (eide-recursive-add-to-load-path name)))))
 
+(defun eide-kill-last-buffer ()
+  "Kill last buffer."
+  (interactive)
+  (kill-buffer (car (last (buffer-list)))))
+
 (provide 'eide-extension)
