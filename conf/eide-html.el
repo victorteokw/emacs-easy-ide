@@ -19,8 +19,7 @@
            '(("css" . (ac-source-words-in-buffer ac-source-css-property))
              ("html" . (ac-source-html-tag
                         ac-source-html-attr
-                        ac-source-html-attrv
-                        ))
+                        ac-source-html-attrv))
              ("php" . (ac-source-words-in-buffer
                        ac-source-words-in-same-mode-buffers
                        ac-source-dictionary))))
@@ -32,7 +31,9 @@
           (lambda ()
             (require 'ac-html)
             (require 'ac-html-default-data-provider)
+            (require 'ac-html-testing-data-provider)
             (ac-html-enable-data-provider 'ac-html-default-data-provider)
+            (ac-html-enable-data-provider 'ac-html-testing-data-provider)
             (ac-html-setup)
             (auto-complete-mode)))
 

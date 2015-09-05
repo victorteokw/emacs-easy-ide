@@ -67,48 +67,6 @@
 
 (define-key js2-mode-map (kbd ":") 'eide-js2-auto-colon)
 
-(defun eide-js2-insert-colon-and-return ()
-  "Not documented yet."
-  (interactive)
-  (move-end-of-line 1)
-  (insert ";")
-  (newline-and-indent))
-
-(define-key js2-mode-map [M-return] 'eide-js2-insert-colon-and-return)
-
-(defun eide-js2-insert-dot-dwim ()
-  "Not documented yet."
-  (interactive)
-  (move-end-of-line 1)
-  (insert "."))
-
-(define-key js2-mode-map (kbd ".") 'eide-js2-insert-dot-dwim)
-
-(defun eide-js2-insert-colon-dwim ()
-  "Not documented yet."
-  (interactive)
-  (move-end-of-line 1)
-  (insert ":"))
-
-(define-key js2-mode-map (kbd ":") 'eide-js2-insert-colon-dwim)
-
-(defun eide-js2-insert-comma-dwim ()
-  "Not documented yet."
-  (interactive)
-  (move-end-of-line 1)
-  (insert ","))
-
-(define-key js2-mode-map (kbd ",") 'eide-js2-insert-comma-dwim)
-
-(defun eide-js2-insert-semicolon-dwim ()
-  "Not documented yet."
-  (interactive)
-  (move-end-of-line 1)
-  (insert ";"))
-
-(define-key js2-mode-map (kbd ";") 'eide-js2-insert-semicolon-dwim)
-
-
 ;; Prettify function keyword and more
 
 (defun eide-js2-prettify-symbols-setup ()

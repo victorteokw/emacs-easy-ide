@@ -43,13 +43,13 @@ lt.xctoolchain/usr/include")
   ;; iedit
   (local-set-key (kbd "C-c ;") 'iedit-mode)
 
-  ;; semantic
-  (semantic-mode)
-  (semantic-idle-scheduler-mode 1)
-  (add-to-list 'ac-sources 'ac-source-semantic)
+  ;; ;; semantic
+  ;; (semantic-mode)
+  ;; (semantic-idle-scheduler-mode 1)
+  ;; (add-to-list 'ac-sources 'ac-source-semantic)
 
-  ;; irony
-  (irony-mode)
+  ;; ;; irony
+  ;; (irony-mode)
   )
 
 ;;(eval-after-load "irony")

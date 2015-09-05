@@ -1,7 +1,7 @@
-;;; User emacs configuration boot file
-;;; All the configuration files resides in ~/.emacs.d/conf
+;;; eide boot file
 
-;; Use cask and pallet for package management
+;;; Use cask and pallet for package management
+
 (require 'cask (expand-file-name "$HOME/.cask/cask.el"))
 (cask-initialize)
 (require 'pallet)

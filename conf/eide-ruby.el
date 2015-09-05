@@ -74,6 +74,6 @@
   '(setq rake-cache-file (f-expand "rake.cache" eide-etc-dir)))
 
 ;; code folding
-(add-hook 'ruby-mode-hook 'origami)
+(add-hook 'ruby-mode-hook 'origami-mode)
 
 (provide 'eide-ruby)

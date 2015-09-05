@@ -6,14 +6,18 @@
   "You know what it means."
   (require 'ac-slim)
   (require 'ac-html-default-data-provider)
+  (require 'ac-html-testing-data-provider)
 
   (ac-html-enable-data-provider 'ac-html-default-data-provider)
+  (ac-html-enable-data-provider 'ac-html-testing-data-provider)
   (ac-slim-setup)
 
   (setq ac-sources '())
   (add-to-list 'ac-sources 'ac-source-slim-tag)
   (add-to-list 'ac-sources 'ac-source-slim-attr)
   (add-to-list 'ac-sources 'ac-source-slim-attrv)
+  (add-to-list 'ac-sources 'ac-source-slim-class)
+  (add-to-list 'ac-sources 'ac-source-slim-id)
 
   (auto-complete-mode))
 
