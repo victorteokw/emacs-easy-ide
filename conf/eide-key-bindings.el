@@ -290,6 +290,15 @@
 (global-set-key (kbd "C-z o t") 'eide-open-with-textmate)
 (global-set-key (kbd "C-z o a") 'eide-open-with-atom)
 
+;;;; Package
+
+(global-set-key [f9] 'package-install)
+(global-set-key [M-f9] 'package-list-packages)
+(global-set-key [s-f9] 'package-list-packages-no-fetch)
+
+;;; Configuration
+
+(global-set-key [C-f11] 'eide-cycle-confs)
 
 ;;; Org GTD
 

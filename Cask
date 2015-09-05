@@ -18,6 +18,7 @@
 (depends-on "cask")
 (depends-on "clippy")
 (depends-on "coffee-mode")
+(depends-on "color-theme-sanityinc-solarized")
 (depends-on "dash")
 (depends-on "dash-at-point")
 (depends-on "diff-hl")
