@@ -35,4 +35,6 @@
 
 (add-to-list 'origami-parser-alist '(coffee-mode . origami-indent-parser))
 
+(add-hook 'coffee-mode-hook 'electric-operator-mode)
+
 (provide 'eide-coffeescript)

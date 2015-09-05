@@ -63,7 +63,7 @@ lt.xctoolchain/usr/include")
          (f-expand ".semanticdb" eide-etc-dir)))
 
 (add-hook 'c-mode-common-hook 'hoiyu/c-mode-setup)
-
+(add-hook 'c-mode-common-hook 'electric-operator-mode)
 
 
 ;; (global-ede-mode 1)

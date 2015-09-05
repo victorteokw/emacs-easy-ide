@@ -83,4 +83,6 @@
 
 (add-to-list 'origami-parser-alist '(js2-mode . origami-c-style-parser))
 
+(add-hook 'js2-mode-hook 'electric-operator-mode)
+
 (provide 'eide-javascript)

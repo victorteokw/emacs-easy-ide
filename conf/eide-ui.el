@@ -186,4 +186,6 @@ mouse-3: Toggle minor modes"
               (propertize "%]" 'help-echo recursive-edit-help-echo)
               " ")))
 
+;; Weather forecast with sunshine
+
 (provide 'eide-ui)
