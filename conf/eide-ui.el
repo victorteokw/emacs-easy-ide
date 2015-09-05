@@ -44,11 +44,6 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;;; ESC to quit
-
-(if window-system
-    (global-set-key (kbd "<escape>") 'keyboard-quit))
-
 ;;; scroll preserve screen position
 
 (setq scroll-preserve-screen-position 'always)

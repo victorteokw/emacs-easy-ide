@@ -1,60 +1,115 @@
-;;;; Editor basic
+;;;;; Key definition sheet
 
-;;; Prefix keys
+;; The design of key strokes of this emacs configuration is combine the best of
+;; Emacs and modern text editors such as Sublime Text, TextMate and Atom.
+
+;; It should be as efficient as Emacs, as convinient as modern text editors.
+
+;; Most of commands has two equivalent key bindings, one for terminal Emacs,
+;; one for window system Emacs. Which means: it should work on terminal as plain
+;; emacs, it should work on window system as modern text editor.
+
+;;;; Prefix keys
 
 ;; Use C-z as prefix key
+
 (define-prefix-command 'eide-c-z)
 (global-set-key (kbd "C-z") 'eide-c-z)
 
 ;; Use s-g as prefix key
+
 (define-prefix-command 'eide-s-g)
 (global-set-key (kbd "s-g") 'eide-s-g)
 
 ;; Use s-k as prefix key for window manipulation
+
 (define-prefix-command 'eide-s-k)
 (global-set-key (kbd "s-k") 'eide-s-k)
 
-;;; smex (Command Palette)
+;;;; Cancel
+
+;; Use C-g to cancel
+
+;; Esc doesn't work well for cancel
+
+;;;; Command Palette (smex)
 
 ;; M-x to open command palette (emacs way)
+
 (global-set-key [remap execute-extended-command] 'smex)
-;; S-p to open command palette (sublime text way)
+
+;; s-S-p to open command palette (sublime text way)
+
 (global-set-key (kbd "s-P") 'smex)
+
+;; M-S-x for major mode commands
+
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;;; Move cursor
+;;;; Move cursor
 
-;; Basic move
+;;; Basic move
 
-;; C-b, C-f, C-n, C-p same asarrows
+;; C-b, C-f, C-n, C-p same as arrows
+
 ;; C-a smart move to beginning of line
+
 (global-set-key (kbd "C-a") 'eide-smart-beginning-of-line)
+
 ;; C-e move to end of line
 
-;; Symbol move
+;; M-r place cursor mid, top and bot of line
+
+;;; Move to absolute position
+
+;; M-g g go to line
+
+;; M-g c go to char
+
+;;; Move to exact somewhere in screen (ace-jump)
+
+;; C-; to jump to char
+
+(global-unset-key (kbd "C-;"))
+(define-key global-map (kbd "C-;") 'ace-jump-char-mode)
+
+;; C-S-; to jump to word
+
+(define-key global-map (kbd "C-:") 'ace-jump-word-mode)
+
+;; C-M-; to jump to line
+
+(define-key global-map (kbd "C-M-;") 'ace-jump-line-mode)
+
+;;; Move by screen
+
+;; C-v scroll up
+
+;; M-v scroll down
+
+;;; Symbol move
+
 ;; M-n and M-p to navigate to another appearence of current symbol
+
 (global-set-key (kbd "M-n") 'highlight-symbol-next)
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
-;; s-return to ignore current line and open new line
-(global-set-key [s-return] 'eide-just-open-new-line)
-;; M-s-return just go to next line end
-(global-set-key [M-s-return] 'eide-just-return-to-next-line)
+;;; Move with mark
 
-;; s-backspace just kill to indentation
-(global-set-key (kbd "s-<backspace>") 'eide-kill-back-to-indentation)
-
-;; mark move
+;; s-y to set mark, s-u to return to that mark
 
 (global-set-key (kbd "s-y") 'eide-push-mark)
 (global-set-key (kbd "s-u") 'eide-pop-mark)
 
-;; Ace jump move
+;;;; Insertion
 
-(global-unset-key (kbd "C-;"))
-(define-key global-map (kbd "C-;") 'ace-jump-char-mode)
-(define-key global-map (kbd "C-:") 'ace-jump-word-mode)
-(define-key global-map (kbd "C-M-;") 'ace-jump-line-mode)
+;;; Basic insertion
+
+;; Most keys insert themselves through `self-insert-command'.
+
+;; s-return to ignore current line and open new line
+
+(global-set-key [s-return] 'eide-just-open-new-line)
 
 ;;; Multiple cursors
 
@@ -96,6 +151,26 @@
 ;; M-; comment
 ;; s-; comment do what i mean
 (global-set-key (kbd "s-;") 'comment-dwim)
+
+;;;; Selection
+
+;;; Basic selection
+
+;;; Expand region
+
+;; s-L to expand current region
+
+(global-set-key (kbd "s-L") 'er/expand-region)
+
+;;;; Deletion
+
+;;; Basic deletion
+
+;; C-d to delete forward, backspace to delete backward
+
+;; s-backspace just kill to indentation
+
+(global-set-key (kbd "s-<backspace>") 'eide-kill-back-to-indentation)
 
 ;;; Code folding
 
@@ -196,10 +271,6 @@
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "s-'") 'hippie-expand)
-
-;;; expand-region
-
-(global-set-key (kbd "s-L") 'er/expand-region)
 
 ;;; Recent files
 
