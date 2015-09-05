@@ -168,6 +168,8 @@
 
 ;; C-d to delete forward, backspace to delete backward
 
+;; C-k to kill to end of line
+
 ;; s-backspace just kill to indentation
 
 (global-set-key (kbd "s-<backspace>") 'eide-kill-back-to-indentation)

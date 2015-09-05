@@ -27,6 +27,10 @@
 
 (delete-selection-mode)
 
+;;; Always superword
+
+(global-superword-mode)
+
 ;;; pretty symbol everywhere
 
 (global-prettify-symbols-mode)
@@ -63,7 +67,6 @@
 
 ;;; searching
 
-(require 'anzu)
 (global-anzu-mode t)
 
 ;;; jumping
@@ -73,7 +76,9 @@
      ;; synx mark
      (ace-jump-mode-enable-mark-sync)
      ;; jump after
-     (add-hook 'ace-jump-mode-end-hook 'forward-char)))
+     (add-hook 'ace-jump-mode-end-hook
+               (lambda () (unless (= (line-end-position) (line-beginning-position))
+                       (forward-char))))))
 
 ;;; bookmark
 
@@ -87,10 +92,21 @@
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
 
+;;; store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 ;;; Undo and Redo
 
-;; use command+z to undo, command+shift+z to redo
+;; autosave the undo-tree history
+(setq undo-tree-history-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq undo-tree-auto-save-history t)
+
 (global-undo-tree-mode)
+
 
 ;;; Global Hippie Expand
 
@@ -118,6 +134,27 @@
 (define-key origami-mode-map (kbd "s-g F") 'origami-close-all-nodes)
 (define-key origami-mode-map (kbd "s-g s") 'origami-open-node)
 (define-key origami-mode-map (kbd "s-g S") 'origami-open-all-nodes)
+
+;;
+
+;; saveplace remembers your location in a file when saving files
+(require 'saveplace)
+(setq save-place-file (expand-file-name "saveplace" eide-etc-dir))
+;; activate it for all buffers
+(setq-default save-place t)
+
+
+;; savehist keeps track of some history
+(require 'savehist)
+(setq savehist-additional-variables
+      ;; search entries
+      '(search-ring regexp-search-ring)
+      ;; save every minute
+      savehist-autosave-interval 60
+      ;; keep the home clean
+      savehist-file (expand-file-name "savehist" eide-etc-dir))
+(savehist-mode +1)
+
 
 
 ;;; Expand region
