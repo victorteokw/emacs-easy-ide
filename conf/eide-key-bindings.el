@@ -111,6 +111,14 @@
 
 (global-set-key [s-return] 'eide-just-open-new-line)
 
+;;; Uppercase and lowercase
+
+;; M-u to upcase word
+
+;; M-l to downcase word
+
+;; M-c to capitalize word
+
 ;;; Multiple cursors
 
 (global-set-key (kbd "s-d") 'mc/mark-next-like-this)

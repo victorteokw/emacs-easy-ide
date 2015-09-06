@@ -22,6 +22,7 @@
 ;;; Editor core
 
 (require 'eide-extension)            ;; eide library
+(require 'eide-theme)                ;; theme
 (require 'eide-ui)                   ;; User interface configuration
 (require 'eide-editor)               ;; Editor configuration
 (require 'eide-enable)               ;; For enable emacs command

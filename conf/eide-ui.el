@@ -115,7 +115,7 @@
 ;;; themes
 
 (if window-system
-    (require 'sanityinc-solarized-light-theme)
+    (load-theme 'eide t)
   (load-theme 'wombat t))
 
 ;;; Line number
@@ -140,8 +140,6 @@
 (global-linum-mode)
 (add-hook 'linum-mode-hook 'hlinum-activate)
 (eval-when-compile (require 'hlinum))
-(set-face-foreground 'linum-highlight-face "#343d46")
-(set-face-background 'linum-highlight-face "#65737e")
 
 ;; show column number at the status bar
 (column-number-mode)
