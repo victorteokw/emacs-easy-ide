@@ -13,6 +13,7 @@
 (depends-on "auto-complete-c-headers")
 (depends-on "auto-complete-clang-async")
 (depends-on "base16-theme")
+(depends-on "buffer-move")
 (depends-on "bundler")
 (depends-on "calfw")
 (depends-on "cask")
