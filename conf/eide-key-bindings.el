@@ -9,6 +9,11 @@
 ;; one for window system Emacs. Which means: it should work on terminal as plain
 ;; emacs, it should work on window system as modern text editor.
 
+;;;; Command modifiers
+
+(setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'super)
+
 ;;;; Prefix keys
 
 ;; Use C-z as prefix key
@@ -217,6 +222,7 @@
 ;; C-z p p to switch project (emacs way)
 ;; C-s-p   to switch project (sublime text way)
 (global-set-key [C-s-268632080] 'projectile-switch-project)
+(global-set-key (kbd "C-s-p") 'projectile-switch-project)
 
 ;; C-z p f to switch file in project (emacs way)
 ;; s-p     to switch file in project (sublime text way)
