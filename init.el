@@ -11,16 +11,16 @@
 
 (require 'f)
 
-(defconst eide-conf-dir (f-expand "conf/" user-emacs-directory)
-  "Eide conf directory.")
-
-(defconst eide-etc-dir (f-expand "etc/" user-emacs-directory)
-  "Eide etc directory.")
-
-(add-to-list 'load-path eide-conf-dir)
+(eval-when-compile
+  (defconst eide-conf-dir (f-expand "conf/" user-emacs-directory)
+    "Eide conf directory.")
+  (defconst eide-etc-dir (f-expand "etc/" user-emacs-directory)
+    "Eide etc directory.")
+  (add-to-list 'load-path eide-conf-dir))
 
 ;;; Editor core
 
+(require 'eide-environment)          ;; gnu-emacs or emacs-mac
 (require 'eide-extension)            ;; eide library
 (require 'eide-theme)                ;; theme
 (require 'eide-ui)                   ;; User interface configuration
