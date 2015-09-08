@@ -175,6 +175,14 @@
 
 (global-set-key (kbd "s-L") 'er/expand-region)
 
+;;;; Copy and paste
+
+(if (string= emacs-distribution "emacs-mac")
+    (progn
+      (global-set-key (kbd "s-c") 'kill-ring-save)
+      (global-set-key (kbd "s-v") 'yank)
+      (global-set-key (kbd "s-x") 'kill-region)))
+
 ;;;; Deletion
 
 ;;; Basic deletion
@@ -194,15 +202,24 @@
 ;; s-g F to fold all
 ;; s-g S to show all
 
-;;; Editor file operation
+;;;; Editor file peration
+
+;;; save current file
+
+;; C-x C-s to save current buffer
+
+;; s-s to save current buffer
+
+(global-set-key (kbd "s-s") 'save-buffer)
 
 ;; close current file
-(global-set-key (kbd "s-w") 'kill-this-buffer)
-(global-set-key (kbd "s-M-∑") 'eide-kill-last-buffer)
 
-;; previous file and next file
-;; (global-set-key (kbd "s-b") 'previous-buffer)
-;; (global-set-key (kbd "s-f") 'next-buffer)
+(global-set-key (kbd "s-w") 'kill-this-buffer)
+
+;; s-M-w to kill last buffer
+
+(global-set-key (kbd "s-M-w") 'eide-kill-last-buffer)
+(global-set-key (kbd "s-M-∑") 'eide-kill-last-buffer)
 
 ;;; Window and frame
 
