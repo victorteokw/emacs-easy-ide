@@ -6,7 +6,7 @@
      (setq org-directory (expand-file-name "org" user-emacs-directory))
 
      ;; archive directory
-     (setq org-archive-location (expand-file-name "archives" org-directory))
+     (setq org-archive-location (expand-file-name "archives.org::* ARCHIVES" org-directory))
 
      ;; special ctrl-a/e behavior in some circumstance
      (setq org-special-ctrl-a/e t)
@@ -28,6 +28,10 @@
      (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
      (setq org-mobile-inbox-for-pull
            (expand-file-name "mobile_inbox.org" org-directory))
+
+     ;; show everthing on startup
+     (setq org-startup-folded 'content)
+
      ))
 
 
