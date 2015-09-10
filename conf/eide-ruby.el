@@ -5,7 +5,6 @@
 ;; ruby file extensions
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Beanfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.irbrc\\'" . ruby-mode))
@@ -13,6 +12,7 @@
 (add-to-list 'auto-mode-alist '("\\.pryrc\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\Podfile\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Beanfile\\'" . ruby-mode)) ;; CocoaBean
 
 ;; compilation
 (require 'ruby-compilation)
