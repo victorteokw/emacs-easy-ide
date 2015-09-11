@@ -274,6 +274,36 @@
 (setq desktop-path (list (f-expand "etc" user-emacs-directory)))
 (desktop-save-mode 1)
 
+;;; Better selection
 
+(defvar eide-point-before-mark nil
+  "This var is used to restore point when C-g in marking.")
+
+(defvar eide-mark-functions
+  '(mark-page mark-paragraph mark-whole-buffer mark-sexp mark-defun mark-word)
+  "Functions behave like mark.")
+
+(defadvice mark-page (before eide-set-restore-before-mark activate)
+  (setq eide-point-before-mark (point)))
+(defadvice mark-paragraph (before eide-set-restore-before-mark activate)
+  (setq eide-point-before-mark (point)))
+(defadvice mark-whole-buffer (before eide-set-restore-before-mark activate)
+  (setq eide-point-before-mark (point)))
+(defadvice mark-sexp (before eide-set-restore-before-mark activate)
+  (setq eide-point-before-mark (point)))
+(defadvice mark-defun (before eide-set-restore-before-mark activate)
+  (setq eide-point-before-mark (point)))
+(defadvice mark-word (before eide-set-restore-before-mark activate)
+  (setq eide-point-before-mark (point)))
+
+(defadvice keyboard-quit (before eide-restore-cursor-cg-mark activate)
+  (when (memq last-command eide-mark-functions)
+    (eide-restore-cursor)))
+
+(defun eide-restore-cursor ()
+  (if eide-point-before-mark
+      (progn
+        (goto-char eide-point-before-mark)
+        (setq eide-point-before-mark nil))))
 
 (provide 'eide-editor)

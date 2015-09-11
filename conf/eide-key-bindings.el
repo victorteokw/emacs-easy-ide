@@ -169,6 +169,10 @@
 
 ;;; Basic selection
 
+;; C-x h and s-a to select all
+
+(global-set-key (kbd "s-a") 'mark-whole-buffer)
+
 ;;; Expand region
 
 ;; s-L to expand current region
