@@ -95,6 +95,12 @@
 
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
+;;;; Menu
+
+;; Use M-` to open menu bar
+
+(define-key global-map (kbd "M-`") 'menu-bar-open)
+
 
 
 ;;;; Cursor, mark and selection

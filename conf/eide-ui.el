@@ -1,7 +1,3 @@
-;;; Using meta-backtip to open menu bar on terminal
-
-(define-key global-map (kbd "M-`") 'menu-bar-open)
-
 ;;; Do not show toolbar
 
 (when (fboundp 'tool-bar-mode)
@@ -87,7 +83,7 @@
 (require 'guide-key)
 (setq guide-key/guide-key-sequence
       '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"
-        "C-x C-r"))
+        "C-x C-r" "C-z" "C-z g" "C-z p" "C-z q" "C-z o"))
 (guide-key-mode 1)
 
 ;;; discover
@@ -98,7 +94,6 @@
 ;; helm
 (require 'helm)
 (require 'helm-config)
-;; (require 'helm-projectile)
 ;; (helm-autoresize-mode)
 (global-set-key (kbd "s-i") 'helm-mini)
 
