@@ -95,6 +95,50 @@
 
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
+
+
+;;;; Cursor, mark and selection
+
+;; Cursor is the most important to editing, all your insertion, deletion and
+;; modification occurs on cursor. Every cursor has a corresponding mark, a
+;; cursor and a mark define a selection.
+;;
+;; Most of the time, you need only one cursor, additional cursors are very
+;; helpful in some cases.
+;;
+;; You can add cursor and remove cursor however you can not remove the only
+;; cursor.
+
+;; Use M-space to set mark
+
+(global-set-key (kbd "M-SPC") 'set-mark-command)
+
+;; Use C-x C-x to exchange cursor and mark
+
+;; TODO: Remove multiple cursors section, multiple cursors should feel like
+;; just normal.
+;;; Multiple cursors
+
+(global-set-key (kbd "s-d") 'mc/mark-next-like-this)
+(global-set-key (kbd "s-D") 'mc/skip-to-next-like-this)
+(global-set-key (kbd "s-g s-d") 'mc/unmark-next-like-this)
+(global-set-key (kbd "s-e") 'mc/mark-previous-like-this)
+(global-set-key (kbd "s-E") 'mc/skip-to-previous-like-this)
+(global-set-key (kbd "s-g s-e") 'mc/unmark-previous-like-this)
+(global-set-key (kbd "s-g l") 'mc/mark-all-dwim)
+(global-set-key (kbd "s-g a") 'mc/mark-all-like-this)
+
+(global-set-key (kbd "s-g d") 'mc/mark-all-like-this-in-defun)
+
+(global-set-key [s-mouse-1] 'mc/add-cursor-on-click)
+
+;; From active region to multiple cursors:
+(global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
+(global-set-key (kbd "C-c c c") 'mc/edit-lines)
+(global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
+(global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
+
+
 ;;;; Move cursor
 
 ;;; Basic move
@@ -167,27 +211,6 @@
 ;; M-l to downcase word
 
 ;; M-c to capitalize word
-
-;;; Multiple cursors
-
-(global-set-key (kbd "s-d") 'mc/mark-next-like-this)
-(global-set-key (kbd "s-D") 'mc/skip-to-next-like-this)
-(global-set-key (kbd "s-g s-d") 'mc/unmark-next-like-this)
-(global-set-key (kbd "s-e") 'mc/mark-previous-like-this)
-(global-set-key (kbd "s-E") 'mc/skip-to-previous-like-this)
-(global-set-key (kbd "s-g s-e") 'mc/unmark-previous-like-this)
-(global-set-key (kbd "s-g l") 'mc/mark-all-dwim)
-(global-set-key (kbd "s-g a") 'mc/mark-all-like-this)
-
-(global-set-key (kbd "s-g d") 'mc/mark-all-like-this-in-defun)
-
-(global-set-key [s-mouse-1] 'mc/add-cursor-on-click)
-
-;; From active region to multiple cursors:
-(global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
-(global-set-key (kbd "C-c c c") 'mc/edit-lines)
-(global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
-(global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
 
 ;;; Search and replace
 
