@@ -210,7 +210,7 @@
 
 ;;; Multiple Cursors
 (eval-after-load "multiple-cursors"
-  '(setq mc/list-file (f-expand ".mc-lists.el" eide-etc-dir)))
+  (setq mc/list-file (f-expand "eide-cursor-commands.el" eide-conf-dir)))
 
 ;;; Auto complete
 
