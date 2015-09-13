@@ -1,4 +1,4 @@
-;;;;; Key definition sheet
+;;;;; Key Definition Sheet
 
 ;; The design of key strokes of this emacs configuration is combine the best of
 ;; Emacs and modern text editors such as Sublime Text, TextMate and Atom.
@@ -36,6 +36,46 @@
 ;; Use C-g to cancel
 
 ;; Esc doesn't work well for cancel
+
+;;;; Exit
+
+;; Use C-x C-s to exit
+
+;; Use s-q to exit on OS X, too
+
+(global-set-key (kbd "s-q") 'save-buffers-kill-emacs)
+
+;;;; Suspend
+
+;; Use C-x C-z to suspend
+
+;; Use s-m to suspend on OS X, too
+
+(global-set-key (kbd "s-m") 'iconify-frame)
+
+;;;; Toggle full screen
+
+;; Use f11 to toggle full screen
+
+;; Use C-s-f to toggle full screen on OS X, too
+
+(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+
+;;;; Configuration
+
+;; Use `customize' to customize.
+
+;; Use C-z c i to go to user init file
+
+(global-set-key (kbd "C-z c i") 'eide-goto-init-file)
+
+;; Use C-z c c to go to a configuration file
+
+(global-set-key (kbd "C-z c c") 'eide-goto-conf-file)
+
+;; Use C-z c k to go to key binding file
+
+(global-set-key (kbd "C-z c k") 'eide-goto-key-bindings-file)
 
 ;;;; Command Palette (smex)
 
@@ -337,10 +377,6 @@
 (global-set-key [M-f9] 'package-list-packages)
 (global-set-key [s-f9] 'package-list-packages-no-fetch)
 
-;;; Configuration
-
-(global-set-key [C-f11] 'eide-cycle-confs)
-
 ;;; Org GTD
 
 ;; s-@ to org-capture
@@ -351,16 +387,5 @@
 
 ;; s-% to open agenda menu
 (global-set-key (kbd "C-z \\") 'org-agenda)
-
-;;; Go to key binding file
-
-(defconst eide-key-bindings-file (or load-file-name
-                                     (buffer-file-name (current-buffer))))
-
-(defun eide-goto-key-bindings-file ()
-  (interactive)
-  (find-file eide-key-bindings-file))
-
-(global-set-key (kbd "C-z k") 'eide-goto-key-bindings-file)
 
 (provide 'eide-key-bindings)

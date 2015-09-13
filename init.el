@@ -10,7 +10,6 @@
 ;;; Setup directory structure
 
 (require 'f)
-
 (eval-when-compile
   (defconst eide-conf-dir (f-expand "conf/" user-emacs-directory)
     "Eide conf directory.")

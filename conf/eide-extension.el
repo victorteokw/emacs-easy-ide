@@ -1,3 +1,21 @@
+(defun eide-goto-init-file ()
+  (interactive)
+  (find-file user-init-file))
+
+(defun eide-goto-conf-file (file)
+  (interactive
+   (list
+    (ido-completing-read
+     "Goto conf file: "
+     (-map
+      (lambda (f) (s-replace "eide-" "" (f-no-ext (f-filename f))))
+      (f-files eide-conf-dir (lambda (f) (f-ext? f "el")))))))
+  (find-file (f-expand (format "eide-%s.el" file) eide-conf-dir)))
+
+(defun eide-goto-key-bindings-file ()
+  (interactive)
+  (eide-goto-conf-file "key-bindings"))
+
 (defun eide-get-filename ()
   "Not documented yet."
   (if (eq major-mode 'dired-mode)
@@ -101,7 +119,7 @@ install the interactive command to search through them."
                             "https://www.baidu.com/baidu?tn=baidu&word="
                             "Baidu: ")
 
-(defun eide-rename-buffer-and-file ()
+(defun eide-rename-file-and-buffer ()
   "Rename current buffer and if the buffer is visiting a file, rename it too."
   (interactive)
   (let ((filename (buffer-file-name)))
