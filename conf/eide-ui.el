@@ -81,6 +81,7 @@
 ;;; guide key
 
 (require 'guide-key)
+(setq guide-key/popup-window-position 'bottom)
 (setq guide-key/guide-key-sequence
       '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"
         "C-x C-r" "C-z" "C-z g" "C-z p" "C-z q" "C-z o"))

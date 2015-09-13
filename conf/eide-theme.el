@@ -167,6 +167,10 @@
 ;;; multiple cursors
  `(mc/cursor-face ((t (:background ,uju-cursor :foreground ,uju-white, :inverse-video nil))))
 
+;;;;; guide-key
+ `(guide-key/prefix-command-face ((t (:foreground ,uju-black))))
+ `(guide-key/highlight-command-face ((t (:foreground ,uju-black))))
+ `(guide-key/key-face ((t (:foreground ,uju-black))))
 ;;;;; magit
 ;;;;;; headings and diffs
  `(magit-section-highlight           ((t (:background ,uju-blue-cluster-01))))
