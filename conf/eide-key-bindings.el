@@ -179,6 +179,12 @@
 
 (global-set-key (kbd "s-L") 'er/expand-region)
 
+;;; Expand line
+
+;; s-l to expand line
+
+(global-set-key (kbd "s-l") 'turn-on-expand-line-mode)
+
 ;;;; Copy and paste
 
 (if (string= emacs-distribution "emacs-mac")
