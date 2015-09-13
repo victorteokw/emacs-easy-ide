@@ -9,6 +9,10 @@
 ;; one for window system Emacs. Which means: it should work on terminal as plain
 ;; emacs, it should work on window system as modern text editor.
 
+;; On different operation systems, the system default key bindings differ, this
+;; key bindings react to mimic the default system key binding, makes emacs more
+;; seamless with the underlying operating system.
+
 ;;;; Command modifiers
 
 (setq mac-option-modifier 'meta)
