@@ -278,4 +278,9 @@
 
 (smart-mark-mode)
 
+;;; Dired
+
+(setq dired-listing-switches "-alh")
+
+
 (provide 'eide-editor)
