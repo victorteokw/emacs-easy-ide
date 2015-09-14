@@ -101,6 +101,32 @@
 
 (define-key global-map (kbd "M-`") 'menu-bar-open)
 
+;;;; Help
+
+;; C-h k to get usage of key
+
+;; C-h c to get usage of key too but not verbose
+
+;; C-h f to get usage of function
+
+;; C-h v to get usage of variable
+
+;; C-h a to get command match predicate
+
+;; C-h d to get everything match predicate
+
+;; C-h b to get all key bindings
+
+;; C-h m to get usage of current mode
+
+;; C-h e to go to message buffer to see what's going on
+
+;; C-h i to read manual
+
+;; C-h D to dash about thing at point
+
+(global-set-key (kbd "C-h D") 'dash-at-point)
+
 
 
 ;;;; Cursor, mark and selection
@@ -123,7 +149,8 @@
 
 ;; TODO: Remove multiple cursors section, multiple cursors should feel like
 ;; just normal.
-;;; Multiple cursors
+
+;;; Cursors
 
 (global-set-key (kbd "s-d") 'mc/mark-next-like-this)
 (global-set-key (kbd "s-D") 'mc/skip-to-next-like-this)
@@ -144,8 +171,25 @@
 (global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
 
+;;; Basic selection
 
-;;;; Move cursor
+;; C-x h and s-a to select all
+
+(global-set-key (kbd "s-a") 'mark-whole-buffer)
+
+;;; Expand region
+
+;; s-L to expand current region
+
+(global-set-key (kbd "s-L") 'er/expand-region)
+
+;;; Expand line
+
+;; s-l to expand line
+
+(global-set-key (kbd "s-l") 'turn-on-expand-line-mode)
+
+;;;; Movement
 
 ;;; Basic move
 
@@ -200,6 +244,13 @@
 (global-set-key (kbd "s-y") 'eide-push-mark)
 (global-set-key (kbd "s-u") 'eide-pop-mark)
 
+;;; Swoop
+
+;; C-z z to swoop
+;; TODO: change swoop's keybinding
+
+(global-set-key (kbd "C-z z") 'helm-swoop)
+
 ;;;; Insertion
 
 ;;; Basic insertion
@@ -209,6 +260,37 @@
 ;; s-return to ignore current line and open new line
 
 (global-set-key [s-return] 'eide-just-open-new-line)
+
+;;; Hippie expand
+
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "s-'") 'hippie-expand)
+
+;;; auto complete
+
+;; auto complete will automatically trigger, use C-g to cancel
+
+;;; Insertion by copy and paste
+
+(if (string= emacs-distribution "emacs-mac")
+    (progn
+      (global-set-key (kbd "s-c") 'kill-ring-save)
+      (global-set-key (kbd "s-v") 'yank)
+      (global-set-key (kbd "s-x") 'kill-region)))
+
+;;;; Deletion
+
+;;; Basic deletion
+
+;; C-d to delete forward, backspace to delete backward
+
+;; C-k to kill to end of line
+
+;; s-backspace just kill to indentation
+
+(global-set-key (kbd "s-<backspace>") 'eide-kill-back-to-indentation)
+
+;;;; Modification
 
 ;;; Uppercase and lowercase
 
@@ -238,56 +320,23 @@
 ;; s-; comment do what i mean
 (global-set-key (kbd "s-;") 'comment-dwim)
 
-;;;; Selection
+
 
-;;; Basic selection
+;;;; Buffer
 
-;; C-x h and s-a to select all
+;;; Open file
 
-(global-set-key (kbd "s-a") 'mark-whole-buffer)
+;; C-x C-f to open a file
 
-;;; Expand region
+;; s-o to open a file
 
-;; s-L to expand current region
+(global-set-key (kbd "s-o") 'ido-find-file)
 
-(global-set-key (kbd "s-L") 'er/expand-region)
+;; s-O to open a recent file
 
-;;; Expand line
+(define-key recentf-mode-map (kbd "s-O") 'recentf-ido-find-file)
 
-;; s-l to expand line
-
-(global-set-key (kbd "s-l") 'turn-on-expand-line-mode)
-
-;;;; Copy and paste
-
-(if (string= emacs-distribution "emacs-mac")
-    (progn
-      (global-set-key (kbd "s-c") 'kill-ring-save)
-      (global-set-key (kbd "s-v") 'yank)
-      (global-set-key (kbd "s-x") 'kill-region)))
-
-;;;; Deletion
-
-;;; Basic deletion
-
-;; C-d to delete forward, backspace to delete backward
-
-;; C-k to kill to end of line
-
-;; s-backspace just kill to indentation
-
-(global-set-key (kbd "s-<backspace>") 'eide-kill-back-to-indentation)
-
-;;; Code folding
-
-;; s-g f to fold
-;; s-g s to show
-;; s-g F to fold all
-;; s-g S to show all
-
-;;;; Editor file peration
-
-;;; save current file
+;;; Save file
 
 ;; C-x C-s to save current buffer
 
@@ -295,7 +344,15 @@
 
 (global-set-key (kbd "s-s") 'save-buffer)
 
-;; close current file
+;; C-x C-w to write file
+
+;; s-S to write file
+
+(global-set-key (kbd "s-S") 'ido-write-file)
+
+;;; Close file
+
+;; s-w to close current file
 
 (global-set-key (kbd "s-w") 'kill-this-buffer)
 
@@ -304,16 +361,95 @@
 (global-set-key (kbd "s-M-w") 'eide-kill-last-buffer)
 (global-set-key (kbd "s-M-∑") 'eide-kill-last-buffer)
 
-;;; Window and frame
+;;; Switch buffer
 
-;; Need an package
+;; C-x b to switch buffer
 
-;;; Find file
+;;; Bookmarking
 
-;; bookmark
+;; s-T to set bookmark
+
 (global-set-key (kbd "s-T") 'bookmark-set)
+
+;; s-t to goto bookmark
+
 (global-set-key (kbd "s-t") 'bookmark-jump)
+
+;; s-g t to show bookmark list
+
 (global-set-key (kbd "s-g t") 'bookmark-bmenu-list)
+
+
+;;;; Window
+
+;; C-x o to cycle window
+
+;; C-x 3 to split window right
+;; s-k C-f to split window right
+
+(global-set-key (kbd "s-k C-f") 'split-window-right)
+
+;; C-x 2 to split window below
+;; s-k C-n to split window below
+
+(global-set-key (kbd "s-k C-n") 'split-window-below)
+
+;; C-x 0 to close current window
+
+;;;; Frame
+
+;; C-x 5 o to cycle frame
+;; s-` to cycle frame
+
+(global-set-key (kbd "s-`") 'other-frame)
+
+
+
+;;;; Undo and Redo
+
+;;; Undo and redo for editing
+
+;; Use s-z to undo
+
+(global-set-key (kbd "s-z") 'undo-tree-undo)
+
+;; Use s-Z to redo
+
+(global-set-key (kbd "s-Z") 'undo-tree-redo)
+
+;; Use C-x u to visualize undo tree
+
+;;; Undo and redo for buffer, window, and frame (aka workspace)
+
+;; TODO: Add undo redo for these things
+
+
+
+;;;; Visual coding
+
+;;; Code folding
+
+;; s-g f to fold
+
+(define-key hs-minor-mode-map (kbd "s-g f") 'hs-hide-block)
+(define-key origami-mode-map (kbd "s-g f") 'origami-close-node)
+
+;; s-g s to show
+
+(define-key hs-minor-mode-map (kbd "s-g s") 'hs-show-block)
+(define-key origami-mode-map (kbd "s-g s") 'origami-open-node)
+
+;; s-g F to fold all
+
+(define-key hs-minor-mode-map (kbd "s-g F") 'hs-hide-all)
+(define-key origami-mode-map (kbd "s-g F") 'origami-close-all-nodes)
+
+;; s-g S to show all
+
+(define-key hs-minor-mode-map (kbd "s-g S") 'hs-show-all)
+(define-key origami-mode-map (kbd "s-g S") 'origami-open-all-nodes)
+
+;;;; Miscellaneous
 
 ;;; Project
 
@@ -370,34 +506,12 @@
 ;; yagist not bind anything yet
 ;; gist not bind anything yet
 
-;;; Help
-
-;; C-h D to dash
-(global-set-key (kbd "C-h D") 'dash-at-point)
-
-;;; C-z z to swoop
-(global-set-key (kbd "C-z z") 'helm-swoop)
-
-;;; Undo and Redo
-
-(global-set-key (kbd "s-z") 'undo-tree-undo)
-(global-set-key (kbd "s-Z") 'undo-tree-redo)
-
-;;; Hippie expand
-
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "s-'") 'hippie-expand)
-
-;;; Recent files
-
-(define-key recentf-mode-map (kbd "s-O") 'recentf-ido-find-file)
-
-;;; Search web
+;;;; Search web
 
 (global-set-key (kbd "C-z q b") 'eide-search-bing)
 (global-set-key (kbd "C-z q g") 'eide-search-google)
 
-;;; Open with external app
+;;;; Open with external app
 
 (global-set-key (kbd "C-z o f") 'eide-open-with-finder)
 (global-set-key (kbd "C-z o s") 'eide-open-with-sublime-text)
@@ -410,15 +524,15 @@
 (global-set-key [M-f9] 'package-list-packages)
 (global-set-key [s-f9] 'package-list-packages-no-fetch)
 
-;;; Org GTD
+;;;; Org GTD
 
-;; s-@ to org-capture
+;; C-z [ to org-capture
 (global-set-key (kbd "C-z [") 'org-capture)
 
-;; s-! to cycle org files
+;; C-z ] to cycle org files
 (global-set-key (kbd "C-z ]") 'org-cycle-agenda-files)
 
-;; s-% to open agenda menu
+;; C-z \ to open agenda menu
 (global-set-key (kbd "C-z \\") 'org-agenda)
 
 (provide 'eide-key-bindings)

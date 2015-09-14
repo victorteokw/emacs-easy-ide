@@ -123,18 +123,6 @@
 (require 'origami)
 (require 'hideshow)
 
-;;; Key bindings
-
-(define-key hs-minor-mode-map (kbd "s-g f") 'hs-hide-block)
-(define-key hs-minor-mode-map (kbd "s-g F") 'hs-hide-all)
-(define-key hs-minor-mode-map (kbd "s-g s") 'hs-show-block)
-(define-key hs-minor-mode-map (kbd "s-g S") 'hs-show-all)
-
-(define-key origami-mode-map (kbd "s-g f") 'origami-close-node)
-(define-key origami-mode-map (kbd "s-g F") 'origami-close-all-nodes)
-(define-key origami-mode-map (kbd "s-g s") 'origami-open-node)
-(define-key origami-mode-map (kbd "s-g S") 'origami-open-all-nodes)
-
 ;;
 
 ;; saveplace remembers your location in a file when saving files

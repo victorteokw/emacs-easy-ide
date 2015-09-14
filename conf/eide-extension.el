@@ -1,3 +1,13 @@
+(defmacro eide-alter-function (func func2 &rest body)
+  "Alter FUNC's implementation with FUNC2 temporarily. And eveluate BODY."
+  (declare (debug t) (indent 1))
+  `(let ((imp (symbol-function ,func)))
+     (unwind-protect
+         (progn
+           (fset ,func (symbol-function ,func2))
+           ,@body)
+       (fset ,func imp))))
+
 (defun eide-goto-init-file ()
   (interactive)
   (find-file user-init-file))

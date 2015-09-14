@@ -44,6 +44,30 @@
 (define-key paredit-mode-map (kbd "M-<left>") 'paredit-wrap-sexp)
 (define-key paredit-mode-map (kbd "M-<right>") 'paredit-wrap-sexp)
 
+;;; Delete should react to region
+
+(defadvice paredit-backward-delete (around eide-paredit-delete-region activate)
+  (if mark-active
+      (delete-backward-char 1)
+    ad-do-it))
+
+(defadvice paredit-forward-delete (around eide-paredit-delete-region activate)
+  (if mark-active
+      (delete-forward-char 1)
+    ad-do-it))
+
+;;; Delete should react to superword mode
+
+(defadvice paredit-backward-kill-word (around eide-paredit-kill-superword activate)
+  (eide-alter-function
+      'backward-kill-word 'subword-backward-kill
+      ad-do-it))
+
+(defadvice paredit-forward-kill-word (around eide-paredit-kill-superword activate)
+  (eide-alter-function
+      'kill-word 'subword-kill
+      ad-do-it))
+
 ;;; Aggressive indent
 
 (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
@@ -90,18 +114,6 @@
   (add-hook 'before-save-hook 'whitespace-cleanup))
 
 (add-hook 'emacs-lisp-mode-hook 'eide-elisp-clean-whitespaces)
-
-;;; Delete should react to region
-
-(defadvice paredit-backward-delete (around eide-paredit-delete-region activate)
-  (if mark-active
-      (delete-backward-char 1)
-    ad-do-it))
-
-(defadvice paredit-forward-delete (around eide-paredit-delete-region activate)
-  (if mark-active
-      (delete-forward-char 1)
-    ad-do-it))
 
 ;;; Flycheck elisp
 
