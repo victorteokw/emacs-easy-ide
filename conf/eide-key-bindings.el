@@ -423,6 +423,16 @@
 
 ;; TODO: Add undo redo for these things
 
+;;;; Editing modes
+
+;; Use ESC to toggle along editing modes
+
+(global-set-key [escape] 'eide-toggle-editing-mode)
+
+(eval-after-load "evil"
+  '(define-key evil-normal-state-map
+     [remap evil-force-normal-state] 'eide-toggle-editing-mode))
+
 
 
 ;;;; Visual coding

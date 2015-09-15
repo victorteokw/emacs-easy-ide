@@ -26,6 +26,7 @@
 (depends-on "elisp-slime-nav")
 (depends-on "elnode")
 (depends-on "emmet-mode")
+(depends-on "evil")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-line")
 (depends-on "expand-region")

@@ -159,8 +159,8 @@
     (kill-region (point) prev-pos)))
 
 ;; move line up and down
-(global-set-key [s-down] 'md/move-lines-down)
-(global-set-key [s-up] 'md/move-lines-up)
+(global-set-key [M-down] 'md/move-lines-down)
+(global-set-key [M-up] 'md/move-lines-up)
 (global-set-key [M-s-down] 'md/duplicate-down)
 (global-set-key [M-s-up] 'md/duplicate-up)
 
@@ -270,5 +270,19 @@
 
 (setq dired-listing-switches "-alh")
 
+;;; Evil
+
+(eval-after-load "evil"
+  '(progn
+     (setq evil-mode-line-format 'after)
+     (defadvice evil-generate-mode-line-tag ;; No effect don't know why
+         (around eide-modeline-better-tag activate)
+       (let ((result ad-do-it))
+         (if (not (null result))
+             (progn
+               (setq result (s-trim result))
+               (propertize result 'face 'font-lock-constant-face)
+               result)
+           result)))))
 
 (provide 'eide-editor)

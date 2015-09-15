@@ -178,6 +178,8 @@ mouse-3: Toggle minor modes"
                                       'mouse-2 #'mode-line-widen))
               ")"
               (propertize "%]" 'help-echo recursive-edit-help-echo)
+              " "
+              `(:propertize eide--current-editing-mode face font-lock-constant-face)
               " ")))
 
 ;; Weather forecast with sunshine

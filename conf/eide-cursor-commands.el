@@ -15,6 +15,7 @@
         haml-electric-backspace
         indent-for-tab-command
         mark-whole-buffer
+        org-delete-char
         org-end-of-line
         org-meta-return
         org-schedule

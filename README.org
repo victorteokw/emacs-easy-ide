@@ -1,3 +1,88 @@
 * emacs-easy-ide
 
-emacs-easy-ide is a self-documenting emacs configuration, it aims easy to use and cross platform.
+emacs-easy-ide is a self-documenting emacs configuration, it aims easy to use
+and cross platform.
+
+** Features
+
+*** Overview
+
++ efficienct user interface with =ido=
++ multiple cursors and regions with =multiple-cursors=
++ visual search and replace with =anzu=
++ project management with =projectile=
++ git version control with =magit=
++ visual undo and redo with =undo-tree=
++ auto completion with =auto-complete=
++ code folding with =hideshow= and =origami=
++ jumping to anywhere with =ace-jump=
++ syntax checking with =flycheck=
++ whitespace cleanup on save
++ workspace restoration
++ nice looking uju theme
++ multiple editing modes include *emacs* and *vi* with =evil=
++ Sublime Text and Textmate style key bindings are always available
+
+*** Supported Programming Languages
+
+| Language     | Auto completion | Code folding | Syntax checking | Jump to definition | File structure |
+|--------------+-----------------+--------------+-----------------+--------------------+----------------|
+| C            | YES             | YES          | YES             |                    |                |
+| C++          | YES             | YES          | YES             |                    |                |
+| Objective-C  |                 |              |                 |                    |                |
+| elisp        | YES             | YES          | YES             | YES                |                |
+| Python       |                 |              |                 |                    |                |
+| Ruby         |                 | YES          |                 |                    |                |
+| php          |                 |              |                 |                    |                |
+| javaScript   |                 | YES          | YES             |                    |                |
+| CoffeeScript |                 | YES          | YES             |                    |                |
+| HTML         | YES             |              |                 |                    |                |
+| Haml         | YES             | YES          |                 |                    |                |
+| Slim         | YES             | YES          |                 |                    |                |
+| Jade         | YES             |              |                 |                    |                |
+| Css          |                 |              |                 |                    |                |
+| Sass         |                 |              |                 |                    |                |
+| SCSS         |                 |              |                 |                    |                |
+| Less         |                 |              |                 |                    |                |
+| JSON         |                 |              | YES             |                    |                |
+| YAML         |                 |              |                 |                    |                |
+
+*** Supported Programming Frameworks
+
+| Language | Framework     | File jumping | Build and run | Unit test | Node |
+|----------+---------------+--------------+---------------+-----------+------|
+| Ruby     | Ruby on Rails | YES          | YES           | YES       |      |
+| css      | bootstrap     |              |               |           | TODO |
+
+** Setup
+
+This package uses cask as package manager, you need to install cask through
+instruction [[http://cask.readthedocs.org/en/latest/guide/installation.html][here]].
+
+After setup cask, setup of this package is easy, just clone this repo and rename it to
+=~/.emacs.d= and have fun with it.
+
+** Introduction of Usage
+
+After installing, you can start to type.
+
+Use =C-x C-f= to open a file, if the file is inside a project, the project is
+automatically recorded. Next time you could open the project with =C-z p p=.
+
+When editing, you could use =ESC= to toggle editing mode between *emacs* and
+*vim*, in either mode, *Sublime Text* and *TextMate* style key bindings work
+fine.
+
+When you don't know a keybinding, you could use =C-z c k= to view and edit key
+binding definition table.
+
+You can save your file in several ways: =C-x C-s= is emacs way, =:w= is vim
+way, and also =s-s= the Sublime Text way.
+
+When you are working with git, for example, you want to push your local commit,
+=C-z g g= to open *magit* status panel, and do the staging, commiting, merging,
+rebasing, pushing and pulling there.
+
+** Issues
+
+If you find any bugs, welcome to open issues and submit pull request.
