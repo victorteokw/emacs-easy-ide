@@ -25,27 +25,28 @@ and cross platform.
 
 *** Supported Programming Languages
 
-| Language     | Auto completion | Code folding | Syntax checking | Jump to definition | File structure |
-|--------------+-----------------+--------------+-----------------+--------------------+----------------|
-| C            | YES             | YES          | YES             |                    |                |
-| C++          | YES             | YES          | YES             |                    |                |
-| Objective-C  |                 |              |                 |                    |                |
-| elisp        | YES             | YES          | YES             | YES                |                |
-| Python       |                 |              |                 |                    |                |
-| Ruby         |                 | YES          |                 |                    |                |
-| php          |                 |              |                 |                    |                |
-| javaScript   |                 | YES          | YES             |                    |                |
-| CoffeeScript |                 | YES          | YES             |                    |                |
-| HTML         | YES             |              |                 |                    |                |
-| Haml         | YES             | YES          |                 |                    |                |
-| Slim         | YES             | YES          |                 |                    |                |
-| Jade         | YES             |              |                 |                    |                |
-| Css          |                 |              |                 |                    |                |
-| Sass         |                 |              |                 |                    |                |
-| SCSS         |                 |              |                 |                    |                |
-| Less         |                 |              |                 |                    |                |
-| JSON         |                 |              | YES             |                    |                |
-| YAML         |                 |              |                 |                    |                |
+| Language     | Auto completion | Code folding | Syntax checking | Jump to definition | File structure | REPL |
+|--------------+-----------------+--------------+-----------------+--------------------+----------------+------|
+| C            | YES             | YES          | YES             |                    |                |      |
+| C++          | YES             | YES          | YES             |                    |                |      |
+| Objective-C  |                 |              |                 |                    |                |      |
+| elisp        | YES             | YES          | YES             | YES                |                | YES  |
+| Python       |                 |              |                 |                    |                | YES  |
+| Ruby         |                 | YES          |                 |                    |                | YES  |
+| php          |                 |              |                 |                    |                | YES  |
+| javaScript   |                 | YES          | YES             |                    |                | YES  |
+| CoffeeScript |                 | YES          | YES             |                    |                | YES  |
+| HTML         | YES             |              |                 |                    |                |      |
+| Haml         | YES             | YES          |                 |                    |                |      |
+| Slim         | YES             | YES          |                 |                    |                |      |
+| Jade         | YES             |              |                 |                    |                |      |
+| Css          |                 |              |                 |                    |                |      |
+| Sass         |                 |              |                 |                    |                |      |
+| SCSS         |                 |              |                 |                    |                |      |
+| Less         |                 |              |                 |                    |                |      |
+| JSON         |                 |              | YES             |                    |                |      |
+| YAML         |                 |              |                 |                    |                |      |
+| shell script |                 |              |                 |                    |                | YES  |
 
 *** Supported Programming Frameworks
 
@@ -59,8 +60,10 @@ and cross platform.
 This package uses cask as package manager, you need to install cask through
 instruction [[http://cask.readthedocs.org/en/latest/guide/installation.html][here]].
 
-After setup cask, setup of this package is easy, just clone this repo and rename it to
-=~/.emacs.d= and have fun with it.
+After setup cask, setup of this package is easy, just clone this repo and
+rename it to =~/.emacs.d=, run =cask install=.
+
+Only the first time you need to run =cask install=.
 
 ** Introduction of Usage
 

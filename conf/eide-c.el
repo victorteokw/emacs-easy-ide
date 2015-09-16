@@ -1,4 +1,5 @@
-(defvar hoiyu/c-mac-include-directories
+;;; TODO: Make this not depends on OS X
+(defvar eide-mac-include-directories
   (list "/usr/include" "/usr/local/include"
         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefau\
 lt.xctoolchain/usr/bin/../lib/clang/6.1.0/include"
@@ -6,68 +7,48 @@ lt.xctoolchain/usr/bin/../lib/clang/6.1.0/include"
 lt.xctoolchain/usr/include")
   "Mac OS X C include directories.")
 
-(defun hoiyu/c-mode-setup ()
-  "Setup for C mode."
-  ;; Electric pair mode
-  (electric-pair-mode)
+;;; Electric pair
 
-  ;; Clear default auto complete sources
-  (setq ac-sources '())
+(add-hook 'c-mode-common-hook 'electric-pair-mode)
 
-  ;; clang-async auto complete
+;;; Auto complete
+
+(defun eide-c-auto-complete ()
+  (setq ac-sources nil)
   (require 'auto-complete-clang-async)
   (setq ac-clang-complete-executable "~/.emacs.d/bin/clang-complete")
   (add-to-list 'ac-sources 'ac-source-clang-async)
   (ac-clang-launch-completion-process)
-
-  ;; c headers completion
   (require 'auto-complete-c-headers)
   (add-to-list 'ac-sources 'ac-source-c-headers)
-  (setq achead:include-directories hoiyu/c-mac-include-directories)
-
-  ;; start auto complete
-  (auto-complete-mode)
-
-  ;; Snippets
-  (yas-minor-mode-on)
-
-  ;; Snippets completion
+  (setq achead:include-directories eide-mac-include-directories)
   (add-to-list 'ac-sources 'ac-source-yasnippet)
+  (auto-complete-mode))
 
-  ;; Syntax checking
-  (flycheck-mode)
+(add-hook 'c-mode-common-hook 'eide-c-auto-complete)
 
-  ;; Man page
-  (local-set-key (kbd "s-M") 'helm-man-woman)
+;;; Snippets
 
-  ;; iedit
-  (local-set-key (kbd "C-c ;") 'iedit-mode)
+(add-hook 'c-mode-common-hook 'yas-minor-mode-on)
 
-  ;; ;; semantic
-  ;; (semantic-mode)
-  ;; (semantic-idle-scheduler-mode 1)
-  ;; (add-to-list 'ac-sources 'ac-source-semantic)
+;;; Syntax checking
 
-  ;; ;; irony
-  ;; (irony-mode)
-  )
+(add-hook 'c-mode-common-hook 'flycheck-mode)
 
-;;(eval-after-load "irony")
+;;; Man page
 
-(eval-after-load "ede"
-  '(setq ede-project-placeholder-cache-file
-         (f-expand "ede-projects.el" eide-etc-dir)))
+(defun eide-c-man-page ()
+  (local-set-key (kbd "s-M") 'helm-man-woman))
 
-(eval-after-load "semantic"
-  '(setq semanticdb-default-save-directory
-         (f-expand ".semanticdb" eide-etc-dir)))
+(add-hook 'c-mode-common-hook 'eide-c-man-page)
 
-(add-hook 'c-mode-common-hook 'hoiyu/c-mode-setup)
+;;; iedit
+
+(defun eide-iedit ()
+  (local-set-key (kbd "C-c ;") 'iedit-mode))
+
+;;; Electric operator
+
 (add-hook 'c-mode-common-hook 'electric-operator-mode)
 
-
-;; (global-ede-mode 1)
-;; (ede-cpp-root-project "my project"
-;;                       :file "~/sss.cpp"
-;;                       :include-path '("/../my_inc"))
 (provide 'eide-c)

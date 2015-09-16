@@ -1,5 +1,6 @@
-(defun hy-lang-haml-setup-auto-completion ()
-  "You know"
+;;; Auto complete
+
+(defun eide-haml-auto-complete ()
   (require 'ac-haml)
   (require 'ac-html-default-data-provider)
   (ac-html-enable-data-provider 'ac-html-default-data-provider)
@@ -9,10 +10,16 @@
                      ac-source-haml-attrv))
   (auto-complete-mode))
 
-;; Auto complete
-(add-hook 'haml-mode-hook 'hy-lang-haml-setup-auto-completion)
+(add-hook 'haml-mode-hook 'eide-haml-auto-complete)
 
-;; Check haml syntax
-;;(add-hook 'haml-mode-hook 'flycheck-mode)
+;;; Check haml syntax
+
+(add-hook 'haml-mode-hook 'flycheck-mode)
+
+;;; Code folding
+
+(add-hook 'haml-mode-hook 'origami-mode)
+
+(add-to-list 'origami-parser-alist '(haml-mode . origami-indent-parser))
 
 (provide 'eide-haml)

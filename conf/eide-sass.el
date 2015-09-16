@@ -1,12 +1,12 @@
-;;; Flycheck syntax
+;;; Syntax checking
 
-;;(add-hook 'sass-mode-hook 'flycheck-mode)
+(add-hook 'sass-mode-hook 'flycheck-mode)
 
-;;; Rainbow
+;;; Rainbow color
 
 (add-hook 'sass-mode-hook 'rainbow-mode)
 
-;; Code folding
+;;; Code folding
 
 (add-hook 'sass-mode-hook 'origami-mode)
 

@@ -1,12 +1,12 @@
-;; javascript
+;;; Use js2-mode for .es6 file, .js.erb file
 
-(require 'js2-mode)
-
-;; Use js2-mode for .es6 file, .js.erb file
 (add-to-list 'auto-mode-alist
              '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js2-mode))
 
-;; two space indentation
+;;; two space indentation
+
+(require 'js2-mode)
+
 (setq js2-basic-offset 2)
 
 (add-hook 'js2-mode-hook
@@ -19,17 +19,37 @@
                 (jst-enable-appropriate-mode))
             ))
 
-;; Jasmine
+;;; Jasmine
+
 (setq-default js2-global-externs
               '("angular" "inject" "describe" "expect" "it" "beforeEach"
                 "afterEach" "$" "_" "JSON" "jasmine" "spyOn" "module" "breeze"
                 "moment"))
 
-;; rainbow delimiters mode
+;;; Rainbow parens
+
 (dolist (hook '(js2-mode-hook js-mode-hook json-mode-hook))
   (add-hook hook 'rainbow-delimiters-mode))
 
-;; Auto insert semicolon
+;;; REPL
+
+(defvar eide-js2-repl-last-buffer ()
+  nil)
+
+(defadvice nodejs-repl (before eide-remember-last-file activate)
+  (setq eide-js2-repl-last-buffer (current-buffer)))
+
+(defun eide-js2-back-to-file ()
+  (interactive)
+  (switch-to-buffer-other-window eide-js2-repl-last-buffer))
+
+(define-key js2-mode-map (kbd "C-c C-z") 'nodejs-repl)
+
+(eval-after-load "nodejs-repl"
+  '(define-key nodejs-repl-mode-map (kbd "C-c C-z") 'eide-js2-back-to-file))
+
+
+;;; Auto insert semicolon
 
 ;; Auto insert /*global External vars */
 (defun eide-js2-undeclared-vars-list ()
@@ -67,7 +87,7 @@
 
 (define-key js2-mode-map (kbd ":") 'eide-js2-auto-colon)
 
-;; Prettify function keyword and more
+;;; Prettify function keyword and more
 
 (defun eide-js2-prettify-symbols-setup ()
   "Not documented yet."
@@ -77,7 +97,7 @@
 
 (add-hook 'js2-mode-hook 'eide-js2-prettify-symbols-setup)
 
-;; Code folding
+;;; Code folding
 
 (add-hook 'js2-mode-hook 'origami-mode)
 

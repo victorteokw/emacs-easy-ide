@@ -1,4 +1,8 @@
+# Compiled file
 *.elc
+# Backup
+*~
+# Etc is automatically generated user data
 /etc/*
 /.emacs.desktop
 /elpa
@@ -6,16 +10,15 @@
 /etc/eshell
 /etc/ac-comphist.dat
 /etc/.smex-items
+/etc/rake.cache
 /custom.el
-*~
-rake.cache
 /snippets/
 /etc/bookmarks
 /games
 /projectile-bookmarks.eld
 /.emacs.desktop.lock
 /url
-recentf
+/etc/recentf
 /.ac-html
 ido.last
 /etc/ido.hist

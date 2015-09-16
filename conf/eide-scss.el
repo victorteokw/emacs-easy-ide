@@ -1,12 +1,11 @@
 ;; Disable free variable warning
-(eval-when-compile
-  (require 'scss-mode))
+(require 'scss-mode)
 
-;; Do not compile at save
+;;; Do not compile at save
+
 (setq scss-compile-at-save nil)
 
-
-;;; Rainbow
+;;; Rainbow color
 
 (add-hook 'scss-mode-hook 'rainbow-mode)
 
@@ -19,6 +18,10 @@
 (add-hook 'scss-mode-hook 'origami-mode)
 
 (add-to-list 'origami-parser-alist '(scss-mode . origami-c-style-parser))
+
+;;; REPL
+
+;; TODO: Add sass and scss repl
 
 ;; Inset colon pair
 (defun hy-lang-sass-insert-colon-pair ()
@@ -90,15 +93,13 @@
           (if (equal ";" (format "%c" last-char))
               (move-end-of-line 1))))))
 
-;;; Auto complete css property
+;;; Auto complete
 
-(eval-when-compile
-  (require 'auto-complete))
+(defun eide-scss-auto-complete ()
+  (require 'auto-complete)
+  (setq ac-sources '(ac-source-css-property))
+  (auto-complete-mode))
 
-(add-hook 'scss-mode-hook
-          (lambda ()
-            (require 'auto-complete)
-            (setq ac-sources '(ac-source-css-property))
-            (auto-complete-mode)))
+(add-hook 'scss-mode-hook 'eide-scss-auto-complete)
 
 (provide 'eide-scss)

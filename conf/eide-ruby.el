@@ -1,79 +1,87 @@
-;; Ruby
+;;; Use ruby mode to open
+
+(add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))   ; Rakefile
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))    ; rake
+(add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))    ; Gemfile
+(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode)) ; gemspec
+(add-to-list 'auto-mode-alist '("\\.irbrc\\'" . ruby-mode))   ; irb
+(add-to-list 'auto-mode-alist '("\\.pryrc\\'" . ruby-mode))   ; pry
+(add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode)); jbuilder
+(add-to-list 'auto-mode-alist '("\\.rabl\\'" . ruby-mode))    ; rabl
+(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))      ; Rack config
+(add-to-list 'auto-mode-alist '("\\Podfile\\'" . ruby-mode))  ; CocoaPods
+(add-to-list 'auto-mode-alist '("Beanfile\\'" . ruby-mode))   ; CocoaBean
 
 (require 'ruby-mode)
 
-;; ruby file extensions
-(add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.irbrc\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rabl\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.pryrc\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\Podfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Beanfile\\'" . ruby-mode)) ;; CocoaBean
+;;; Compilation and run ruby
 
-;; compilation
 (require 'ruby-compilation)
 
-(define-key ruby-mode-map (kbd "s-R") 'ruby-compilation-this-buffer)
+(define-key ruby-mode-map (kbd "s-r") 'ruby-compilation-this-buffer)
 
-;; inferior ruby
+;;; REPL
+
 (require 'inf-ruby)
 (require 'ac-inf-ruby)
-(add-hook 'inf-ruby-mode-hook
-          (lambda ()
-            (ac-inf-ruby-enable)
-            (auto-complete-mode)))
 
-;; electric pair
+(defun eide-ruby-repl-auto-complete ()
+  (ac-inf-ruby-enable)
+  (auto-complete-mode))
+
+(add-hook 'inf-ruby-mode-hook 'eide-ruby-repl-auto-complete)
+
+;; C-c C-z to switch to REPL
+
+(define-key inf-ruby-minor-mode-map (kbd "C-c C-z") 'inf-ruby)
+
+;;; Electric pair
+
 (add-hook 'ruby-mode-hook 'electric-pair-mode)
 
-;; ri documentation
-(require 'yari)
-(global-set-key (kbd "C-h y") 'yari-helm)
+;;; ri Documentation
 
-;; yasnippet
+(define-key ruby-mode-map (kbd "C-h y") 'yari-helm)
+
+;;; Snippets
+
 (add-hook 'ruby-mode-hook 'yas-minor-mode-on)
 
-;; syntax
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (modify-syntax-entry ?$ "w")
-             (modify-syntax-entry ?@ "w")
-             (modify-syntax-entry ?: ".")
+;;; Syntax
 
-             ;; indent guide
-             (indent-guide-mode)
-             ;; (setq indent-guide-recursive t)
+(defun eide-ruby-syntax ()
+  (modify-syntax-entry ?$ "w")
+  (modify-syntax-entry ?@ "w")
+  (modify-syntax-entry ?: "."))
 
-             ))
+(add-hook 'ruby-mode-hook 'eide-ruby-syntax)
 
-;; support yard syntax
-(require 'yard-mode)
+;;; Yard in comment
+
 (add-hook 'ruby-mode-hook 'yard-mode)
 
-;; whitespace cleaning
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (setq-local whitespace-style '(empty indentation::space
-                                                  space-befure-tab::space
-                                                  trailing
-                                                  whitespace-style::space))
-             (add-hook 'before-save-hook 'whitespace-cleanup)))
+;;; whitespace cleaning
 
-;; do not deep indent
+(defun eide-ruby-clean-whitespaces ()
+  (add-hook 'before-save-hook 'whitespace-cleanup nil t))
+
+(add-hook 'ruby-mode-hook 'eide-ruby-clean-whitespaces)
+
+;;; do not deep indent
+
 (setq ruby-deep-indent-paren nil)
 
-;; guard
+;;; guard
+
 ;; (require 'ruby-guard)
 
-;; rake
+;;; rake
+
 (eval-after-load "rake"
   '(setq rake-cache-file (f-expand "rake.cache" eide-etc-dir)))
 
-;; code folding
+;;; code folding
+
 (add-hook 'ruby-mode-hook 'origami-mode)
 
 (provide 'eide-ruby)

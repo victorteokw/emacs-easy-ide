@@ -1,7 +1,5 @@
-;; git client
-;; magit
+;;; Show the nice
 
-;; diff hl
 (global-diff-hl-mode)
 
 (provide 'eide-cvs)

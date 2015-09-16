@@ -35,7 +35,7 @@
 
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 
-;;; Paredit mode
+;;; Paredit mode, the editing mode
 
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 
@@ -48,12 +48,12 @@
 
 (defadvice paredit-backward-delete (around eide-paredit-delete-region activate)
   (if mark-active
-      (delete-backward-char 1)
+      (delete-char -1)
     ad-do-it))
 
 (defadvice paredit-forward-delete (around eide-paredit-delete-region activate)
   (if mark-active
-      (delete-forward-char 1)
+      (delete-char 1)
     ad-do-it))
 
 ;;; Delete should react to superword mode
@@ -72,11 +72,11 @@
 
 (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode)
 
-;;; Yasnippet
+;;; Snippets
 
 (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
 
-;;; Eldoc
+;;; Display documentation in mini buffer
 
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
@@ -101,19 +101,51 @@
 
 (add-hook 'emacs-lisp-mode-hook 'eide-elisp-auto-complete)
 
-;;; Check parens
+;;; Check parens after save
 
 (defun eide-elisp-check-parens ()
   (add-hook 'after-save-hook #'check-parens nil t))
 
 (add-hook 'emacs-lisp-mode-hook 'eide-elisp-check-parens)
 
-;;; Clean whitespaces
+;;; Byte compile conf file after save
+
+(defun eide-elisp-compile-this-conf-file ()
+  (when (string= (f-dirname (buffer-file-name (current-buffer)))
+                 eide-conf-dir)
+    (byte-compile-file (buffer-file-name (current-buffer)))))
+
+(defun eide-elisp-compile-after-save ()
+  (add-hook 'after-save-hook 'eide-elisp-compile-this-conf-file nil t))
+
+(add-hook 'emacs-lisp-mode-hook 'eide-elisp-compile-after-save)
+
+;;; Clean whitespaces before save
 
 (defun eide-elisp-clean-whitespaces ()
-  (add-hook 'before-save-hook 'whitespace-cleanup))
+  (add-hook 'before-save-hook 'whitespace-cleanup nil t))
 
 (add-hook 'emacs-lisp-mode-hook 'eide-elisp-clean-whitespaces)
+
+;;; REPL
+
+(defvar eide-elisp-repl-last-buffer ()
+  nil)
+
+(defadvice ielm (before eide-remember-last-file activate)
+  (setq eide-elisp-repl-last-buffer (current-buffer)))
+
+(defun eide-elisp-back-to-file ()
+  (interactive)
+  (switch-to-buffer-other-window eide-elisp-repl-last-buffer))
+
+(define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ielm)
+(eval-after-load "ielm"
+  '(define-key ielm-map (kbd "C-c C-z") 'eide-elisp-back-to-file))
+
+(defadvice ielm (after eide-elisp-repl-nice-behavior activate)
+  (previous-buffer)
+  (pop-to-buffer "*ielm*"))
 
 ;;; Flycheck elisp
 

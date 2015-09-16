@@ -1,21 +1,23 @@
-;; coffeeScript
-
 (require 'coffee-mode)
 
-;; highlight in documentation
+;;; Syntax coloring in documentation
 
 (add-hook 'coffee-mode-hook 'yard-mode)
 
-;; syntax checking
+;;; Syntax checking
 
 (add-hook 'coffee-mode-hook 'flycheck-mode)
 
-;; JST
+;;; JST
 
 (if (fboundp 'jst-enable-appropriate-mode)
     (add-hook 'coffee-mode-hook 'jst-enable-appropriate-mode))
 
-;; clear whitespace
+;;; REPL
+
+;; TODO coffee repl cannot C-c C-z back to coffee file
+
+;;; Whitespace cleanup
 
 (add-hook 'coffee-mode-hook
           (lambda ()
@@ -29,12 +31,10 @@
 
 (define-key coffee-mode-map [s-return] 'ky/coffee-new-line-at-end-and-indent)
 
-;; Code folding
+;;; Code folding
 
 (add-hook 'coffee-mode-hook 'origami-mode)
 
 (add-to-list 'origami-parser-alist '(coffee-mode . origami-indent-parser))
-
-(add-hook 'coffee-mode-hook 'electric-operator-mode)
 
 (provide 'eide-coffeescript)

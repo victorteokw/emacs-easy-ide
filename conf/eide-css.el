@@ -2,7 +2,7 @@
 
 (setq css-indent-offset 2)
 
-;;; rainbow
+;;; Rainbow
 
 (add-hook 'css-mode-hook 'rainbow-mode)
 

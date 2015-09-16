@@ -71,7 +71,6 @@
 (ido-mode t)
 (ido-ubiquitous-mode)
 
-
 ;; smex
 
 (eval-after-load "smex"
@@ -89,10 +88,10 @@
 
 ;;; discover
 
-(require 'discover)
 (global-discover-mode)
 
-;; helm
+;;; helm
+
 (require 'helm)
 (require 'helm-config)
 ;; (helm-autoresize-mode)
@@ -117,11 +116,11 @@
 ;;; Line number
 
 ;; disable linum function
-(defun hy-core-ui-linumoff ()
+(defun eide-ui-linum-off ()
   (linum-mode -1))
 
 ;; format
-(setq-default  linum-format "%2d ")
+(setq-default linum-format "%2d ")
 
 ;; disable in non-programming modes
 (eval-when-compile (require 'linum-off))
@@ -130,7 +129,7 @@
                     doc-view-mode image-mode comint-mode))
 
 ;; fix for image mode (linum-off doesn't work here)
-(add-hook 'image-mode-hook 'hy-core-ui-linumoff)
+(add-hook 'image-mode-hook 'eide-ui-linum-off)
 
 ;; global line number
 (global-linum-mode)
@@ -144,21 +143,10 @@
 
 (global-hl-line-mode)
 
-(defun eide-cycle-confs ()
-  "Visit user init file"
-  (interactive)
-  (let ((current-file-name (buffer-file-name (current-buffer))))
-    (cond ((string= current-file-name user-init-file)
-           (dired eide-conf-dir))
-          (t (find-file user-init-file)))))
+;;; Mode line
 
-(defun eide-visit-conf-readme ()
-  "Go to user readme file."
-  (interactive)
-  (find-file (f-expand "README.org" user-emacs-directory)))
-(global-set-key [M-f11] 'eide-visit-conf-readme)
+;;Do not show minor modes
 
-;; Do not show minor modes
 (setq mode-line-modes
       (let ((recursive-edit-help-echo "Recursive edit, type C-M-c to get out"))
         (list (propertize "%[" 'help-echo recursive-edit-help-echo)
@@ -182,6 +170,6 @@ mouse-3: Toggle minor modes"
               `(:propertize eide--current-editing-mode face font-lock-constant-face)
               " ")))
 
-;; Weather forecast with sunshine
+;;; Weather forecast with sunshine
 
 (provide 'eide-ui)

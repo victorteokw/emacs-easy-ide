@@ -1,7 +1,6 @@
-;; yaml
-(require 'yaml-mode)
+;;; Code folding
 
-;; Code folding
+(require 'yaml-mode)
 
 (add-hook 'yaml-mode-hook 'origami-mode)
 

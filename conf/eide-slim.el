@@ -1,33 +1,31 @@
-(require 'auto-complete)
-(require 'slim-mode)
+;;; Auto complete
 
-;; Completion for slim mode
-(defun eide-slim-setup-auto-completion ()
+(defun eide-slim-auto-complete ()
   "You know what it means."
   (require 'ac-slim)
+  (require 'auto-complete)
   (require 'ac-html-default-data-provider)
-  (require 'ac-html-testing-data-provider)
-
   (ac-html-enable-data-provider 'ac-html-default-data-provider)
-  (ac-html-enable-data-provider 'ac-html-testing-data-provider)
   (ac-slim-setup)
-
   (setq ac-sources '())
   (add-to-list 'ac-sources 'ac-source-slim-tag)
   (add-to-list 'ac-sources 'ac-source-slim-attr)
   (add-to-list 'ac-sources 'ac-source-slim-attrv)
   (add-to-list 'ac-sources 'ac-source-slim-class)
   (add-to-list 'ac-sources 'ac-source-slim-id)
-
   (auto-complete-mode))
 
-(add-hook 'slim-mode-hook 'eide-slim-setup-auto-completion)
+(add-hook 'slim-mode-hook 'eide-slim-auto-complete)
 
-;; Code folding
+;;; Code folding
 
 (add-hook 'slim-mode-hook 'origami-mode)
 
 (add-to-list 'origami-parser-alist '(slim-mode . origami-indent-parser))
+
+;;; Several indentation commands
+;; TODO: refactor here
+(require 'slim-mode)
 
 (defun hy-lang-slim-new-line ()
   "Slim new line."
@@ -47,14 +45,5 @@
   (interactive)
   (insert "  "))
 (define-key slim-mode-map [C-tab] 'hy-lang-slim-indent-right)
-
-;; (defun eide-slim-indent-guide ()
-;;   "Not documented yet."
-;;   (require 'indent-guide)
-;;   (setq indent-guide-recursive t)
-;;   (indent-guide-mode))
-
-;; (add-hook 'slim-mode-hook 'eide-slim-indent-guide)
-
 
 (provide 'eide-slim)

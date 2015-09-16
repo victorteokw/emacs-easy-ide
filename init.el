@@ -20,16 +20,23 @@
     "Eide etc directory.")
   (add-to-list 'load-path eide-conf-dir))
 
+;;;; Setup the way emacs loading files
+
+(setq load-prefer-newer t)
+
 ;;;; Editor Core
 
-(require 'eide-environment)          ;; gnu-emacs or emacs-mac
-(require 'eide-extension)            ;; eide library
-(require 'eide-theme)                ;; theme
-(require 'eide-ui)                   ;; User interface configuration
+(require 'eide-environment)          ;; Environment
+(require 'eide-extension)            ;; Extension library
+(require 'eide-editing-mode)         ;; (V), (E) and (A)
+(require 'eide-theme)                ;; Theme
+(require 'eide-ui)                   ;; User interface
 (require 'eide-editor)               ;; Editor configuration
 (require 'eide-enable)               ;; For enable emacs command
-(require 'eide-cvs)                  ;; git configuration
-(require 'eide-key-bindings)         ;; for key bindings
+(require 'eide-cvs)                  ;; CVS
+(require 'eide-key-bindings)         ;; Key bindings sheet
+(require 'eide-context-menu)         ;; Context menu
+(require 'eide-scratches)            ;; Multiple scratches
 
 ;;;; Programming Language
 
@@ -38,6 +45,8 @@
 
 (require 'eide-elisp)                ;; elisp
 (require 'eide-c)                    ;; C, C++, Objective-C
+
+(require 'eide-python)               ;; python
 (require 'eide-ruby)                 ;; ruby
 (require 'eide-php)                  ;; PHP
 

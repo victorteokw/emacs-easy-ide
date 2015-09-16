@@ -17,11 +17,14 @@
 (setq enable-local-variables nil)
 (setq enable-local-eval nil)
 
+;;; Dir local variable safety
+
+(setq enable-dir-local-variables nil)
+
 ;;; exec path for os x and maybe other window systems
-(if window-system
-    (progn
-      (require 'exec-path-from-shell)
-      (exec-path-from-shell-initialize)))
+
+(eide-only :osx '(:gnu-emacs :emacs-mac)
+           (exec-path-from-shell-initialize))
 
 ;;; when selection is active, typing cause it deleted
 
@@ -36,20 +39,16 @@
 (global-prettify-symbols-mode)
 
 ;;; Project management
-(setq-default projectile-keymap-prefix (kbd "C-z p"))
+
 (eval-after-load "projectile"
   '(progn
      (setq projectile-cache-file (f-expand  "projectile.cache" eide-etc-dir))
      (setq projectile-known-projects-file (f-expand "projectile-bookmarks.eld" eide-etc-dir))
      ;; open main dir after go to that project
      (setq projectile-switch-project-action 'projectile-dired)
-     (projectile-load-known-projects)
-     ))
+     (projectile-load-known-projects)))
 
 (projectile-global-mode)
-
-
-;; (add-hook 'projectile-switch-project-hook ')
 
 ;;; Cursor Moving
 
@@ -58,7 +57,6 @@
   (interactive)
   (set-mark-command nil)
   (deactivate-mark))
-
 
 (defun eide-pop-mark ()
   "Not documented yet."
@@ -93,6 +91,7 @@
       auto-revert-verbose nil)
 
 ;;; store all backup and autosave files in the tmp dir
+
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
@@ -102,11 +101,10 @@
 
 ;; autosave the undo-tree history
 (setq undo-tree-history-directory-alist
-      `((".*" . ,temporary-file-directory)))
+      `((".*" . ,eide-etc-dir)))
 (setq undo-tree-auto-save-history t)
 
 (global-undo-tree-mode)
-
 
 ;;; Global Hippie Expand
 
@@ -143,8 +141,6 @@
       savehist-file (expand-file-name "savehist" eide-etc-dir))
 (savehist-mode +1)
 
-
-
 ;;; Expand region
 
 ;; we need to do this to make expand-region work
@@ -158,18 +154,13 @@
     (back-to-indentation)
     (kill-region (point) prev-pos)))
 
-;; move line up and down
-(global-set-key [M-down] 'md/move-lines-down)
-(global-set-key [M-up] 'md/move-lines-up)
-(global-set-key [M-s-down] 'md/duplicate-down)
-(global-set-key [M-s-up] 'md/duplicate-up)
+;;; whole line or region
 
-;; whole line or region
 (require 'whole-line-or-region)
 (whole-line-or-region-mode t)
 (make-variable-buffer-local 'whole-line-or-region-mode)
 
-;; Paste and indent
+;;; Paste and indent
 
 (defadvice whole-line-or-region-yank (after paste-and-indent activate)
   (call-interactively 'indent-region))
@@ -197,6 +188,7 @@
 (setq next-line-add-newlines t)
 
 ;;; Multiple Cursors
+
 (eval-after-load "multiple-cursors"
   (setq mc/list-file (f-expand "eide-cursor-commands.el" eide-conf-dir)))
 
@@ -211,9 +203,6 @@
     (back-to-indentation)
     (if (= p (point))
         (move-beginning-of-line 1))))
-
-;; Use M-m for helm-imenu
-(global-set-key (kbd "M-m") 'helm-imenu)
 
 ;;; Snippets
 
@@ -241,8 +230,8 @@
                           x))
                   recentf-list))
          (filename-list
-          (remove-duplicates (mapcar #'car file-assoc-list)
-                             :test #'string=))
+          (cl-remove-duplicates (mapcar #'car file-assoc-list)
+                                :test #'string=))
          (filename (ido-completing-read "Choose recent file: "
                                         filename-list
                                         nil
@@ -253,7 +242,8 @@
 
 (recentf-mode)
 
-;;; remove url
+;;; URL better place
+
 (eval-after-load "url"
   '(setq url-configuration-directory (f-expand "url" eide-etc-dir)))
 

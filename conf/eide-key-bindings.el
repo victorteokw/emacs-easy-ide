@@ -244,6 +244,13 @@
 (global-set-key (kbd "s-y") 'eide-push-mark)
 (global-set-key (kbd "s-u") 'eide-pop-mark)
 
+;;; Move current line
+
+(global-set-key [M-down] 'md/move-lines-down)
+(global-set-key [M-up] 'md/move-lines-up)
+(global-set-key [M-s-down] 'md/duplicate-down)
+(global-set-key [M-s-up] 'md/duplicate-up)
+
 ;;; Swoop
 
 ;; C-z z to swoop
@@ -272,11 +279,10 @@
 
 ;;; Insertion by copy and paste
 
-(if (string= emacs-distribution "emacs-mac")
-    (progn
-      (global-set-key (kbd "s-c") 'kill-ring-save)
-      (global-set-key (kbd "s-v") 'yank)
-      (global-set-key (kbd "s-x") 'kill-region)))
+(eide-only :osx :emacs-mac
+           (global-set-key (kbd "s-c") 'kill-ring-save)
+           (global-set-key (kbd "s-v") 'yank)
+           (global-set-key (kbd "s-x") 'kill-region))
 
 ;;;; Deletion
 
@@ -435,7 +441,11 @@
 
 
 
-;;;; Visual coding
+;;;; Visual coding structure
+
+;;; Code structure
+
+(global-set-key (kbd "M-m") 'helm-imenu)
 
 ;;; Code folding
 
@@ -464,6 +474,8 @@
 ;;; Project
 
 ;; most with projectile
+
+(setq-default projectile-keymap-prefix (kbd "C-z p"))
 
 ;; C-z p p to switch project (emacs way)
 ;; C-s-p   to switch project (sublime text way)

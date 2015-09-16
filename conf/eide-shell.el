@@ -1,4 +1,5 @@
-;; Setup auto complete for shell
+;;; Auto complete
+
 (setq explicit-shell-file-name "bash")
 (setq explicit-bash-args '("-c" "export EMACS=; stty echo; bash"))
 (setq comint-process-echoes t)

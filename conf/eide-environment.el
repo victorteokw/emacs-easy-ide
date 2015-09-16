@@ -1,36 +1,29 @@
-(if (fboundp 'mac-next-buffer)
-    (defconst emacs-distribution "emacs-mac")
-  (defconst emacs-distribution "gnu-emacs"))
+(defvar eide-os
+  (cond ((string-equal system-type "darwin")
+         :osx)
+        ((string-equal system-type "windows-nt")
+         :windows)
+        ((string-equal system-type "gnu/linux")
+         :linux))
+  "Current operating system.")
 
-(defvar-local eide--current-editing-mode
-  "(E)")
-(put 'eide--current-editing-mode 'risky-local-variable t)
+(defvar eide-dist
+  (cond ((null window-system)
+         :terminal)
+        ((and (equal eide-os :osx) (fboundp 'mac-next-buffer))
+         :emacs-mac)
+        ((equal eide-os :osx)
+         :gnu-emacs)
+        ((equal eide-os :windows)
+         :gnu-emacs)
+        ((equal eide-os :linux)
+         :gnu-emacs)))
 
-(defun eide-current-editing-mode ()
-  "Return current editing mode."
-  eide--current-editing-mode)
-
-(defvar-local eide-mode-line-editing-mode
-  `(eide-current-editing-mode)
-  "Editing mode info for mode line use.")
-(put 'eide-mode-line-editing-mode 'risky-local-variable t)
-
-(defvar-local eide-evil-mode-is-on nil)
-
-(defun eide-toggle-editing-mode ()
-  "Toggle editing mode."
-  (interactive)
-  (if eide-evil-mode-is-on
-      (progn
-        (require 'evil)
-        (turn-off-evil-mode)
-        (setq eide--current-editing-mode "(E)")
-        (setq eide-evil-mode-is-on nil)
-        (force-mode-line-update))
-    (require 'evil)
-    (turn-on-evil-mode)
-    (setq eide--current-editing-mode "(V)")
-    (setq eide-evil-mode-is-on t)
-    (force-mode-line-update)))
+(defmacro eide-only (os dist &rest body)
+  (declare (indent 0))
+  `(and (or (null ,os) (-contains? (-flatten ,os) eide-os))
+        (or (null ,dist) (-contains? (-flatten ,dist) eide-dist))
+        (progn
+          ,@body)))
 
 (provide 'eide-environment)
