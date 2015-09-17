@@ -67,6 +67,8 @@
 (require 'eide-yaml)                 ;; yaml
 (require 'eide-json)                 ;; JSON
 
+(require 'eide-make)                 ;; Makefile
+
 ;;;; Applicaiton Framework
 
 (require 'eide-rails)                ;; For rails framework

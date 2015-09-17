@@ -15,8 +15,14 @@
 
 ;;;; Command modifiers
 
-(setq mac-option-modifier 'meta)
-(setq mac-command-modifier 'super)
+(eide-only :osx '(:gnu-emacs :emacs-mac)
+           (setq mac-control-modifier 'control)
+           (setq mac-option-modifier 'meta)
+           (setq mac-command-modifier 'super)
+           (setq mac-right-command-modifier 'hyper))
+
+(eide-only :windows '(:gnu-emacs)
+           (setq w32-lwindow-modifier 'meta))
 
 ;;;; Prefix keys
 
@@ -209,20 +215,20 @@
 
 ;; M-g c go to char
 
-;;; Move to exact somewhere in screen (ace-jump)
+;;; Move to exact somewhere in screen (avy)
 
 ;; C-; to jump to char
 
 (global-unset-key (kbd "C-;"))
-(define-key global-map (kbd "C-;") 'ace-jump-char-mode)
+(define-key global-map (kbd "C-;") 'avy-goto-char)
 
 ;; C-S-; to jump to word
 
-(define-key global-map (kbd "C-:") 'ace-jump-word-mode)
+(define-key global-map (kbd "C-:") 'avy-goto-word-1)
 
 ;; C-M-; to jump to line
 
-(define-key global-map (kbd "C-M-;") 'ace-jump-line-mode)
+(define-key global-map (kbd "C-M-;") 'avy-goto-line)
 
 ;;; Move by screen
 
@@ -474,8 +480,6 @@
 ;;; Project
 
 ;; most with projectile
-
-(setq-default projectile-keymap-prefix (kbd "C-z p"))
 
 ;; C-z p p to switch project (emacs way)
 ;; C-s-p   to switch project (sublime text way)

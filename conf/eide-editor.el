@@ -40,6 +40,8 @@
 
 ;;; Project management
 
+(setq-default projectile-keymap-prefix (kbd "C-z p"))
+
 (eval-after-load "projectile"
   '(progn
      (setq projectile-cache-file (f-expand  "projectile.cache" eide-etc-dir))
@@ -67,16 +69,10 @@
 
 (global-anzu-mode t)
 
-;;; jumping
+;;; Absolute cursor moving
 
-(eval-after-load "ace-jump-mode"
-  '(progn
-     ;; synx mark
-     (ace-jump-mode-enable-mark-sync)
-     ;; jump after
-     (add-hook 'ace-jump-mode-end-hook
-               (lambda () (unless (= (line-end-position) (line-beginning-position))
-                       (forward-char))))))
+(setq-default avy-background t)
+(setq-default avy-all-windows nil)
 
 ;;; bookmark
 

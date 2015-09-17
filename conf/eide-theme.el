@@ -139,14 +139,27 @@
  ;;`(dired-symlink ((t (:foreground ,cyan :weight normal :slant italic))))
  `(dired-warning ((t (:inherit warning))))
 
- ;;; ace-jump-mode
+;;; ace-jump-mode
  `(ace-jump-face-background
    ((t (:foreground ,uju-comment-gray :background ,uju-fringe-bg
                     :inverse-video nil))))
  `(ace-jump-face-foreground
    ((t (:foreground ,uju-deep-blue :background ,uju-fringe-bg :inverse-video nil :weight bold))))
 
- ;;; auto-complete
+;;; avy
+ `(avy-background-face
+   ((t (:foreground ,uju-comment-gray :background ,uju-fringe-bg
+                    :inverse-video nil))))
+ `(avy-lead-face
+   ((t (:foreground ,uju-deep-blue :background ,uju-fringe-bg :inverse-video nil :weight bold))))
+ `(avy-lead-face-0
+   ((t (:foreground ,uju-deep-blue :background ,uju-fringe-bg :inverse-video nil :weight bold))))
+ `(avy-lead-face-1
+   ((t (:foreground ,uju-deep-blue :background ,uju-fringe-bg :inverse-video nil :weight bold))))
+ `(avy-lead-face-2
+   ((t (:foreground ,uju-deep-blue :background ,uju-fringe-bg :inverse-video nil :weight bold))))
+
+;;; auto-complete
  `(ac-candidate-face ((t (:background ,uju-black :foreground ,uju-white))))
  `(ac-selection-face ((t (:background ,uju-tint-blue :foreground ,uju-white))))
  ;;`(ac-candidate-mouse-face ((t (:background ,cyan-hc :foreground ,cyan-lc))))

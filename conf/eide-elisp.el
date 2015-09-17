@@ -48,12 +48,12 @@
 
 (defadvice paredit-backward-delete (around eide-paredit-delete-region activate)
   (if mark-active
-      (delete-char -1)
+      (delete-active-region)
     ad-do-it))
 
 (defadvice paredit-forward-delete (around eide-paredit-delete-region activate)
   (if mark-active
-      (delete-char 1)
+      (delete-active-region)
     ad-do-it))
 
 ;;; Delete should react to superword mode
