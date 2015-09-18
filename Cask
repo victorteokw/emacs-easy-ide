@@ -111,6 +111,7 @@
 (depends-on "smex")
 (depends-on "sound-wav")
 (depends-on "sunshine")
+(depends-on "swift-mode")
 (depends-on "typescript-mode")
 (depends-on "undo-tree")
 (depends-on "web")

@@ -30,6 +30,7 @@ and cross platform.
 | C            | YES             | YES          | YES             |                    |                |      |
 | C++          | YES             | YES          | YES             |                    |                |      |
 | Objective-C  |                 |              |                 |                    |                |      |
+| swift        |                 |              |                 |                    |                | YES  |
 | elisp        | YES             | YES          | YES             | YES                |                | YES  |
 | Python       |                 |              |                 |                    |                | YES  |
 | Ruby         |                 | YES          |                 |                    |                | YES  |

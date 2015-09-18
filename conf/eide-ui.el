@@ -128,6 +128,7 @@
 
 ;; fix for image mode (linum-off doesn't work here)
 (add-hook 'image-mode-hook 'eide-ui-linum-off)
+(add-hook 'dired-mode-hook 'eide-ui-linum-off)
 
 ;; global line number
 (global-linum-mode)

@@ -14,6 +14,11 @@
         expand-line-expand-previous-line
         haml-electric-backspace
         indent-for-tab-command
+        magit-gitignore
+        magit-section-backward
+        magit-section-backward-sibling
+        magit-section-forward
+        magit-section-forward-sibling
         mark-whole-buffer
         org-delete-char
         org-end-of-line
@@ -37,6 +42,7 @@
         turn-on-expand-line-mode
         whole-line-or-region-kill-ring-save
         whole-line-or-region-yank
+        yaml-electric-backspace
         yas-expand
         ))
 
@@ -44,13 +50,16 @@
       '(
         describe-key
         eide-mark-word
+        eide-toggle-editing-mode
         ido-find-file
         ido-switch-buffer
+        magit-refresh
         mc/mark-next-like-this-dwim
         mc/mark-previous-like-this-dwim
         mc/skip-to-next-like-this-dwim
         mc/unmark-next-like-this-dwim
         ns-copy-including-secondary
+        package-list-packages-no-fetch
         save-some-buffers
         smex
         ))
