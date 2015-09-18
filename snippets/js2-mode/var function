@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: var function
+# key: varf
+# --
+var ${1:name} = function(${2:args}) {
+$0
+};

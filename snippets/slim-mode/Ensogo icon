@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: eicon
+# key: eicon
+# --
+img src=image_path("${1:name}.png")$0
+img src=image_path("$1_hover.png")$0

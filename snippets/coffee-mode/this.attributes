@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: this.attributes
+# key: ta
+# group: ensogo
+# --
+this.attributes

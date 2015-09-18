@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ensogo module header
+# key: esgheader
+# group: ensogo
+# --
+window.Ensogo ||= {}$0

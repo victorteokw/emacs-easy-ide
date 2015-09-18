@@ -4,36 +4,15 @@
 *~
 # Etc is automatically generated user data
 /etc/*
-/.emacs.desktop
-/elpa
-/etc/.bookmarks.el
-/etc/eshell
-/etc/ac-comphist.dat
-/etc/.smex-items
-/etc/rake.cache
+# User customization file
 /custom.el
-/snippets/
-/etc/bookmarks
-/games
-/projectile-bookmarks.eld
-/.emacs.desktop.lock
-/url
-/etc/recentf
-/.ac-html
-ido.last
-/etc/ido.hist
-/etc/projectile-bookmarks.eld
-/etc/.mc-lists.el
+# Where packages are located
 /.cask
+# Private configuration files
 /private
-tramp
+# Some custom sound files
 /sounds
+# Org directory
 /org
+# TODO: remove this
 /var
-/etc/.org-id-locations
-# Ede projects file
-/etc/ede-projects.el
-# Semanticdb
-/etc/semanticdb/
-# irony I just want to keep it
-# /irony

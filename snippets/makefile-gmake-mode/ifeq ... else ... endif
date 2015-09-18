@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ifeq ... else ... endif
+# key: ifeq
+# --
+ifeq ($1)
+$2
+else
+$3
+endif$0

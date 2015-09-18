@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: console.error
+# key: cerr
+# group: console
+# --
+console.error($1)$0

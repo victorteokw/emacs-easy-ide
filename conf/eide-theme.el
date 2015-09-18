@@ -169,6 +169,21 @@
  ;;`(ac-yasnippet-candidate-face ((t (:background ,base02 :foreground ,yellow))))
  ;;`(ac-yasnippet-selection-face ((t (:background ,yellow-lc :foreground ,yellow-hc))))
 
+;;; company
+ `(company-tooltip ((t (:background ,uju-black :foreground ,uju-white))))
+ `(company-tooltip-selection ((t (:background ,uju-tint-blue :foreground ,uju-white))))
+ `(company-tooltip-search ((t (:foreground ,uju-white))))
+ `(company-tooltip-common ((t (:foreground ,uju-white :background ,uju-black))))
+ `(company-tooltip-common-selection ((t (:foreground ,uju-white :background ,uju-tint-blue))))
+ `(company-tooltip-annotation ((t (:foreground ,uju-white :background ,uju-black))))
+ `(company-scrollbar-fg ((t (:background ,uju-black))))
+ `(company-scrollbar-bg ((t (:background "#CCCCCC"))))
+ `(company-preview ((t (:background ,uju-white :foreground "#666666" :underline t))))
+ `(company-preview-common ((t (:background ,uju-white :foreground "#666666" :underline t))))
+ `(company-preview-search ((t (:background ,uju-white :foreground "#666666" :underline t))))
+ `(company-echo ((t (:background ,uju-white :foreground "#666666" :underline t))))
+ `(company-echo-common ((t (:background ,uju-white :foreground "#666666" :underline t))))
+
 ;;; ido-mode
  `(ido-first-match ((t (:weight bold))))
  `(ido-only-match ((t (:weight bold))))

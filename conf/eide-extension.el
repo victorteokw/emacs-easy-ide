@@ -71,6 +71,22 @@ With a prefix ARG always prompt for command to use."
 (eide-install-external-opener "atom" "Atom")
 (eide-install-external-opener "finder" "Finder")
 
+(defun eide-find-other-file ()
+  "Find other file."
+  (interactive)
+  (if (projectile-project-p)
+      (call-interactively 'projectile-find-other-file)
+    (ff-find-other-file)))
+
+(defun eide-mark-word ()
+  "Mark word if not, add cursor if marked word."
+  (interactive)
+  (if (region-active-p)
+      (call-interactively 'mc/mark-next-like-this)
+    (call-interactively 'er/expand-region)
+    (if (< (point) (mark))
+        (exchange-point-and-mark))))
+
 (defun eide-copy-string (string)
   "Copy string both emacs internally and externally with clipboard."
   (with-temp-buffer

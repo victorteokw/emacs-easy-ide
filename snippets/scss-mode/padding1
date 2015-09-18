@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: padding1
+# key: padding1
+# --
+padding: ${1:all four sides};$0

@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ensogo view class
+# key: esgview
+# group: ensogo
+# --
+class Ensogo.${1:ClassName} extends Ensogo.${2:SuperClass}$0

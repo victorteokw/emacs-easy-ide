@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: margin3
+# key: margin3
+# --
+margin: ${1:top} ${2:horizonal} ${3:bottom};

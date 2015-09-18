@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: padding3
+# key: padding3
+# --
+padding: ${1:top} ${2:horizonal} ${3:bottom};

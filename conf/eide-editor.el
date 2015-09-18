@@ -193,6 +193,12 @@
 (eval-after-load "auto-complete"
   '(setq ac-comphist-file (f-expand "ac-comphist.dat" eide-etc-dir)))
 
+(setq-default company-minimum-prefix-length 0)
+(setq-default company-idle-delay 0.1)
+(setq-default company-tooltip-align-annotations t)
+
+;;;
+
 (defun eide-smart-beginning-of-line ()
   (interactive)
   (let ((p (point)))

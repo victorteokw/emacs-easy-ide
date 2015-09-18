@@ -20,7 +20,7 @@
          :gnu-emacs)))
 
 (defmacro eide-only (os dist &rest body)
-  (declare (indent 0))
+  (declare (indent 2))
   `(and (or (null ,os) (-contains? (-flatten ,os) eide-os))
         (or (null ,dist) (-contains? (-flatten ,dist) eide-dist))
         (progn

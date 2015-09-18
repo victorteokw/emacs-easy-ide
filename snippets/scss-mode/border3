@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: border3
+# key: border3
+# --
+border: ${1:width} ${2:style} ${3:color};

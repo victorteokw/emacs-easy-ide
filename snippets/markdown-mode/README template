@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: README template
+# key: tpl
+# group: kroman development
+# --
+$\{implname\}
+
+$\{installation\}
+
+$\{usage\}
+
+$\{repourl\}

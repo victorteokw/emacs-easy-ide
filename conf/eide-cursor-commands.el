@@ -24,12 +24,14 @@
         org-shiftright
         paredit-backward
         paredit-backward-kill-word
+        paredit-close-square
         paredit-doublequote
         paredit-forward
         paredit-forward-delete
         paredit-forward-kill-word
         paredit-kill
         paredit-open-round
+        paredit-open-square
         paredit-splice-sexp-killing-backward
         slim-electric-backspace
         turn-on-expand-line-mode
@@ -40,8 +42,14 @@
 
 (setq mc/cmds-to-run-once
       '(
+        describe-key
+        eide-mark-word
         ido-find-file
         ido-switch-buffer
+        mc/mark-next-like-this-dwim
+        mc/mark-previous-like-this-dwim
+        mc/skip-to-next-like-this-dwim
+        mc/unmark-next-like-this-dwim
         ns-copy-including-secondary
         save-some-buffers
         smex

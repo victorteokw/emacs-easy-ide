@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: class func
+# key: ff
+# group: class
+# --
+${1:func_name}: ($2) ->
+$0

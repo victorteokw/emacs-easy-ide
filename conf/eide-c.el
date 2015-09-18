@@ -11,19 +11,30 @@ lt.xctoolchain/usr/include")
 
 (add-hook 'c-mode-common-hook 'electric-pair-mode)
 
+;;; irony
+
+(add-hook 'c-mode-common-hook 'irony-mode)
+
 ;;; Auto complete
 
+;; (defun eide-c-auto-complete ()
+;;   (setq ac-sources nil)
+;;   (require 'auto-complete-clang-async)
+;;   (setq ac-clang-complete-executable "~/.emacs.d/bin/clang-complete")
+;;   (add-to-list 'ac-sources 'ac-source-clang-async)
+;;   (ac-clang-launch-completion-process)
+;;   (require 'auto-complete-c-headers)
+;;   (add-to-list 'ac-sources 'ac-source-c-headers)
+;;   (setq achead:include-directories eide-mac-include-directories)
+;;   (add-to-list 'ac-sources 'ac-source-yasnippet)
+;;   (auto-complete-mode))
+
 (defun eide-c-auto-complete ()
-  (setq ac-sources nil)
-  (require 'auto-complete-clang-async)
-  (setq ac-clang-complete-executable "~/.emacs.d/bin/clang-complete")
-  (add-to-list 'ac-sources 'ac-source-clang-async)
-  (ac-clang-launch-completion-process)
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers)
-  (setq achead:include-directories eide-mac-include-directories)
-  (add-to-list 'ac-sources 'ac-source-yasnippet)
-  (auto-complete-mode))
+  (require 'company)
+  (setq company-backends nil)
+  (add-to-list 'company-backends 'company-irony)
+  (add-to-list 'company-backends 'company-irony-c-headers)
+  (company-mode))
 
 (add-hook 'c-mode-common-hook 'eide-c-auto-complete)
 
@@ -46,9 +57,5 @@ lt.xctoolchain/usr/include")
 
 (defun eide-iedit ()
   (local-set-key (kbd "C-c ;") 'iedit-mode))
-
-;;; Electric operator
-
-(add-hook 'c-mode-common-hook 'electric-operator-mode)
 
 (provide 'eide-c)

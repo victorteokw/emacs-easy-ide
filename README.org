@@ -15,7 +15,7 @@ and cross platform.
 + visual undo and redo with =undo-tree=
 + auto completion with =auto-complete=
 + code folding with =hideshow= and =origami=
-+ jumping to anywhere with =ace-jump=
++ jumping to anywhere with =avy=
 + syntax checking with =flycheck=
 + whitespace cleanup on save
 + workspace restoration

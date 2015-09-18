@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: expect
+# key: expect
+# group: ert
+# --
+(expect ${1:FIRST}
+${2:SECOND})$0

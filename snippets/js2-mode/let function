@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: let function
+# key: letf
+# --
+let ${1:name} = function(${2:args}) {
+$0
+};

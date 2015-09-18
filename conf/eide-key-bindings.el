@@ -13,16 +13,19 @@
 ;; key bindings react to mimic the default system key binding, makes emacs more
 ;; seamless with the underlying operating system.
 
+(eval-when-compile
+  (require 'evil))
+
 ;;;; Command modifiers
 
 (eide-only :osx '(:gnu-emacs :emacs-mac)
-           (setq mac-control-modifier 'control)
-           (setq mac-option-modifier 'meta)
-           (setq mac-command-modifier 'super)
-           (setq mac-right-command-modifier 'hyper))
+  (setq mac-control-modifier 'control)
+  (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'super)
+  (setq mac-right-command-modifier 'hyper))
 
-(eide-only :windows '(:gnu-emacs)
-           (setq w32-lwindow-modifier 'meta))
+;; (eide-only :windows '(:gnu-emacs)
+;;            (setq w32-lwindow-modifier 'meta))
 
 ;;;; Prefix keys
 
@@ -30,11 +33,6 @@
 
 (define-prefix-command 'eide-c-z)
 (global-set-key (kbd "C-z") 'eide-c-z)
-
-;; Use s-g as prefix key
-
-(define-prefix-command 'eide-s-g)
-(global-set-key (kbd "s-g") 'eide-s-g)
 
 ;; Use s-k as prefix key for window manipulation
 
@@ -73,7 +71,12 @@
 
 ;;;; Configuration
 
+;; Use s-, to customize on OS X
+
 ;; Use `customize' to customize.
+
+(eide-only :osx '(:emacs-mac)
+  (global-set-key (kbd "s-,") 'customize))
 
 ;; Use C-z c i to go to user init file
 
@@ -158,16 +161,18 @@
 
 ;;; Cursors
 
-(global-set-key (kbd "s-d") 'mc/mark-next-like-this)
-(global-set-key (kbd "s-D") 'mc/skip-to-next-like-this)
-(global-set-key (kbd "s-g s-d") 'mc/unmark-next-like-this)
-(global-set-key (kbd "s-e") 'mc/mark-previous-like-this)
-(global-set-key (kbd "s-E") 'mc/skip-to-previous-like-this)
-(global-set-key (kbd "s-g s-e") 'mc/unmark-previous-like-this)
-(global-set-key (kbd "s-g l") 'mc/mark-all-dwim)
-(global-set-key (kbd "s-g a") 'mc/mark-all-like-this)
+(global-set-key (kbd "s-d") 'eide-mark-word)
 
-(global-set-key (kbd "s-g d") 'mc/mark-all-like-this-in-defun)
+(global-set-key (kbd "H-d") 'mc/mark-next-like-this)
+(global-set-key (kbd "H-D") 'mc/skip-to-next-like-this)
+(global-set-key (kbd "H-M-d") 'mc/unmark-next-like-this)
+(global-set-key (kbd "H-e") 'mc/mark-previous-like-this)
+(global-set-key (kbd "H-E") 'mc/skip-to-previous-like-this)
+(global-set-key (kbd "H-M-e") 'mc/unmark-previous-like-this)
+(global-set-key (kbd "H-l") 'mc/mark-all-dwim)
+(global-set-key (kbd "H-a") 'mc/mark-all-like-this)
+
+(global-set-key (kbd "H-f") 'mc/mark-all-like-this-in-defun)
 
 (global-set-key [s-mouse-1] 'mc/add-cursor-on-click)
 
@@ -252,10 +257,10 @@
 
 ;;; Move current line
 
-(global-set-key [M-down] 'md/move-lines-down)
-(global-set-key [M-up] 'md/move-lines-up)
-(global-set-key [M-s-down] 'md/duplicate-down)
-(global-set-key [M-s-up] 'md/duplicate-up)
+(global-set-key [C-s-down] 'md/move-lines-down)
+(global-set-key [C-s-up] 'md/move-lines-up)
+(global-set-key [C-M-s-down] 'md/duplicate-down)
+(global-set-key [C-M-s-up] 'md/duplicate-up)
 
 ;;; Swoop
 
@@ -285,10 +290,21 @@
 
 ;;; Insertion by copy and paste
 
+;; s-c s-v s-x C-M-s-v to TextMate compatible copy and paste
+
 (eide-only :osx :emacs-mac
-           (global-set-key (kbd "s-c") 'kill-ring-save)
-           (global-set-key (kbd "s-v") 'yank)
-           (global-set-key (kbd "s-x") 'kill-region))
+  (global-set-key (kbd "s-c") 'kill-ring-save)
+  (global-set-key (kbd "s-v") 'yank)
+  (global-set-key (kbd "s-x") 'kill-region)
+  ;; TextMate style clipboard history
+  (global-set-key (kbd "C-M-s-v") 'browse-kill-ring)
+  (global-set-key (kbd "s-V") 'yank-pop)
+  ;; TODO: s-M-v should 'yank-push'
+  (global-set-key (kbd "s-M-v") 'yank-pop))
+
+;; use C-M-y to browse kill ring
+
+(global-set-key (kbd "C-M-y") 'browse-kill-ring)
 
 ;;;; Deletion
 
@@ -321,16 +337,16 @@
 
 (global-set-key (kbd "s-f") 'isearch-forward)
 (global-set-key (kbd "s-F") 'isearch-forward-regexp)
-(global-set-key (kbd "s-g s-f") 'projectile-grep)
 (global-set-key (kbd "s-r") 'anzu-query-replace)
 (global-set-key (kbd "s-R") 'anzu-query-replace-regexp)
-(global-set-key (kbd "s-g s-r") 'projectile-replace)
 
 ;;; Code comment
 
-;; M-; comment
-;; s-; comment do what i mean
-(global-set-key (kbd "s-;") 'comment-dwim)
+;; M-; to comment
+
+;; s-/ to comment dwim
+
+(global-set-key (kbd "s-/") 'comment-dwim)
 
 
 
@@ -358,9 +374,15 @@
 
 ;; C-x C-w to write file
 
-;; s-S to write file
+;; s-S to write file (save-as)
 
 (global-set-key (kbd "s-S") 'ido-write-file)
+
+;; C-x s to save all
+
+;; s-M-s to save all
+
+(global-set-key (kbd "s-M-s") 'save-some-buffers)
 
 ;;; Close file
 
@@ -377,6 +399,13 @@
 
 ;; C-x b to switch buffer
 
+;; M-s- left arrow, M-s- right arrow
+
+(global-set-key (kbd "M-s-<left>") 'previous-buffer)
+(global-set-key (kbd "M-s-<right>") 'next-buffer)
+(global-set-key (kbd "M-s-<up>") 'eide-find-other-file)
+;;(global-set-key (kbd "M-s-<down>") 'eide-find-implementation)
+
 ;;; Bookmarking
 
 ;; s-T to set bookmark
@@ -386,11 +415,6 @@
 ;; s-t to goto bookmark
 
 (global-set-key (kbd "s-t") 'bookmark-jump)
-
-;; s-g t to show bookmark list
-
-(global-set-key (kbd "s-g t") 'bookmark-bmenu-list)
-
 
 ;;;; Window
 
@@ -414,6 +438,18 @@
 ;; s-` to cycle frame
 
 (global-set-key (kbd "s-`") 'other-frame)
+
+;; C-x 5 2 to create frame
+
+;; s-N to create frame
+
+(global-set-key (kbd "s-N") 'make-frame-command)
+
+;; C-x 5 0 to close frame
+
+;; s-W to close frame
+
+(global-set-key (kbd "s-W") 'delete-frame)
 
 
 
@@ -455,27 +491,42 @@
 
 ;;; Code folding
 
-;; s-g f to fold
+;; M-s-[ to fold
 
-(define-key hs-minor-mode-map (kbd "s-g f") 'hs-hide-block)
-(define-key origami-mode-map (kbd "s-g f") 'origami-close-node)
+(define-key hs-minor-mode-map (kbd "M-s-[") 'hs-hide-block)
+(define-key origami-mode-map (kbd "M-s-[") 'origami-close-node)
 
-;; s-g s to show
+;; M-s-] to show
 
-(define-key hs-minor-mode-map (kbd "s-g s") 'hs-show-block)
-(define-key origami-mode-map (kbd "s-g s") 'origami-open-node)
+(define-key hs-minor-mode-map (kbd "M-s-]") 'hs-show-block)
+(define-key origami-mode-map (kbd "M-s-]") 'origami-open-node)
 
-;; s-g F to fold all
+;; H-F to fold all
 
-(define-key hs-minor-mode-map (kbd "s-g F") 'hs-hide-all)
-(define-key origami-mode-map (kbd "s-g F") 'origami-close-all-nodes)
+(define-key hs-minor-mode-map (kbd "H-F") 'hs-hide-all)
+(define-key origami-mode-map (kbd "H-F") 'origami-close-all-nodes)
 
-;; s-g S to show all
+;; H-S to show all
 
-(define-key hs-minor-mode-map (kbd "s-g S") 'hs-show-all)
-(define-key origami-mode-map (kbd "s-g S") 'origami-open-all-nodes)
+(define-key hs-minor-mode-map (kbd "H-S") 'hs-show-all)
+(define-key origami-mode-map (kbd "H-S") 'origami-open-all-nodes)
 
 ;;;; Miscellaneous
+
+;;; UI
+
+(eide-only :osx nil
+  ;; OSX, s-+ and s-- to adjust font size (TextMate and Sublime Text)
+  (global-set-key (kbd "s-+") 'text-scale-adjust)
+  (global-set-key (kbd "s-=") 'text-scale-adjust)
+  (global-set-key (kbd "s--") 'text-scale-adjust)
+
+  ;; OSX, s-M-l to toggle line number (TextMate)
+  (global-set-key (kbd "s-M-l") 'global-linum-mode)
+
+  ;; OSX, s-M-i to show invisible chars
+  (global-set-key (kbd "s-M-i") 'global-whitespace-mode)
+  )
 
 ;;; Project
 
