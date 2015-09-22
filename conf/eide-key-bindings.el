@@ -34,11 +34,6 @@
 (define-prefix-command 'eide-c-z)
 (global-set-key (kbd "C-z") 'eide-c-z)
 
-;; Use s-k as prefix key for window manipulation
-
-(define-prefix-command 'eide-s-k)
-(global-set-key (kbd "s-k") 'eide-s-k)
-
 ;;;; Cancel
 
 ;; Use C-g to cancel
@@ -421,14 +416,8 @@
 ;; C-x o to cycle window
 
 ;; C-x 3 to split window right
-;; s-k C-f to split window right
-
-(global-set-key (kbd "s-k C-f") 'split-window-right)
 
 ;; C-x 2 to split window below
-;; s-k C-n to split window below
-
-(global-set-key (kbd "s-k C-n") 'split-window-below)
 
 ;; C-x 0 to close current window
 
@@ -566,6 +555,16 @@
 ;; C-z p C-h show projectile help
 
 ;; Project query and replace see Search and replace above
+
+;;; Scratches
+
+(global-set-key (kbd "C-z s n") 'scratches-new-scratch-dwim)
+(global-set-key (kbd "C-z s 4 n") 'scratches-new-scratch-other-window-dwim)
+(global-set-key (kbd "C-z s 5 n") 'scratches-new-scratch-other-frame-dwim)
+
+(global-set-key (kbd "C-z s f") 'scratches-visit-scratch)
+(global-set-key (kbd "C-z s 4 f") 'scratches-visit-scratch-other-window)
+(global-set-key (kbd "C-z s 5 f") 'scratches-visit-scratch-other-frame)
 
 ;;; CVS
 

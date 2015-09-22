@@ -22,32 +22,33 @@ and cross platform.
 + nice looking uju theme
 + multiple editing modes include *emacs* and *vi* with =evil=
 + Sublime Text and Textmate style key bindings are always available
++ Multiple savable scratches with different languages
 
 *** Supported Programming Languages
 
-| Language     | Auto completion | Code folding | Syntax checking | Jump to definition | File structure | REPL |
-|--------------+-----------------+--------------+-----------------+--------------------+----------------+------|
-| C            | YES             | YES          | YES             |                    |                |      |
-| C++          | YES             | YES          | YES             |                    |                |      |
-| Objective-C  |                 |              |                 |                    |                |      |
-| swift        |                 |              |                 |                    |                | YES  |
-| elisp        | YES             | YES          | YES             | YES                |                | YES  |
-| Python       |                 |              |                 |                    |                | YES  |
-| Ruby         |                 | YES          |                 |                    |                | YES  |
-| php          |                 |              |                 |                    |                | YES  |
-| javaScript   |                 | YES          | YES             |                    |                | YES  |
-| CoffeeScript |                 | YES          | YES             |                    |                | YES  |
-| HTML         | YES             |              |                 |                    |                |      |
-| Haml         | YES             | YES          |                 |                    |                |      |
-| Slim         | YES             | YES          |                 |                    |                |      |
-| Jade         | YES             |              |                 |                    |                |      |
-| Css          |                 |              |                 |                    |                |      |
-| Sass         |                 |              |                 |                    |                |      |
-| SCSS         |                 |              |                 |                    |                |      |
-| Less         |                 |              |                 |                    |                |      |
-| JSON         |                 |              | YES             |                    |                |      |
-| YAML         |                 |              |                 |                    |                |      |
-| shell script |                 |              |                 |                    |                | YES  |
+| Language      | Auto completion | Code folding | Syntax checking | Jump to definition | File structure | REPL |
+|---------------+-----------------+--------------+-----------------+--------------------+----------------+------|
+| C             | YES             | YES          | YES             |                    |                |      |
+| C++           | YES             | YES          | YES             |                    |                |      |
+| Objective-C   |                 | TODO         |                 |                    |                |      |
+| swift         |                 | TODO         |                 |                    |                | YES  |
+| elisp         | YES             | YES          | YES             | YES                |                | YES  |
+| Python (TODO) |                 | TODO         |                 |                    |                | YES  |
+| Ruby          | YES             | Not precise  |                 |                    |                | YES  |
+| php           |                 | YES          |                 |                    |                | YES  |
+| javaScript    | YES             | YES          | YES             |                    |                | YES  |
+| CoffeeScript  | YES             | YES          | YES             |                    |                | YES  |
+| HTML          |                 | YES          |                 |                    |                |      |
+| Haml          | YES             | YES          |                 |                    |                |      |
+| Slim          | YES             | YES          |                 |                    |                |      |
+| Jade          |                 | TODO         |                 |                    |                |      |
+| Css           |                 | YES          |                 |                    |                |      |
+| Sass          |                 | YES          |                 |                    |                |      |
+| SCSS          |                 | YES          |                 |                    |                |      |
+| Less          |                 | YES          |                 |                    |                |      |
+| JSON          |                 | YES          | YES             |                    |                |      |
+| YAML          |                 | TODO         |                 |                    |                |      |
+| shell script  |                 | TODO         |                 |                    |                | YES  |
 
 *** Supported Programming Frameworks
 

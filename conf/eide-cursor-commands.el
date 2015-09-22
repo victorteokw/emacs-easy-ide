@@ -38,6 +38,7 @@
         paredit-open-round
         paredit-open-square
         paredit-splice-sexp-killing-backward
+        paredit-wrap-sexp
         slim-electric-backspace
         turn-on-expand-line-mode
         whole-line-or-region-kill-ring-save

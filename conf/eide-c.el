@@ -58,4 +58,8 @@ lt.xctoolchain/usr/include")
 (defun eide-iedit ()
   (local-set-key (kbd "C-c ;") 'iedit-mode))
 
+;;; code folding
+
+(add-hook 'c-mode-common-hook 'origami-mode)
+
 (provide 'eide-c)
