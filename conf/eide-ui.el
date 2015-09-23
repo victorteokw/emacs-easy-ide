@@ -36,6 +36,13 @@
 
 ;;(set-face-attribute 'default nil :height 150)
 
+;; CJK font on OS X
+
+(eide-only :osx nil
+  (set-fontset-font t 'kana (font-spec :family "Hiragino Sans W2"))
+  (set-fontset-font t 'han (font-spec :family "Pingfang TC"))
+  (set-fontset-font t 'hangul (font-spec :family "Nanum Gothic Regular")))
+
 ;;; y-or-n-p
 
 (defalias 'yes-or-no-p 'y-or-n-p)

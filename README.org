@@ -90,4 +90,11 @@ rebasing, pushing and pulling there.
 
 ** Issues
 
+*** OS X key bindings
+
+In order to use Sublime Text and TextMate style keybindings, you need to use
+emacs-mac rather than GNU Emacs. Since GNU Emacs has bug for the keybindings.
+
+*** Bug report
+
 If you find any bugs, welcome to open issues and submit pull request.

@@ -201,7 +201,7 @@
  `(guide-key/key-face ((t (:foreground ,uju-black))))
 ;;;;; magit
 ;;;;;; headings and diffs
- `(magit-section-highlight           ((t (:background ,uju-blue-cluster-01))))
+ `(magit-section-highlight           ((t (:background ,uju-mode-line-inactive))))
  `(magit-section-heading             ((t (:foreground ,uju-tint-pink :weight bold))))
  `(magit-section-heading-selection   ((t (:foreground ,uju-blue-cluster-02 :weight bold))))
  `(magit-diff-file-heading           ((t (:weight bold))))
