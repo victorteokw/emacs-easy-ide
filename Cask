@@ -39,6 +39,7 @@
 (depends-on "f")
 (depends-on "feature-mode")
 (depends-on "flycheck")
+(depends-on "ggtags")
 (depends-on "gh")
 (depends-on "git-commit")
 (depends-on "git-messenger")

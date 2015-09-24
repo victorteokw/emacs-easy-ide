@@ -12,8 +12,6 @@
 (add-hook 'js2-mode-hook
           (lambda ()
             (js2-imenu-extras-mode)
-            ;; Clean whitespace
-            (add-hook 'before-save-hook 'whitespace-cleanup)
             ;; JST mode
             (if (fboundp 'jst-enable-appropriate-mode)
                 (jst-enable-appropriate-mode))

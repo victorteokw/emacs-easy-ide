@@ -60,13 +60,6 @@
 
 (add-hook 'ruby-mode-hook 'yard-mode)
 
-;;; whitespace cleaning
-
-(defun eide-ruby-clean-whitespaces ()
-  (add-hook 'before-save-hook 'whitespace-cleanup nil t))
-
-(add-hook 'ruby-mode-hook 'eide-ruby-clean-whitespaces)
-
 ;;; do not deep indent
 
 (setq ruby-deep-indent-paren nil)

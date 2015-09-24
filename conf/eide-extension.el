@@ -26,6 +26,32 @@
   (interactive)
   (eide-goto-conf-file "key-bindings"))
 
+(defun eide-jump-to-definition ()
+  "Jump to definition."
+  (interactive)
+  (if (projectile-project-p)
+      (eide-jump-to-definition-projectile)
+    (eide-jump-to-definition-normal)))
+
+(defun eide-jump-to-definition-projectile ()
+  "Jump to definition."
+  (unless (f-exists? (projectile-expand-root projectile-tags-file-name))
+    (projectile-regenerate-tags))
+  (let ((find-tag-function (if (boundp 'ggtags-mode) 'ggtags-find-tag 'find-tag))
+        (tags (if (boundp 'ggtags-mode)
+                  (projectile--tags (all-completions "" ggtags-completion-table))
+                (require 'etags)
+                ;; we have to manually reset the tags-completion-table every time
+                (setq tags-completion-table nil)
+                (tags-completion-table)
+                (projectile--tags tags-completion-table))))
+    (funcall find-tag-function (projectile-symbol-at-point))))
+
+(defun eide-jump-to-definition-normal ()
+  "Jump to definition."
+  (interactive)
+  (message "How to find this tag?"))
+
 (defun eide-get-filename ()
   "Not documented yet."
   (if (eq major-mode 'dired-mode)

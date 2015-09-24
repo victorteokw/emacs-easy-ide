@@ -75,6 +75,17 @@
                     ("Available"
                      ("b" "blame" magit-blame-popup)
                      ("g" "status" magit-status))))
-   :bind ""))
+   :bind "")
+
+  (discover-add-context-menu
+   :context-menu '(eide-cm-sql
+                   (description "Connect to sql")
+                   (actions
+                    ("Connect to sql"
+                     ("m" "mysql" sql-mysql)
+                     ("s" "sqlite" sql-sqlite)
+                     ("p" "postgresql" sql-postgres)
+                     ("o" "oracle" sql-oracle))))
+   :bind "C-M-s-q"))
 
 (provide 'eide-context-menu)

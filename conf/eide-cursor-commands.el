@@ -6,13 +6,17 @@
         coffee-dedent-line-backspace
         comment-dwim
         delete-indentation
+        eide-push-mark
         eide-smart-beginning-of-line
+        electric-newline-and-maybe-indent
         electric-pair-delete-pair
+        elisp-slime-nav-find-elisp-thing-at-point
         expand-line-contract-next-line
         expand-line-contract-previous-line
         expand-line-expand-next-line
         expand-line-expand-previous-line
         haml-electric-backspace
+        hy-lang-sass-insert-colon-pair
         indent-for-tab-command
         magit-gitignore
         magit-section-backward
@@ -50,6 +54,7 @@
 (setq mc/cmds-to-run-once
       '(
         describe-key
+        eide-elisp-click-to-jump
         eide-mark-word
         eide-toggle-editing-mode
         ido-find-file
@@ -60,6 +65,9 @@
         mc/skip-to-next-like-this-dwim
         mc/unmark-next-like-this-dwim
         ns-copy-including-secondary
+        org-agenda
+        org-capture
+        org-cycle-agenda-files
         package-list-packages-no-fetch
         save-some-buffers
         smex

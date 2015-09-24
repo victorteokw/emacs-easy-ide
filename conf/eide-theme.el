@@ -205,7 +205,7 @@
  `(magit-section-heading             ((t (:foreground ,uju-tint-pink :weight bold))))
  `(magit-section-heading-selection   ((t (:foreground ,uju-blue-cluster-02 :weight bold))))
  `(magit-diff-file-heading           ((t (:weight bold))))
- `(magit-diff-file-heading-highlight ((t (:background ,uju-tint-yellow :weight bold))))
+ `(magit-diff-file-heading-highlight ((t (:background ,uju-tint-blue :weight bold))))
  ;;  `(magit-diff-file-heading-selection ((t (:background ,base02
  ;;                                                       :foreground ,orange :weight bold))))
  ;;  `(magit-diff-hunk-heading

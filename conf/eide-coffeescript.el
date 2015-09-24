@@ -17,12 +17,6 @@
 
 ;; TODO coffee repl cannot C-c C-z back to coffee file
 
-;;; Whitespace cleanup
-
-(add-hook 'coffee-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'whitespace-cleanup)))
-
 (defun ky/coffee-new-line-at-end-and-indent ()
   "Move to the end of line and indent like coffee."
   (interactive)

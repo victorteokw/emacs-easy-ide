@@ -27,7 +27,7 @@
 
 (require 'elisp-slime-nav)
 
-(define-key elisp-slime-nav-mode-map [M-mouse-1] 'eide-elisp-click-to-jump)
+(define-key elisp-slime-nav-mode-map (kbd "s-<down-mouse-1>") 'eide-elisp-click-to-jump)
 
 (add-hook 'emacs-lisp-mode-hook 'turn-on-elisp-slime-nav-mode)
 
@@ -119,13 +119,6 @@
   (add-hook 'after-save-hook 'eide-elisp-compile-this-conf-file nil t))
 
 (add-hook 'emacs-lisp-mode-hook 'eide-elisp-compile-after-save)
-
-;;; Clean whitespaces before save
-
-(defun eide-elisp-clean-whitespaces ()
-  (add-hook 'before-save-hook 'whitespace-cleanup nil t))
-
-(add-hook 'emacs-lisp-mode-hook 'eide-elisp-clean-whitespaces)
 
 ;;; REPL
 

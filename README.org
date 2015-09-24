@@ -95,6 +95,11 @@ rebasing, pushing and pulling there.
 In order to use Sublime Text and TextMate style keybindings, you need to use
 emacs-mac rather than GNU Emacs. Since GNU Emacs has bug for the keybindings.
 
+*** Jump to definition
+
+Currently, the jump to definition feature is very experimental, it almost works
+not as you expected.
+
 *** Bug report
 
 If you find any bugs, welcome to open issues and submit pull request.

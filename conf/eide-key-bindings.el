@@ -169,7 +169,9 @@
 
 (global-set-key (kbd "H-f") 'mc/mark-all-like-this-in-defun)
 
-(global-set-key [s-mouse-1] 'mc/add-cursor-on-click)
+(global-set-key (kbd "C-<down-mouse-1>") 'mc/add-cursor-on-click)
+
+(global-set-key (kbd "s-<down-mouse-1>") 'eide-jump-to-definition)
 
 ;; From active region to multiple cursors:
 (global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
@@ -263,6 +265,14 @@
 ;; TODO: change swoop's keybinding
 
 (global-set-key (kbd "C-z z") 'helm-swoop)
+
+;;; Jump to definition
+
+(global-set-key (kbd "M-.") 'eide-jump-to-definition)
+
+(eval-after-load "ggtags"
+  '(progn
+     (define-key ggtags-mode-map (kbd "M-.") 'eide-jump-to-definition)))
 
 ;;;; Insertion
 
@@ -610,5 +620,21 @@
 
 ;; C-z \ to open agenda menu
 (global-set-key (kbd "C-z \\") 'org-agenda)
+
+;;;; Shell
+
+;; Use C-z C-s to open shell and switch back
+
+(global-set-key (kbd "C-z C-s") 'shell)
+(define-key shell-mode-map (kbd "C-z C-s") 'previous-buffer)
+
+;; Use C-M-s-s to open shell on OS X and switch back
+
+(global-set-key (kbd "C-M-s-s") 'shell)
+(define-key shell-mode-map (kbd "C-M-s-s") 'previous-buffer)
+
+;; Use s-k to clear buffer
+
+(define-key shell-mode-map (kbd "s-k") 'erase-buffer)
 
 (provide 'eide-key-bindings)

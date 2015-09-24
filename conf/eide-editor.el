@@ -277,4 +277,8 @@
                result)
            result)))))
 
+;;; Whitespace cleanup
+
+(add-hook 'before-save-hook 'whitespace-cleanup nil nil)
+
 (provide 'eide-editor)
