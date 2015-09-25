@@ -1,7 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: new rule
 # key: .
-# group: new
+# group: insertion
 # --
 ${1:rule} {
 $0

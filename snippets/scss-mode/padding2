@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: padding2
 # key: padding2
+# group: css
 # --
 padding: ${1:vertical} ${2:horizonal};$0

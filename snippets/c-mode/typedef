@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: function prototype
-# key: funp
+# name: typedef
+# key: typedef
 # group: syntax
 # --
-${1:void} ${2:name}(${3:void});
+typedef ${1:old} ${2:new};

@@ -52,6 +52,17 @@
   (interactive)
   (message "How to find this tag?"))
 
+(defun eide-dired-on-file ()
+  "Open dired for this file."
+  (interactive)
+  (dired-other-window (f-dirname (buffer-file-name (current-buffer)))))
+
+(defun eide-close-and-back ()
+  "Close this buffer, go back to previous window."
+  (interactive)
+  (kill-this-buffer)
+  (other-window -1))
+
 (defun eide-get-filename ()
   "Not documented yet."
   (if (eq major-mode 'dired-mode)

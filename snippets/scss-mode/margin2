@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: margin2
 # key: margin2
+# group: css
 # --
 margin: ${1:vertical} ${2:horizonal};$0

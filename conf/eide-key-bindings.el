@@ -533,7 +533,6 @@
 
 ;; C-z p p to switch project (emacs way)
 ;; C-s-p   to switch project (sublime text way)
-(global-set-key [C-s-268632080] 'projectile-switch-project)
 (global-set-key (kbd "C-s-p") 'projectile-switch-project)
 
 ;; C-z p f to switch file in project (emacs way)
@@ -576,6 +575,8 @@
 (global-set-key (kbd "C-z s 4 f") 'scratches-visit-scratch-other-window)
 (global-set-key (kbd "C-z s 5 f") 'scratches-visit-scratch-other-frame)
 
+(global-set-key (kbd "C-z s k") 'scratches-kill-all-scratches)
+
 ;;; CVS
 
 ;; C-z g g or M-f12 to view git status
@@ -612,29 +613,45 @@
 
 ;;;; Org GTD
 
-;; C-z [ to org-capture
+;; Use C-z [ to org-capture
+
 (global-set-key (kbd "C-z [") 'org-capture)
 
-;; C-z ] to cycle org files
+;; Use C-z ] to cycle org files
+
 (global-set-key (kbd "C-z ]") 'org-cycle-agenda-files)
 
-;; C-z \ to open agenda menu
+;; Use C-z \ to open agenda menu
+
 (global-set-key (kbd "C-z \\") 'org-agenda)
+
+;;;; Open dired
+
+;; C-M-s-d to open dired on this file
+
+(global-set-key (kbd "C-M-s-d") 'eide-dired-on-file)
+
+;; C-M-s-d to close dired buffer
+
+(define-key dired-mode-map (kbd "C-M-s-d") 'eide-close-and-back)
 
 ;;;; Shell
 
 ;; Use C-z C-s to open shell and switch back
 
 (global-set-key (kbd "C-z C-s") 'shell)
-(define-key shell-mode-map (kbd "C-z C-s") 'previous-buffer)
+(eval-after-load "shell"
+  '(define-key shell-mode-map (kbd "C-z C-s") 'previous-buffer))
 
 ;; Use C-M-s-s to open shell on OS X and switch back
 
 (global-set-key (kbd "C-M-s-s") 'shell)
-(define-key shell-mode-map (kbd "C-M-s-s") 'previous-buffer)
+(eval-after-load "shell"
+  '(define-key shell-mode-map (kbd "C-M-s-s") 'previous-buffer))
 
 ;; Use s-k to clear buffer
 
-(define-key shell-mode-map (kbd "s-k") 'erase-buffer)
+(eval-after-load "shell"
+  '(define-key shell-mode-map (kbd "s-k") 'erase-buffer))
 
 (provide 'eide-key-bindings)

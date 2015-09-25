@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: margin1
 # key: margin1
+# group: css
 # --
 margin: ${1:all four sides};$0

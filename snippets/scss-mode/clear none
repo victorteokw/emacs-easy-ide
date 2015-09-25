@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: padding
-# key: pd
-# group: key
+# name: clear none
+# key: cn
+# group: css
 # --
-padding: $1;$0
+clear: none;

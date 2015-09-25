@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: ends
-# key: ends
-# binding: direct-keybinding
+# key: end
+# group: auto insert
 # --
 ;;; ${1:`(file-name-base (buffer-file-name (current-buffer)))`.el} ends here$0

@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: def
-# key: def
+# name: clear both
+# key: cb
+# group: css
 # --
-#define ${1:WHAT} ${2:what}$0
+clear: both;

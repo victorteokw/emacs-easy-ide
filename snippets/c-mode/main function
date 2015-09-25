@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: main function
 # key: main
+# group: syntax
 # --
 int main(int argc, char *argv[])
 {

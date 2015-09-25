@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: padding4
 # key: padding4
+# group: css
 # --
 padding: ${1:top} ${2:right} ${3:bottom} ${4:left};$0

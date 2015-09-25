@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: text-transform
-# key: tt
+# name: position relative
+# key: pr
 # group: css
 # --
-text-transform: $1;$0
+position: relative;

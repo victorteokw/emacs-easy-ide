@@ -116,7 +116,17 @@
                                      scratches-save-location))
     (funcall (indirect-function mm))))
 
+(defun scratches-kill-all-scratches ()
+  "Kill all scratch buffers."
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (when (f-child-of?
+           (or (buffer-file-name buffer) "") scratches-save-location)
+      (kill-buffer buffer)))
+  (message "Killed all scratch buffers."))
+
 ;; TODO
+
 (defun scratches-visit-last-scratch ()
   "Visit last scratch file."
   (interactive))

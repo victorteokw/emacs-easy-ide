@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: @mixin
-# key: mix
+# name: declare mixin
+# key: @mixin
+# group: insertion
 # --
 @mixin ${1:name}($2) {
 $0

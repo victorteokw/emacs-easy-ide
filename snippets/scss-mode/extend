@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: extend
-# key: e
+# key: @extend
 # group: insertion
 # --
 @extend ${1:rule};$0

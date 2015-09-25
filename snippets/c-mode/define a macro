@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: define a macro
+# key: #def
+# group: syntax
+# --
+#define ${1:WHAT}${2:(${3:args})} ${4:what}$0

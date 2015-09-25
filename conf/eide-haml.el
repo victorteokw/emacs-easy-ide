@@ -22,4 +22,8 @@
 
 (add-to-list 'origami-parser-alist '(haml-mode . origami-indent-parser))
 
+;;; Indent
+(require 'smart-indent-mode)
+(add-hook 'haml-mode-hook 'smart-indent-mode)
+
 (provide 'eide-haml)

@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: include framework header
 # key: in
+# group: syntax
 # --
 #include <$1.h>$0

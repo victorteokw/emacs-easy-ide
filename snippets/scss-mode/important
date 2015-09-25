@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: important
 # key: !
+# group: insertion
 # --
 !important

@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: func
+# name: function
 # key: func
+# group: syntax
 # --
 ${1:void} ${2:function_name}(${3:void}) {
 $0

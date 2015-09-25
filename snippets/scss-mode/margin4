@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: margin4
 # key: margin4
-# group: entries
+# group: css
 # --
 margin: ${1:top} ${2:right} ${3:bottom} ${4:left};$0
