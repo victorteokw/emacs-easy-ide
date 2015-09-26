@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: defgroup
 # key: defgroup
+# group: convenient
 # --
 (defgroup ${1:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`} nil
 "${2:description}"
