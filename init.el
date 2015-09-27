@@ -44,7 +44,8 @@
 (require 'eide-text)                 ;; All text languages
 
 (require 'eide-elisp)                ;; elisp
-(require 'eide-c)                    ;; C, C++, Objective-C
+(require 'eide-c)                    ;; C
+(require 'eide-c++)                  ;; C++
 (require 'eide-swift)                ;; swift
 
 (require 'eide-python)               ;; python

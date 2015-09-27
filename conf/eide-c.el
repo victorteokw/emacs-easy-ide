@@ -9,11 +9,11 @@ lt.xctoolchain/usr/include")
 
 ;;; Electric pair
 
-(add-hook 'c-mode-common-hook 'electric-pair-mode)
+(add-hook 'c-mode-hook 'electric-pair-mode)
 
 ;;; irony
 
-(add-hook 'c-mode-common-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
 
 ;;; Auto complete
 
@@ -37,22 +37,22 @@ lt.xctoolchain/usr/include")
   (add-to-list 'company-backends 'company-irony-c-headers)
   (company-mode))
 
-(add-hook 'c-mode-common-hook 'eide-c-auto-complete)
+(add-hook 'c-mode-hook 'eide-c-auto-complete)
 
 ;;; Snippets
 
-(add-hook 'c-mode-common-hook 'yas-minor-mode-on)
+(add-hook 'c-mode-hook 'yas-minor-mode-on)
 
 ;;; Syntax checking
 
-(add-hook 'c-mode-common-hook 'flycheck-mode)
+(add-hook 'c-mode-hook 'flycheck-mode)
 
 ;;; Man page
 
 (defun eide-c-man-page ()
   (local-set-key (kbd "s-M") 'helm-man-woman))
 
-(add-hook 'c-mode-common-hook 'eide-c-man-page)
+(add-hook 'c-mode-hook 'eide-c-man-page)
 
 ;;; iedit
 
@@ -61,6 +61,6 @@ lt.xctoolchain/usr/include")
 
 ;;; code folding
 
-(add-hook 'c-mode-common-hook 'origami-mode)
+(add-hook 'c-mode-hook 'origami-mode)
 
 (provide 'eide-c)
