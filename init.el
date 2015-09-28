@@ -46,6 +46,7 @@
 (require 'eide-elisp)                ;; elisp
 (require 'eide-c)                    ;; C
 (require 'eide-c++)                  ;; C++
+(require 'eide-objc)                 ;; Objc
 (require 'eide-swift)                ;; swift
 
 (require 'eide-python)               ;; python
