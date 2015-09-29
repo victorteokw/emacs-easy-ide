@@ -92,7 +92,6 @@
 (depends-on "paredit")
 (depends-on "php-mode")
 (depends-on "popup")
-(depends-on "powerline")
 (depends-on "projectile")
 (depends-on "projectile-rails")
 (depends-on "rails-new")

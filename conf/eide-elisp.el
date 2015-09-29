@@ -86,14 +86,75 @@
 
 ;;; Auto complete
 
+(defun eide-arglist-to-string (arglist)
+  "Return ARGLIST as a string enclosed by ().
+ARGLIST is either a string, or a list of strings or symbols.
+
+This function is copied from eldoc."
+  (cond ((stringp arglist))
+        ((not (listp arglist))
+         (setq arglist nil))
+        ((symbolp (car arglist))
+         (setq arglist
+               (mapconcat (lambda (s) (symbol-name s))
+                          arglist " ")))
+        ((stringp (car arglist))
+         (setq arglist
+               (mapconcat (lambda (s) s)
+                          arglist " "))))
+  (if arglist
+      (format "(%s)" arglist)))
+
+(defun eide-arglist-str-of-sym (sym)
+  "Return arglist of sym"
+  (let (arglist should-strip-fun-name)
+    (setq should-strip-fun-name t)
+    (setq arglist
+          (or (car (help-split-fundoc (documentation sym t) sym))
+              (help-function-arglist sym)))
+    (when (listp arglist)
+      (setq arglist (eide-arglist-to-string arglist))
+      (setq should-strip-fun-name nil))
+    (setq arglist
+          (replace-regexp-in-string "^(" "" arglist))
+    (setq arglist
+          (replace-regexp-in-string ")$" "" arglist))
+    (if should-strip-fun-name
+        (setq arglist
+              (replace-regexp-in-string "^[a-zA-Z0-9-_]*" "" arglist)))
+    (setq arglist
+          (replace-regexp-in-string "^ *" "" arglist))
+    arglist))
+
+(defun eide-process-to-snippet (arglist)
+  "Process arglist into snippet."
+  (let ((index 1) (tokens (s-split " " arglist)) (retval ""))
+    (dolist (token tokens)
+      (setq retval (s-append (format " ${%s:%s}" index token) retval))
+      (setq index (1+ index)))
+    retval))
+
+(defun eide-expand-sym ()
+  (yas-expand-snippet
+   (eide-process-to-snippet
+    (eide-arglist-str-of-sym (symbol-at-point)))))
+
+(ac-define-source eide-functions
+  '((candidates . ac-function-candidates)
+    (document . ac-symbol-documentation)
+    (action . eide-expand-sym)
+    (symbol . "f")
+    (prefix . "(\\(\\(?:\\sw\\|\\s_\\)+\\)")
+    (cache)))
+
 (defun eide-elisp-auto-complete ()
   (require 'auto-complete)
   (require 'auto-complete-config)
   (setq ac-ignore-case nil)
-  (setq ac-sources '(ac-source-yasnippet
+  (setq ac-sources '(ac-source-eide-yasnippet
                      ac-source-dictionary
                      ac-source-features
-                     ac-source-functions
+                     ac-source-eide-functions
                      ac-source-symbols
                      ac-source-variables
                      ac-source-words-in-same-mode-buffers))

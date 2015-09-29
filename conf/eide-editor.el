@@ -190,8 +190,24 @@
 
 ;;; Auto complete
 
-(eval-after-load "auto-complete"
-  '(setq ac-comphist-file (f-expand "ac-comphist.dat" eide-etc-dir)))
+(require 'auto-complete)
+
+(setq ac-expand-on-auto-complete nil)
+(setq ac-comphist-file (f-expand "ac-comphist.dat" eide-etc-dir))
+(setq ac-auto-start 0.1)
+(setq ac-delay 0.1)
+(setq ac-auto-show-menu 0.1)
+(setq ac-quick-help-delay 0.1)
+
+(ac-define-source eide-yasnippet
+  '((depends yasnippet)
+    (candidates . ac-yasnippet-candidates)
+    (action . yas/expand)
+    (symbol . "y")))
+
+(define-key ac-completing-map [tab] 'ac-complete)
+
+(require 'company)
 
 (setq-default company-minimum-prefix-length 0)
 (setq-default company-idle-delay 0.1)
