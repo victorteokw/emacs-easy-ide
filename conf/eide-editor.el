@@ -158,7 +158,16 @@
 
 ;;; Paste and indent
 
-(defadvice whole-line-or-region-yank (after paste-and-indent activate)
+(defun eide-yank-and-indent ()
+  "Yank and indent."
+  (interactive)
+  (yank)
+  (call-interactively 'indent-region))
+
+(defun eide-yank-pop-and-indent ()
+  "Yank pop and indent."
+  (interactive)
+  (yank-pop)
   (call-interactively 'indent-region))
 
 ;;; Highlight escape sequences
@@ -204,8 +213,6 @@
     (candidates . ac-yasnippet-candidates)
     (action . yas/expand)
     (symbol . "y")))
-
-(define-key ac-completing-map [tab] 'ac-complete)
 
 (require 'company)
 
@@ -296,5 +303,9 @@
 ;;; Whitespace cleanup
 
 (add-hook 'before-save-hook 'whitespace-cleanup nil nil)
+
+;;; Custom file
+
+(setq custom-file (f-expand "custom.el" eide-etc-dir))
 
 (provide 'eide-editor)

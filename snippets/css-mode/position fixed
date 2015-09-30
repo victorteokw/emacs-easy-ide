@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: position fixed
+# key: pf
+# group: css
+# --
+position: fixed;

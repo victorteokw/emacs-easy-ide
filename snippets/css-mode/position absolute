@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: position absolute
+# key: pa
+# group: css
+# --
+position: absolute;

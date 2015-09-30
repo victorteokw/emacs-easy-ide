@@ -29,7 +29,7 @@
 
 ;;;; Prefix keys
 
-;; Use C-z as prefix key
+;; Use C-z as emacs style prefix key
 
 (define-prefix-command 'eide-c-z)
 (global-set-key (kbd "C-z") 'eide-c-z)
@@ -91,7 +91,7 @@
 
 (global-set-key [remap execute-extended-command] 'smex)
 
-;; s-S-p to open command palette (sublime text way)
+;; s-P to open command palette (sublime text way)
 
 (global-set-key (kbd "s-P") 'smex)
 
@@ -187,9 +187,9 @@
 
 ;;; Expand region
 
-;; s-L to expand current region
+;; s-e to expand current region
 
-(global-set-key (kbd "s-L") 'er/expand-region)
+(global-set-key (kbd "s-e") 'er/expand-region)
 
 ;;; Expand line
 
@@ -261,10 +261,10 @@
 
 ;;; Swoop
 
-;; C-z z to swoop
+;; C-c w to swoop
 ;; TODO: change swoop's keybinding
 
-(global-set-key (kbd "C-z z") 'helm-swoop)
+(global-set-key (kbd "C-c w") 'helm-swoop)
 
 ;;; Jump to definition
 
@@ -293,23 +293,67 @@
 
 ;; auto complete will automatically trigger, use C-g to cancel
 
+;; tab to complete
+
+(define-key ac-completing-map [tab] 'ac-complete)
+(define-key company-active-map [tab] 'company-complete-selection)
+
+;; return to complete common part
+
+(define-key ac-completing-map [return] 'ac-expand)
+(define-key company-active-map [return] 'company-complete-common)
+
 ;;; Insertion by copy and paste
 
-;; s-c s-v s-x C-M-s-v to TextMate compatible copy and paste
+;; C-w to cut region or line
 
-(eide-only :osx :emacs-mac
-  (global-set-key (kbd "s-c") 'kill-ring-save)
-  (global-set-key (kbd "s-v") 'yank)
-  (global-set-key (kbd "s-x") 'kill-region)
-  ;; TextMate style clipboard history
-  (global-set-key (kbd "C-M-s-v") 'browse-kill-ring)
-  (global-set-key (kbd "s-V") 'yank-pop)
-  ;; TODO: s-M-v should 'yank-push'
-  (global-set-key (kbd "s-M-v") 'yank-pop))
+;; M-w to copy region or line
 
-;; use C-M-y to browse kill ring
+;; C-y to paste
+
+;; M-y to cycle paste
+
+;; C-Y to paste and indent
+
+(global-set-key (kbd "C-Y") 'eide-yank-and-indent)
+
+;; M-Y to cycle paste and indent
+
+(global-set-key (kbd "M-Y") 'eide-yank-pop-and-indent)
+
+;; C-M-y to insert by kill ring
 
 (global-set-key (kbd "C-M-y") 'browse-kill-ring)
+
+(eide-only :osx '(:emacs-mac :gnu-emacs)
+
+  ;; s-x to cut region or line
+
+  (global-set-key (kbd "s-x") 'kill-region)
+
+  ;; s-c to copy region or line
+
+  (global-set-key (kbd "s-c") 'kill-ring-save)
+
+  ;; s-v to paste
+
+  (global-set-key (kbd "s-v") 'yank)
+
+  ;; s-M-v to cycle paste
+
+  (global-set-key (kbd "s-M-v") 'yank-pop)
+
+  ;; s-M-V to cycle paste and indent
+
+  (global-set-key (kbd "s-M-V") 'eide-yank-pop-and-indent)
+
+  ;; s-V to paste and indent
+
+  (global-set-key (kbd "s-V") 'eide-yank-and-indent)
+
+  ;; C-M-s-v to insert by kill ring
+
+  (global-set-key (kbd "C-M-s-v") 'browse-kill-ring))
 
 ;;;; Deletion
 

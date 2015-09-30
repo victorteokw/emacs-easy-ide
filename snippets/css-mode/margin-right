@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: margin-right
+# key: mr
+# group: css
+# --
+margin-right: $1;

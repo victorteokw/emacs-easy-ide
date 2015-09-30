@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: padding-top
+# key: pt
+# group: css
+# --
+padding-top: $1;

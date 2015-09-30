@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: position sticky
+# key: ps
+# group: css
+# --
+position: sticky;

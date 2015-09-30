@@ -1,4 +1,4 @@
-;;; Show the nice
+;;; Show the nice gutter
 
 (global-diff-hl-mode)
 

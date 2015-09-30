@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: padding-bottom
+# key: pb
+# group: css
+# --
+padding-bottom: $1;

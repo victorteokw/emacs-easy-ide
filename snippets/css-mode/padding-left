@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: padding-left
+# key: pl
+# group: css
+# --
+padding-left: $1;

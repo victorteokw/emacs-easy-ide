@@ -1,18 +1,29 @@
 # Compiled file
 *.elc
+
 # Backup
 *~
+
 # Etc is automatically generated user data
 /etc/*
+
 # User customization file
-/custom.el
+/etc/custom.el
+
 # Where packages are located
 /.cask
+
 # Private configuration files
 /private
+
 # Some custom sound files
 /sounds
+
 # Org directory
 /org
+
 # Scratches directory
 /scratches
+
+# Flycheck generated temporary file
+flycheck_init.el
