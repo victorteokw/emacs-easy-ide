@@ -29,14 +29,12 @@
 (require 'eide-environment)          ;; Environment
 (require 'eide-extension)            ;; Extension library
 (require 'eide-editing-mode)         ;; (V), (E) and (A)
-(require 'eide-theme)                ;; Theme
 (require 'eide-ui)                   ;; User interface
 (require 'eide-editor)               ;; Editor configuration
 (require 'eide-enable)               ;; For enable emacs command
 (require 'eide-cvs)                  ;; CVS
 (require 'eide-key-bindings)         ;; Key bindings sheet
 (require 'eide-context-menu)         ;; Context menu
-(require 'eide-scratches)            ;; Multiple scratches
 
 ;;;; Programming Language
 

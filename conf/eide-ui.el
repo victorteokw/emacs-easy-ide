@@ -117,7 +117,7 @@
 ;;; themes
 
 (if window-system
-    (load-theme 'eide t)
+    (require 'uju-theme)
   (load-theme 'wombat t))
 
 ;;; Line number

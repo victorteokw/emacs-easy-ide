@@ -6,6 +6,10 @@
         coffee-dedent-line-backspace
         comment-dwim
         delete-indentation
+        dired-flag-file-deletion
+        dired-mark
+        dired-next-line
+        dired-previous-line
         eide-push-mark
         eide-smart-beginning-of-line
         electric-newline-and-maybe-indent
@@ -24,6 +28,7 @@
         magit-section-forward
         magit-section-forward-sibling
         mark-whole-buffer
+        org-beginning-of-line
         org-delete-char
         org-end-of-line
         org-meta-return
@@ -53,7 +58,9 @@
 
 (setq mc/cmds-to-run-once
       '(
+        beginning-of-buffer
         describe-key
+        dired-do-flagged-delete
         eide-elisp-click-to-jump
         eide-mark-word
         eide-toggle-editing-mode

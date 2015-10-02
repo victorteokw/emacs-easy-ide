@@ -23,6 +23,7 @@ and cross platform.
 + multiple editing modes include *emacs* and *vi* with =evil=
 + Sublime Text and Textmate style key bindings are always available
 + Multiple savable scratches with different languages
++ Smart tab behavior, auto complete => snippet expand => jump out => indent
 
 *** Supported Programming Languages
 
@@ -59,13 +60,34 @@ and cross platform.
 
 ** Setup
 
-This package uses cask as package manager, you need to install cask through
-instruction [[http://cask.readthedocs.org/en/latest/guide/installation.html][here]].
+This emacs configuration uses cask as package manager, you need to install cask
+through instructions [[http://cask.readthedocs.org/en/latest/guide/installation.html][here]].
 
-After setup cask, setup of this package is easy, just clone this repo and
-rename it to =~/.emacs.d=, run =cask install=.
+After you setup cask, you may backup your previous emacs configuration through
 
-Only the first time you need to run =cask install=.
+#+begin_src
+$ mv ~/.emacs.d ~/.emacs.d.backup
+#+end_src
+
+Checkout this repo into emacs configuration directory
+
+#+begin_src
+$ git clone https://github.com/cheunghy/emacs-easy-ide ~/.emacs.d
+#+end_src
+
+Move to emacs configuration directory
+
+#+begin_src
+$ cd ~/.emacs.d
+#+end_src
+
+And execute =cask install=, cask will setup all the dependencies
+
+#+begin_src
+$ cask install
+#+end_src
+
+Open emacs and use it!
 
 ** Introduction of Usage
 

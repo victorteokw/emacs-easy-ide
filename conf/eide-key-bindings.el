@@ -48,6 +48,12 @@
 
 (global-set-key (kbd "s-q") 'save-buffers-kill-emacs)
 
+;;;; Restart
+
+;; Use C-M-s-w to restart emacs
+
+(global-set-key (kbd "C-M-s-w") 'restart-emacs)
+
 ;;;; Suspend
 
 ;; Use C-x C-z to suspend
@@ -265,6 +271,11 @@
 ;; TODO: change swoop's keybinding
 
 (global-set-key (kbd "C-c w") 'helm-swoop)
+
+;;; Tab jump out quote or brackets
+
+(global-set-key [remap indent-for-tab-command]
+                'eide-smart-tab-jump-out-or-indent)
 
 ;;; Jump to definition
 

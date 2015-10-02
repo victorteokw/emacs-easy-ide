@@ -29,8 +29,8 @@
      (setq org-mobile-inbox-for-pull
            (expand-file-name "mobile_inbox.org" org-directory))
 
-     ;; show everthing on startup
-     (setq org-startup-folded 'content)
+     ;; show nearly nothing on start
+     (setq org-startup-folded 'fold)
 
      ))
 

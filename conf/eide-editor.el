@@ -304,6 +304,20 @@
 
 (add-hook 'before-save-hook 'whitespace-cleanup nil nil)
 
+;;; Multiple scratches
+
+(require 'scratches)
+
+;;; Smart tab behavior
+
+;; TODO Use better syntax table maybe, customizable maybe
+(defun eide-smart-tab-jump-out-or-indent (&optional arg)
+  "Smart tab behavior. Jump out quote or brackets, or indent."
+  (interactive "P")
+  (if (-contains? (list "\"" "'" ")" "}" ";" "|" ">" "]" ) (make-string 1 (char-after)))
+      (forward-char 1)
+    (indent-for-tab-command arg)))
+
 ;;; Custom file
 
 (setq custom-file (f-expand "custom.el" eide-etc-dir))
