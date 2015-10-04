@@ -24,7 +24,7 @@
 ;;; exec path for os x and maybe other window systems
 
 (eide-only :osx '(:gnu-emacs :emacs-mac)
-           (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize))
 
 ;;; when selection is active, typing cause it deleted
 
@@ -235,6 +235,10 @@
 (setq yas-snippet-dirs (remove 'yas-installed-snippets-dir yas-snippet-dirs))
 (yas-global-mode)
 
+;;; Tab to jump out
+
+(setq yas-fallback-behavior '(apply tab-jump-out 1))
+
 ;;; pcache
 
 (eval-after-load "pcache"
@@ -306,17 +310,8 @@
 
 ;;; Multiple scratches
 
-(require 'scratches)
-
-;;; Smart tab behavior
-
-;; TODO Use better syntax table maybe, customizable maybe
-(defun eide-smart-tab-jump-out-or-indent (&optional arg)
-  "Smart tab behavior. Jump out quote or brackets, or indent."
-  (interactive "P")
-  (if (-contains? (list "\"" "'" ")" "}" ";" "|" ">" "]" ) (make-string 1 (char-after)))
-      (forward-char 1)
-    (indent-for-tab-command arg)))
+(setq-default scratches-keymap-prefix (kbd "C-z s"))
+(scratches-global-mode)
 
 ;;; Custom file
 

@@ -128,3 +128,4 @@
 (depends-on "yard-mode")
 (depends-on "yari")
 (depends-on "yasnippet")
+(depends-on "tab-jump-out" :git "https://github.com/cheunghy/tab-jump-out.git")

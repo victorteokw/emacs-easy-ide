@@ -274,8 +274,7 @@
 
 ;;; Tab jump out quote or brackets
 
-(global-set-key [remap indent-for-tab-command]
-                'eide-smart-tab-jump-out-or-indent)
+
 
 ;;; Jump to definition
 
@@ -622,15 +621,15 @@
 
 ;;; Scratches
 
-(global-set-key (kbd "C-z s n") 'scratches-new-scratch-dwim)
-(global-set-key (kbd "C-z s 4 n") 'scratches-new-scratch-other-window-dwim)
-(global-set-key (kbd "C-z s 5 n") 'scratches-new-scratch-other-frame-dwim)
+;; Use "C-z s n"   to scratches-new-scratch-dwim
+;; Use "C-z s 4 n"   to scratches-new-scratch-other-window-dwim
+;; Use "C-z s 5 n"   to scratches-new-scratch-other-frame-dwim
 
-(global-set-key (kbd "C-z s f") 'scratches-visit-scratch)
-(global-set-key (kbd "C-z s 4 f") 'scratches-visit-scratch-other-window)
-(global-set-key (kbd "C-z s 5 f") 'scratches-visit-scratch-other-frame)
+;; Use "C-z s f"   to scratches-visit-scratch
+;; Use "C-z s 4 f"   to scratches-visit-scratch-other-window
+;; Use "C-z s 5 f"   to scratches-visit-scratch-other-frame
 
-(global-set-key (kbd "C-z s k") 'scratches-kill-all-scratches)
+;; Use "C-z s k"   to scratches-kill-all-scratches
 
 ;;; CVS
 

@@ -25,6 +25,6 @@
 
 ;;; Indent
 
-(add-hook 'haml-mode-hook 'smart-indent-mode)
+(add-hook 'slim-mode-hook 'smart-indent-mode)
 
 (provide 'eide-slim)

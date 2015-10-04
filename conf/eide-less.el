@@ -23,7 +23,7 @@
   (setq ac-sources '(ac-source-css-property))
   (auto-complete-mode))
 
-(add-hook 'less-css-mode-hook 'eide-scss-auto-complete)
+(add-hook 'less-css-mode-hook 'eide-less-auto-complete)
 
 
 (provide 'eide-less)

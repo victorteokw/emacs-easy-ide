@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        backward-sentence
         coffee-dedent-line-backspace
         comment-dwim
         delete-indentation
@@ -12,6 +13,7 @@
         dired-previous-line
         eide-push-mark
         eide-smart-beginning-of-line
+        eide-yank-and-indent
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
         elisp-slime-nav-find-elisp-thing-at-point
@@ -19,6 +21,7 @@
         expand-line-contract-previous-line
         expand-line-expand-next-line
         expand-line-expand-previous-line
+        forward-sentence
         haml-electric-backspace
         hy-lang-sass-insert-colon-pair
         indent-for-tab-command
@@ -49,7 +52,9 @@
         paredit-splice-sexp-killing-backward
         paredit-wrap-sexp
         slim-electric-backspace
+        smart-indent-tab
         turn-on-expand-line-mode
+        whole-line-or-region-kill-region
         whole-line-or-region-kill-ring-save
         whole-line-or-region-yank
         yaml-electric-backspace
