@@ -84,7 +84,8 @@
 
 (eval-after-load "smex"
   '(progn
-     (setq smex-save-file (f-expand ".smex-items" eide-etc-dir))))
+     (setq smex-save-file (f-expand ".smex-items" eide-etc-dir))
+     (setq smex-prompt-string "Command Palette: ")))
 
 ;;; Which key
 

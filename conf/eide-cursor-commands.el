@@ -31,6 +31,7 @@
         magit-section-forward
         magit-section-forward-sibling
         mark-whole-buffer
+        mouse-set-region
         org-beginning-of-line
         org-delete-char
         org-end-of-line
@@ -52,6 +53,7 @@
         paredit-splice-sexp-killing-backward
         paredit-wrap-sexp
         slim-electric-backspace
+        smart-indent-backspace
         smart-indent-tab
         turn-on-expand-line-mode
         whole-line-or-region-kill-region

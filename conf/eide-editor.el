@@ -3,6 +3,7 @@
 (setq-default
  indent-tabs-mode nil ;; use whitespace to indent
  tab-width 2          ;; tab width 2
+ standard-indent 2    ;; standard indent 2
  )
 
 ;;; Do not backup files

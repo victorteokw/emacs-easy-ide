@@ -182,7 +182,7 @@
 ;; From active region to multiple cursors:
 (global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
 (global-set-key (kbd "C-c c c") 'mc/edit-lines)
-(global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
+(global-set-key (kbd "s-L") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
 
 ;;; Basic selection
@@ -202,6 +202,9 @@
 ;; s-l to expand line
 
 (global-set-key (kbd "s-l") 'turn-on-expand-line-mode)
+
+(eval-after-load "expand-line"
+  '(define-key expand-line-mode-map (kbd "s-l") 'expand-line-expand-next-line))
 
 ;;;; Movement
 
@@ -395,7 +398,7 @@
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
 
 (global-set-key (kbd "s-f") 'isearch-forward)
-(global-set-key (kbd "s-F") 'isearch-forward-regexp)
+(global-set-key (kbd "s-F") 'projectile-grep)
 (global-set-key (kbd "s-r") 'anzu-query-replace)
 (global-set-key (kbd "s-R") 'anzu-query-replace-regexp)
 
@@ -634,36 +637,71 @@
 ;;; CVS
 
 ;; C-z g g or M-f12 to view git status
+
 (global-set-key (kbd "C-z g g") 'magit-status)
 (global-set-key [(meta f12)] 'magit-status)
+
 ;; C-z g b to blame
+
 (global-set-key (kbd "C-z g b") 'magit-blame-popup)
-;; C-z g b to browse the file on github
-(global-set-key (kbd "C-z g C-g") 'github-browse-file)
+
+;; C-z g v to browse the file on github
+
+(global-set-key (kbd "C-z g v") 'github-browse-file)
+
 ;; C-z g l to browse the file on github with blame
+
 (global-set-key (kbd "C-z g C-b") 'github-browse-file-blame)
+
 ;; C-z g c to clone repo from github
+
 (global-set-key (kbd "C-z g c") 'github-clone)
-;; yagist not bind anything yet
-;; gist not bind anything yet
 
 ;;;; Search web
 
+;; C-z q b to search bing
+
 (global-set-key (kbd "C-z q b") 'eide-search-bing)
+
+;; C-z q g to search google
+
 (global-set-key (kbd "C-z q g") 'eide-search-google)
+
+;; C-z q y to search youtube
+
+(global-set-key (kbd "C-z q y") 'eide-search-youtube)
 
 ;;;; Open with external app
 
+;; C-z o f to open with finder
+
 (global-set-key (kbd "C-z o f") 'eide-open-with-finder)
+
+;; C-z o s to open with Sublime Text
+
 (global-set-key (kbd "C-z o s") 'eide-open-with-sublime-text)
+
+;; C-z o t to open with TextMate
+
 (global-set-key (kbd "C-z o t") 'eide-open-with-textmate)
+
+;; C-z o a to open with Atom
+
 (global-set-key (kbd "C-z o a") 'eide-open-with-atom)
 
 ;;;; Package
 
-(global-set-key [f9] 'package-install)
+;; C-f9 to install package
+
+(global-set-key [C-f9] 'package-install)
+
+;; M-f9 to list packages
+
 (global-set-key [M-f9] 'package-list-packages)
-(global-set-key [s-f9] 'package-list-packages-no-fetch)
+
+;; f9 to list packages no fetch
+
+(global-set-key [f9] 'package-list-packages-no-fetch)
 
 ;;;; Org GTD
 
