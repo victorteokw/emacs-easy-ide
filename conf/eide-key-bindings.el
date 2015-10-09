@@ -316,6 +316,14 @@
 (define-key ac-completing-map [return] 'ac-expand)
 (define-key company-active-map [return] 'company-complete-common)
 
+;; C-n, C-p to select
+
+(define-key ac-completing-map (kbd "C-n") 'ac-next)
+(define-key company-active-map (kbd "C-n") 'company-select-next)
+
+(define-key ac-completing-map (kbd "C-p") 'ac-previous)
+(define-key company-active-map (kbd "C-p") 'company-select-previous)
+
 ;;; Insertion by copy and paste
 
 ;; C-w to cut region or line
