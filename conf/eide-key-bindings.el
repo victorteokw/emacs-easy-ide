@@ -54,6 +54,8 @@
 
 (global-set-key (kbd "C-M-s-w") 'restart-emacs)
 
+(global-set-key (kbd "C-x C-C") 'restart-emacs)
+
 ;;;; Suspend
 
 ;; Use C-x C-z to suspend
@@ -69,27 +71,6 @@
 ;; Use C-s-f to toggle full screen on OS X, too
 
 (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
-
-;;;; Configuration
-
-;; Use s-, to customize on OS X
-
-;; Use `customize' to customize.
-
-(eide-only :osx '(:emacs-mac)
-  (global-set-key (kbd "s-,") 'customize))
-
-;; Use C-z c i to go to user init file
-
-(global-set-key (kbd "C-z c i") 'eide-goto-init-file)
-
-;; Use C-z c c to go to a configuration file
-
-(global-set-key (kbd "C-z c c") 'eide-goto-conf-file)
-
-;; Use C-z c k to go to key binding file
-
-(global-set-key (kbd "C-z c k") 'eide-goto-key-bindings-file)
 
 ;;;; Command Palette (smex)
 
@@ -111,6 +92,29 @@
 
 (define-key global-map (kbd "M-`") 'menu-bar-open)
 
+;;;; Configuration
+
+;; Use s-, to customize on OS X
+
+;; Use C-z c p to customize.
+
+(global-set-key (kbd "C-z c p") 'customize)
+
+(eide-only :osx '(:emacs-mac)
+  (global-set-key (kbd "s-,") 'customize))
+
+;; Use C-z c i to go to user init file
+
+(global-set-key (kbd "C-z c i") 'eide-goto-init-file)
+
+;; Use C-z c c to go to a configuration file
+
+(global-set-key (kbd "C-z c c") 'eide-goto-conf-file)
+
+;; Use C-z c k to go to key binding file
+
+(global-set-key (kbd "C-z c k") 'eide-goto-key-bindings-file)
+
 ;;;; Help
 
 ;; C-h k to get usage of key
@@ -121,7 +125,7 @@
 
 ;; C-h v to get usage of variable
 
-;; C-h a to get command match predicate
+;; C-h a to get commands match predicate
 
 ;; C-h d to get everything match predicate
 
