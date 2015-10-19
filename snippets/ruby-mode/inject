@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: inject
+# key: inject
+# group: algorithm
+# --
+inject(${1:init_value}) { |${2:memo}, ${3:item}| $0 }

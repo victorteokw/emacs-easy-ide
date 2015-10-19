@@ -54,7 +54,7 @@
 
 (global-set-key (kbd "C-M-s-w") 'restart-emacs)
 
-(global-set-key (kbd "C-x C-C") 'restart-emacs)
+(global-set-key (kbd "C-x C-S-c") 'restart-emacs)
 
 ;;;; Suspend
 
