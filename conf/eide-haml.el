@@ -1,3 +1,5 @@
+(add-to-list 'auto-mode-alist '("\\.hamlc\\'" . haml-mode))   ; hamlc
+
 ;;; Auto complete
 
 (defun eide-haml-auto-complete ()

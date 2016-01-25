@@ -83,6 +83,7 @@
         org-capture
         org-cycle-agenda-files
         package-list-packages-no-fetch
+        projectile-find-file
         save-some-buffers
         smex
         ))

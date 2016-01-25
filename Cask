@@ -74,6 +74,7 @@
 (depends-on "json-mode")
 (depends-on "json-reformat")
 (depends-on "jst")
+(depends-on "jsx-mode")
 (depends-on "less-css-mode")
 (depends-on "let-alist")
 (depends-on "linum-off")
