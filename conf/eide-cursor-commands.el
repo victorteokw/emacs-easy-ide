@@ -69,6 +69,7 @@
         describe-key
         dired-do-flagged-delete
         eide-elisp-click-to-jump
+        eide-jump-to-definition
         eide-mark-word
         eide-toggle-editing-mode
         ido-find-file
