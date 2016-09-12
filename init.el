@@ -5,6 +5,7 @@
 
 ;;;; Use cask and pallet for package management
 
+(package-initialize)
 (require 'cask (expand-file-name "$HOME/.cask/cask.el"))
 (cask-initialize)
 (require 'pallet)
