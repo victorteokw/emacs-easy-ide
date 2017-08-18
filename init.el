@@ -82,7 +82,7 @@
 
 ;;;; GTD
 
-(require 'eide-org)                   ;; Org
+(require 'eide-org)                  ;; Org
 
 ;;;; Life and health
 
