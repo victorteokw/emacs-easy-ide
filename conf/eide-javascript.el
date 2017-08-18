@@ -3,6 +3,10 @@
 (add-to-list 'auto-mode-alist
              '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js2-mode))
 
+;;; Use js2-jsx-mode for .jsx file
+(add-to-list 'auto-mode-alist
+             '("\\.jsx\\'" . js2-mode))
+
 ;;; two space indentation
 
 (require 'js2-mode)
