@@ -737,7 +737,10 @@
 
 ;; C-M-s-d to close dired buffer
 
-(define-key dired-mode-map (kbd "C-M-s-d") 'eide-close-and-back)
+;;(define-key dired-mode-map (kbd "C-M-s-d") 'eide-close-and-back)
+(eval-after-load "dired"
+  '(progn
+     (define-key dired-mode-map (kbd "C-M-s-d") 'eide-close-and-back)))
 
 ;;;; Shell
 

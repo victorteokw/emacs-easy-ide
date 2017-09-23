@@ -1,11 +1,10 @@
 ;;; Use js2-mode for .es6 file, .js.erb file
-
 (add-to-list 'auto-mode-alist
              '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js2-mode))
 
 ;;; Use js2-jsx-mode for .jsx file
 (add-to-list 'auto-mode-alist
-             '("\\.jsx\\'" . js2-mode))
+             '("\\.jsx\\'" . js2-jsx-mode))
 
 ;;; two space indentation
 
@@ -104,5 +103,8 @@
 (add-hook 'js2-mode-hook 'origami-mode)
 
 (add-to-list 'origami-parser-alist '(js2-mode . origami-c-style-parser))
+
+;;; Auto completion
+(add-hook 'js2-mode-hook 'auto-complete-mode)
 
 (provide 'eide-javascript)

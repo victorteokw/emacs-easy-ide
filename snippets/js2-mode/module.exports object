@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: module.exports object
+# key: meo
+# --
+module.exports = {
+  $0
+}

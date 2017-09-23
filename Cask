@@ -49,6 +49,7 @@
 (depends-on "gitconfig-mode")
 (depends-on "github-browse-file")
 (depends-on "gitignore-mode")
+(depends-on "goto-chg")
 (depends-on "goto-gem")
 (depends-on "haml-mode")
 (depends-on "health" :git "https://github.com/cheunghy/emacs-health.git")
