@@ -3,6 +3,10 @@
 emacs-easy-ide is a self-documenting emacs configuration, it aims easy to use
 and cross platform.
 
+** Important Note
+
+The original intention of creating this package is to configure out the most efficient and best editor experience. At that time this was created, emacs is absolutely the best editor. Several years later, now, absolutely VSCode is the best. We can customize VSCode to have emacs features. But it's very hard to make emacs have the features and web based rendering like VSCode. Just like you and me, we are not forced to stick onto which editor, we are seeking the best. This repository is =deprecated=. Use =VSCode= instead.
+
 ** Features
 
 *** Overview
